@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils">
+      <UniqueIdentifier>{f94e15bc-b19a-43f7-8bd3-15af4d1b56af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Sync">
+      <UniqueIdentifier>{07f6a085-c13b-47ea-a9a0-e4e903cfe1c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Sync\FileMapping">
+      <UniqueIdentifier>{46bd5669-2836-46ed-a95b-e2d0562ac4fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Sync\Mutex">
+      <UniqueIdentifier>{6dac6c7c-75d8-4a55-9025-e13b9377fdc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Sync\Event">
+      <UniqueIdentifier>{13cda4cf-077d-4820-8c6f-9a221841cb97}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DebugProcessRunner.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="..\IDE NASM\source\Utils\Synchronization\FileMapping\FileMapping.cpp">
+      <Filter>Исходные файлы\Utils\Sync\FileMapping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\IDE NASM\source\Utils\Synchronization\Mutex\Mutex.cpp">
+      <Filter>Исходные файлы\Utils\Sync\Mutex</Filter>
+    </ClCompile>
+    <ClCompile Include="..\IDE NASM\source\Utils\Synchronization\Event\Event.cpp">
+      <Filter>Исходные файлы\Utils\Sync\Event</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\IDE NASM\source\Utils\Synchronization\FileMapping\FileMapping.h">
+      <Filter>Исходные файлы\Utils\Sync\FileMapping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IDE NASM\source\Utils\Synchronization\Mutex\Mutex.h">
+      <Filter>Исходные файлы\Utils\Sync\Mutex</Filter>
+    </ClInclude>
+    <ClInclude Include="..\IDE NASM\source\Utils\Synchronization\Event\Event.h">
+      <Filter>Исходные файлы\Utils\Sync\Event</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

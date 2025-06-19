@@ -1,0 +1,38 @@
+{
+	"en": {
+		"frame": {"x":648,"y":802,"w":44,"h":30},
+		"description":{
+			"en": "English",
+			"ru": "Английский",
+			"by": "Англійская",
+			"fr": "Anglais"
+		}
+	},
+	"ru": {
+		"frame": {"x":438,"y":634,"w":44,"h":30},
+		"description":{
+			"en": "Russian",
+			"ru": "Русский",
+			"by": "Руская",
+			"fr": "Russe"
+		}
+	},
+	"by": {
+		"frame": {"x":228,"y":74,"w":44,"h":30},
+		"description":{
+			"en": "Belarusian",
+			"ru": "Белорусский",
+			"by": "Беларуская",
+			"fr": "Biélorusse"
+		}
+	},
+	"fr":{
+		"frame": {"x":928,"y":130,"w":44,"h":30},
+		"description":{
+			"en": "French",
+			"ru": "Французский",
+			"by": "Французская",
+			"fr": "Français"
+		}
+	}
+}

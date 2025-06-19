@@ -1,0 +1,34 @@
+     1                                  global main       ; делаем метку метку _start видимой извне
+     2                                  
+     3                                  extern WriteFile        ; подключем функцию WriteFile
+     4                                  extern GetStdHandle     ; подключем функцию GetStdHandle
+     5                                   
+     6                                  section .data   ; секция данных
+     7 00000000 48656C6C6F204D4554-     message: db "Hello METANIT.COM!", 10  ; строка для вывода на консоль
+     7 00000009 414E49542E434F4D21-
+     7 00000012 0A                 
+     8                                   
+     9                                  section .text       ; объявление секции кода
+    10                                  main:             ; метка _start - точка входа в программу
+    11                                  	;.loop:
+    12                                      ;	add al,10
+    13                                      ;	jmp .loop
+    14 00000000 4881EC28000000              sub  rsp, 40   				; Для параметров функций WriteFile и GetStdHandle резервируем 40 байт (5 параметров по 8 байт)
+    15 00000007 48B9F5FFFFFFFFFFFF-         mov  rcx, -11  				; Аргумент для GetStdHandle - STD_OUTPUT
+    15 00000010 FF                 
+    16 00000011 E8(00000000)                call GetStdHandle 			; вызываем функцию GetStdHandle
+    16          ******************       warning: 32-bit relative section-crossing relocation [-w+reloc-rel-dword]
+    17 00000016 4889C1                      mov  rcx, rax     			; Первый параметр WriteFile - в регистр RCX помещаем дескриптор файла - консоли
+    18 00000019 48BA-                       mov  rdx, message    		; Второй параметр WriteFile - загружаем указатель на строку в регистр RDX
+    18          ******************       warning: 64-bit absolute section-crossing relocation [-w+reloc-abs-qword]
+    18 0000001B [0000000000000000] 
+    19 00000023 41B812000000                mov  r8d, 18				; Третий параметр WriteFile - длина строки для записи в регистре R8D 
+    20 00000029 4D31C9                      xor  r9, r9					; Четвертый параметр WriteFile - адрес для получения записанных байтов
+    21 0000002C 48C744242000000000          mov  qword [rsp + 32], 0  	; Пятый параметр WriteFile
+    22 00000035 E8(00000000)                call WriteFile 				; вызываем функцию WriteFile
+    22          ******************       warning: 32-bit relative section-crossing relocation [-w+reloc-rel-dword]
+    23                                  
+    24 0000003A 4881C428000000              add  rsp, 40
+    25 00000041 C3                          ret             ; выход из программы
+    25          ------------------       info: assembly required 1+1+2 passes
+

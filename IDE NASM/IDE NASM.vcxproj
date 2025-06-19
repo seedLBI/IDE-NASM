@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props')" />
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{8ad019ef-a0c2-4afa-be4c-2812e1d5af6b}</ProjectGuid>
+    <RootNamespace>IDENASM</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\sosn2\source\repos\IDE NASM\IDE NASM\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>C:\Users\sosn2\source\repos\IDE NASM\IDE NASM\source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <Optimization>MaxSpeed</Optimization>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\IDE\Application\Application.cpp" />
+    <ClCompile Include="source\IDE\Core\BuildManager\BuildManager.cpp" />
+    <ClCompile Include="source\IDE\Core\FontManager\FontManager.cpp" />
+    <ClCompile Include="source\IDE\Core\KeyCombination\KeyCombinationHandler.cpp" />
+    <ClCompile Include="source\IDE\Core\LastSolutionManager\LastSolutionManager.cpp" />
+    <ClCompile Include="source\IDE\Core\PositionWidgetsManager\PositionWidgetsManager.cpp" />
+    <ClCompile Include="source\IDE\Core\SaveSystem\SaveSystem.cpp" />
+    <ClCompile Include="source\IDE\Core\SaveSystem\SaveSystemManager.cpp" />
+    <ClCompile Include="source\IDE\Core\Setting\interfaces\ISettingDrawable.cpp" />
+    <ClCompile Include="source\IDE\Core\Setting\interfaces\ISettingObject.cpp" />
+    <ClCompile Include="source\IDE\Core\Setting\interfaces\ISettingSavable.cpp" />
+    <ClCompile Include="source\IDE\Core\Setting\Setting.cpp" />
+    <ClCompile Include="source\IDE\Core\Solution\Solution.cpp" />
+    <ClCompile Include="source\IDE\Core\Solution\SolutionInfo.cpp" />
+    <ClCompile Include="source\IDE\Core\Theme\BaseColors\BaseColors.cpp" />
+    <ClCompile Include="source\IDE\Core\Theme\interface\IThemeLoadable.cpp" />
+    <ClCompile Include="source\IDE\Core\Theme\ThemeManager\ThemeManager.cpp" />
+    <ClCompile Include="source\IDE\Core\Widget\IWidget.cpp" />
+    <ClCompile Include="source\IDE\Core\Widget\WidgetManager.cpp" />
+    <ClCompile Include="source\IDE\GUI\Elements\ComboLanguage\ComboLanguage.cpp" />
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\interface\Notification.Element.cpp" />
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\Notification.cpp" />
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\Notification.Message.cpp" />
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\Notification.Progress.cpp" />
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\NotificationManager.cpp" />
+    <ClCompile Include="source\IDE\GUI\MainMenuBar\MainMenuBar.cpp" />
+    <ClCompile Include="source\IDE\GUI\OutlineStatus\OutlineStatus.cpp" />
+    <ClCompile Include="source\IDE\GUI\StartupWindow\StartupWindow.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\FilesViewer\Widget_FilesViewer.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\IDE\OutputConsoleDrawer.IDE.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\NASM\OutputConsoleDrawer.NASM.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\TypeMessageDraw\TypeMessageDraw.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\Widget_OutputConsole.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\HighlighterSyntax.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\TextEditor.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\WidgetManager_TextEditior.cpp" />
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\Widget_TextEditor.cpp" />
+    <ClCompile Include="source\IDE\Tools\Compiler\Compiler.cpp" />
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Compiler.NASM.cpp" />
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Parser_ListingFile\Parser.ListingFile.Nasm.cpp" />
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\NASM.Parser.Output.cpp" />
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\OutputLine\NASM.OutputLine.cpp" />
+    <ClCompile Include="source\IDE\Tools\DebugConsole\DebugConsole.cpp" />
+    <ClCompile Include="source\IDE\Tools\Debugger\Debugger.cpp" />
+    <ClCompile Include="source\IDE\Tools\Debugger\GDB\Debugger.GDB.cpp" />
+    <ClCompile Include="source\IDE\Tools\Debugger\GDB\Parser\Parser.GDB.cpp" />
+    <ClCompile Include="source\IDE\Tools\Linker\GCC\Linker.GCC.cpp" />
+    <ClCompile Include="source\IDE\Tools\Linker\LD\Linker.LD.cpp" />
+    <ClCompile Include="source\IDE\Tools\Linker\Linker.cpp" />
+    <ClCompile Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.cpp" />
+    <ClCompile Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.Creater.cpp" />
+    <ClCompile Include="source\IDE\Utils\TypeMessageConsole\TypeMessageConsole.cpp" />
+    <ClCompile Include="source\Test\TestFunction.cpp" />
+    <ClCompile Include="source\ThirdParty\ImGui\imgui.cpp" />
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_demo.cpp" />
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_draw.cpp" />
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_impl_glfw.cpp" />
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_tables.cpp" />
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_widgets.cpp" />
+    <ClCompile Include="source\Utils\File\Utils.File.cpp" />
+    <ClCompile Include="source\Utils\ImGui\ImGui.Utils.cpp" />
+    <ClCompile Include="source\Utils\Keyboard\Keyboard.Utils.cpp" />
+    <ClCompile Include="source\Utils\Math\Math.Lerp.Utils.cpp" />
+    <ClCompile Include="source\Utils\OpenGL\Framebuffer\Framebuffer.cpp" />
+    <ClCompile Include="source\Utils\OpenGL\Renderbuffer\Renderbuffer.cpp" />
+    <ClCompile Include="source\Utils\OpenGL\Texture\Texture.cpp" />
+    <ClCompile Include="source\Utils\OpenGL\Window\Manager\WindowManager.cpp" />
+    <ClCompile Include="source\Utils\OpenGL\Window\Window.cpp" />
+    <ClCompile Include="source\Utils\ProcessRuner\ProcessRuner.cpp" />
+    <ClCompile Include="source\Utils\Synchronization\CriticalSection\CriticalSection.cpp" />
+    <ClCompile Include="source\Utils\Synchronization\Event\Event.cpp" />
+    <ClCompile Include="source\Utils\Synchronization\Mutex\Mutex.cpp" />
+    <ClCompile Include="source\Utils\Text\Encoding\Unicode\Utils.Encoding.Unicode.cpp" />
+    <ClCompile Include="source\Utils\Text\Encoding\UTF8\Utils.Encoding.UTF8.cpp" />
+    <ClCompile Include="source\Utils\Text\Encoding\Wstring\Utils.Encoding.Wstring.cpp" />
+    <ClCompile Include="source\Utils\Text\Utils.Text.cpp" />
+    <ClCompile Include="source\Utils\Timer\Utils.Timer.cpp" />
+    <ClCompile Include="source\Utils\Timer\Utils.Timer.Framerate.cpp" />
+    <ClCompile Include="source\Utils\Time\Utils.Time.cpp" />
+    <ClCompile Include="source\Utils\Values\Values.Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="source\IDE\Application\Application.h" />
+    <ClInclude Include="source\IDE\Core\BuildManager\BuildManager.h" />
+    <ClInclude Include="source\IDE\Core\FontManager\FontManager.h" />
+    <ClInclude Include="source\IDE\Core\KeyCombination\KeyCombination.h" />
+    <ClInclude Include="source\IDE\Core\KeyCombination\KeyCombinationHandler.h" />
+    <ClInclude Include="source\IDE\Core\LastSolutionManager\LastSolutionManager.h" />
+    <ClInclude Include="source\IDE\Core\PositionWidgetsManager\PositionWidgetsManager.h" />
+    <ClInclude Include="source\IDE\Core\SaveSystem\SaveSystem.h" />
+    <ClInclude Include="source\IDE\Core\SaveSystem\SaveSystemManager.h" />
+    <ClInclude Include="source\IDE\Core\Setting\interfaces\ISettingDrawable.h" />
+    <ClInclude Include="source\IDE\Core\Setting\interfaces\ISettingObject.h" />
+    <ClInclude Include="source\IDE\Core\Setting\interfaces\ISettingSavable.h" />
+    <ClInclude Include="source\IDE\Core\Setting\Setting.h" />
+    <ClInclude Include="source\IDE\Core\Solution\Solution.h" />
+    <ClInclude Include="source\IDE\Core\Solution\SolutionInfo.h" />
+    <ClInclude Include="source\IDE\Core\Theme\BaseColors\BaseColors.h" />
+    <ClInclude Include="source\IDE\Core\Theme\interface\IThemeLoadable.h" />
+    <ClInclude Include="source\IDE\Core\Theme\Theme.h" />
+    <ClInclude Include="source\IDE\Core\Theme\ThemeManager\ThemeManager.h" />
+    <ClInclude Include="source\IDE\Core\Widget\IWidget.h" />
+    <ClInclude Include="source\IDE\Core\Widget\WidgetManager.h" />
+    <ClInclude Include="source\IDE\GUI\Elements\ComboLanguage\ComboLanguage.h" />
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\interface\Notification.Element.h" />
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\Notification.h" />
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\Notification.Message.h" />
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\Notification.Progress.h" />
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\NotificationManager.h" />
+    <ClInclude Include="source\IDE\GUI\MainMenuBar\MainMenuBar.h" />
+    <ClInclude Include="source\IDE\GUI\OutlineStatus\OutlineStatus.h" />
+    <ClInclude Include="source\IDE\GUI\StartupWindow\StartupWindow.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\FilesViewer\Widget_FilesViewer.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\IDE\OutputConsoleDrawer.IDE.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\NASM\OutputConsoleDrawer.NASM.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\TypeMessageDraw\TypeMessageDraw.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\Widget_OutputConsole.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\HighlighterSyntax.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\TextEditor.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\WidgetManager_TextEditior.h" />
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\Widget_TextEditor.h" />
+    <ClInclude Include="source\IDE\Tools\Compiler\Compiler.h" />
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Compiler.NASM.h" />
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Parser_ListingFile\Parser.ListingFile.Nasm.h" />
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\NASM.Parser.Output.h" />
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\OutputLine\NASM.OutputLine.h" />
+    <ClInclude Include="source\IDE\Tools\DebugConsole\DebugConsole.h" />
+    <ClInclude Include="source\IDE\Tools\Debugger\Debugger.h" />
+    <ClInclude Include="source\IDE\Tools\Debugger\GDB\Debugger.GDB.h" />
+    <ClInclude Include="source\IDE\Tools\Debugger\GDB\Parser\Parser.GDB.h" />
+    <ClInclude Include="source\IDE\Tools\Linker\GCC\Linker.GCC.h" />
+    <ClInclude Include="source\IDE\Tools\Linker\LD\Linker.LD.h" />
+    <ClInclude Include="source\IDE\Tools\Linker\Linker.h" />
+    <ClInclude Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.Creater.h" />
+    <ClInclude Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.h" />
+    <ClInclude Include="source\IDE\Utils\TypeMessageConsole\TypeMessageConsole.h" />
+    <ClInclude Include="source\Test\TestFunction.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imconfig.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imgui.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_glfw.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_opengl2.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_opengl3.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_internal.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imstb_rectpack.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imstb_textedit.h" />
+    <ClInclude Include="source\ThirdParty\ImGui\imstb_truetype.h" />
+    <ClInclude Include="source\Utils\File\Utils.File.h" />
+    <ClInclude Include="source\Utils\ImGui\ImGui.Utils.h" />
+    <ClInclude Include="source\Utils\Keyboard\Keyboard.Utils.h" />
+    <ClInclude Include="source\Utils\Math\Math.Lerp.Utils.h" />
+    <ClInclude Include="source\Utils\OpenGL\Framebuffer\Framebuffer.h" />
+    <ClInclude Include="source\Utils\OpenGL\Renderbuffer\Renderbuffer.h" />
+    <ClInclude Include="source\Utils\OpenGL\Shaders\Shader.h" />
+    <ClInclude Include="source\Utils\OpenGL\Texture\Texture.h" />
+    <ClInclude Include="source\Utils\OpenGL\Window\Manager\WindowManager.h" />
+    <ClInclude Include="source\Utils\OpenGL\Window\Window.h" />
+    <ClInclude Include="source\Utils\ProcessRuner\ProcessRuner.h" />
+    <ClInclude Include="source\Utils\Synchronization\CriticalSection\CriticalSection.h" />
+    <ClInclude Include="source\Utils\Synchronization\Event\Event.h" />
+    <ClInclude Include="source\Utils\Synchronization\Mutex\Mutex.h" />
+    <ClInclude Include="source\Utils\Text\Encoding\Unicode\Utils.Encoding.Unicode.h" />
+    <ClInclude Include="source\Utils\Text\Encoding\UTF8\Utils.Encoding.UTF8.h" />
+    <ClInclude Include="source\Utils\Text\Encoding\Wstring\Utils.Encoding.Wstring.h" />
+    <ClInclude Include="source\Utils\Text\Utils.Text.h" />
+    <ClInclude Include="source\Utils\Timer\Utils.Timer.Framerate.h" />
+    <ClInclude Include="source\Utils\Timer\Utils.Timer.h" />
+    <ClInclude Include="source\Utils\Time\Utils.Time.h" />
+    <ClInclude Include="source\Utils\Values\Values.Utils.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="IDE NASM.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="LOGO.ico" />
+    <CopyFileToFolders Include="resources\icons\LOGO.png">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\icons</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\icons\LOGO_small.png">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\icons</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\icons\flags\image.png">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\icons\flags\</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="resources\fonts\Font Awesome 6 Free-Solid-900.otf">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\fonts</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\fonts\JetBrainsMonoNL-ExtraBold.ttf">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\fonts</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\fonts\JetBrainsMonoNL-Regular.ttf">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\fonts</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="resources\json\InstructionList.json">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\json</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\json\SyntaxData.json">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\json</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <CopyFileToFolders Include="resources\json\LanguageChoose.json">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\json\</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\json\TranslateOutputConsole.json">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\json\</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\icons\flags\uv.json">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\icons\flags\</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets" Condition="Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets')" />
+  </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Данный проект ссылается на пакеты NuGet, отсутствующие на этом компьютере. Используйте восстановление пакетов NuGet, чтобы скачать их.  Дополнительную информацию см. по адресу: http://go.microsoft.com/fwlink/?LinkID=322105. Отсутствует следующий файл: {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.CppWinRT.2.0.220531.1\build\native\Microsoft.Windows.CppWinRT.targets'))" />
+  </Target>
+</Project>

@@ -1,0 +1,545 @@
+﻿#include "MainMenuBar.h"
+
+bool MainMenuBar::IsMouseOverMenuBar() {
+	ImVec2 mousePos = ImGui::GetMousePos();
+	return mousePos.x >= menuBarPos.x && mousePos.x <= menuBarPos.x + menuBarSize.x &&
+		mousePos.y >= menuBarPos.y && mousePos.y <= menuBarPos.y + menuBarSize.y;
+}
+
+void MainMenuBar::DrawIcon() {
+	const float frameHeight = ImGui::GetFrameHeight();
+	ImGui::SetCursorPosX(ImGui::GetStyle().ItemSpacing.x * 0.5f);
+	ImGui::Image((ImTextureID)icon_logo.GetID(), ImVec2(frameHeight, frameHeight), ImVec2(0, 1), ImVec2(1, 0), color_Logo, ImVec4(0,0,0,0));
+	ImGui::SameLine(0.0f, ImGui::GetStyle().ItemSpacing.x);
+}
+
+void MainMenuBar::DrawProjectName() {
+	const std::string projectName = wstring_to_stringUTF8(solution->GetInfo().NameFolderProject);
+
+	// Размер текста и паддингов
+	ImVec2 padding = ImGui::GetStyle().FramePadding;
+	ImVec2 textSize = ImGui::CalcTextSize(projectName.c_str());
+	float totalW = textSize.x + padding.x * 2.0f;
+	float totalH = textSize.y + padding.y * 2.0f;
+
+	// Уменьшаем высоту (пример: на 20%)
+	float shrinkFactor = 0.8f;
+	float newH = totalH * shrinkFactor;
+
+	// Получаем высоту строки (frame) — это высота меню/фрейма
+	float frameH = ImGui::GetFrameHeight();
+
+	// Считаем, на сколько нужно опустить наш элемент, чтобы центрировать по высоте
+	float vertOffset = (frameH - newH) * 0.5f;
+
+	// Позиционируемся на той же линии и со смещением по Y
+	ImGui::SameLine(0.0f, ImGui::GetStyle().ItemSpacing.x + 10.0f);
+	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + vertOffset);
+
+	// Резервируем область под наш элемент
+	ImGui::Dummy(ImVec2(totalW, newH));
+
+	if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNone)) {
+		ImGui::BeginTooltip();
+			ImGui::Text(u8"Название текущего проекта");
+		ImGui::EndTooltip();
+	}
+
+	// Координаты прямоугольника
+	ImVec2 bb_min = ImGui::GetItemRectMin();
+	ImVec2 bb_max = ImGui::GetItemRectMax();
+
+	// Сдвиг текста внутри рамки для вертикального центрирования
+	float textOffsetY = (newH - textSize.y) * 0.5f;
+
+	// Рисуем рамку и текст
+	ImDrawList* draw = ImGui::GetWindowDrawList();
+	ImU32 col_text = ImGui::GetColorU32(ImGuiCol_Text);
+
+	draw->AddRectFilled(ImVec2(bb_min.x, bb_min.y + 3.f) , bb_max, color_ProjectBackground, 0.0f);
+	draw->AddText(
+		ImVec2(bb_min.x + padding.x,
+			bb_min.y + textOffsetY),
+		col_text,
+		projectName.c_str()
+	);
+}
+
+void MainMenuBar::DrawTitleButtons() {
+	ImGuiStyle& style = ImGui::GetStyle();
+	float windowWidth = ImGui::GetWindowWidth();
+	float buttonWidth = 40.0f;
+	float spacing = style.ItemSpacing.x;
+	float paddingRight = style.WindowPadding.x;
+	float totalWidth = 3 * buttonWidth;
+
+	// выравниваем блок кнопок по правому краю
+	ImGui::SetCursorPosX(windowWidth - totalWidth);
+
+	// сохраняем текущие цвета кнопки
+	ImVec4 colBtn = style.Colors[ImGuiCol_Button];
+	ImVec4 colBtnHover = style.Colors[ImGuiCol_ButtonHovered];
+	ImVec4 colBtnActive = style.Colors[ImGuiCol_ButtonActive];
+
+	// делаем «фон» кнопок таким же, как фон окна (невидимыми)
+	ImGui::PushStyleColor(ImGuiCol_Button, style.Colors[ImGuiCol_MenuBarBg]);
+	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colBtnHover);
+	ImGui::PushStyleColor(ImGuiCol_ButtonActive, colBtnActive);
+
+	const ImVec2 buttonSize = ImVec2(buttonWidth, ImGui::GetFrameHeight() - 1.f);
+
+
+	// кнопки
+	if (ImGui::Button(ICON_FA_MINUS, buttonSize)) {
+		glfwIconifyWindow(window);
+	}
+	ImGui::SameLine(0,0);
+	if (ImGui::Button(ICON_FA_EXPAND, buttonSize)) {
+		if (glfwGetWindowAttrib(window, GLFW_MAXIMIZED))
+			glfwRestoreWindow(window);
+		else
+			glfwMaximizeWindow(window);
+	}
+	ImGui::SameLine(0,0);
+	if (ImGui::Button(ICON_FA_XMARK, buttonSize)) {
+		glfwSetWindowShouldClose(window, GLFW_TRUE);
+	}
+
+	// восстанавливаем старые цвета
+	ImGui::PopStyleColor(3);
+}
+
+void MainMenuBar::SetFlag_DrawAll() {
+	DrawingAllButtons = true;
+}
+
+
+bool MainMenuBar::IsPointOverTitleButton(const POINT& pt) const {
+	for (const auto& r : titleButtonRects) {
+		if (pt.x >= r.Min.x && pt.x < r.Max.x &&
+			pt.y >= r.Min.y && pt.y < r.Max.y)
+			return true;
+	}
+	return false;
+}
+
+void MainMenuBar::Draw() {
+
+	const static std::string Menu_File		= std::string(ICON_FA_FILE)			+ u8" Файл";
+	const static std::string Menu_View		= std::string(ICON_FA_MOUNTAIN_SUN)	+ u8" Вид";
+	const static std::string Menu_Setting	= std::string(ICON_FA_GEAR)			+ u8" Настройки";
+	const static std::string Menu_Assembly	= std::string(ICON_FA_HAMMER)		+ u8" Сборка";
+	const static std::string Menu_Debug		= std::string(ICON_FA_BUG)			+ u8" Отладка";
+	const static std::string Menu_Help		= std::string(ICON_FA_LIFE_RING)	+ u8" Помощь";
+
+
+
+
+	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
+
+	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 7));
+
+	if (ImGui::BeginMainMenuBar()) {
+
+
+
+		titleButtonRects.clear();
+
+		menuBarPos = ImGui::GetWindowPos();
+		menuBarSize = ImGui::GetWindowSize();
+
+
+		DrawIcon();
+
+
+		if (DrawingAllButtons)
+		{
+
+			if (ImGui::BeginMenu(Menu_File.c_str())) {
+
+				if (ImGui::MenuItem(u8"Создать Проект")) {
+					solution->Create();
+				}
+				if (ImGui::MenuItem(u8"Открыть Проект")) {
+					if (solution->Open()) {
+						buildManager->ClearOutput();
+					}
+				}
+				if (ImGui::MenuItem(u8"Сохранить")) {
+					solution->SaveCurrentSolution();
+				}
+
+
+
+				if (ImGui::BeginMenu(u8"Последние проекты")) {
+
+					if (lastSolutionManager->Draw()) {
+						solution->OpenFromPath(lastSolutionManager->GetChoosedPath());
+					}
+
+					ImGui::EndMenu();
+				}
+
+				ImGui::MenuItem(u8"Выход");
+
+
+				ImGui::EndMenu();
+			}
+
+			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
+
+			if (ImGui::BeginMenu(Menu_View.c_str())) {
+				
+				ImGui::MenuItem((std::string(ICON_FA_FOLDER_TREE) + u8" Список файлов").c_str(), "", widgetManager->GetWidgetPtrByName(u8"Список файлов")->GetPtrFlagShow());
+				ImGui::MenuItem((std::string(ICON_FA_BARS) + u8" Вывод").c_str(), "", widgetManager->GetWidgetPtrByName(u8"Вывод")->GetPtrFlagShow());
+
+
+
+				ImGui::EndMenu();
+			}
+
+			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
+			if (ImGui::BeginMenu(Menu_Setting.c_str())) {
+				if (ImGui::MenuItem(u8"Открыть настройки")) {
+					setting->Open();
+				}
+				ImGui::EndMenu();
+			}
+
+			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
+			if (ImGui::BeginMenu(Menu_Assembly.c_str())) {
+				if (ImGui::MenuItem(u8"Собрать")) {
+					buildManager->CompileAndLink();
+				}
+				if (ImGui::MenuItem(u8"Компилировать")) {
+					buildManager->Compile();
+				}
+				ImGui::EndMenu();
+			}
+
+			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
+			if (ImGui::BeginMenu(Menu_Debug.c_str())) {
+				ImGui::MenuItem(u8"Начать отладку");
+				ImGui::MenuItem(u8"Начать без отладку");
+				ImGui::MenuItem(u8"Шаг с заходом");
+				ImGui::MenuItem(u8"Шаг с обходом");
+
+				ImGui::EndMenu();
+			}
+
+			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
+			if (ImGui::BeginMenu(Menu_Help.c_str())) {
+
+				ImGui::EndMenu();
+			}
+
+			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
+
+
+			DrawProjectName();
+
+		}
+
+		DrawTitleButtons();
+
+		ImGui::EndMainMenuBar();
+	}
+
+	ImGui::PopStyleVar();
+
+
+	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_MenuBar;
+	float height = ImGui::GetFrameHeight();
+
+	if (DrawingAllButtons)
+	{
+		if (ImGui::BeginViewportSideBar("##SecondaryMenuBar", NULL, ImGuiDir_Up, height, window_flags)) {
+			if (ImGui::BeginMenuBar()) {
+
+
+
+				ImGui::Dummy(ImVec2(20.f, 0.f));
+
+				ImGuiStyle& style = ImGui::GetStyle();
+				ImVec4 colBtn = style.Colors[ImGuiCol_Button];
+				ImVec4 colBtnHover = style.Colors[ImGuiCol_ButtonHovered];
+				ImVec4 colBtnActive = style.Colors[ImGuiCol_ButtonActive];
+
+				ImGui::PushStyleColor(ImGuiCol_Button, style.Colors[ImGuiCol_MenuBarBg]);
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colBtnHover);
+				ImGui::PushStyleColor(ImGuiCol_ButtonActive, colBtnActive);
+
+				if (ImGui::Button(ICON_FA_FILE_CIRCLE_PLUS, ImVec2(55.f, 0.f))) {
+					solution->Create();
+				}
+				ImGui::SameLine(0, 0);
+				if (ImGui::Button(ICON_FA_FOLDER_OPEN, ImVec2(55.f, 0.f))) {
+					if (solution->Open()) {
+						buildManager->ClearOutput();
+					}
+				}
+				ImGui::SameLine(0, 0);
+				if (ImGui::Button(ICON_FA_FLOPPY_DISK, ImVec2(55.f, 0.f))) {
+					solution->SaveCurrentSolution();
+				}
+
+
+				ImGui::PopStyleColor(3);
+
+				auto& settings = buildManager->GetCurrentSettings();
+
+				const char* str_Release = "Release";
+				const char* str_Debug = "Debug";
+
+				
+				std::string CurrentPlatform = "";
+
+				if (settings.platform == BuildManager_DefaultPlatforms::Release)
+					CurrentPlatform = str_Release;
+				else if (settings.platform == BuildManager_DefaultPlatforms::Debug)
+					CurrentPlatform = str_Debug;
+
+
+
+				ImGui::SetNextItemWidth(ImGui::CalcTextSize("RELEASE       ").x);
+
+
+				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
+
+				if (ImGui::BeginCombo(u8"##SELECT_PLATFORM", CurrentPlatform.c_str())) {
+
+					if (ImGui::Selectable(str_Release)) {
+						buildManager->SetPlatform(BuildManager_DefaultPlatforms::Release);
+					}
+					if (CurrentPlatform == str_Release)
+						ImGui::SetItemDefaultFocus();
+
+					if (ImGui::Selectable(str_Debug)) {
+						buildManager->SetPlatform(BuildManager_DefaultPlatforms::Debug);
+					}
+					if (CurrentPlatform == str_Debug)
+						ImGui::SetItemDefaultFocus();
+
+
+					ImGui::EndCombo();
+				}
+
+				ImGui::EndDisabled();
+
+
+
+				const char* str_64 = "x64";
+				const char* str_32 = "x86";
+
+				std::string CurrentArch = "";
+
+				if (settings.arg_architecture == Compiler_ARGS_ARCHITECTURE::Windows32)
+					CurrentArch = str_32;
+				else if (settings.arg_architecture == Compiler_ARGS_ARCHITECTURE::Windows64)
+					CurrentArch = str_64;
+
+
+				ImGui::SetNextItemWidth(ImGui::CalcTextSize("RELEASE ").x);
+
+				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
+
+				if (ImGui::BeginCombo(u8"##SELECT_ARCH", CurrentArch.c_str())) {
+
+					if (ImGui::Selectable(str_32)) {
+						buildManager->SetArch(Compiler_ARGS_ARCHITECTURE::Windows32);
+					}
+					if (CurrentArch == str_32)
+						ImGui::SetItemDefaultFocus();
+
+					if (ImGui::Selectable(str_64)) {
+						buildManager->SetArch(Compiler_ARGS_ARCHITECTURE::Windows64);
+					}
+					if (CurrentArch == str_64)
+						ImGui::SetItemDefaultFocus();
+
+					ImGui::EndCombo();
+				}
+
+				ImGui::EndDisabled();
+
+
+				static bool firstTime = true;
+				static char buf_entryPoint[256];
+
+				if (firstTime) {
+
+					for (int i = 0; i < 256; i++) {
+						buf_entryPoint[i] = 0;
+					}
+					
+					for (int i = 0; i < settings.str_entryPoint.size(); i++) {
+						if (i < 256) {
+							buf_entryPoint[i] = settings.str_entryPoint[i];
+						}
+					}
+
+					firstTime = false;
+
+				}
+
+
+
+				ImGui::Text(u8"Точка входа");
+				ImGui::SetNextItemWidth(ImGui::CalcTextSize(u8"Точка входа    ").x);
+
+				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
+
+				if (ImGui::InputText(u8"##ENTRYPOINTINPUT", buf_entryPoint, 256, ImGuiInputTextFlags_EnterReturnsTrue)) {
+					firstTime = true;
+					buildManager->SetEntryPoint(buf_entryPoint);
+				}
+
+				ImGui::EndDisabled();
+
+
+				ImGui::PushStyleColor(ImGuiCol_Button, style.Colors[ImGuiCol_MenuBarBg]);
+				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colBtnHover);
+				ImGui::PushStyleColor(ImGuiCol_ButtonActive, colBtnActive);
+
+
+				if (buildManager->GetState() == BuildManager_States::BuildManager_Running) {
+					if (ImGui::Button(std::string(ICON_FA_STOP + std::string(u8" Остановить")).c_str())) {
+						buildManager->TerminateRun();
+					}
+				}
+				else {
+					ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
+
+					if (ImGui::Button(std::string(ICON_FA_PLAY + std::string(u8" Пуск")).c_str())) {
+						buildManager->Run();
+					}
+
+					ImGui::EndDisabled();
+				}
+
+				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
+					ImGui::Button(std::string(ICON_FA_PLAY + std::string(u8" Отладка")).c_str());
+				ImGui::EndDisabled();
+
+				ImGui::PopStyleColor(3);
+
+
+
+				ImGui::EndMenuBar();
+			}
+		}
+		ImGui::End();
+	}
+
+	ImGui::PopStyleColor();
+
+
+
+
+
+
+	if (DrawingAllButtons)
+	{
+		if (ImGui::BeginViewportSideBar("##MainStatusBar", NULL, ImGuiDir_Down, height, window_flags)) {
+			if (ImGui::BeginMenuBar()) {
+
+
+				ImGui::Text(u8"Фоновые задачи не выполняются");
+
+
+				ImGui::EndMenuBar();
+			}
+		}
+		ImGui::End();
+	}
+
+}
+
+void MainMenuBar::Update() {
+
+}
+
+
+void MainMenuBar::LoadColors() {
+	std::string toSearch;
+
+	for (int i = 0; i < object_colors.colors.size(); i++) {
+
+		toSearch = object_colors.colors[i].nameColor;
+
+		if (toSearch == u8"Фон названия проекта")
+			color_ProjectBackground = object_colors.colors[i].color;
+		else if (toSearch == u8"Логотип")
+			color_Logo = object_colors.colors[i].color;
+	}
+}
+std::vector<NamedColor> MainMenuBar::GetDefaultLightColors() {
+	std::vector<NamedColor> colors = {
+		{ u8"Фон названия проекта",	ImColor(210,186,151, 255)},
+		{ u8"Логотип",				ImColor(255 - 94,255 - 157, 255 - 251, 255) }
+	};
+
+	return colors;
+}
+std::vector<NamedColor> MainMenuBar::GetDefaultDarkColors() {
+	std::vector<NamedColor> colors = {
+		{u8"Фон названия проекта",	ImColor(15,15,15,255)},
+		{u8"Логотип",				ImColor(94, 157, 251, 255)}
+	};
+
+	return colors;
+}
+
+
+
+MainMenuBar::MainMenuBar(
+	WindowManager* windowManager, 
+	WidgetManager* widgetManager, 
+	LastSolutionManager* lastSolutionManager, 
+	Solution* solution, 
+	Setting* setting, 
+	BuildManager* buildManager) : IThemeLoadable(u8"Панель меню") {
+
+	this->windowManager = windowManager;
+	this->widgetManager = widgetManager;
+	this->lastSolutionManager = lastSolutionManager;
+	this->solution = solution;
+	this->setting = setting;
+	this->buildManager = buildManager;
+
+	window = windowManager->GetMainWindow()->GetHandle();
+
+	LoadIcon();
+
+	IThemeLoadable::InitListWord(
+		{u8"Фон названия проекта", u8"Логотип"}
+	);
+
+
+}
+void MainMenuBar::LoadIcon() {
+
+	if (isFileExist("resources\\icons\\LOGO_transparent.png")) {
+		TextureSetting settingFlags;
+		settingFlags.Min = TextureFilter::LINEAR;
+		settingFlags.Max = TextureFilter::LINEAR_MIPMAP_LINEAR;
+		settingFlags.WrapX = TextureWrap::CLAMP_TO_EDGE;
+		settingFlags.WrapY = TextureWrap::CLAMP_TO_EDGE;
+		icon_logo.SetSetting(settingFlags);
+		icon_logo.LoadTexture("resources\\icons\\LOGO_transparent.png");
+		icon_logo.Init();
+	}
+	else {
+		MessageBoxW(0, L"А где иконки? (resources\\icons\\LOGO_transparent.png)", L"Ошибка загрузки иконки", MB_ICONERROR | MB_OK);
+		exit(0);
+	}
+}
+MainMenuBar::~MainMenuBar() {
+
+}

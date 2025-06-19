@@ -1,0 +1,843 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils">
+      <UniqueIdentifier>{f7e083ed-0827-4e82-93c8-c581215b0698}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Synchronization">
+      <UniqueIdentifier>{4afb6c40-39d3-4fe8-9b75-e1a8177c4598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Synchronization\Event">
+      <UniqueIdentifier>{7f2c6a57-c904-4b09-90c7-ae672b6bf4fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Synchronization\CriticalSection">
+      <UniqueIdentifier>{5af1d430-1f3a-4520-9897-df7f02eedd8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE">
+      <UniqueIdentifier>{39674f87-0014-4308-b26f-1d8a7128431d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\File">
+      <UniqueIdentifier>{d35f3960-821f-42f6-a935-eee1cbb021ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Text">
+      <UniqueIdentifier>{a4315f7d-a435-47a4-9ac0-423a750d5756}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Text\Encoding">
+      <UniqueIdentifier>{ca6a1913-38a2-47a5-a486-c51c00b76c92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Text\Encoding\Unicode">
+      <UniqueIdentifier>{c1f0d665-966c-4f18-8ccc-ec29921fcd2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Text\Encoding\UTF8">
+      <UniqueIdentifier>{1dd04b9e-7bfa-4d3b-bb13-1e5f2e2a1c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Text\Encoding\Wstring">
+      <UniqueIdentifier>{d42ce3c1-6228-43b3-81aa-9986216cd855}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Timer">
+      <UniqueIdentifier>{710df8d4-3fa3-49bc-a998-929129f3046a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Tests">
+      <UniqueIdentifier>{0bd784e9-5608-403c-8794-78b404a582ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools">
+      <UniqueIdentifier>{6a648467-1d05-444f-a9c8-c813060f1a9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Linker">
+      <UniqueIdentifier>{da211fef-efcc-4a6b-a697-b2f778960a9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Linker\GCC">
+      <UniqueIdentifier>{821fe71e-53d9-413a-aee4-d82d3a1089ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Linker\LD %28Не используется%29">
+      <UniqueIdentifier>{1e4e5193-c9f8-4b9e-9987-34c5c97f0464}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Debugger">
+      <UniqueIdentifier>{e33a58d3-eca3-4780-8234-6040a09a29d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Debugger\GDB">
+      <UniqueIdentifier>{ca7c0fbf-47ec-4845-88b1-dc46400f940f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Compiler">
+      <UniqueIdentifier>{5f733fb7-ec9b-4159-9f6e-d428cc68b3cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Compiler\NASM">
+      <UniqueIdentifier>{fde670cd-d593-474d-940f-fa7836c68233}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Compiler\NASM\Parser_ListingFile">
+      <UniqueIdentifier>{ff50f65a-aac8-4b25-9753-80c40a40a330}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\ProcessRuner">
+      <UniqueIdentifier>{bf53a381-da10-4c1c-a56d-03d982e3c20f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\OpenGL">
+      <UniqueIdentifier>{77041f0d-d25d-497d-8350-f9aef027cda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\OpenGL\Window">
+      <UniqueIdentifier>{f8b36d88-43c2-4f83-9edb-0b00524acf5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\OpenGL\WindowManager">
+      <UniqueIdentifier>{28c51b05-8fbb-49d8-b7f7-b398500efde3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\OpenGL\Framebuffer">
+      <UniqueIdentifier>{a9c8a0ae-9bf4-4aa5-9287-f2191a342d85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\OpenGL\Texture">
+      <UniqueIdentifier>{72696f8d-2e7a-437f-9d0b-871c4dfa32d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ThirdParty">
+      <UniqueIdentifier>{4b6ac0d6-34e6-4b22-bf05-1d002956b730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\ThirdParty\ImGui">
+      <UniqueIdentifier>{270be291-4e13-4f99-a72b-ad958799928e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\ImGui">
+      <UniqueIdentifier>{8f8a45c0-354f-4d95-92e9-ec0f13d0cbb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Timer\Timer">
+      <UniqueIdentifier>{5fb36308-fede-477a-9d6d-afed9f3081cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Timer\Framerate">
+      <UniqueIdentifier>{6eae42a6-c7f8-4c0d-b7dc-8d2bf6d14419}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Keyboard">
+      <UniqueIdentifier>{34103ca2-776c-408b-bfae-47e11b505b88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Math">
+      <UniqueIdentifier>{df5235c4-f157-47c5-b370-77f246cb381d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Math\Lerp">
+      <UniqueIdentifier>{b18ee3db-032d-41a5-8890-cc6e8f08238f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Time">
+      <UniqueIdentifier>{e53a47d6-81be-4e7a-a48f-a036a118b7d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Values">
+      <UniqueIdentifier>{49c5f8e6-561d-4f32-9d54-d609ed7cd89a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\Utils\Synchronization\Mutex">
+      <UniqueIdentifier>{44a216eb-c9f6-4525-83b5-fb3fd6195b74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\resources">
+      <UniqueIdentifier>{29463d3d-93d9-4faa-849f-aab11f3208d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\resources\fonts">
+      <UniqueIdentifier>{3e82c70d-99e0-4940-bced-d22a30a86b0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\resources\icons">
+      <UniqueIdentifier>{76c98c83-f06f-49f4-a1ef-3fdd1ff0be2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\resources\json">
+      <UniqueIdentifier>{aa574d71-2c88-456e-8404-dde461b3f1f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\tools">
+      <UniqueIdentifier>{3d4ed95a-f06c-46be-96e9-ecdabd249242}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Compiler\NASM\Parser_OutputNasm">
+      <UniqueIdentifier>{71569376-317d-4eab-9c12-981bb5a1138e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Compiler\NASM\Parser_OutputNasm\OutputLine_dataStructure">
+      <UniqueIdentifier>{53bb1ec2-a67d-4c13-8eff-3d60b7edcb61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Utils">
+      <UniqueIdentifier>{7715b612-e198-4924-bf5d-98a5f564bd0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Application">
+      <UniqueIdentifier>{5ba68fc7-e6ef-436b-8225-fadd0a4cfef3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core">
+      <UniqueIdentifier>{e8757865-4fa3-4781-ab18-d765d4d3157d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\BuildManager">
+      <UniqueIdentifier>{5dea93d6-4c4a-4ea6-90e5-43cf36ea70ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\FontManager">
+      <UniqueIdentifier>{c7c9ff02-5e4b-4ff3-9083-074491093b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\KeyCombination">
+      <UniqueIdentifier>{a0766716-2272-4372-a825-31e897750505}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\LastSolutionManager">
+      <UniqueIdentifier>{ad4af8b0-6092-47e4-a51e-6fe51e0aaf84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\SaveSystem">
+      <UniqueIdentifier>{5caaea30-5e31-437a-b70b-1626b8b280ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Setting">
+      <UniqueIdentifier>{1a8e1564-d135-4e67-8f7a-ac410fd9e9db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Setting\interfaces">
+      <UniqueIdentifier>{fc3cc951-c513-441f-9203-33d498ad555e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Solution">
+      <UniqueIdentifier>{ffcf97c1-3f5e-4b3a-abae-d870c5a5021f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Theme">
+      <UniqueIdentifier>{5d9bbe64-37aa-4594-b726-5d0c02c00308}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Theme\BaseColor">
+      <UniqueIdentifier>{09932ef8-cc29-4c60-b5df-0813bb5c3dfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Theme\interface">
+      <UniqueIdentifier>{e514e9fa-33d5-4d23-b031-ed0bb7b0dcdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Theme\ThemeManager">
+      <UniqueIdentifier>{68795e64-aa57-4fbb-a9e7-114541e4d80f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\Widget">
+      <UniqueIdentifier>{c5fd182f-a32d-43ce-a711-79914360c7b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI">
+      <UniqueIdentifier>{33f416a0-2613-43d5-b3f1-d025c9928a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\StartupWindow">
+      <UniqueIdentifier>{531bd349-1765-4f26-95ee-0f4376cb6ee9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\MainMenuBar">
+      <UniqueIdentifier>{d3c492ff-73cb-46bf-8340-411f10b70bdb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets">
+      <UniqueIdentifier>{19d14837-996a-4e7d-9b0c-69db38207000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\FilesViewer">
+      <UniqueIdentifier>{c76cb15e-1ad2-43ea-abe6-adc82f651293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\TextEditor">
+      <UniqueIdentifier>{14292ecd-870c-42d3-842f-aac301e368a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\OutputConsole">
+      <UniqueIdentifier>{35d8df3a-304e-438f-b04a-60b379e1a1ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\OutputConsole\Drawers">
+      <UniqueIdentifier>{a2b9ea84-e057-40d5-ac1c-85f72b1599ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\OutputConsole\Drawers\IDE">
+      <UniqueIdentifier>{db40d965-63aa-45c9-a785-ff64e699d808}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\OutputConsole\Drawers\NASM">
+      <UniqueIdentifier>{0476025e-eaf5-4fb8-916b-ed55f50603c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Elements">
+      <UniqueIdentifier>{9fcd6968-3395-438e-91af-8dc69e8109fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Elements\ComboLanguage">
+      <UniqueIdentifier>{7870199f-94c4-444d-b1a9-f1d6e89dd3e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Elements\Notification">
+      <UniqueIdentifier>{1c55c01c-c45b-436c-8c5e-9ac45f6fcefd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Elements\Notification\interface">
+      <UniqueIdentifier>{e75fbd15-98ee-49da-b9ee-3e290801f6e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы ресурсов\resources\icons\flags">
+      <UniqueIdentifier>{d5cbbbea-17d2-470d-a057-bb5b0e514228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Utils\InfoLines">
+      <UniqueIdentifier>{b959ea5f-7d11-43f2-ab4a-2418dd1c6705}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Utils\InfoLines\IDE">
+      <UniqueIdentifier>{068de04c-4ad7-49a3-ac71-2702b65777dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Utils\TypeMessageConsole">
+      <UniqueIdentifier>{d233e86a-be90-4ce0-b4f8-32b0da5cc768}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Utils\InfoLines\IDE\Creater">
+      <UniqueIdentifier>{e03c9c66-3b3d-4b19-9b26-a5bf48c30f81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\OutputConsole\TypeMessageDraw">
+      <UniqueIdentifier>{ade81b1c-4c8b-44ab-a7d2-2bdaf1becc21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\GlobalLanguage------[TODO]">
+      <UniqueIdentifier>{c1f43160-15cd-4f9e-8e76-7ae745da6bc7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\OutlineStatus">
+      <UniqueIdentifier>{dc702dc6-8c22-4af8-8751-1a0f432513c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\GUI\Widgets\RegistersInfo ----------[TODO]">
+      <UniqueIdentifier>{d330372e-2125-4097-82b1-c35fa8f6eeda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\DebugConsole">
+      <UniqueIdentifier>{60c4987d-e3b9-402d-93b1-510abf90e500}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Core\PositionWidgetsManager">
+      <UniqueIdentifier>{9215fe9f-98e5-4d40-8a1c-1114fdb96d80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\IDE\Tools\Debugger\GDB\Parser">
+      <UniqueIdentifier>{79ead29e-df6e-41ec-8d8d-f861709f647e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Synchronization\Event\Event.cpp">
+      <Filter>Исходные файлы\Utils\Synchronization\Event</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Synchronization\CriticalSection\CriticalSection.cpp">
+      <Filter>Исходные файлы\Utils\Synchronization\CriticalSection</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\File\Utils.File.cpp">
+      <Filter>Исходные файлы\Utils\File</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Text\Utils.Text.cpp">
+      <Filter>Исходные файлы\Utils\Text</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Text\Encoding\Unicode\Utils.Encoding.Unicode.cpp">
+      <Filter>Исходные файлы\Utils\Text\Encoding\Unicode</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Text\Encoding\UTF8\Utils.Encoding.UTF8.cpp">
+      <Filter>Исходные файлы\Utils\Text\Encoding\UTF8</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Text\Encoding\Wstring\Utils.Encoding.Wstring.cpp">
+      <Filter>Исходные файлы\Utils\Text\Encoding\Wstring</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Test\TestFunction.cpp">
+      <Filter>Исходные файлы\Tests</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Compiler\Compiler.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Compiler</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Compiler.NASM.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Parser_ListingFile\Parser.ListingFile.Nasm.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM\Parser_ListingFile</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Debugger\Debugger.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Debugger</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Debugger\GDB\Debugger.GDB.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Debugger\GDB</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Linker\Linker.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Linker</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Linker\GCC\Linker.GCC.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Linker\GCC</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Linker\LD\Linker.LD.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Linker\LD %28Не используется%29</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\ProcessRuner\ProcessRuner.cpp">
+      <Filter>Исходные файлы\Utils\ProcessRuner</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\OpenGL\Window\Window.cpp">
+      <Filter>Исходные файлы\Utils\OpenGL\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\OpenGL\Window\Manager\WindowManager.cpp">
+      <Filter>Исходные файлы\Utils\OpenGL\WindowManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\OpenGL\Renderbuffer\Renderbuffer.cpp">
+      <Filter>Исходные файлы\Utils\OpenGL</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\OpenGL\Framebuffer\Framebuffer.cpp">
+      <Filter>Исходные файлы\Utils\OpenGL\Framebuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\OpenGL\Texture\Texture.cpp">
+      <Filter>Исходные файлы\Utils\OpenGL\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThirdParty\ImGui\imgui.cpp">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_demo.cpp">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_draw.cpp">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_impl_glfw.cpp">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_impl_opengl3.cpp">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_tables.cpp">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThirdParty\ImGui\imgui_widgets.cpp">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\ImGui\ImGui.Utils.cpp">
+      <Filter>Исходные файлы\Utils\ImGui</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Timer\Utils.Timer.cpp">
+      <Filter>Исходные файлы\Utils\Timer\Timer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Timer\Utils.Timer.Framerate.cpp">
+      <Filter>Исходные файлы\Utils\Timer\Framerate</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Keyboard\Keyboard.Utils.cpp">
+      <Filter>Исходные файлы\Utils\Keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Math\Math.Lerp.Utils.cpp">
+      <Filter>Исходные файлы\Utils\Math\Lerp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Time\Utils.Time.cpp">
+      <Filter>Исходные файлы\Utils\Time</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Values\Values.Utils.cpp">
+      <Filter>Исходные файлы\Utils\Values</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utils\Synchronization\Mutex\Mutex.cpp">
+      <Filter>Исходные файлы\Utils\Synchronization\Mutex</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\NASM.Parser.Output.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM\Parser_OutputNasm</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\OutputLine\NASM.OutputLine.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM\Parser_OutputNasm\OutputLine_dataStructure</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Application\Application.cpp">
+      <Filter>Исходные файлы\IDE\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\BuildManager\BuildManager.cpp">
+      <Filter>Исходные файлы\IDE\Core\BuildManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\FontManager\FontManager.cpp">
+      <Filter>Исходные файлы\IDE\Core\FontManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\KeyCombination\KeyCombinationHandler.cpp">
+      <Filter>Исходные файлы\IDE\Core\KeyCombination</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\LastSolutionManager\LastSolutionManager.cpp">
+      <Filter>Исходные файлы\IDE\Core\LastSolutionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\SaveSystem\SaveSystem.cpp">
+      <Filter>Исходные файлы\IDE\Core\SaveSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\SaveSystem\SaveSystemManager.cpp">
+      <Filter>Исходные файлы\IDE\Core\SaveSystem</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Setting\Setting.cpp">
+      <Filter>Исходные файлы\IDE\Core\Setting</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Setting\interfaces\ISettingDrawable.cpp">
+      <Filter>Исходные файлы\IDE\Core\Setting\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Setting\interfaces\ISettingObject.cpp">
+      <Filter>Исходные файлы\IDE\Core\Setting\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Setting\interfaces\ISettingSavable.cpp">
+      <Filter>Исходные файлы\IDE\Core\Setting\interfaces</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Solution\Solution.cpp">
+      <Filter>Исходные файлы\IDE\Core\Solution</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Solution\SolutionInfo.cpp">
+      <Filter>Исходные файлы\IDE\Core\Solution</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Theme\BaseColors\BaseColors.cpp">
+      <Filter>Исходные файлы\IDE\Core\Theme\BaseColor</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Theme\interface\IThemeLoadable.cpp">
+      <Filter>Исходные файлы\IDE\Core\Theme\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Theme\ThemeManager\ThemeManager.cpp">
+      <Filter>Исходные файлы\IDE\Core\Theme\ThemeManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Widget\IWidget.cpp">
+      <Filter>Исходные файлы\IDE\Core\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\Widget\WidgetManager.cpp">
+      <Filter>Исходные файлы\IDE\Core\Widget</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\StartupWindow\StartupWindow.cpp">
+      <Filter>Исходные файлы\IDE\GUI\StartupWindow</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\FilesViewer\Widget_FilesViewer.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\FilesViewer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\HighlighterSyntax.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\TextEditor.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\Widget_TextEditor.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\TextEditor\WidgetManager_TextEditior.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\Widget_OutputConsole.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\IDE\OutputConsoleDrawer.IDE.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole\Drawers\IDE</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\NASM\OutputConsoleDrawer.NASM.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole\Drawers\NASM</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Elements\ComboLanguage\ComboLanguage.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Elements\ComboLanguage</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\Notification.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\Notification.Message.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\Notification.Progress.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\NotificationManager.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Elements\Notification\interface\Notification.Element.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification\interface</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\MainMenuBar\MainMenuBar.cpp">
+      <Filter>Исходные файлы\IDE\GUI\MainMenuBar</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.Creater.cpp">
+      <Filter>Исходные файлы\IDE\Utils\InfoLines\IDE\Creater</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.cpp">
+      <Filter>Исходные файлы\IDE\Utils\InfoLines\IDE</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Utils\TypeMessageConsole\TypeMessageConsole.cpp">
+      <Filter>Исходные файлы\IDE\Utils\TypeMessageConsole</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\TypeMessageDraw\TypeMessageDraw.cpp">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole\TypeMessageDraw</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\OutlineStatus\OutlineStatus.cpp">
+      <Filter>Исходные файлы\IDE\GUI\OutlineStatus</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\DebugConsole\DebugConsole.cpp">
+      <Filter>Исходные файлы\IDE\Tools\DebugConsole</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Core\PositionWidgetsManager\PositionWidgetsManager.cpp">
+      <Filter>Исходные файлы\IDE\Core\PositionWidgetsManager</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\Tools\Debugger\GDB\Parser\Parser.GDB.cpp">
+      <Filter>Исходные файлы\IDE\Tools\Debugger\GDB\Parser</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\Utils\Synchronization\Event\Event.h">
+      <Filter>Исходные файлы\Utils\Synchronization\Event</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Synchronization\CriticalSection\CriticalSection.h">
+      <Filter>Исходные файлы\Utils\Synchronization\CriticalSection</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\File\Utils.File.h">
+      <Filter>Исходные файлы\Utils\File</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Text\Utils.Text.h">
+      <Filter>Исходные файлы\Utils\Text</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Text\Encoding\Unicode\Utils.Encoding.Unicode.h">
+      <Filter>Исходные файлы\Utils\Text\Encoding\Unicode</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Text\Encoding\UTF8\Utils.Encoding.UTF8.h">
+      <Filter>Исходные файлы\Utils\Text\Encoding\UTF8</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Text\Encoding\Wstring\Utils.Encoding.Wstring.h">
+      <Filter>Исходные файлы\Utils\Text\Encoding\Wstring</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Test\TestFunction.h">
+      <Filter>Исходные файлы\Tests</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Compiler\Compiler.h">
+      <Filter>Исходные файлы\IDE\Tools\Compiler</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Compiler.NASM.h">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Parser_ListingFile\Parser.ListingFile.Nasm.h">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM\Parser_ListingFile</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Debugger\Debugger.h">
+      <Filter>Исходные файлы\IDE\Tools\Debugger</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Debugger\GDB\Debugger.GDB.h">
+      <Filter>Исходные файлы\IDE\Tools\Debugger\GDB</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Linker\Linker.h">
+      <Filter>Исходные файлы\IDE\Tools\Linker</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Linker\GCC\Linker.GCC.h">
+      <Filter>Исходные файлы\IDE\Tools\Linker\GCC</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Linker\LD\Linker.LD.h">
+      <Filter>Исходные файлы\IDE\Tools\Linker\LD %28Не используется%29</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\ProcessRuner\ProcessRuner.h">
+      <Filter>Исходные файлы\Utils\ProcessRuner</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\OpenGL\Window\Window.h">
+      <Filter>Исходные файлы\Utils\OpenGL\Window</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\OpenGL\Window\Manager\WindowManager.h">
+      <Filter>Исходные файлы\Utils\OpenGL\WindowManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\OpenGL\Shaders\Shader.h">
+      <Filter>Исходные файлы\Utils\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\OpenGL\Renderbuffer\Renderbuffer.h">
+      <Filter>Исходные файлы\Utils\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\OpenGL\Framebuffer\Framebuffer.h">
+      <Filter>Исходные файлы\Utils\OpenGL\Framebuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\OpenGL\Texture\Texture.h">
+      <Filter>Исходные файлы\Utils\OpenGL\Texture</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imstb_truetype.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imconfig.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imgui.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_glfw.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_opengl2.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_opengl3.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_impl_opengl3_loader.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imgui_internal.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imstb_rectpack.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\ThirdParty\ImGui\imstb_textedit.h">
+      <Filter>Исходные файлы\ThirdParty\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\ImGui\ImGui.Utils.h">
+      <Filter>Исходные файлы\Utils\ImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Timer\Utils.Timer.h">
+      <Filter>Исходные файлы\Utils\Timer\Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Timer\Utils.Timer.Framerate.h">
+      <Filter>Исходные файлы\Utils\Timer\Framerate</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Keyboard\Keyboard.Utils.h">
+      <Filter>Исходные файлы\Utils\Keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Math\Math.Lerp.Utils.h">
+      <Filter>Исходные файлы\Utils\Math\Lerp</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Time\Utils.Time.h">
+      <Filter>Исходные файлы\Utils\Time</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Values\Values.Utils.h">
+      <Filter>Исходные файлы\Utils\Values</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utils\Synchronization\Mutex\Mutex.h">
+      <Filter>Исходные файлы\Utils\Synchronization\Mutex</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\NASM.Parser.Output.h">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM\Parser_OutputNasm</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Compiler\NASM\Parser_OutputNasm\OutputLine\NASM.OutputLine.h">
+      <Filter>Исходные файлы\IDE\Tools\Compiler\NASM\Parser_OutputNasm\OutputLine_dataStructure</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Application\Application.h">
+      <Filter>Исходные файлы\IDE\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\BuildManager\BuildManager.h">
+      <Filter>Исходные файлы\IDE\Core\BuildManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\FontManager\FontManager.h">
+      <Filter>Исходные файлы\IDE\Core\FontManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\KeyCombination\KeyCombination.h">
+      <Filter>Исходные файлы\IDE\Core\KeyCombination</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\KeyCombination\KeyCombinationHandler.h">
+      <Filter>Исходные файлы\IDE\Core\KeyCombination</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\LastSolutionManager\LastSolutionManager.h">
+      <Filter>Исходные файлы\IDE\Core\LastSolutionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\SaveSystem\SaveSystem.h">
+      <Filter>Исходные файлы\IDE\Core\SaveSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\SaveSystem\SaveSystemManager.h">
+      <Filter>Исходные файлы\IDE\Core\SaveSystem</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Setting\Setting.h">
+      <Filter>Исходные файлы\IDE\Core\Setting</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Setting\interfaces\ISettingDrawable.h">
+      <Filter>Исходные файлы\IDE\Core\Setting\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Setting\interfaces\ISettingObject.h">
+      <Filter>Исходные файлы\IDE\Core\Setting\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Setting\interfaces\ISettingSavable.h">
+      <Filter>Исходные файлы\IDE\Core\Setting\interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Solution\Solution.h">
+      <Filter>Исходные файлы\IDE\Core\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Solution\SolutionInfo.h">
+      <Filter>Исходные файлы\IDE\Core\Solution</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Theme\Theme.h">
+      <Filter>Исходные файлы\IDE\Core\Theme</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Theme\BaseColors\BaseColors.h">
+      <Filter>Исходные файлы\IDE\Core\Theme\BaseColor</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Theme\interface\IThemeLoadable.h">
+      <Filter>Исходные файлы\IDE\Core\Theme\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Theme\ThemeManager\ThemeManager.h">
+      <Filter>Исходные файлы\IDE\Core\Theme\ThemeManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Widget\IWidget.h">
+      <Filter>Исходные файлы\IDE\Core\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\Widget\WidgetManager.h">
+      <Filter>Исходные файлы\IDE\Core\Widget</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\StartupWindow\StartupWindow.h">
+      <Filter>Исходные файлы\IDE\GUI\StartupWindow</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\FilesViewer\Widget_FilesViewer.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\FilesViewer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\HighlighterSyntax.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\TextEditor.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\Widget_TextEditor.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\TextEditor\WidgetManager_TextEditior.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\TextEditor</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\Widget_OutputConsole.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\IDE\OutputConsoleDrawer.IDE.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole\Drawers\IDE</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\NASM\OutputConsoleDrawer.NASM.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole\Drawers\NASM</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Elements\ComboLanguage\ComboLanguage.h">
+      <Filter>Исходные файлы\IDE\GUI\Elements\ComboLanguage</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\Notification.h">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\Notification.Message.h">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\Notification.Progress.h">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\NotificationManager.h">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Elements\Notification\interface\Notification.Element.h">
+      <Filter>Исходные файлы\IDE\GUI\Elements\Notification\interface</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\MainMenuBar\MainMenuBar.h">
+      <Filter>Исходные файлы\IDE\GUI\MainMenuBar</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.h">
+      <Filter>Исходные файлы\IDE\Utils\InfoLines\IDE</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Utils\TypeMessageConsole\TypeMessageConsole.h">
+      <Filter>Исходные файлы\IDE\Utils\TypeMessageConsole</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.Creater.h">
+      <Filter>Исходные файлы\IDE\Utils\InfoLines\IDE\Creater</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\TypeMessageDraw\TypeMessageDraw.h">
+      <Filter>Исходные файлы\IDE\GUI\Widgets\OutputConsole\TypeMessageDraw</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\OutlineStatus\OutlineStatus.h">
+      <Filter>Исходные файлы\IDE\GUI\OutlineStatus</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\DebugConsole\DebugConsole.h">
+      <Filter>Исходные файлы\IDE\Tools\DebugConsole</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Core\PositionWidgetsManager\PositionWidgetsManager.h">
+      <Filter>Исходные файлы\IDE\Core\PositionWidgetsManager</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\Tools\Debugger\GDB\Parser\Parser.GDB.h">
+      <Filter>Исходные файлы\IDE\Tools\Debugger\GDB\Parser</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="IDE NASM.rc">
+      <Filter>Файлы ресурсов</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="LOGO.ico">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="resources\fonts\Font Awesome 6 Free-Solid-900.otf">
+      <Filter>Файлы ресурсов\resources\fonts</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\icons\LOGO.png">
+      <Filter>Файлы ресурсов\resources\icons</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\json\InstructionList.json">
+      <Filter>Файлы ресурсов\resources\json</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\fonts\JetBrainsMonoNL-ExtraBold.ttf">
+      <Filter>Файлы ресурсов\resources\fonts</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\fonts\JetBrainsMonoNL-Regular.ttf">
+      <Filter>Файлы ресурсов\resources\fonts</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\icons\LOGO_small.png">
+      <Filter>Файлы ресурсов\resources\icons</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\json\SyntaxData.json">
+      <Filter>Файлы ресурсов\resources\json</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\json\LanguageChoose.json">
+      <Filter>Файлы ресурсов\resources\json</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\json\TranslateOutputConsole.json">
+      <Filter>Файлы ресурсов\resources\json</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\icons\flags\image.png">
+      <Filter>Файлы ресурсов\resources\icons\flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="resources\icons\flags\uv.json">
+      <Filter>Файлы ресурсов\resources\icons\flags</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>

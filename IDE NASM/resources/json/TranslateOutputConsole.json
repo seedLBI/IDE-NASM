@@ -1,0 +1,1404 @@
+{
+  "IDE": {
+    "description": {
+      "en": "Integrated Development Environment for compiler NASM (IDE)",
+      "ru": "Интегрированная Среда разработки для компилятора NASM (IDE)",
+      "by": "Інтэграваная асяроддзе распрацоўкі для кампілятара NASM (IDE)",
+      "fr": "Environnement de développement intégré pour le compilateur NASM (IDE)"
+    },
+	"messages": {
+		"compilation_begin": {
+			"type": "info",
+			"translation":{
+				"en": "######## Compilation started in ",
+				"ru": "######## Компиляция начата в ",
+				"by": "######## Кампіляцыя пачалася ў ",
+				"fr": "######## Compilation commencée à "
+			}
+		},
+		"compilation_end": {
+			"type": "info",
+			"translation":{
+				"en": "######## Compilation completed, time elapsed: ",
+				"ru": "######## Компиляция завершена, прошло: ",
+				"by": "######## Кампіляцыя завершана, час выканання: ",
+				"fr": "######## Compilation terminée, temps écoulé : "
+			}
+		},
+		"compilation_end_good": {
+			"type": "success",
+			"translation": {
+				"en": "######## Compilation was successful!!!",
+				"ru": "######## Компиляция прошла успешно!!!",
+				"by": "######## Кампіляцыя паспяховая!!!",
+				"fr": "######## Compilation réussie !!!"
+			}
+		},
+		"compilation_end_bad_error": {
+			"type": "error",
+			"translation": {
+				"en": "######## Errors were detected during compilation: ",
+				"ru": "######## При компиляции были обнаружены ошибки: ",
+				"by": "######## Падчас кампіляцыі выяўлены памылкі: ",
+				"fr": "######## Erreurs détectées pendant la compilation : "
+			}
+		},
+		"compilation_end_bad_data_wrong_section": {
+			"type": "warning",
+			"translation": {
+				"en": "######## Subsequent debugging is not possible because the data is not placed in the .data or .bss section",
+				"ru": "######## Последующая отладка невозможна из за размещения данных не в секции .data или .bss",
+				"by": "######## Наступная адладка немагчыма з-за размяшчэння дадзеных не ў секцыі .data ці .bss",
+				"fr": "######## Débogage ultérieur impossible car les données ne sont pas placées dans la section .data ou .bss"
+			}
+		},
+		"linking_begin":{
+			"type": "info",
+			"translation": {
+				"en": "######## Linking started in ",
+				"ru": "######## Сборка начата в ",
+				"by": "######## Зборка пачалася ў ",
+				"fr": "######## Assemblage commencé à "
+				
+			}
+		},
+		"linking_end":{
+			"type": "info",
+			"translation": {
+				"en": "######## Link completed, time elapsed: ",
+				"ru": "######## Сборка завершена, прошло: ",
+				"by": "######## Зборка завершана, час выканання: ",
+				"fr": "######## Assemblage terminé, temps écoulé : "
+			}
+		},
+		"linking_end_good":{
+			"type": "success",
+			"translation": {
+				"en": "######## Linking was successful!!!",
+				"ru": "######## Сборка прошла, успешно!!!",
+				"by": "######## Зборка паспяховая!!!",
+				"fr": "######## Assemblage réussi !!!"
+			}
+		},
+		"linking_end_bad_error": {
+			"type": "error",
+			"translation": {
+				"en": "######## Errors were detected during linking",
+				"ru": "######## При сборке были обнаружены ошибки",
+				"by": "######## Падчас зборкі выяўлены памылкі",
+				"fr": "######## Erreurs détectées pendant l'assemblage"
+			}
+		},
+		"running_begin": {
+			"type": "info",
+			"translation": {
+				"en": "######## Trying to run in ",
+				"ru": "######## Попытка запуска в ",
+				"by": "######## Спроба запуску ў ",
+				"fr": "######## Tentative de lancement à "
+			}
+		},
+		"running_end_good": {
+			"type": "info",
+			"translation": {
+				"en": "######## The process has been working for ",
+				"ru": "######## Процесс работал на протяжении ",
+				"by": "######## Працэс працаваў на працягу ",
+				"fr": "######## Le processus a fonctionné pendant "
+			}
+		},
+		"running_end_terminated": {
+			"type": "success",
+			"translation": {
+				"en": "######## The process was completed forcibly",
+				"ru": "######## Процесс был завершён принудительно",
+				"by": "######## Працэс быў завершаны прымусова",
+				"fr": "######## Le processus a été terminé de force"
+			}
+		},
+		"running_end_info": {
+			"type": "success",
+			"translation": {
+				"en": "######## The process terminated with the code ",
+				"ru": "######## Процесс завершился с кодом ",
+				"by": "######## Працэс завершыўся з кодам ",
+				"fr": "######## Le processus s'est terminé avec le code "
+			}
+		},
+		"running_no_exe": {
+			"type": "warning",
+			"translation": {
+				"en": "######## There's nothing to launch, you have to assemble first...",
+				"ru": "######## Нечего запускать, нужно сначала собрать...",
+				"by": "######## Няма чаго запускаць, трэба спачатку сабраць...",
+				"fr": "######## Rien à lancer, il faut d'abord assembler..."
+			}
+		},
+		"debugging_no_exe": {
+			"type": "warning",
+			"translation": {
+				"en": "######## There's nothing to debug, you have to assemble first...",
+				"ru": "######## Нечего отлаживать, нужно сначала собрать...",
+			}
+		}
+	}
+  },
+  "NASM": {
+    "description": {
+      "en": "Netwide Assembler (NASM)[Compiler]",
+      "ru": "Кроссплатформенный ассемблер (NASM)[Компилятор]",
+      "by": "Кросплатформенны асамблер NASM [Кампилятар]",
+      "fr": "Assembleur Netwide (NASM) [Compilateur]"
+    },
+    "TypeWarningFlag": {
+      "all": {
+        "description": {
+          "en": "all possible warnings",
+          "ru": "Все возможные предупреждения",
+          "by": "усе магчымыя папярэджанні",
+          "fr": "tous les avertissements possibles"
+        }
+      },
+      "bad-pragma": {
+        "description": {
+          "en": "malformed %pragma",
+          "ru": "Неправильно сформированный %pragma",
+          "by": "няправільна сфарміраваны %pragma",
+          "fr": "%pragma mal formé"
+        }
+      },
+      "bnd": {
+        "description": {
+          "en": "invalid BND prefix",
+          "ru": "Недопустимый префикс BND",
+          "by": "нядзейсны прэфікс BND",
+          "fr": "préfixe BND invalide"
+        }
+      },
+      "db-empty": {
+        "description": {
+          "en": "no operand for data declaration",
+          "ru": "Нет операнда для объявления данных",
+          "by": "няма аперанда для аб'яўлення дадзеных",
+          "fr": "aucun opérande pour la déclaration de données"
+        }
+      },
+      "ea": {
+        "description": {
+          "en": "all ea- warnings",
+          "ru": "Все предупреждения ea-",
+          "by": "усе папярэджанні ea-",
+          "fr": "tous les avertissements ea-"
+        }
+      },
+      "ea-absolute": {
+        "description": {
+          "en": "absolute address cannot be RIP-relative",
+          "ru": "Абсолютный адрес не может быть RIP-относительным",
+          "by": "абсалютны адрас не можа быць адносным да RIP",
+          "fr": "l'adresse absolue ne peut pas être relative à RIP"
+        }
+      },
+      "ea-dispsize": {
+        "description": {
+          "en": "displacement size ignored on absolute address",
+          "ru": "Размер смещения игнорируется для абсолютного адреса",
+          "by": "памер зрушэння ігнаруецца для абсалютнага адрасу",
+          "fr": "taille de déplacement ignorée pour une adresse absolue"
+        }
+      },
+      "environment": {
+        "description": {
+          "en": "nonexistent environment variable",
+          "ru": "Несуществующая переменная окружения",
+          "by": "несуществная зменная асяроддзя",
+          "fr": "variable d'environnement inexistante"
+        }
+      },
+      "float": {
+        "description": {
+          "en": "all float- warnings",
+          "ru": "Все предупреждения float-",
+          "by": "усе папярэджанні float-",
+          "fr": "tous les avertissements float-"
+        }
+      },
+      "float-denorm": {
+        "description": {
+          "en": "floating point denormal",
+          "ru": "Денормализованное число с плавающей запятой",
+          "by": "денармалізаванае плаўна кропкавае ліку",
+          "fr": "nombre dénormalisé en virgule flottante"
+        }
+      },
+      "float-overflow": {
+        "description": {
+          "en": "floating point overflow",
+          "ru": "Переполнение с плавающей запятой",
+          "by": "перапоўненне плаўнакропкавага ліку",
+          "fr": "débordement en virgule flottante"
+        }
+      },
+      "float-toolong": {
+        "description": {
+          "en": "too many digits in floating-point number",
+          "ru": "Слишком много цифр в числе с плавающей запятой",
+          "by": "занадта шмат лічбаў у плаўнакропкавым ліку",
+          "fr": "trop de chiffres dans le nombre à virgule flottante"
+        }
+      },
+      "float-underflow": {
+        "description": {
+          "en": "floating point underflow",
+          "ru": "Антипереполнение с плавающей запятой",
+          "by": "недапоўненне плаўнакропкавага ліку",
+          "fr": "sous-flux en virgule flottante"
+        }
+      },
+      "forward": {
+        "description": {
+          "en": "forward reference may have unpredictable results",
+          "ru": "Прямая ссылка может привести к непредсказуемым результатам",
+          "by": "перасылка наперад можа прывесці да непрадказальных вынікаў",
+          "fr": "la référence anticipée peut entraîner des résultats imprévisibles"
+        }
+      },
+      "hle": {
+        "description": {
+          "en": "invalid HLE prefix",
+          "ru": "Недопустимый префикс HLE",
+          "by": "нядзейсны прэфікс HLE",
+          "fr": "préfixe HLE invalide"
+        }
+      },
+      "label": {
+        "description": {
+          "en": "all label- warnings",
+          "ru": "Все предупреждения label-",
+          "by": "усе папярэджанні label-",
+          "fr": "tous les avertissements label-"
+        }
+      },
+      "label-orphan": {
+        "description": {
+          "en": "labels alone on lines without trailing :",
+          "ru": "Метки отдельно на строках без завершающего ':'",
+          "by": "мэткі асобна на радках без ':' напаказ",
+          "fr": "étiquettes seules sur des lignes sans ':' final"
+        }
+      },
+      "label-redef": {
+        "description": {
+          "en": "label redefined to an identical value",
+          "ru": "Метка переопределена на идентичное значение",
+          "by": "мэтка перавызначана на ідэнтычнае значэнне",
+          "fr": "étiquette redéfinie avec une valeur identique"
+        }
+      },
+      "label-redef-late": {
+        "description": {
+          "en": "label (re)defined during code generation",
+          "ru": "Метка (пере)определена во время генерации кода",
+          "by": "мэтка (перавызначана) падчас генерацыі кода",
+          "fr": "étiquette (re)définie pendant la génération de code"
+        }
+      },
+      "lock": {
+        "description": {
+          "en": "LOCK prefix on unlockable instruction",
+          "ru": "Префикс LOCK на незапираемой инструкции",
+          "by": "прэфікс LOCK на разблакоўнай інструкцыі",
+          "fr": "préfixe LOCK sur une instruction non verrouillable"
+        }
+      },
+      "macro-def-case-single": {
+        "description": {
+          "en": "single-line macro defined both case sensitive and insensitive",
+          "ru": "Однострочный макрос определен как с учетом регистра, так и без",
+          "by": "аднарадковы макрас вызначаны і з улікам рэгістра, і без яго",
+          "fr": "macro en ligne unique défini à la fois sensible et insensible à la casse"
+        }
+      },
+      "macro-def-greedy-single": {
+        "description": {
+          "en": "single-line macro",
+          "ru": "Однострочный макрос",
+          "by": "аднарадковы макрас",
+          "fr": "macro en ligne unique"
+        }
+      },
+      "macro-def-param-single": {
+        "description": {
+          "en": "single-line macro defined with and without parameters",
+          "ru": "Однострочный макрос определен с параметрами и без",
+          "by": "аднарадковы макрас вызначаны з параметрамі і без іх",
+          "fr": "macro en ligne unique définie avec et sans paramètres"
+        }
+      },
+      "macro-defaults": {
+        "description": {
+          "en": "macros with more default than optional parameters",
+          "ru": "Макросы с большим количеством параметров по умолчанию, чем необязательных",
+          "by": "макрасы з большай колькасцю параметраў па змаўчанні, чым неабавязковых",
+          "fr": "macros avec plus de paramètres par défaut qu'optionnels"
+        }
+      },
+      "macro-params-legacy": {
+        "description": {
+          "en": "improperly calling multi-line macro for legacy support",
+          "ru": "Неправильный вызов многострочного макроса для поддержки устаревших версий",
+          "by": "няправільны выклік шматрадковага макраса для падтрымкі legacy",
+          "fr": "appel incorrect d'une macro multi-lignes pour la prise en charge legacy"
+        }
+      },
+      "macro-params-multi": {
+        "description": {
+          "en": "multi-line macro calls with wrong parameter count",
+          "ru": "Вызовы многострочных макросов с неправильным количеством параметров",
+          "by": "выклікі шматрадковага макраса з няправільнай колькасцю параметраў",
+          "fr": "appels de macro multi-lignes avec un nombre de paramètres incorrect"
+        }
+      },
+      "macro-params-single": {
+        "description": {
+          "en": "single-line macro calls with wrong parameter count",
+          "ru": "Вызовы однострочных макросов с неправильным количеством параметров",
+          "by": "выклікі аднарадковага макраса з няправільнай колькасцю параметраў",
+          "fr": "appels de macro en ligne unique avec un nombre de paramètres incorrect"
+        }
+      },
+      "negative-rep": {
+        "description": {
+          "en": "negative %rep count",
+          "ru": "Отрицательное количество %rep",
+          "by": "адмоўная колькасць %rep",
+          "fr": "compte %rep négatif"
+        }
+      },
+      "not-my-pragma": {
+        "description": {
+          "en": "%pragma not applicable to this compilation",
+          "ru": "%pragma не применим к этой компиляции",
+          "by": "%pragma не прымяняецца да гэтай кампiляцыi",
+          "fr": "%pragma non applicable à cette compilation"
+        }
+      },
+      "number-overflow": {
+        "description": {
+          "en": "numeric constant does not fit",
+          "ru": "Числовая константа не помещается",
+          "by": "лічбавая канстанта не змяшчаецца",
+          "fr": "constante numérique ne tient pas"
+        }
+      },
+      "obsolete": {
+        "description": {
+          "en": "all obsolete- warnings",
+          "ru": "Все предупреждения obsolete-",
+          "by": "усе папярэджанні obsolete-",
+          "fr": "tous les avertissements obsolete-"
+        }
+      },
+      "obsolete-nop": {
+        "description": {
+          "en": "instruction obsolete and is a noop on the target CPU",
+          "ru": "Инструкция устарела и является пустой операцией на целевом процессоре",
+          "by": "інструкцыя састарэла і зьяўляецца noop на мэтным CPU",
+          "fr": "instruction obsolète et sans effet sur le CPU cible"
+        }
+      },
+      "obsolete-removed": {
+        "description": {
+          "en": "instruction obsolete and removed on the target CPU",
+          "ru": "Инструкция устарела и удалена на целевом процессоре",
+          "by": "інструкцыя састарэла і выдалена на мэтным CPU",
+          "fr": "instruction obsolète et supprimée sur le CPU cible"
+        }
+      },
+      "obsolete-valid": {
+        "description": {
+          "en": "instruction obsolete but valid on the target CPU",
+          "ru": "Инструкция устарела, но действительна на целевом процессоре",
+          "by": "інструкцыя састарэла, але дзейнічае на мэтным CPU",
+          "fr": "instruction obsolète mais valide sur le CPU cible"
+        }
+      },
+      "orphan-labels": {
+        "description": {
+          "en": "labels alone on lines without trailing :",
+          "ru": "Метки отдельно на строках без завершающего ':'",
+          "by": "мэткі асобна на радках без ':' напаказ",
+          "fr": "étiquettes seules sur des lignes sans ':' final"
+        }
+      },
+      "other": {
+        "description": {
+          "en": "any warning not specifically mentioned above",
+          "ru": "Любое предупреждение, не упомянутое выше",
+          "by": "любое папярэджанне, не згаданае вышэй",
+          "fr": "tout avertissement non mentionné ci-dessus"
+        }
+      },
+      "phase": {
+        "description": {
+          "en": "phase error during stabilization",
+          "ru": "Ошибка фазы во время стабилизации",
+          "by": "памылка фазы падчас стабілізацыі",
+          "fr": "erreur de phase pendant la stabilisation"
+        }
+      },
+      "pp": {
+        "description": {
+          "en": "all pp- warnings",
+          "ru": "Все предупреждения pp-",
+          "by": "усе папярэджанні pp-",
+          "fr": "tous les avertissements pp-"
+        }
+      },
+      "pp-else": {
+        "description": {
+          "en": "all pp-else- warnings",
+          "ru": "Все предупреждения pp-else-",
+          "by": "усе папярэджанні pp-else-",
+          "fr": "tous les avertissements pp-else-"
+        }
+      },
+      "pp-else-elif": {
+        "description": {
+          "en": "%elif after %else",
+          "ru": "%elif после %else",
+          "by": "%elif пасля %else",
+          "fr": "%elif après %else"
+        }
+      },
+      "pp-else-else": {
+        "description": {
+          "en": "%else after %else",
+          "ru": "%else после %else",
+          "by": "%else пасля %else",
+          "fr": "%else après %else"
+        }
+      },
+      "pp-empty-braces": {
+        "description": {
+          "en": "empty %{} construct",
+          "ru": "Пустая конструкция %{}",
+          "by": "парожняя канструкцыя %{}",
+          "fr": "construction %{} vide"
+        }
+      },
+      "pp-environment": {
+        "description": {
+          "en": "nonexistent environment variable",
+          "ru": "Несуществующая переменная окружения",
+          "by": "несуществная зменная асяроддзя",
+          "fr": "variable d'environnement inexistante"
+        }
+      },
+      "pp-macro": {
+        "description": {
+          "en": "all pp-macro- warnings",
+          "ru": "Все предупреждения pp-macro-",
+          "by": "усе папярэджанні pp-macro-",
+          "fr": "tous les avertissements pp-macro-"
+        }
+      },
+      "pp-macro-def": {
+        "description": {
+          "en": "all pp-macro-def- warnings",
+          "ru": "Все предупреждения pp-macro-def-",
+          "by": "усе папярэджанні pp-macro-def-",
+          "fr": "tous les avertissements pp-macro-def-"
+        }
+      },
+      "pp-macro-def-case-single": {
+        "description": {
+          "en": "single-line macro defined both case sensitive and insensitive",
+          "ru": "Однострочный макрос определен как с учетом регистра, так и без",
+          "by": "аднарадковы макрас вызначаны з улікам рэгістра і без яго",
+          "fr": "macro en ligne unique définie sensible et insensible à la casse"
+        }
+      },
+      "pp-macro-def-greedy-single": {
+        "description": {
+          "en": "single-line macro",
+          "ru": "Однострочный макрос",
+          "by": "аднарадковы макрас",
+          "fr": "macro en ligne unique"
+        }
+      },
+      "pp-macro-def-param-single": {
+        "description": {
+          "en": "single-line macro defined with and without parameters",
+          "ru": "Однострочный макрос определен с параметрами и без",
+          "by": "аднарадковы макрас вызначаны з параметры і без іх",
+          "fr": "macro en ligne unique définie avec et sans paramètres"
+        }
+      },
+      "pp-macro-defaults": {
+        "description": {
+          "en": "macros with more default than optional parameters",
+          "ru": "Макросы с большим количеством параметров по умолчанию, чем необязательных",
+          "by": "макрасы з большай колькасць па змаўчанні чым неабавязковыя параметры",
+          "fr": "macros avec plus de paramètres par défaut qu'optionnels"
+        }
+      },
+      "pp-macro-params": {
+        "description": {
+          "en": "all pp-macro-params- warnings",
+          "ru": "Все предупреждения pp-macro-params-",
+          "by": "усе папярэджанні pp-macro-params-",
+          "fr": "tous les avertissements pp-macro-params-"
+        }
+      },
+      "pp-macro-params-legacy": {
+        "description": {
+          "en": "improperly calling multi-line macro for legacy support",
+          "ru": "Неправильный вызов многострочного макроса для поддержки устаревших версий",
+          "by": "няправільны выклік шматрадковага макраса для падтрымкі старых версій",
+          "fr": "appel incorrect d'une macro multi-lignes pour support legacy"
+        }
+      },
+      "pp-macro-params-multi": {
+        "description": {
+          "en": "multi-line macro calls with wrong parameter count",
+          "ru": "Вызовы многострочных макросов с неправильным количеством параметров",
+          "by": "выклікі шматрадковага макраса зь няправільнай колькасцю параметраў",
+          "fr": "appels de macro multi-lignes avec nombre de paramètres incorrect"
+        }
+      },
+      "pp-macro-params-single": {
+        "description": {
+          "en": "single-line macro calls with wrong parameter count",
+          "ru": "Вызовы однострочных макросов с неправильным количеством параметров",
+          "by": "выклікі аднарадковага макраса зь няправільнай колькасцю параметраў",
+          "fr": "appels de macro en ligne unique avec nombre de paramètres incorrect"
+        }
+      },
+      "pp-macro-redef-multi": {
+        "description": {
+          "en": "redefining multi-line macro",
+          "ru": "Переопределение многострочного макроса",
+          "by": "перавызначэнне шматрадковага макраса",
+          "fr": "redéfinition de macro multi-lignes"
+        }
+      },
+      "pp-open": {
+        "description": {
+          "en": "all pp-open- warnings",
+          "ru": "Все предупреждения pp-open-",
+          "by": "усе папярэджанні pp-open-",
+          "fr": "tous les avertissements pp-open-"
+        }
+      },
+      "pp-open-braces": {
+        "description": {
+          "en": "unterminated %{...}",
+          "ru": "Незакрытая конструкция %{...}",
+          "by": "незачыненая канструкцыя %{...}",
+          "fr": "construct %{...} non terminé"
+        }
+      },
+      "pp-open-brackets": {
+        "description": {
+          "en": "unterminated %[...]",
+          "ru": "Незакрытая конструкция %[...]",
+          "by": "незачыненая канструкцыя %[...]",
+          "fr": "construct %[...] non terminé"
+        }
+      },
+      "pp-open-string": {
+        "description": {
+          "en": "unterminated string",
+          "ru": "Незакрытая строка",
+          "by": "незачыненая радок",
+          "fr": "chaîne non terminée"
+        }
+      },
+      "pp-rep-negative": {
+        "description": {
+          "en": "negative %rep count",
+          "ru": "Отрицательное количество %rep",
+          "by": "адмоўная колькасць %rep",
+          "fr": "compte %rep négatif"
+        }
+      },
+      "pp-sel-range": {
+        "description": {
+          "en": "%sel() argument out of range",
+          "ru": "Аргумент %sel() вне диапазона",
+          "by": "аргумент %sel() па-за дыяпазонам",
+          "fr": "argument %sel() hors plage"
+        }
+      },
+      "pp-trailing": {
+        "description": {
+          "en": "trailing garbage ignored",
+          "ru": "Игнорируется лишний текст в конце",
+          "by": "ігнаруецца лішні тэкст у канцы",
+          "fr": "déchets finaux ignorés"
+        }
+      },
+      "pragma": {
+        "description": {
+          "en": "all pragma- warnings",
+          "ru": "Все предупреждения pragma-",
+          "by": "усе папярэджанні pragma-",
+          "fr": "tous les avertissements pragma-"
+        }
+      },
+      "pragma-bad": {
+        "description": {
+          "en": "malformed %pragma",
+          "ru": "Неправильно сформированный %pragma",
+          "by": "няправільна сфарміраваны %pragma",
+          "fr": "%pragma mal formé"
+        }
+      },
+      "pragma-empty": {
+        "description": {
+          "en": "empty %pragma directive",
+          "ru": "Пустая директива %pragma",
+          "by": "парожняя дырэктыва %pragma",
+          "fr": "directive %pragma vide"
+        }
+      },
+      "pragma-na": {
+        "description": {
+          "en": "%pragma not applicable to this compilation",
+          "ru": "%pragma не применим к этой компиляции",
+          "by": "%pragma не прымяняецца да гэтай кампiляцыi",
+          "fr": "%pragma non applicable à cette compilation"
+        }
+      },
+      "pragma-unknown": {
+        "description": {
+          "en": "unknown %pragma facility or directive",
+          "ru": "Неизвестная возможность или директива %pragma",
+          "by": "невядомая магчымасць або дырэктыва %pragma",
+          "fr": "%pragma ou fonctionnalité inconnue"
+        }
+      },
+      "prefix": {
+        "description": {
+          "en": "all prefix- warnings",
+          "ru": "Все предупреждения prefix-",
+          "by": "усе папярэджанні prefix-",
+          "fr": "tous les avertissements prefix-"
+        }
+      },
+      "prefix-bnd": {
+        "description": {
+          "en": "invalid BND prefix",
+          "ru": "Недопустимый префикс BND",
+          "by": "нядзейсны прэфікс BND",
+          "fr": "préfixe BND invalide"
+        }
+      },
+      "prefix-hle": {
+        "description": {
+          "en": "invalid HLE prefix",
+          "ru": "Недопустимый префикс HLE",
+          "by": "нядзейсны прэфікс HLE",
+          "fr": "préfixe HLE invalide"
+        }
+      },
+      "prefix-lock": {
+        "description": {
+          "en": "all prefix-lock- warnings",
+          "ru": "Все предупреждения prefix-lock-",
+          "by": "усе папярэджанні prefix-lock-",
+          "fr": "tous les avertissements prefix-lock-"
+        }
+      },
+      "prefix-lock-error": {
+        "description": {
+          "en": "LOCK prefix on unlockable instruction",
+          "ru": "Префикс LOCK на незапираемой инструкции",
+          "by": "прэфікс LOCK на разблакоўнай інструкцыі",
+          "fr": "préfixe LOCK sur instruction non verrouillable"
+        }
+      },
+      "prefix-lock-xchg": {
+        "description": {
+          "en": "superfluous LOCK prefix on XCHG instruction",
+          "ru": "Излишний префикс LOCK на инструкции XCHG",
+          "by": "залішні прэфікс LOCK на інструкцыі XCHG",
+          "fr": "préfixe LOCK superflu sur instruction XCHG"
+        }
+      },
+      "prefix-opsize": {
+        "description": {
+          "en": "invalid operand size prefix",
+          "ru": "Недопустимый префикс размера операнда",
+          "by": "нядзейсны прэфікс памеру аперанда",
+          "fr": "préfixe de taille d’opérande invalide"
+        }
+      },
+      "prefix-seg": {
+        "description": {
+          "en": "segment prefix ignored in 64-bit mode",
+          "ru": "Префикс сегмента игнорируется в 64-битном режиме",
+          "by": "прэфікс сегмента ігнаруецца ў 64-бітным рэжыме",
+          "fr": "préfixe de segment ignoré en mode 64 bits"
+        }
+      },
+      "ptr": {
+        "description": {
+          "en": "non-NASM keyword used in other assemblers",
+          "ru": "Ключевое слово не из NASM, используемое в других ассемблерах",
+          "by": "ключавое слова не з NASM, якое выкарыстоўваецца ў іншых асамблерах",
+          "fr": "mot-clé non-NASM utilisé dans d’autres assembleurs"
+        }
+      },
+      "regsize": {
+        "description": {
+          "en": "register size specification ignored",
+          "ru": "Спецификация размера регистра игнорируется",
+          "by": "спецыфікацыя памеру рэгістра ігнаруецца",
+          "fr": "spécification de taille de registre ignorée"
+        }
+      },
+      "reloc": {
+        "description": {
+          "en": "all reloc- warnings",
+          "ru": "Все предупреждения reloc-",
+          "by": "усе папярэджанні reloc-",
+          "fr": "tous les avertissements reloc-"
+        }
+      },
+      "reloc-abs": {
+        "description": {
+          "en": "all reloc-abs- warnings",
+          "ru": "Все предупреждения reloc-abs-",
+          "by": "усе папярэджанні reloc-abs-",
+          "fr": "tous les avertissements reloc-abs-"
+        }
+      },
+      "reloc-abs-byte": {
+        "description": {
+          "en": "8-bit absolute section-crossing relocation",
+          "ru": "8-битная абсолютная перекрестная релокация секций",
+          "by": "8-бітная абсалютная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation absolue 8 bits franchissant sections"
+        }
+      },
+      "reloc-abs-dword": {
+        "description": {
+          "en": "32-bit absolute section-crossing relocation",
+          "ru": "32-битная абсолютная перекрестная релокация секций",
+          "by": "32-бітная абсалютная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation absolue 32 bits franchissant sections"
+        }
+      },
+      "reloc-abs-qword": {
+        "description": {
+          "en": "64-bit absolute section-crossing relocation",
+          "ru": "64-битная абсолютная перекрестная релокация секций",
+          "by": "64-бітная абсалютная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation absolue 64 bits franchissant sections"
+        }
+      },
+      "reloc-abs-word": {
+        "description": {
+          "en": "16-bit absolute section-crossing relocation",
+          "ru": "16-битная абсолютная перекрестная релокация секций",
+          "by": "16-бітная абсалютная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation absolue 16 bits franchissant sections"
+        }
+      },
+      "reloc-rel": {
+        "description": {
+          "en": "all reloc-rel- warnings",
+          "ru": "Все предупреждения reloc-rel-",
+          "by": "усе папярэджанні reloc-rel-",
+          "fr": "tous les avertissements reloc-rel-"
+        }
+      },
+      "reloc-rel-byte": {
+        "description": {
+          "en": "8-bit relative section-crossing relocation",
+          "ru": "8-битная относительная перекрестная релокация секций",
+          "by": "8-бітная адносная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation relative 8 bits franchissant sections"
+        }
+      },
+      "reloc-rel-dword": {
+        "description": {
+          "en": "32-bit relative section-crossing relocation",
+          "ru": "32-битная относительная перекрестная релокация секций",
+          "by": "32-бітная адносная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation relative 32 bits franchissant sections"
+        }
+      },
+      "reloc-rel-qword": {
+        "description": {
+          "en": "64-bit relative section-crossing relocation",
+          "ru": "64-битная относительная перекрестная релокация секций",
+          "by": "64-бітная адносная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation relative 64 bits franchissant sections"
+        }
+      },
+      "reloc-rel-word": {
+        "description": {
+          "en": "16-bit relative section-crossing relocation",
+          "ru": "16-битная относительная перекрестная релокация секций",
+          "by": "16-бітная адносная перакрыжаваная рэлокацыя секцый",
+          "fr": "relocation relative 16 bits franchissant sections"
+        }
+      },
+      "unknown-pragma": {
+        "description": {
+          "en": "unknown %pragma facility or directive",
+          "ru": "Неизвестная возможность или директива %pragma",
+          "by": "невядомая магчымасць або дырэктыва %pragma",
+          "fr": "%pragma ou fonctionnalité inconnue"
+        }
+      },
+      "unknown-warning": {
+        "description": {
+          "en": "unknown warning in -W/-w or warning directive",
+          "ru": "Неизвестное предупреждение в -W/-w или директиве warning",
+          "by": "невядомае папярэджанне ў -W/-w альбо дырэктыве warning",
+          "fr": "avertissement inconnu dans -W/-w ou directive warning"
+        }
+      },
+      "user": {
+        "description": {
+          "en": "%warning directives",
+          "ru": "Директивы %warning",
+          "by": "дырэктывы %warning",
+          "fr": "directives %warning"
+        }
+      },
+      "warn-stack-empty": {
+        "description": {
+          "en": "warning stack empty",
+          "ru": "Стек предупреждений пуст",
+          "by": "стэк папярэджанняў пусты",
+          "fr": "pile d'avertissements vide"
+        }
+      },
+      "zeroing": {
+        "description": {
+          "en": "RESx in initialized section becomes zero",
+          "ru": "RESx в инициализированной секции становится нулем",
+          "by": "RESx у ініцыялізаванай секцыі становіцца нулём",
+          "fr": "RESx dans une section initialisée devient zéro"
+        }
+      },
+      "zext-reloc": {
+        "description": {
+          "en": "relocation zero-extended to match output format",
+          "ru": "Релокация расширена нулями для соответствия выходному формату",
+          "by": "рэлокацыя пашырана нулямі для адпаведнасці фармату вываду",
+          "fr": "relocation étendue par des zéros pour correspondre au format de sortie"
+        }
+      }
+    },
+    "TranslationOutput": [
+      {
+        "en": "invalid register set size",
+        "ru": "Недопустимый размер набора регистров",
+        "by": "недапушчальны памер набору рэгістраў",
+        "fr": "taille de jeu de registres invalide"
+      },
+	  {
+		  "en": "instruction not supported in 64-bit mode",
+		  "ru": "инструкция не поддерживается в 64-битном режиме"
+	  },
+      {
+        "en": "invalid operand type",
+        "ru": "Недопустимый тип операнда",
+        "by": "недапушчальны тып аперанда",
+        "fr": "type d'opérande invalide"
+      },
+	  {
+        "en": "invalid directive line",
+        "ru": "Недопустимая строка директивы",
+		"by": "Няправільная строка дырэктывы",
+        "fr": "Ligne de directive invalide"
+      },
+      {
+        "en": "label alone on a line without a colon might be in error",
+        "ru": "Метка в строке без двоеточия может быть ошибочной",
+        "by": "мэтка на радку без двукроп’я можа быць памылковай",
+        "fr": "une étiquette seule sur une ligne sans deux-points peut être erronée"
+      },
+      {
+        "en": "label or instruction expected at start of line",
+        "ru": "В начале строки ожидается метка или инструкция",
+        "by": "у пачатку радка чакаецца мэтка або інструкцыя",
+        "fr": "étiquette ou instruction attendue au début de la ligne"
+      },
+      {
+        "en": "integer supplied as 128-bit data",
+        "ru": "Целое число, представленное в виде 128-битных данных",
+        "by": "цэлае лік, прадстаўленае як 128-бітныя дадзеныя",
+        "fr": "entier fourni en tant que donnée 128 bits"
+      },
+      {
+        "en": "invalid 64-bit effective address",
+        "ru": "Недопустимый 64-битный эффективный адрес",
+        "by": "недапушчальны 64-бітны эфектыўны адрас",
+        "fr": "adresse effective 64 bits invalide"
+      },
+      {
+        "en": "invalid effective address: too many registers",
+        "ru": "Недопустимый эффективный адрес: слишком много регистров",
+        "by": "недапушчальны эфектыўны адрас: занадта шмат рэгістраў",
+        "fr": "adresse effective invalide : trop de registres"
+      },
+      {
+        "en": "signed dword immediate exceeds bounds",
+        "ru": "Непосредственное значение типа <signed dword> выходит за допустимые границы",
+        "by": "непасрэднае значэнне тыпу <signed dword> выходзіць за дапушчальныя межы",
+        "fr": "immediate <signed dword> dépasse les limites"
+      },
+      {
+        "en": "byte data exceeds bounds",
+        "ru": "Значение типа <byte> выходит за допустимые границы",
+        "by": "значэнне тыпу <byte> выходзіць за дапушчальныя межы",
+        "fr": "donnée <byte> dépasse les limites"
+      },
+      {
+        "en": "dword data exceeds bounds",
+        "ru": "Значение типа <dword> выходит за допустимые границы",
+        "by": "значэнне тыпу <dword> выходзіць за дапушчальныя межы",
+        "fr": "donnée <dword> dépasse les limites"
+      },
+      {
+        "en": "word data exceeds bounds",
+        "ru": "Значение типа <word> выходит за допустимые границы",
+        "by": "значэнне тыпу <word> выходзіць за дапушчальныя межы",
+        "fr": "donnée <word> dépasse les limites"
+      },
+      {
+        "en": "-bit relative section-crossing relocation",
+        "ru": "-битное относительное перемещение пересекающихся секций",
+        "by": "-бітнае адноснае перамяшчэнне секцый",
+        "fr": "-relocalisation traversant les sections en mode relatif"
+      },
+      {
+        "en": "-bit absolute section-crossing relocation",
+        "ru": "-битное абсолютное перемещение пересекающихся секций",
+        "by": "-бітнае абсалютнае перамяшчэнне секцый",
+        "fr": "-relocalisation traversant les sections en mode absolu"
+      },
+      {
+        "en": "instruction has redundant prefixes",
+        "ru": "Инструкция имеет лишние префиксы",
+        "by": "інструкцыя мае лішнія прэфіксы",
+        "fr": "l'instruction a des préfixes redondants"
+      },
+      {
+        "en": "invalid combination of opcode and operands",
+        "ru": "Операнды не подходят к указанной инструкции",
+        "by": "няправільная камбінацыя апкода і аперандаў",
+        "fr": "combinaison invalide d'opcode et d'opérandes"
+      },
+      {
+        "en": "comma, colon, decorator or end of line expected after operand",
+        "ru": "После операнда ожидается запятая, двоеточие, декоратор или конец строки",
+        "by": "пасля аперанда чакаецца коска, двукроп’я, дэкаратар або канец радка",
+        "fr": "virgule, deux-points, décorateur ou fin de ligne attendu après l'opérande"
+      },
+      {
+        "en": "comma, decorator or end of line expected, got",
+        "ru": "Ожидается запятая, декоратор или конец строки, получено",
+        "by": "чакаецца коска, дэкаратар або канец радка, атрымана",
+        "fr": "virgule, décorateur ou fin de ligne attendu, obtenu"
+      },
+      {
+        "en": "no operand for data declaration",
+        "ru": "Нет операнда для объявления данных",
+        "by": "няма аперанда для аб'яўлення дадзеных",
+        "fr": "aucun opérande pour la déclaration de données"
+      },
+      {
+        "en": "comma expected after operand, got ",
+        "ru": "После операнда ожидалась запятая, получено ",
+        "by": "пасля аперанда чакалася коска, атрымана ",
+        "fr": "virgule attendue après l'opérande, obtenu "
+      },
+      {
+        "en": "segment alignment ",
+        "ru": "Выравнивание сегмента: ",
+        "by": "выраўноўванне сегмента: ",
+        "fr": "alignement de segment : "
+      },
+      {
+        "en": "is not power of two",
+        "ru": "не является степенью двойки",
+        "by": "не з’яўляецца ступенню двойкі",
+        "fr": "n'est pas une puissance de deux"
+      },
+      {
+        "en": "non-constant argument supplied to",
+        "ru": "Неконстантный аргумент, передаваемый в",
+        "by": "няканстантны аргумент, перададзены ў",
+        "fr": "argument non-constant fourni à"
+      },
+      {
+        "en": "more than one input file specified",
+        "ru": "Указано более одного входного файла",
+        "by": "зазначана больш за адзін уваходны файл",
+        "fr": "plus d'un fichier d'entrée spécifié"
+      },
+      {
+        "en": "unterminated string (missing ",
+        "ru": "Непрерванная строка (отсутствует ",
+        "by": "незачыненая радок (адсутнічае ",
+        "fr": "chaîne non terminée (manquant "
+      },
+      {
+        "en": "assembly required",
+        "ru": "Сборка потребовала",
+        "by": "патрабуецца зборка",
+        "fr": "assemblage requis"
+      },
+      {
+        "en": "passes",
+        "ru": "проходов",
+        "by": "праходаў",
+        "fr": "passes"
+      },
+      {
+        "en": "expecting ",
+        "ru": "Ожидается ",
+        "by": "чакаецца ",
+        "fr": "attendu "
+      },
+      {
+        "en": "expected ",
+        "ru": "Ожидался ",
+        "by": "чакалася ",
+        "fr": "attendu "
+      },
+      {
+        "en": "trailing garbage after ",
+        "ru": "Мусор после ",
+        "by": "сметра пасля ",
+        "fr": "déchets finaux après "
+      },
+      {
+        "en": "ignored",
+        "ru": "игнорируется",
+        "by": "ігнаруецца",
+        "fr": "ignoré"
+      },
+      {
+        "en": "before end of file",
+        "ru": "до конца файла",
+        "by": "да канца файла",
+        "fr": "avant la fin du fichier"
+      },
+      {
+        "en": "end of file while still defining macro",
+        "ru": "Вплоть до конца файла в ожидании конца определения макроса",
+        "by": "да канца файла падчас вызначэння макраса",
+        "fr": "fin de fichier alors que la macro est toujours définie"
+      },
+      {
+        "en": "is not a valid decorator with braces",
+        "ru": "Не является допустимым декоратором с фигурными скобками",
+        "by": "не з’яўляецца дапушчальным дэкаратарам з фігурнымі дужкамі",
+        "fr": "n’est pas un décorateur valide avec accolades"
+      },
+      {
+        "en": "EQU not preceded by label",
+        "ru": "Ожидается метка перед EQU",
+        "by": "чакаецца мэтка перад EQU",
+        "fr": "EQU non précédé d’une étiquette"
+      },
+      {
+        "en": "expects a macro identifier",
+        "ru": "ожидает идентификатор макроса",
+        "by": "чакае ідэнтыфікатар макраса",
+        "fr": "attend un identifiant de macro"
+      },
+      {
+        "en": "expects a parameter count",
+        "ru": "ожидает параметр count",
+        "by": "чакае колькасць параметраў",
+        "fr": "attend un nombre de paramètres"
+      },
+      {
+        "en": "unable to open include file",
+        "ru": "Невозможно открыть включаемый файл",
+        "by": "немагчыма адкрыць уключальны файл",
+        "fr": "impossible d’ouvrir le fichier inclus"
+      },
+      {
+        "en": "unable to open input file",
+        "ru": "Невозможно открыть входной файл",
+        "by": "немагчыма адкрыць уваходны файл",
+        "fr": "impossible d’ouvrir le fichier d’entrée"
+      },
+      {
+        "en": "No such file or directory",
+        "ru": "Нет такого файла или каталога",
+        "by": "няма такога файла або каталагу",
+        "fr": "aucun fichier ou répertoire de ce type"
+      },
+      {
+        "en": "division by zero",
+        "ru": "Деление на ноль",
+        "by": " дзяленне на нуль",
+        "fr": "division par zéro"
+      },
+      {
+        "en": "expression syntax error",
+        "ru": "Cинтаксическая ошибка выражения",
+        "by": "сінтаксічная памылка выраза",
+        "fr": "erreur de syntaxe d’expression"
+      },
+      {
+        "en": "instruction expected",
+        "ru": "Ожидалась инструкция",
+        "by": "чакалася інструкцыя",
+        "fr": "instruction attendue"
+      },
+      {
+        "en": "operation size not specified",
+        "ru": "Не указан размер операции",
+        "by": "не паказаны памер аперацыі",
+        "fr": "taille de l’opération non spécifiée"
+      },
+      {
+        "en": "broadcast not permitted on this operand",
+        "ru": "Broadcast не разрешён для данного операнда",
+        "by": "broadcast не дазволены для гэтага аперанда",
+        "fr": "diffusion non permise sur cet opérande"
+      },
+      {
+        "en": "instruction not supported in 32-bit mode",
+        "ru": "Инструкция не поддерживается в 32-битном режиме",
+        "by": "інструкцыя не падтрымліваецца ў 32-бітным рэжыме",
+        "fr": "instruction non prise en charge en mode 32 bits"
+      },
+      {
+        "en": "expecting ] at end of memory operand",
+        "ru": "Ожидается ] в конце операдна памяти",
+        "by": "чакаецца ] у канцы аперанда памяці",
+        "fr": "']' attendu à la fin de l’opérande mémoire"
+      },
+      {
+        "en": "uninitialised space declared in non-BSS section ",
+        "ru": "Неинициализированная область объявлена в не-BSS секции ",
+        "by": "неініцыялізаваная прастора аб’яўлена ў не-BSS секцыі ",
+        "fr": "espace non initialisé déclaré dans une section non-BSS "
+      },
+      {
+        "en": "': zeroing",
+        "ru": "': выполнено обнуление",
+        "by": "': абнуленне",
+        "fr": "': mise à zéro"
+      },
+      {
+        "en": "Permission denied",
+        "ru": "В доступе отказано",
+        "by": "Доступ забаронены",
+        "fr": "Permission refusée"
+      },
+      {
+        "en": "not defining a macro",
+        "ru": "используется вне определения макроса",
+        "by": "выкарыстоўваецца па-за вызначэннем макраса",
+        "fr": "n’est pas défini dans une macro"
+      },
+      {
+        "en": "from macro",
+        "ru": "Из макроса",
+        "by": "з макраса",
+        "fr": "depuis la macro"
+      },
+      {
+        "en": "redefining multi-line macro",
+        "ru": "Переопределение многострочного макроса",
+        "by": "перавызначэнне шматрадковага макраса",
+        "fr": "redéfinition de macro multi-lignes"
+      },
+      {
+        "en": "multi-line macro",
+        "ru": "Многострочный макрос",
+        "by": "шматрадковы макрас",
+        "fr": "macro multi-lignes"
+      },
+      {
+        "en": "exists, but not taking 1 parameter",
+        "ru": "существует, но не принимает 1 параметр",
+        "by": "існуе, але не прымае 1 параметр",
+        "fr": "existe, mais ne prend pas 1 paramètre"
+      },
+      {
+        "en": "exists, but not taking 0 parameters",
+        "ru": "существует, но не принимает 0 параметров",
+        "by": "існуе, але не прымае 0 параметраў",
+        "fr": "existe, mais ne prend pas 0 paramètres"
+      },
+      {
+        "en": "inconsistently redefined",
+        "ru": "непоследовательное переопределение",
+        "by": "няпаслядоўна перавызначана",
+        "fr": "redéfini de manière inconsistante"
+      },
+      {
+        "en": "originally defined here",
+        "ru": "первоначально определена здесь",
+        "by": "першы раз вызначана тут",
+        "fr": "initialement défini ici"
+      },
+      {
+        "en": "does not fit in 64 bits",
+        "ru": "Не поместится в 64 бита",
+        "by": "не памесціцца ў 64 бітах",
+        "fr": "ne tient pas en 64 bits"
+      },
+      {
+        "en": "defined here",
+        "ru": "определенного здесь",
+        "by": "вызначана тут",
+        "fr": "défini ici"
+      },
+      {
+        "en": "symbol",
+        "ru": "Символ",
+        "by": "Сімвал",
+        "fr": "symbole"
+      },
+      {
+        "en": "label ",
+        "ru": "Метка ",
+        "by": "Мэтка ",
+        "fr": "étiquette "
+      },
+      {
+        "en": "numeric constant",
+        "ru": "Числовая константа",
+        "by": "Лічбавая канстанта",
+        "fr": "constante numérique"
+      },
+      {
+        "en": "not defined",
+        "ru": "не определён",
+        "by": "не вызначана",
+        "fr": "non défini"
+      }
+    ]
+  },
+  "TypeNotification": {
+    "nasm": {
+      "description": {
+        "en": "General messages from the NASM compiler.",
+        "ru": "Общие сообщения от компилятора NASM.",
+        "by": "Агульныя паведамленні ад кампілятара NASM.",
+        "fr": "Messages généraux du compilateur NASM."
+      },
+      "translation": {
+        "en": "Compiler",
+        "ru": "Компилятор",
+        "by": "Кампилятар",
+        "fr": "Compilateur"
+      }
+    },
+    "parser": {
+      "description": {
+        "en": "Messages related to the parsing of the source code.",
+        "ru": "Сообщения, связанные с разбором исходного кода.",
+        "by": "Паведамленні, звязаныя з разборкай зыходнага кода.",
+        "fr": "Messages relatifs à l'analyse du code source."
+      },
+      "translation": {
+        "en": "Parser",
+        "ru": "Парсер",
+        "by": "Парсер",
+        "fr": "Analyseur"
+      }
+    },
+    "panic": {
+      "description": {
+        "en": "Critical errors leading to immediate termination of the compilation process.",
+        "ru": "Критические ошибки, приводящие к немедленному завершению процесса компиляции.",
+        "by": "Крытычныя памылкі, якія прыводзяць да неадкладнага завяршэння працэсу кампiляцыi.",
+        "fr": "Erreurs critiques entraînant l'arrêt immédiat du processus de compilation."
+      },
+      "translation": {
+        "en": "Panic",
+        "ru": "Аварийное завершение",
+        "by": "Паніка",
+        "fr": "Panique"
+      }
+    },
+    "info": {
+      "description": {
+        "en": "Informational messages providing additional context or details.",
+        "ru": "Информационные сообщения, предоставляющие дополнительный контекст или детали.",
+        "by": "Інфармацыйныя паведамленні, якія даюць дадатковы кантэкст або падрабязнасці.",
+        "fr": "Messages d'information fournissant un contexte ou des détails supplémentaires."
+      },
+      "translation": {
+        "en": "Info",
+        "ru": "Информация",
+        "by": "Інфармацыя",
+        "fr": "Info"
+      }
+    },
+    "fatal": {
+      "description": {
+        "en": "Fatal errors that prevent the compilation from completing successfully.",
+        "ru": "Фатальные ошибки, препятствующие успешному завершению компиляции.",
+        "by": "Фатальныя памылкі, якія перашкаджаюць паспяховаму завяршэнню кампiляцыi.",
+        "fr": "Erreurs fatales empêchant la compilation de se terminer avec succès."
+      },
+      "translation": {
+        "en": "Fatal",
+        "ru": "Критическая ошибка",
+        "by": "Фатальная памылка",
+        "fr": "Fatale"
+      }
+    },
+    "error": {
+      "description": {
+        "en": "Errors indicating problems in the source code that need to be fixed.",
+        "ru": "Ошибки, указывающие на проблемы в исходном коде, которые необходимо исправить.",
+        "by": "Памылкі, якія паказваюць на праблемы ў зыходным кодзе, якія трэба выправіць.",
+        "fr": "Erreurs indiquant des problèmes dans le code source à corriger."
+      },
+      "translation": {
+        "en": "Error",
+        "ru": "Ошибка",
+        "by": "Памылка",
+        "fr": "Erreur"
+      }
+    },
+    "warning": {
+      "description": {
+        "en": "Warnings about potential issues or non-critical problems in the source code.",
+        "ru": "Предупреждения о потенциальных проблемах или некритических ошибках в исходном коде.",
+        "by": "Папярэджанні аб патэнцыяльных праблемах або некрытычных памылках у зыходным кодзе.",
+        "fr": "Avertissements sur des problèmes potentiels ou non critique dans le code source."
+      },
+      "translation": {
+        "en": "Warning",
+        "ru": "Предупреждение",
+        "by": "Папярэджанне",
+        "fr": "Avertissement"
+      }
+    },
+	"success": {
+      "description": {
+		"en": "success",
+        "ru": "Успех есть успех, что сказать...",
+		"by": "Поспех",
+        "fr": "Succès"
+      },
+      "translation": {
+		"en": "Success",
+        "ru": "Успех",
+		"by": "Поспех",
+        "fr": "succès"
+      }
+    }
+  }
+}

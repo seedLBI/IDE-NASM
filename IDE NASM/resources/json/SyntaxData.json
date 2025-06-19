@@ -1,0 +1,1690 @@
+{
+    "Assembler Directives": {
+        "ABS": {
+            "description": {
+                "en": "Sets absolute relocation.",
+                "ru": "Задаёт абсолютную релокацию."
+            }
+        },
+        "ABSOLUTE": {
+            "description": {
+                "en": "Sets absolute positioning in memory.",
+                "ru": "Задаёт абсолютное позиционирование в памяти."
+            }
+        },
+        "BITS": {
+            "description": {
+                "en": "Sets the bit mode (16, 32, or 64 bits).",
+                "ru": "Задаёт разрядность кода (16, 32 или 64 бита)."
+            }
+        },
+        "BND": {
+            "description": {
+                "en": "Enables bound checking for instructions.",
+                "ru": "Включает проверку границ для инструкций."
+            }
+        },
+        "COMMON": {
+            "description": {
+                "en": "Declares a common symbol for sharing.",
+                "ru": "Объявляет общий символ для совместного использования."
+            }
+        },
+        "DB": {
+            "description": {
+                "en": "Define Byte",
+                "ru": "Резервирует 1 байт (8 бит). Используется для символов, чисел или данных в формате байта."
+            }
+        },
+        "DD": {
+            "description": {
+                "en": "Define Doubleword",
+                "ru": "Резервирует 4 байта (32 бита). Для 32-битных чисел, адресов, чисел с плавающей точкой (single-precision)."
+            }
+        },
+        "DEFAULT": {
+            "description": {
+                "en": "Sets default parameters (e.g., for relocation).",
+                "ru": "Задаёт параметры по умолчанию (например, для релокации)."
+            }
+        },
+        "DO": {
+            "description": {
+                "en": "Define Octaword",
+                "ru": "Резервирует 16 байт (128 бит). Для 128-битных данных (например, SIMD-регистры SSE/AVX)."
+            }
+        },
+        "DQ": {
+            "description": {
+                "en": "Define Quadword",
+                "ru": "Резервирует 8 байт (64 бита). Для 64-битных чисел, чисел с плавающей точкой (double-precision)."
+            }
+        },
+        "DT": {
+            "description": {
+                "en": "Define Ten Bytes",
+                "ru": "Резервирует 10 байт. Используется для хранения данных формата extended-precision (80-битные числа FPU x87)."
+            }
+        },
+        "DW": {
+            "description": {
+                "en": "Define Word",
+                "ru": "Резервирует 2 байта (16 бит). Часто для 16-битных чисел, смещений или сегментных адресов."
+            }
+        },
+        "DY": {
+            "description": {
+                "en": "Define YMM Word",
+                "ru": "Резервирует 32 байта (256 бит). Связано с YMM-регистрами AVX/AVX2."
+            }
+        },
+        "DZ": {
+            "description": {
+                "en": "Define ZMM Word",
+                "ru": "Резервирует 64 байта (512 бит). Для ZMM-регистров AVX-512."
+            }
+        },
+        "ENDSTRUC": {
+            "description": {
+                "en": "Ends a structure definition.",
+                "ru": "Завершает определение структуры."
+            }
+        },
+        "EXPORT": {
+            "description": {
+                "en": "Exports a symbol for use in other modules.",
+                "ru": "Экспортирует символ для использования в других модулях."
+            }
+        },
+        "EXTERN": {
+            "description": {
+                "en": "Declares an external symbol.",
+                "ru": "Объявляет внешний символ."
+            }
+        },
+        "GLOBAL": {
+            "description": {
+                "en": "Declares a global symbol.",
+                "ru": "Объявляет глобальный символ."
+            }
+        },
+        "GROUP": {
+            "description": {
+                "en": "Groups segments into a single logical unit.",
+                "ru": "Группирует сегменты в одну логическую единицу."
+            }
+        },
+        "IEND": {
+            "description": {
+                "en": "Ends an instance of a structure.",
+                "ru": "Завершает экземпляр структуры."
+            }
+        },
+        "IMPORT": {
+            "description": {
+                "en": "Imports a symbol from an external module.",
+                "ru": "Импортирует символ из внешнего модуля."
+            }
+        },
+        "ISTRUC": {
+            "description": {
+                "en": "Begins an instance of a structure.",
+                "ru": "Начинает экземпляр структуры."
+            }
+        },
+        "NOBND": {
+            "description": {
+                "en": "Disables bound checking for instructions.",
+                "ru": "Отключает проверку границ для инструкций."
+            }
+        },
+        "REL": {
+            "description": {
+                "en": "Sets relative relocation.",
+                "ru": "Задаёт относительную релокацию."
+            }
+        },
+        "REQUIRED": {
+            "description": {
+                "en": "Specifies that a symbol must be defined.",
+                "ru": "Указывает, что символ должен быть определён."
+            }
+        },
+        "SECTION": {
+            "description": {
+                "en": "Defines a section in the code.",
+                "ru": "Определяет секцию в коде."
+            }
+        },
+        "SEGMENT": {
+            "description": {
+                "en": "Defines a segment in the code (synonym for SECTION).",
+                "ru": "Определяет сегмент в коде (синоним SECTION)."
+            }
+        },
+        "STATIC": {
+            "description": {
+                "en": "Declares a static symbol.",
+                "ru": "Объявляет статический символ."
+            }
+        },
+        "STRUC": {
+            "description": {
+                "en": "Begins a structure definition.",
+                "ru": "Начинает определение структуры."
+            }
+        },
+        "UPPERCASE": {
+            "description": {
+                "en": "Converts labels to uppercase.",
+                "ru": "Преобразует метки в верхний регистр."
+            }
+        },
+        "USE16": {
+            "description": {
+                "en": "Sets 16-bit mode (deprecated).",
+                "ru": "Задаёт 16-битный режим (устаревшая)."
+            }
+        },
+        "USE32": {
+            "description": {
+                "en": "Sets 32-bit mode (deprecated).",
+                "ru": "Задаёт 32-битный режим (устаревшая)."
+            }
+        }
+    },
+    "Default sections": {
+        ".BSS": {
+            "description": {
+                "en": "Intended for uninitialized data, which are filled with zeros when the program starts.",
+                "ru": "Предназначен для неинициализированных данных, которые заполняются нулями при запуске программы."
+            }
+        },
+        ".DATA": {
+            "description": {
+                "en": "Stores initialized data, such as variables or constants with predefined values.",
+                "ru": "Хранит инициализированные данные, например, переменные или константы с заданными значениями."
+            }
+        },
+        ".TEXT": {
+            "description": {
+                "en": "Contains executable code — instructions that the processor executes.",
+                "ru": "Содержит исполняемый код."
+            }
+        }
+    },
+    "Predefined Macros": {
+        "__?BITS?__": {
+            "description": {
+                "en": "Current bit mode.",
+                "ru": "Текущая разрядность кода."
+            }
+        },
+        "__?DATE?__": {
+            "description": {
+                "en": "Build date.",
+                "ru": "Дата сборки."
+            }
+        },
+        "__?DATE_NUM?__": {
+            "description": {
+                "en": "Build date in numeric format.",
+                "ru": "Дата сборки в числовом формате."
+            }
+        },
+        "__?DEBUG_FORMAT?__": {
+            "description": {
+                "en": "Debug information format.",
+                "ru": "Формат отладочной информации."
+            }
+        },
+        "__?FILE?__": {
+            "description": {
+                "en": "Name of the current file.",
+                "ru": "Имя текущего файла."
+            }
+        },
+        "__?Infinity?__": {
+            "description": {
+                "en": "Represents infinity for floating-point numbers.",
+                "ru": "Представляет бесконечность для чисел с плавающей точкой."
+            }
+        },
+        "__?LINE?__": {
+            "description": {
+                "en": "Current line number.",
+                "ru": "Номер текущей строки."
+            }
+        },
+        "__?NASM_MAJOR?__": {
+            "description": {
+                "en": "Major version number of NASM.",
+                "ru": "Основной номер версии NASM."
+            }
+        },
+        "__?NASM_MINOR?__": {
+            "description": {
+                "en": "Minor version number of NASM.",
+                "ru": "Минорный номер версии NASM."
+            }
+        },
+        "__?NASM_PATCHLEVEL?__": {
+            "description": {
+                "en": "Patch level of NASM version.",
+                "ru": "Уровень патча версии NASM."
+            }
+        },
+        "__?NASM_SNAPSHOT?__": {
+            "description": {
+                "en": "Snapshot number of NASM version.",
+                "ru": "Номер снимка версии NASM."
+            }
+        },
+        "__?NASM_SUBMINOR?__": {
+            "description": {
+                "en": "Subminor version number of NASM.",
+                "ru": "Субминорный номер версии NASM."
+            }
+        },
+        "__?NASM_VER?__": {
+            "description": {
+                "en": "Version string of NASM.",
+                "ru": "Строка версии NASM."
+            }
+        },
+        "__?NASM_VERSION_ID?__": {
+            "description": {
+                "en": "Version ID of NASM.",
+                "ru": "Идентификатор версии NASM."
+            }
+        },
+        "__?OUTPUT_FORMAT?__": {
+            "description": {
+                "en": "Output file format.",
+                "ru": "Формат выходного файла."
+            }
+        },
+        "__?PASS?__": {
+            "description": {
+                "en": "Current assembly pass.",
+                "ru": "Текущий проход ассемблера."
+            }
+        },
+        "__?POSIX_TIME?__": {
+            "description": {
+                "en": "Time in POSIX format.",
+                "ru": "Время в формате POSIX."
+            }
+        },
+        "__?QNaN?__": {
+            "description": {
+                "en": "Represents quiet NaN (Not a Number).",
+                "ru": "Представляет тихий NaN (Not a Number)."
+            }
+        },
+        "__?SECT?__": {
+            "description": {
+                "en": "Current section in the code.",
+                "ru": "Текущая секция в коде."
+            }
+        },
+        "__?SNaN?__": {
+            "description": {
+                "en": "Represents signaling NaN (Not a Number).",
+                "ru": "Представляет сигнальный NaN (Not a Number)."
+            }
+        },
+        "__?TIME?__": {
+            "description": {
+                "en": "Build time.",
+                "ru": "Время сборки."
+            }
+        },
+        "__?TIME_NUM?__": {
+            "description": {
+                "en": "Build time in numeric format.",
+                "ru": "Время сборки в числовом формате."
+            }
+        },
+        "__?USE_ALTREG?__": {
+            "description": {
+                "en": "Indicates the use of alternative registers.",
+                "ru": "Указывает на использование альтернативных регистров."
+            }
+        },
+        "__?USE_package?__": {
+            "description": {
+                "en": "Indicates the use of a specific package.",
+                "ru": "Указывает на использование определённого пакета."
+            }
+        },
+        "__?UTC_DATE?__": {
+            "description": {
+                "en": "Build date in UTC.",
+                "ru": "Дата сборки в UTC."
+            }
+        },
+        "__?UTC_DATE_NUM?__": {
+            "description": {
+                "en": "Build date in UTC in numeric format.",
+                "ru": "Дата сборки в UTC в числовом формате."
+            }
+        },
+        "__?UTC_TIME?__": {
+            "description": {
+                "en": "Build time in UTC.",
+                "ru": "Время сборки в UTC."
+            }
+        },
+        "__?UTC_TIME_NUM?__": {
+            "description": {
+                "en": "Build time in UTC in numeric format.",
+                "ru": "Время сборки в UTC в числовом формате."
+            }
+        },
+        "__?bfloat16?__": {
+            "description": {
+                "en": "Constant for 16-bit brain float.",
+                "ru": "Константа для 16-битного brain float."
+            }
+        },
+        "__?float128h?__": {
+            "description": {
+                "en": "Constant for 128-bit floating-point number (upper part).",
+                "ru": "Константа для 128-битного числа (старшая часть)."
+            }
+        },
+        "__?float128l?__": {
+            "description": {
+                "en": "Constant for 128-bit floating-point number (lower part).",
+                "ru": "Константа для 128-битного числа (младшая часть)."
+            }
+        },
+        "__?float16?__": {
+            "description": {
+                "en": "Constant for 16-bit floating-point number.",
+                "ru": "Константа для 16-битного числа с плавающей точкой."
+            }
+        },
+        "__?float32?__": {
+            "description": {
+                "en": "Constant for 32-bit floating-point number.",
+                "ru": "Константа для 32-битного числа с плавающей точкой."
+            }
+        },
+        "__?float64?__": {
+            "description": {
+                "en": "Constant for 64-bit floating-point number.",
+                "ru": "Константа для 64-битного числа с плавающей точкой."
+            }
+        },
+        "__?float80e?__": {
+            "description": {
+                "en": "Constant for 80-bit floating-point number (exponent).",
+                "ru": "Константа для 80-битного числа (экспонента)."
+            }
+        },
+        "__?float80m?__": {
+            "description": {
+                "en": "Constant for 80-bit floating-point number (mantissa).",
+                "ru": "Константа для 80-битного числа (мантисса)."
+            }
+        },
+        "__?float8?__": {
+            "description": {
+                "en": "Constant for 8-bit floating-point number.",
+                "ru": "Константа для 8-битного числа с плавающей точкой."
+            }
+        }
+    },
+    "Preprocessor Directives": {
+        "%ABS": {
+            "description": {
+                "en": "Returns the absolute value.",
+                "ru": "Возвращает абсолютное значение."
+            }
+        },
+        "%ARG": {
+            "description": {
+                "en": "Accesses arguments in a macro.",
+                "ru": "Доступ к аргументам в макросе."
+            }
+        },
+        "%ASSIGN": {
+            "description": {
+                "en": "Assigns a numeric value to a macro.",
+                "ru": "Присваивает числовое значение макросу."
+            }
+        },
+        "%CLEAR": {
+            "description": {
+                "en": "Clears macro definitions or other settings.",
+                "ru": "Очищает определения макросов или другие настройки."
+            }
+        },
+        "%COND": {
+            "description": {
+                "en": "Related to conditional operations.",
+                "ru": "Связан с условными операциями."
+            }
+        },
+        "%COUNT": {
+            "description": {
+                "en": "Counts the number of elements.",
+                "ru": "Подсчитывает количество элементов."
+            }
+        },
+        "%DEFALIAS": {
+            "description": {
+                "en": "Creates an alias for a macro.",
+                "ru": "Создаёт псевдоним для макроса."
+            }
+        },
+        "%DEFINE": {
+            "description": {
+                "en": "Defines a single-line macro.",
+                "ru": "Определяет однострочный макрос."
+            }
+        },
+        "%DEFSTR": {
+            "description": {
+                "en": "Defines a macro as a string constant.",
+                "ru": "Определяет макрос как строковую константу."
+            }
+        },
+        "%DEFTOK": {
+            "description": {
+                "en": "Defines a macro as a token.",
+                "ru": "Определяет макрос как токен."
+            }
+        },
+        "%ELIF": {
+            "description": {
+                "en": "Alternative condition in a conditional construct.",
+                "ru": "Альтернативное условие в условной конструкции."
+            }
+        },
+        "%ELIFEMPTY": {
+            "description": {
+                "en": "Part of a conditional construct for %ifempty.",
+                "ru": "Часть условной конструкции для %ifempty."
+            }
+        },
+        "%ELIFENV": {
+            "description": {
+                "en": "Part of a conditional construct for %ifenv.",
+                "ru": "Часть условной конструкции для %ifenv."
+            }
+        },
+        "%ELIFNEMPTY": {
+            "description": {
+                "en": "Negation of %elifempty.",
+                "ru": "Отрицание %elifempty."
+            }
+        },
+        "%ELIFNENV": {
+            "description": {
+                "en": "Negation of %elifenv.",
+                "ru": "Отрицание %elifenv."
+            }
+        },
+        "%ELIFNTOKEN": {
+            "description": {
+                "en": "Negation of %eliftoken.",
+                "ru": "Отрицание %eliftoken."
+            }
+        },
+        "%ELIFTOKEN": {
+            "description": {
+                "en": "Part of a conditional construct related to %iftoken.",
+                "ru": "Часть условной конструкции, связанная с %iftoken."
+            }
+        },
+        "%ELSE": {
+            "description": {
+                "en": "\"Else\" branch in a conditional construct.",
+                "ru": "Ветвь \"иначе\" в условной конструкции."
+            }
+        },
+        "%ENDIF": {
+            "description": {
+                "en": "Ends a conditional construct.",
+                "ru": "Завершает условную конструкцию."
+            }
+        },
+        "%ENDMACRO": {
+            "description": {
+                "en": "Ends a macro definition.",
+                "ru": "Завершает определение макроса."
+            }
+        },
+        "%ENDREP": {
+            "description": {
+                "en": "Ends a repeat block.",
+                "ru": "Завершает блок повторения."
+            }
+        },
+        "%ERROR": {
+            "description": {
+                "en": "Outputs an error message.",
+                "ru": "Выводит сообщение об ошибке."
+            }
+        },
+        "%EVAL": {
+            "description": {
+                "en": "Evaluates an expression.",
+                "ru": "Вычисляет выражение."
+            }
+        },
+        "%FATAL": {
+            "description": {
+                "en": "Outputs a fatal error message.",
+                "ru": "Выводит фатальную ошибку."
+            }
+        },
+        "%HEX": {
+            "description": {
+                "en": "Converts to hexadecimal representation.",
+                "ru": "Преобразует в шестнадцатеричное представление."
+            }
+        },
+        "%IDEFINE": {
+            "description": {
+                "en": "Case-insensitive version of %define.",
+                "ru": "Нечувствительная к регистру версия %define."
+            }
+        },
+        "%IF": {
+            "description": {
+                "en": "Begins a conditional construct.",
+                "ru": "Начинает условную конструкцию."
+            }
+        },
+        "%IFCTX": {
+            "description": {
+                "en": "Checks the current context.",
+                "ru": "Проверяет текущий контекст."
+            }
+        },
+        "%IFEMPTY": {
+            "description": {
+                "en": "Checks if a macro is empty.",
+                "ru": "Проверяет, является ли макрос пустым."
+            }
+        },
+        "%IFENV": {
+            "description": {
+                "en": "Checks if an environment variable is defined.",
+                "ru": "Проверяет, определена ли переменная окружения."
+            }
+        },
+        "%IFID": {
+            "description": {
+                "en": "Checks if a token is an identifier.",
+                "ru": "Проверяет, является ли токен идентификатором."
+            }
+        },
+        "%IFIDN": {
+            "description": {
+                "en": "Checks for string identity.",
+                "ru": "Проверяет идентичность строк."
+            }
+        },
+        "%IFMACRO": {
+            "description": {
+                "en": "Checks if a macro is defined.",
+                "ru": "Проверяет, определён ли макрос."
+            }
+        },
+        "%IFNEMPTY": {
+            "description": {
+                "en": "Negation of %ifempty.",
+                "ru": "Отрицание %ifempty."
+            }
+        },
+        "%IFNENV": {
+            "description": {
+                "en": "Negation of %ifenv.",
+                "ru": "Отрицание %ifenv."
+            }
+        },
+        "%IFNTOKEN": {
+            "description": {
+                "en": "Negation of %iftoken.",
+                "ru": "Отрицание %iftoken."
+            }
+        },
+        "%IFNUM": {
+            "description": {
+                "en": "Checks if a token is a number.",
+                "ru": "Проверяет, является ли токен числом."
+            }
+        },
+        "%IFSTR": {
+            "description": {
+                "en": "Checks if a token is a string.",
+                "ru": "Проверяет, является ли токен строкой."
+            }
+        },
+        "%IFTOKEN": {
+            "description": {
+                "en": "Checks if a token is a single token.",
+                "ru": "Проверяет, является ли токен одиночным токеном."
+            }
+        },
+        "%IMACRO": {
+            "description": {
+                "en": "Case-insensitive version of %macro.",
+                "ru": "Нечувствительная к регистру версия %macro."
+            }
+        },
+        "%INCLUDE": {
+            "description": {
+                "en": "Include file",
+                "ru": "Вставляет содержимое файла начиная с данной строки"
+            }
+        },
+        "%IS": {
+            "description": {
+                "en": "Part of a conditional check.",
+                "ru": "Часть условной проверки."
+            }
+        },
+        "%IXDEFINE": {
+            "description": {
+                "en": "Case-insensitive version of %xdefine.",
+                "ru": "Нечувствительная к регистру версия %xdefine."
+            }
+        },
+        "%LINE": {
+            "description": {
+                "en": "Sets the line number for debugging.",
+                "ru": "Задаёт номер строки для отладки."
+            }
+        },
+        "%LOCAL": {
+            "description": {
+                "en": "Defines local labels in a macro.",
+                "ru": "Определяет локальные метки в макросе."
+            }
+        },
+        "%MACRO": {
+            "description": {
+                "en": "Begins a multi-line macro definition.",
+                "ru": "Начинает определение многострочного макроса."
+            }
+        },
+        "%MAP": {
+            "description": {
+                "en": "Maps one value to another.",
+                "ru": "Отображает одно значение на другое."
+            }
+        },
+        "%NUM": {
+            "description": {
+                "en": "Related to numeric operations.",
+                "ru": "Связан с числовыми операциями."
+            }
+        },
+        "%PRAGMA": {
+            "description": {
+                "en": "Passes a pragma to the compiler.",
+                "ru": "Передаёт прагму компилятору."
+            }
+        },
+        "%REP": {
+            "description": {
+                "en": "Begins a repeat block.",
+                "ru": "Начинает блок повторения."
+            }
+        },
+        "%ROTATE": {
+            "description": {
+                "en": "Rotates parameters in a macro.",
+                "ru": "Вращает параметры в макросе."
+            }
+        },
+        "%SEL": {
+            "description": {
+                "en": "Selects an element from a list.",
+                "ru": "Выбирает элемент из списка."
+            }
+        },
+        "%STACKSIZE": {
+            "description": {
+                "en": "Sets the stack size for a macro.",
+                "ru": "Задаёт размер стека для макроса."
+            }
+        },
+        "%STR": {
+            "description": {
+                "en": "Converts to a string.",
+                "ru": "Преобразует в строку."
+            }
+        },
+        "%STRCAT": {
+            "description": {
+                "en": "Concatenates strings.",
+                "ru": "Конкатенирует строки."
+            }
+        },
+        "%STRLEN": {
+            "description": {
+                "en": "Returns the length of a string.",
+                "ru": "Возвращает длину строки."
+            }
+        },
+        "%SUBSTR": {
+            "description": {
+                "en": "Extracts a substring.",
+                "ru": "Извлекает подстроку."
+            }
+        },
+        "%TOK": {
+            "description": {
+                "en": "Related to tokenization.",
+                "ru": "Связан с токенизацией."
+            }
+        },
+        "%UNDEF": {
+            "description": {
+                "en": "Undefines a macro.",
+                "ru": "Отменяет определение макроса."
+            }
+        },
+        "%UNMACRO": {
+            "description": {
+                "en": "Undefines a macro.",
+                "ru": "Удаляет определение макроса."
+            }
+        },
+        "%USE": {
+            "description": {
+                "en": "Includes a package providing additional macros or functionality.",
+                "ru": "Включает пакет, предоставляющий дополнительные макросы или функциональность."
+            }
+        },
+        "%WARNING": {
+            "description": {
+                "en": "Outputs a warning message.",
+                "ru": "Выводит предупреждение."
+            }
+        },
+        "%XDEFINE": {
+            "description": {
+                "en": "Defines a single-line macro with argument expansion.",
+                "ru": "Определяет однострочный макрос с развёртыванием аргументов."
+            }
+        }
+    },
+    "Register": {
+        "AVX/AVX2": {
+            "YMM0": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM0)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM0)"
+                }
+            },
+            "YMM1": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM1)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM1)"
+                }
+            },
+            "YMM10": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM10)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM10)"
+                }
+            },
+            "YMM11": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM11)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM11)"
+                }
+            },
+            "YMM12": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM12)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM12)"
+                }
+            },
+            "YMM13": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM13)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM13)"
+                }
+            },
+            "YMM14": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM14)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM14)"
+                }
+            },
+            "YMM15": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM15)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM15)"
+                }
+            },
+            "YMM2": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM2)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM2)"
+                }
+            },
+            "YMM3": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM3)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM3)"
+                }
+            },
+            "YMM4": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM4)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM4)"
+                }
+            },
+            "YMM5": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM5)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM5)"
+                }
+            },
+            "YMM6": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM6)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM6)"
+                }
+            },
+            "YMM7": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM7)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM7)"
+                }
+            },
+            "YMM8": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM8)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM8)"
+                }
+            },
+            "YMM9": {
+                "bytes": 256,
+                "description": {
+                    "en": "256-bit SIMD register (lower 128 bits overlap XMM9)",
+                    "ru": "256-битный SIMD-регистр (младшие 128 бит совпадают с XMM9)"
+                }
+            }
+        },
+        "Control registers": {
+            "CR0": {
+                "bytes": 64,
+                "description": {
+                    "en": "global processor control flags (e.g. enable protected mode)",
+                    "ru": " глобальные флаги управления процессором (включение защищённого режима и т.п.)"
+                }
+            },
+            "CR2": {
+                "bytes": 64,
+                "description": {
+                    "en": "holds the linear address that caused a page fault",
+                    "ru": "линейный адрес, вызвавший ошибку страницы"
+                }
+            },
+            "CR3": {
+                "bytes": 64,
+                "description": {
+                    "en": "page-directory base register (holds PML4/base of paging structures)",
+                    "ru": "базовый адрес структур страниц (PML4)"
+                }
+            },
+            "CR4": {
+                "bytes": 64,
+                "description": {
+                    "en": "miscellaneous control flags (e.g. enable SSE, PAE)",
+                    "ru": "различные флаги управления (SSE, PAE и т.п.)"
+                }
+            }
+        },
+        "Debug registers": {
+            "DR0": {
+                "bytes": 64,
+                "description": {
+                    "en": "linear addresses for hardware breakpoints 0",
+                    "ru": "линейный адрес аппаратной точки останова 0"
+                }
+            },
+            "DR1": {
+                "bytes": 64,
+                "description": {
+                    "en": "linear addresses for hardware breakpoints 1",
+                    "ru": "линейный адрес аппаратной точки останова 1"
+                }
+            },
+            "DR2": {
+                "bytes": 64,
+                "description": {
+                    "en": "linear addresses for hardware breakpoints 2",
+                    "ru": "линейный адрес аппаратной точки останова 2"
+                }
+            },
+            "DR3": {
+                "bytes": 64,
+                "description": {
+                    "en": "linear addresses for hardware breakpoints 3",
+                    "ru": "линейный адрес аппаратной точки останова 3"
+                }
+            },
+            "DR6": {
+                "bytes": 64,
+                "description": {
+                    "en": "debug status register (which breakpoint was hit)",
+                    "ru": "статус отладки (какой брейкпоинт сработал)"
+                }
+            },
+            "DR7": {
+                "bytes": 64,
+                "description": {
+                    "en": "debug control register (enables/disables breakpoints)",
+                    "ru": "управление отладкой (включение/отключение брейкпоинтов)"
+                }
+            }
+        },
+        "Floating-point registers": {
+            "ST0": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            },
+            "ST1": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            },
+            "ST2": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            },
+            "ST3": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            },
+            "ST4": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            },
+            "ST5": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            },
+            "ST6": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            },
+            "ST7": {
+                "bytes": 80,
+                "description": {
+                    "en": "80-bit floating-point register organized as a push-down stack",
+                    "ru": "80-битный регистр плавающей запятой, организованный как стек"
+                }
+            }
+        },
+        "General-purpose": {
+            "AH": {
+                "bytes": 8,
+                "description": {
+                    "en": "bits 8–15 of the accumulator (RAX)",
+                    "ru": "биты 8–15 аккумулятора (из RAX)"
+                }
+            },
+            "AL": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of the accumulator (RAX)",
+                    "ru": "младшие 8 бит аккумулятора (из RAX)"
+                }
+            },
+            "AX": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of the accumulator (RAX)",
+                    "ru": "младшие 16 бит аккумулятора (из RAX)"
+                }
+            },
+            "BH": {
+                "bytes": 8,
+                "description": {
+                    "en": "bits 8–15 of the base register (RBX)",
+                    "ru": "биты 8–15 базового регистра (из RBX)"
+                }
+            },
+            "BL": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of the base register (RBX)",
+                    "ru": "младшие 8 бит базового регистра (из RBX)"
+                }
+            },
+            "BP": {
+                "bytes": 16,
+                "description": {
+                    "en": "base/frame pointer (low 16 bits of RBP)",
+                    "ru": "указатель кадра/базовый указатель (младшие 16 бит RBP)"
+                }
+            },
+            "BX": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of the base register (RBX)",
+                    "ru": "младшие 16 бит базового регистра (из RBX)"
+                }
+            },
+            "CH": {
+                "bytes": 8,
+                "description": {
+                    "en": "bits 8–15 of the counter register (RCX)",
+                    "ru": "биты 8–15 счётчика (из RCX)"
+                }
+            },
+            "CL": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of the counter register (RCX)",
+                    "ru": "младшие 8 бит счётчика (из RCX)"
+                }
+            },
+            "CX": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of the counter register (RCX)",
+                    "ru": "младшие 16 бит счётчика (из RCX)"
+                }
+            },
+            "DH": {
+                "bytes": 8,
+                "description": {
+                    "en": "bits 8–15 of the data register (RDX)",
+                    "ru": "биты 8–15 регистра данных (из RDX)"
+                }
+            },
+            "DI": {
+                "bytes": 16,
+                "description": {
+                    "en": "destination index (low 16 bits of RDI)",
+                    "ru": "индекс приёмника (младшие 16 бит RDI)"
+                }
+            },
+            "DL": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of the data register (RDX)",
+                    "ru": "младшие 8 бит регистра данных (из RDX)"
+                }
+            },
+            "DX": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of the data register (RDX)",
+                    "ru": "младшие 16 бит регистра данных (из RDX)"
+                }
+            },
+            "EAX": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of the accumulator (RAX)",
+                    "ru": "младшие 32 бита аккумулятора (RAX)"
+                }
+            },
+            "EBP": {
+                "bytes": 32,
+                "description": {
+                    "en": "base/frame pointer (low 32 bits of RBP)",
+                    "ru": "младшие 32 бита базового указателя (RBP)"
+                }
+            },
+            "EBX": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of the base register (RBX)",
+                    "ru": "младшие 32 бита базового регистра (RBX)"
+                }
+            },
+            "ECX": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of the counter register (RCX)",
+                    "ru": "младшие 32 бита счётчика (RCX)"
+                }
+            },
+            "EDI": {
+                "bytes": 32,
+                "description": {
+                    "en": "destination index (low 32 bits of RDI)",
+                    "ru": "младшие 32 бита индекс приёмника (RDI)"
+                }
+            },
+            "EDX": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of the data register (RDX)",
+                    "ru": "младшие 32 бита регистра данных (RDX)"
+                }
+            },
+            "ESI": {
+                "bytes": 32,
+                "description": {
+                    "en": "source index (low 32 bits of RSI)",
+                    "ru": "младшие 32 бита индекса источника(RSI)"
+                }
+            },
+            "ESP": {
+                "bytes": 32,
+                "description": {
+                    "en": "stack pointer (low 32 bits of RSP)",
+                    "ru": "младшие 32 бита указателя стека (RSP)"
+                }
+            },
+            "R10": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R10B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R10",
+                    "ru": "младшие 8 бит регистра R10"
+                }
+            },
+            "R10D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R10",
+                    "ru": "младшие 32 бита регистра R10"
+                }
+            },
+            "R10W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R10",
+                    "ru": "младшие 16 бит регистра R10"
+                }
+            },
+            "R11": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R11B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R11",
+                    "ru": "младшие 8 бит регистра R11"
+                }
+            },
+            "R11D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R11",
+                    "ru": "младшие 32 бита регистра R11"
+                }
+            },
+            "R11W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R11",
+                    "ru": "младшие 16 бит регистра R11"
+                }
+            },
+            "R12": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R12B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R12",
+                    "ru": "младшие 8 бит регистра R12"
+                }
+            },
+            "R12D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R12",
+                    "ru": "младшие 32 бита регистра R12"
+                }
+            },
+            "R12W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R12",
+                    "ru": "младшие 16 бит регистра R12"
+                }
+            },
+            "R13": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R13B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R13",
+                    "ru": "младшие 8 бит регистра R13"
+                }
+            },
+            "R13D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R13",
+                    "ru": "младшие 32 бита регистра R13"
+                }
+            },
+            "R13W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R13",
+                    "ru": "младшие 16 бит регистра R13"
+                }
+            },
+            "R14": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R14B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R14",
+                    "ru": "младшие 8 бит регистра R14"
+                }
+            },
+            "R14D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R14",
+                    "ru": "младшие 32 бита регистра R14"
+                }
+            },
+            "R14W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R14",
+                    "ru": "младшие 16 бит регистра R14"
+                }
+            },
+            "R15": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R15B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R15",
+                    "ru": "младшие 8 бит регистра R15"
+                }
+            },
+            "R15D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R15",
+                    "ru": "младшие 32 бита регистра R15"
+                }
+            },
+            "R15W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R15",
+                    "ru": "младшие 16 бит регистра R15"
+                }
+            },
+            "R8": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R8B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R8",
+                    "ru": "младшие 8 бит регистра R8"
+                }
+            },
+            "R8D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R8",
+                    "ru": "младшие 32 бита регистра R8"
+                }
+            },
+            "R8W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R8",
+                    "ru": "младшие 16 бит регистра R8"
+                }
+            },
+            "R9": {
+                "bytes": 64,
+                "description": {
+                    "en": "additional 64-bit general-purpose register",
+                    "ru": "дополнительный 64-битный регистр общего назначения"
+                }
+            },
+            "R9B": {
+                "bytes": 8,
+                "description": {
+                    "en": "low 8 bits of R9",
+                    "ru": "младшие 8 бит регистра R9"
+                }
+            },
+            "R9D": {
+                "bytes": 32,
+                "description": {
+                    "en": "low 32 bits of R9",
+                    "ru": "младшие 32 бита регистра R9"
+                }
+            },
+            "R9W": {
+                "bytes": 16,
+                "description": {
+                    "en": "low 16 bits of R9",
+                    "ru": "младшие 16 бит регистра R9"
+                }
+            },
+            "RAX": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit accumulator",
+                    "ru": "64-битный аккумулятор"
+                }
+            },
+            "RBP": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit base/frame pointer",
+                    "ru": "64-битный базовый указатель"
+                }
+            },
+            "RBX": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit base register",
+                    "ru": "64-битный базовый регистр"
+                }
+            },
+            "RCX": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit counter register",
+                    "ru": "64-битный счётчик"
+                }
+            },
+            "RDI": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit destination index",
+                    "ru": "64-битный индекс приёмника"
+                }
+            },
+            "RDX": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit data register",
+                    "ru": "64-битный регистр данных"
+                }
+            },
+            "RSI": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit source index",
+                    "ru": "64-битный индекс источника"
+                }
+            },
+            "RSP": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit stack pointer",
+                    "ru": "64-битный указатель стека"
+                }
+            },
+            "SI": {
+                "bytes": 16,
+                "description": {
+                    "en": "source index (low 16 bits of RSI)",
+                    "ru": "индекс источника (младшие 16 бит RSI)"
+                }
+            },
+            "SP": {
+                "bytes": 16,
+                "description": {
+                    "en": "stack pointer (low 16 bits of RSP)",
+                    "ru": "указатель стека (младшие 16 бит RSP)"
+                }
+            }
+        },
+        "MMX registers": {
+            "MM0": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM0)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM0)"
+                }
+            },
+            "MM1": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM1)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM1)"
+                }
+            },
+            "MM2": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM2)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM2)"
+                }
+            },
+            "MM3": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM3)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM3)"
+                }
+            },
+            "MM4": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM4)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM4)"
+                }
+            },
+            "MM5": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM5)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM5)"
+                }
+            },
+            "MM6": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM6)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM6)"
+                }
+            },
+            "MM7": {
+                "bytes": 64,
+                "description": {
+                    "en": "64-bit MMX register (alias of the low 64 bits of XMM7)",
+                    "ru": "64-битный MMX-регистр (совпадает с нижними 64 битами XMM7)"
+                }
+            }
+        },
+        "SSE2-SSE4": {
+            "XMM0": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM1": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM10": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM11": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM12": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM13": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM14": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM15": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM2": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM3": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM4": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM5": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM6": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM7": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM8": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            },
+            "XMM9": {
+                "bytes": 128,
+                "description": {
+                    "en": "128-bit SIMD register used by SSE2, SSE3, SSE4 instructions",
+                    "ru": "128-битный SIMD-регистр для инструкций SSE2–SSE4"
+                }
+            }
+        }
+    }
+}
