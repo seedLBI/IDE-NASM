@@ -138,7 +138,7 @@
 			"type": "warning",
 			"translation": {
 				"en": "######## There's nothing to debug, you have to assemble first...",
-				"ru": "######## Нечего отлаживать, нужно сначала собрать...",
+				"ru": "######## Нечего отлаживать, нужно сначала собрать..."
 			}
 		}
 	}

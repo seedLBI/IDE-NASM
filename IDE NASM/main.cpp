@@ -13,16 +13,13 @@
 
 
 int main() {
-    //Application IDE;
-    //IDE.Run();
-    //return 0;
+    Application IDE;
+    IDE.Run();
+    return 0;
 
 
-
-    
     std::setlocale(LC_ALL, "russian");
 
-    
     Compiler_Nasm compiler(L"tools\\nasm\\nasm.exe");
     //compiler.DisableTranslate();
     compiler.EnableTranslate();
@@ -32,9 +29,9 @@ int main() {
     compiler.Set_Arg_Optimization(Compiler_ARGS_OPTIMIZATION::NoOptimization);
 
 
-    //Linker_GCC linker(L"tools\\linker\\bin\\gcc.exe");
-    //linker.SetEntryPoint(L"start");
-    //linker.EnableDebug();
+    Linker_GCC linker(L"tools\\linker\\MinGW\\bin\\gcc.exe", L"tools\\linker\\MinGW64\\bin\\gcc.exe");
+    linker.SetEntryPoint(L"start");
+    linker.EnableDebug();
 
     Debugger_GDB debugger(L"tools\\debugger\\bin\\gdb.exe");
 
@@ -81,7 +78,7 @@ int main() {
 
     
     ParserListingFile parser_listingfile;
-    parser_listingfile.Parse(L"C:\\Users\\sosn2\\source\\repos\\IDE NASM\\IDE NASM\\WarningsErrorsTest\\Test\\test.lst",L"test");
+    parser_listingfile.Parse(L"WarningsErrorsTest\\Test\\test.lst",L"test");
 
     debugger.SetListingInfo(parser_listingfile.GetOutput());
     debugger.SetEntryPoint(L"main");
@@ -89,7 +86,7 @@ int main() {
 
     std::cout << "Debugging" << std::endl;
 
-    debugger.Debug(L"C:\\Users\\sosn2\\source\\repos\\IDE NASM\\IDE NASM\\WarningsErrorsTest\\Test\\test.exe");
+    debugger.Debug(L"WarningsErrorsTest\\Test\\test.exe");
 
     
 

@@ -249,24 +249,24 @@ void BuildManager::ThreadLoop() {
 
 
 void BuildManager::InitDefaultTemplates() {
-	template_Debug.flag_Debug = true;
-	template_Debug.arg_optimisation = Compiler_ARGS_OPTIMIZATION::NoOptimization;
+	template_Debug.flag_Debug        = true;
+	template_Debug.arg_optimisation  = Compiler_ARGS_OPTIMIZATION::NoOptimization;
 	template_Debug.arg_errors_preset = Compiler_ARGS_ERRORS_WARNINGS::EnableAll;
-	template_Debug.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows64;
-	template_Debug.str_entryPoint = "main";
-	template_Debug.str_define = "DEBUG";
-	template_Debug.str_NameTemplate = "Debug";
-	template_Debug.platform = BuildManager_DefaultPlatforms::Debug;
+	template_Debug.arg_architecture  = Compiler_ARGS_ARCHITECTURE::Windows64;
+	template_Debug.str_entryPoint	 = "main";
+	template_Debug.str_define		 = "DEBUG";
+	template_Debug.str_NameTemplate  = "Debug";
+	template_Debug.platform			 = BuildManager_DefaultPlatforms::Debug;
 
 	
-	template_Release.flag_Debug = false;
-	template_Release.arg_optimisation = Compiler_ARGS_OPTIMIZATION::MultipassOptimization;
-	template_Release.arg_errors_preset = Compiler_ARGS_ERRORS_WARNINGS::EnableAll;
-	template_Release.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows64;
-	template_Release.str_entryPoint = "main";
-	template_Release.str_define = "RELEASE";
-	template_Release.str_NameTemplate = "Release";
-	template_Release.platform = BuildManager_DefaultPlatforms::Release;
+	template_Release.flag_Debug			= false;
+	template_Release.arg_optimisation	= Compiler_ARGS_OPTIMIZATION::MultipassOptimization;
+	template_Release.arg_errors_preset	= Compiler_ARGS_ERRORS_WARNINGS::EnableAll;
+	template_Release.arg_architecture	= Compiler_ARGS_ARCHITECTURE::Windows64;
+	template_Release.str_entryPoint		= "main";
+	template_Release.str_define			= "RELEASE";
+	template_Release.str_NameTemplate	= "Release";
+	template_Release.platform			= BuildManager_DefaultPlatforms::Release;
 }
 
 SettingBuildTemplate& BuildManager::GetCurrentSettings() {
@@ -281,12 +281,12 @@ void BuildManager::SetArch(const Compiler_ARGS_ARCHITECTURE& arch) {
 
 	if (arch == Compiler_ARGS_ARCHITECTURE::Windows32) {
 		template_Release.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows32;
-		template_Debug.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows32;
+		template_Debug.arg_architecture   = Compiler_ARGS_ARCHITECTURE::Windows32;
 		template_Current.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows32;
 	}
 	else if (arch == Compiler_ARGS_ARCHITECTURE::Windows64) {
 		template_Release.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows64;
-		template_Debug.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows64;
+		template_Debug.arg_architecture   = Compiler_ARGS_ARCHITECTURE::Windows64;
 		template_Current.arg_architecture = Compiler_ARGS_ARCHITECTURE::Windows64;
 	}
 

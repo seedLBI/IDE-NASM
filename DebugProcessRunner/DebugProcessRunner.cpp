@@ -141,13 +141,13 @@ int wmain(int argc, wchar_t* argv[]) {
         else {
 
             mutex_mapping_data.Enter();
-            mapping_data->get()->exitCode = GetExitCodeProcess(pi.hProcess, &mapping_data->get()->exitCode);
+            GetExitCodeProcess(pi.hProcess, &mapping_data->get()->exitCode);
             mapping_data->get()->goodEnding = true;
             mapping_data->get()->isRunning = false;
             mutex_mapping_data.Leave();
 
 
-            wprintf(L"\n\n%s Процесс завершил работу с кодом %d (0x%x)\n", exe.c_str(), mapping_data->get()->exitCode, mapping_data->get()->exitCode);
+            wprintf(L"\n\n[%s] Процесс завершил работу с кодом %d (0x%x)\n", exe.c_str(), mapping_data->get()->exitCode, mapping_data->get()->exitCode);
             wprintf(L"Нажмите любую клавишу, чтобы закрыть это окно...");
 
 

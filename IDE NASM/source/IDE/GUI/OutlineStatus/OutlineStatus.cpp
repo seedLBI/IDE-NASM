@@ -109,6 +109,6 @@ void OutlineStatus::Draw() {
 	auto rect_min = ImVec2(0.f, 0.f);
 	auto rect_max = window_size;
 
-	draw_list->AddRect(rect_min, rect_max, CurrentColor_Lerped, 0.0f, 0, 2.f);
+	draw_list->AddRect(rect_min, rect_max, CurrentColor_Lerped, 0.0f, 0, 4.f);
 }
 
