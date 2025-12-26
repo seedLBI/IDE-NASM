@@ -43,6 +43,7 @@ std::wstring Compiler_Nasm::GetFormatFile_Arg() {
 		return L"-f win64 ";
 		break;
 	default:
+		return L"-f win64 ";
 		break;
 	}
 }
@@ -89,6 +90,7 @@ std::wstring Compiler_Nasm::GetErrorsWarning_Arg() {
 		return L"";
 		break;
 	default:
+		return L"";
 		break;
 	}
 }

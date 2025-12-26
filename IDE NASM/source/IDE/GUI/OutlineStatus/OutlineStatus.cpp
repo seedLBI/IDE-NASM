@@ -12,6 +12,7 @@ ImColor OutlineStatus::GetColorFromCurrentStatus() {
 	case Type_OutlineStatus::OutlineStatus_Running:  return color_Running;
 	case Type_OutlineStatus::OutlineStatus_Debugging: return color_Debugging;
 	default:
+		return color_Default;
 		break;
 	}
 }
@@ -89,14 +90,14 @@ void OutlineStatus::Update() {
 	CurrentColor = GetColorFromCurrentStatus();
 
 	if (flag_MakeSinAlpha) {
-		CurrentColor.Value.w = (sinf(6.1415f * glfwGetTime()) * 0.5f + 0.5f);
+		CurrentColor.Value.w = (sinf(6.1415f * (float)glfwGetTime()) * 0.5f + 0.5f);
 
-		Lerp(CurrentColor_Lerped, CurrentColor, 20.f, fps_limiter->GetDeltaTime());
+		Lerp(CurrentColor_Lerped, CurrentColor, 20.f, (float)fps_limiter->GetDeltaTime());
 
 		CurrentColor.Value.w = 1.f;
 	}
 	else
-		Lerp(CurrentColor_Lerped, CurrentColor, 20.f, fps_limiter->GetDeltaTime());
+		Lerp(CurrentColor_Lerped, CurrentColor, 20.f, (float)fps_limiter->GetDeltaTime());
 }
 
 void OutlineStatus::Draw() {

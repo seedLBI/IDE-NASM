@@ -13,30 +13,30 @@ void MainMenuBar::DrawIcon() {
 	ImGui::SameLine(0.0f, ImGui::GetStyle().ItemSpacing.x);
 }
 
+
+
+int MainMenuBar::GetHeightMenu() {
+	return heightMenu;
+}
+
 void MainMenuBar::DrawProjectName() {
 	const std::string projectName = wstring_to_stringUTF8(solution->GetInfo().NameFolderProject);
 
-	// Размер текста и паддингов
 	ImVec2 padding = ImGui::GetStyle().FramePadding;
 	ImVec2 textSize = ImGui::CalcTextSize(projectName.c_str());
 	float totalW = textSize.x + padding.x * 2.0f;
 	float totalH = textSize.y + padding.y * 2.0f;
 
-	// Уменьшаем высоту (пример: на 20%)
 	float shrinkFactor = 0.8f;
 	float newH = totalH * shrinkFactor;
 
-	// Получаем высоту строки (frame) — это высота меню/фрейма
 	float frameH = ImGui::GetFrameHeight();
 
-	// Считаем, на сколько нужно опустить наш элемент, чтобы центрировать по высоте
 	float vertOffset = (frameH - newH) * 0.5f;
 
-	// Позиционируемся на той же линии и со смещением по Y
 	ImGui::SameLine(0.0f, ImGui::GetStyle().ItemSpacing.x + 10.0f);
 	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + vertOffset);
 
-	// Резервируем область под наш элемент
 	ImGui::Dummy(ImVec2(totalW, newH));
 
 	if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNone)) {
@@ -45,14 +45,11 @@ void MainMenuBar::DrawProjectName() {
 		ImGui::EndTooltip();
 	}
 
-	// Координаты прямоугольника
 	ImVec2 bb_min = ImGui::GetItemRectMin();
 	ImVec2 bb_max = ImGui::GetItemRectMax();
 
-	// Сдвиг текста внутри рамки для вертикального центрирования
 	float textOffsetY = (newH - textSize.y) * 0.5f;
 
-	// Рисуем рамку и текст
 	ImDrawList* draw = ImGui::GetWindowDrawList();
 	ImU32 col_text = ImGui::GetColorU32(ImGuiCol_Text);
 
@@ -73,15 +70,12 @@ void MainMenuBar::DrawTitleButtons() {
 	float paddingRight = style.WindowPadding.x;
 	float totalWidth = 3 * buttonWidth;
 
-	// выравниваем блок кнопок по правому краю
 	ImGui::SetCursorPosX(windowWidth - totalWidth);
 
-	// сохраняем текущие цвета кнопки
 	ImVec4 colBtn = style.Colors[ImGuiCol_Button];
 	ImVec4 colBtnHover = style.Colors[ImGuiCol_ButtonHovered];
 	ImVec4 colBtnActive = style.Colors[ImGuiCol_ButtonActive];
 
-	// делаем «фон» кнопок таким же, как фон окна (невидимыми)
 	ImGui::PushStyleColor(ImGuiCol_Button, style.Colors[ImGuiCol_MenuBarBg]);
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colBtnHover);
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, colBtnActive);
@@ -93,6 +87,7 @@ void MainMenuBar::DrawTitleButtons() {
 	if (ImGui::Button(ICON_FA_MINUS, buttonSize)) {
 		glfwIconifyWindow(window);
 	}
+	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 	ImGui::SameLine(0,0);
 	if (ImGui::Button(ICON_FA_EXPAND, buttonSize)) {
 		if (glfwGetWindowAttrib(window, GLFW_MAXIMIZED))
@@ -100,10 +95,12 @@ void MainMenuBar::DrawTitleButtons() {
 		else
 			glfwMaximizeWindow(window);
 	}
+	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 	ImGui::SameLine(0,0);
 	if (ImGui::Button(ICON_FA_XMARK, buttonSize)) {
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 	}
+	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 	// восстанавливаем старые цвета
 	ImGui::PopStyleColor(3);
@@ -125,6 +122,8 @@ bool MainMenuBar::IsPointOverTitleButton(const POINT& pt) const {
 
 void MainMenuBar::Draw() {
 
+	heightMenu = 0.f;
+
 	const static std::string Menu_File		= std::string(ICON_FA_FILE)			+ u8" Файл";
 	const static std::string Menu_View		= std::string(ICON_FA_MOUNTAIN_SUN)	+ u8" Вид";
 	const static std::string Menu_Setting	= std::string(ICON_FA_GEAR)			+ u8" Настройки";
@@ -141,7 +140,8 @@ void MainMenuBar::Draw() {
 
 	if (ImGui::BeginMainMenuBar()) {
 
-
+		float height = ImGui::GetFrameHeight();
+		heightMenu += height;
 
 		titleButtonRects.clear();
 
@@ -262,7 +262,8 @@ void MainMenuBar::Draw() {
 		if (ImGui::BeginViewportSideBar("##SecondaryMenuBar", NULL, ImGuiDir_Up, height, window_flags)) {
 			if (ImGui::BeginMenuBar()) {
 
-
+				float height = ImGui::GetFrameHeight();
+				heightMenu += height;
 
 				ImGui::Dummy(ImVec2(20.f, 0.f));
 
@@ -278,17 +279,20 @@ void MainMenuBar::Draw() {
 				if (ImGui::Button(ICON_FA_FILE_CIRCLE_PLUS, ImVec2(55.f, 0.f))) {
 					solution->Create();
 				}
+				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 				ImGui::SameLine(0, 0);
 				if (ImGui::Button(ICON_FA_FOLDER_OPEN, ImVec2(55.f, 0.f))) {
 					if (solution->Open()) {
 						buildManager->ClearOutput();
 					}
 				}
+				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
 				ImGui::SameLine(0, 0);
 				if (ImGui::Button(ICON_FA_FLOPPY_DISK, ImVec2(55.f, 0.f))) {
 					solution->SaveCurrentSolution();
 				}
-
+				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 				ImGui::PopStyleColor(3);
 
@@ -329,6 +333,7 @@ void MainMenuBar::Draw() {
 
 					ImGui::EndCombo();
 				}
+				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 				ImGui::EndDisabled();
 
@@ -365,6 +370,7 @@ void MainMenuBar::Draw() {
 
 					ImGui::EndCombo();
 				}
+				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 				ImGui::EndDisabled();
 
@@ -399,6 +405,7 @@ void MainMenuBar::Draw() {
 					firstTime = true;
 					buildManager->SetEntryPoint(buf_entryPoint);
 				}
+				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 				ImGui::EndDisabled();
 
@@ -412,6 +419,7 @@ void MainMenuBar::Draw() {
 					if (ImGui::Button(std::string(ICON_FA_STOP + std::string(u8" Остановить")).c_str())) {
 						buildManager->TerminateRun();
 					}
+					titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 				}
 				else {
 					ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
@@ -419,12 +427,14 @@ void MainMenuBar::Draw() {
 					if (ImGui::Button(std::string(ICON_FA_PLAY + std::string(u8" Пуск")).c_str())) {
 						buildManager->Run();
 					}
+					titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 					ImGui::EndDisabled();
 				}
 
 				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
 					ImGui::Button(std::string(ICON_FA_PLAY + std::string(u8" Отладка")).c_str());
+					titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 				ImGui::EndDisabled();
 
 				ImGui::PopStyleColor(3);

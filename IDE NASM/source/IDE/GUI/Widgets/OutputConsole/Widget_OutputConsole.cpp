@@ -19,6 +19,7 @@ Widget_OutputConsole::Widget_OutputConsole(
 			DataText = nlohmann::json::parse(ifn);
 		}
 		catch (const nlohmann::json::parse_error& e) {
+			static_cast<void>(e);
 #ifdef _DEBUG
 			std::cout << "ERROR  OutputConsoleDrawer_NASM::OutputConsoleDrawer_NASM()\n";
 #endif // _DEBUG
@@ -37,15 +38,16 @@ Widget_OutputConsole::Widget_OutputConsole(
 
 	nasmSyntaxHighlighter = new OutputConsoleDrawer_NASM(solution, fontManager, typeMessageDraw, DataText);
 	ideSyntaxHighlighter = new OutputConsoleDrawer_IDE(solution, fontManager, typeMessageDraw, DataText);
-
+	runSyntaxHighlighter = new OutputConsoleDrawer_RUN(solution, fontManager, typeMessageDraw, DataText);
 
 
 
 	IThemeLoadable::InitListWord(
 		{
 			u8"Выделенный текст", u8"NASM", u8"NASM флаг компиляции", u8"GCC",
-			u8"DBG", u8"IDE",u8"Информация", u8"Предупреждение", u8"Ошибка", u8"Парсер",
-			u8"Аварийное завершение", u8"Критическая ошибка", u8"Компилятор", u8"Успех"
+			u8"DBG", u8"IDE", u8"RUN", u8"RUN_TEXT", u8"Информация", u8"Предупреждение",
+			u8"Ошибка", u8"Парсер",u8"Аварийное завершение", u8"Критическая ошибка", 
+			u8"Компилятор", u8"Успех"
 		}
 	);
 
@@ -71,6 +73,10 @@ void Widget_OutputConsole::LoadColors() {
 			color_DBG = object_colors.colors[i].color;
 		else if (toSearch == u8"IDE")
 			color_IDE = object_colors.colors[i].color;
+		else if (toSearch == u8"RUN")
+			color_RUN = object_colors.colors[i].color;
+		else if (toSearch == u8"RUN_TEXT")
+			color_RUN = object_colors.colors[i].color;
 		else if(toSearch == u8"Компилятор")
 			color_type_msg_compiler = object_colors.colors[i].color;
 		else if (toSearch == u8"Информация")
@@ -93,6 +99,7 @@ void Widget_OutputConsole::LoadColors() {
 	typeMessageDraw->InitColors(object_colors.colors);
 	nasmSyntaxHighlighter->InitColors(object_colors.colors);
 	ideSyntaxHighlighter->InitColors(object_colors.colors);
+	runSyntaxHighlighter->InitColors(object_colors.colors);
 }
 
 std::vector<NamedColor> Widget_OutputConsole::GetDefaultLightColors() {
@@ -104,12 +111,14 @@ std::vector<NamedColor> Widget_OutputConsole::GetDefaultLightColors() {
 		{u8"GCC",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 		{u8"DBG",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 		{u8"IDE",						ImColor(112, 37, 0, 255)},
+		{u8"RUN",						ImColor(255, 0, 58, 255)},
+		{u8"RUN_TEXT",					ImColor(11, 26, 141, 255)},
 		{u8"Информация",				ImColor(0,120,185,255)},
 		{u8"Предупреждение",			ImColor(183,106,0,255)},
 		{u8"Ошибка",					ImColor(176,0,0,255)},
 		{u8"Аварийное завершение",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 		{u8"Критическая ошибка",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"Парсер",					ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{u8"Парсер",					ImColor(46,147,112,255)},
 		{u8"Успех",						ImColor(0,128,7,255)},
 		{u8"Компилятор",				ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 	};
@@ -126,12 +135,14 @@ std::vector<NamedColor> Widget_OutputConsole::GetDefaultDarkColors() {
 		{u8"GCC",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 		{u8"DBG",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 		{u8"IDE",						ImColor(241.f / 255.f, 51.f / 255.f, 255.f / 255.f, 1.f)},
+		{u8"RUN",						ImColor(255, 40, 40, 255)},
+		{u8"RUN_TEXT",					ImColor(255, 40, 40, 255)},
 		{u8"Информация",				ImColor(100.f / 255.f, 172.f / 255.f, 255.f / 255.f, 1.00f)},
 		{u8"Предупреждение",			ImColor(255.f / 255.f, 128.f / 255.f, 3.f / 255.f, 1.00f)},
 		{u8"Ошибка",					ImColor(255.f / 255.f, 31.f / 255.f, 0.f / 255.f, 1.00f)},
 		{u8"Аварийное завершение",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 		{u8"Критическая ошибка",		ImColor(149.f / 255.f, 0.f / 255.f, 0.f / 255.f, 1.00f)  },
-		{u8"Парсер",					ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{u8"Парсер",					ImColor(0,255,161,255)},
 		{u8"Успех",						ImColor(0.20f, 1.00f, 0.20f, 1.00f)},
 		{u8"Компилятор",				ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 	};
@@ -242,14 +253,18 @@ void Widget_OutputConsole::Draw() {
 			{
 				if (outputData[i].type() == typeid(InfoLineIDE)) {
 					InfoLineIDE* info = std::any_cast<InfoLineIDE>(&outputData[i]);
-					ideSyntaxHighlighter->DrawLine(i, *info);
+					ideSyntaxHighlighter->DrawLine((int)i, *info);
 					
 				}
 				else if (outputData[i].type() == typeid(NasmOutputLine)) {
 					NasmOutputLine* info = std::any_cast<NasmOutputLine>(&outputData[i]);
-					if (nasmSyntaxHighlighter->DrawLine(i, *info)) {
+					if (nasmSyntaxHighlighter->DrawLine((int)i, *info)) {
 						WidgetManagerTextEditor->SetActiveFromPath( solution->GetInfo().GetPathAbsolute() + L"\\" + stringUTF8_to_wstring(info->FileName));
 					}
+				}
+				else if (outputData[i].type() == typeid(std::string)) {
+					std::string* info = std::any_cast<std::string>(&outputData[i]);
+					runSyntaxHighlighter->DrawLine((int)i, *info);
 				}
 				
 			}
@@ -276,7 +291,10 @@ void Widget_OutputConsole::Draw() {
 					str_TextMultiline += info->OriginalText + "\n";
 
 				}
-
+				else if (outputData[i].type() == typeid(std::string)) {
+					std::string* info = std::any_cast<std::string>(&outputData[i]);
+					str_TextMultiline += *info + "\n";
+				}
 
 			}
 

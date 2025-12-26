@@ -61,10 +61,16 @@ std::wstring Linker_GCC::Get_arg_arch() {
 		return L"-m32 ";
 	else if (CurrentArch == LinkerArchs::Windows64)
 		return L"-m64 ";
+
+	return L"wtf";
 }
 
 std::wstring Linker_GCC::MakeArgumentLine() {
-	return Get_arg_input_object_file() + Get_arg_custom_entry_point() + Get_arg_output_file() + Get_arg_debug() + Get_arg_arch();
+	return Get_arg_input_object_file() +
+		Get_arg_custom_entry_point() +
+		Get_arg_output_file() +
+		Get_arg_debug() +
+		Get_arg_arch();
 }
 
 void Linker_GCC::SetPath_ObjectFile(const std::wstring& path) {
@@ -120,6 +126,7 @@ std::vector<std::string> Linker_GCC::GetOutput() {
 	else if (CurrentArch == LinkerArchs::Windows64)
 		return LinkerRunner_64->GetOutput();
 
+	return LinkerRunner_64->GetOutput();
 }
 
 bool Linker_GCC::IsRunning() {
@@ -127,6 +134,8 @@ bool Linker_GCC::IsRunning() {
 		return LinkerRunner_32->IsRunning();
 	else if (CurrentArch == LinkerArchs::Windows64)
 		return LinkerRunner_64->IsRunning();
+
+	return LinkerRunner_64->IsRunning();
 }
 
 bool Linker_GCC::IsLinked() {
@@ -134,12 +143,16 @@ bool Linker_GCC::IsLinked() {
 		return LinkerRunner_32->IsRunning() == false;
 	else if (CurrentArch == LinkerArchs::Windows64)
 		return LinkerRunner_64->IsRunning() == false;
+
+	return LinkerRunner_64->IsRunning() == false;
 }
 std::string Linker_GCC::GetVersion() {
 	if (CurrentArch == LinkerArchs::Windows32)
 		return Version_32;
 	else if (CurrentArch == LinkerArchs::Windows64)
 		return Version_64;
+
+	return Version_64;
 }
 
 Linker_GCC::Linker_GCC(const std::wstring& path2linker_32, const std::wstring& path2linker_64) {

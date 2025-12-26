@@ -26,7 +26,7 @@ void Window::SetPosition(const glm::vec2& pos) {
 }
 void Window::SetSize(const glm::vec2& size) {
 	glfwSetWindowSize(handleWindow, static_cast<int>(size.x), static_cast<int>(size.y));
-	glViewport(0, 0, size.x, size.y);
+	glViewport(0, 0, GLsizei(size.x), GLsizei(size.y));
 }
 
 

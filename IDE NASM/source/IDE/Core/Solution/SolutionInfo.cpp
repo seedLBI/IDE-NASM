@@ -19,6 +19,7 @@ SolutionInfo ReadSolutionInfo(const std::wstring& CompletePath, bool& Status) {
 		solutionData = nlohmann::json::parse(ifn);
 	}
 	catch (const nlohmann::json::parse_error& e) {
+		static_cast<void>(e);
 #ifdef _DEBUG
 		std::cout << "ERROR  SolutionInfo ReadSolutionInfo(const std::wstring& CompletePath, bool& Status)\n";
 #endif // _DEBUG

@@ -9,6 +9,8 @@
 
 #include "IDE/GUI/Widgets/OutputConsole/OutputConsoleDrawer/NASM/OutputConsoleDrawer.NASM.h"
 #include "IDE/GUI/Widgets/OutputConsole/OutputConsoleDrawer/IDE/OutputConsoleDrawer.IDE.h"
+#include "IDE/GUI/Widgets/OutputConsole//OutputConsoleDrawer/RUN/OutputConsoleDrawer.RUN.h"
+
 #include "IDE/GUI/Widgets/OutputConsole/TypeMessageDraw/TypeMessageDraw.h"
 #include "IDE/GUI/Elements/ComboLanguage/ComboLanguage.h"
 
@@ -40,8 +42,8 @@ private:
 	WidgetManager_TextEditor* WidgetManagerTextEditor = nullptr;
 
 	OutputConsoleDrawer_NASM* nasmSyntaxHighlighter = nullptr;
-	OutputConsoleDrawer_IDE* ideSyntaxHighlighter = nullptr;
-
+	OutputConsoleDrawer_IDE*  ideSyntaxHighlighter  = nullptr;
+	OutputConsoleDrawer_RUN*  runSyntaxHighlighter  = nullptr;
 
 	TypeMessageDraw* typeMessageDraw = nullptr;
 
@@ -58,6 +60,7 @@ private:
 	ImColor color_GCC;
 	ImColor color_DBG;
 	ImColor color_IDE;
+	ImColor color_RUN;
 
 	ImColor color_type_msg_compiler;
 	ImColor color_type_msg_info;

@@ -10,4 +10,8 @@
 
 uint64_t GetCurrentTimestamp();
 
+std::string Get_str_CurrentTimestamp_OnlyTime();
+
+
+
 #endif

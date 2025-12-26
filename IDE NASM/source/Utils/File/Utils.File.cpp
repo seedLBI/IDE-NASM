@@ -91,7 +91,6 @@ std::string Save_FileDialog(const std::string& TitleWindow, const std::string& F
     OPENFILENAME ofn;       // common dialog box structure
     wchar_t szFile[460]{};        // buffer for file name
     HWND hwnd = GetConsoleWindow();              // owner window
-    HANDLE hf;              // file handle
     // Initialize OPENFILENAME
     ZeroMemory(&ofn, sizeof(ofn));
     ofn.lStructSize = sizeof(ofn);

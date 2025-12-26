@@ -16,8 +16,6 @@ OutputConsoleDrawer_IDE::~OutputConsoleDrawer_IDE() {
 
 void OutputConsoleDrawer_IDE::DrawLine(const int& index, InfoLineIDE& line) {
 
-
-
 	ImGui::TableNextRow();
 	auto color_bg_row = typeMessageDraw->GetColorMSG(line.type);
 	color_bg_row.Value.w = 0.07f;

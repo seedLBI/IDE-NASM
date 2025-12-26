@@ -56,6 +56,8 @@ public:
 	void SetIncludePath(const std::wstring& outputPath);
 	void SetDirectoryForRun(const std::wstring directoryPath);
 
+	std::wstring CreateArgumentsLine();
+
 	bool Get_flag_Debug();
 	void EnableDebug();
 	void DisableDebug();
@@ -102,8 +104,6 @@ private:
 
 
 	ProcessRuner* CompilerRunner = nullptr;
-
-	std::wstring CreateArgumentsLine();
 
 	std::wstring GetFormatFile_Arg();
 	std::wstring GetInputFile_Arg();

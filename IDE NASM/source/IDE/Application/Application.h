@@ -120,6 +120,9 @@ private:
 	void InitThemeManager();
 
 	void InitOpenglWindow();
+	void Init_IconApplication();
+	void Init_BorderWindow();
+	void Init_ImGui();
 	
 	void BeginDraw();
 	void EndDraw();

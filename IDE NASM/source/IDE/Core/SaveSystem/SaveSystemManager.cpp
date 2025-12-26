@@ -103,6 +103,7 @@ void SaveSystemManager::ReadFromFile(std::ifstream& FileSave) {
 		DataLoad = nlohmann::json::parse(FileSave);
 	}
 	catch (const nlohmann::json::parse_error& e) {
+		static_cast<void>(e);
 #ifdef _DEBUG
 		std::cout << "INCORRECT JSON DATA\n";
 #endif
@@ -120,6 +121,7 @@ void SaveSystemManager::ReadFromMemory(const std::string& Data) {
 		DataLoad = nlohmann::json::parse(Data);
 	}
 	catch (const nlohmann::json::parse_error& e) {
+		static_cast<void>(e);
 #ifdef _DEBUG
 		std::cout << "INCORRECT JSON DATA\n";
 #endif

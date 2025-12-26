@@ -29,7 +29,6 @@ public:
 	~OutputConsoleDrawer_NASM();
 
 	bool DrawLine(const int& index, NasmOutputLine& line);
-
 	void InitColors(const std::vector<NamedColor>& colors);
 
 	nlohmann::json* GetSyntaxData();

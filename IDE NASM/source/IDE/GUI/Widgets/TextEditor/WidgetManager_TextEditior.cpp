@@ -181,6 +181,7 @@ Widget_TextEditor* WidgetManager_TextEditor::GetWidgetFromPath(const std::wstrin
 			return widgets[i];
 		}
 	}
+	return nullptr;
 }
 
 nlohmann::json WidgetManager_TextEditor::Save() {

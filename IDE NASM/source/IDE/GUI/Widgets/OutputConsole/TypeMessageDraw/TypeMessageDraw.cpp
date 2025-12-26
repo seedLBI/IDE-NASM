@@ -20,7 +20,7 @@ ImColor TypeMessageDraw::GetColorMSG(const TypeMessageConsole& type) {
 		case MessageConsole_Parser: return color_type_msg_parser;
 		case MessageConsole_Fatal: return color_type_msg_fatal;
 		case MessageConsole_Success: return color_type_msg_success;
-	default: ImColor(0, 0, 0);
+	default: return ImColor(0, 0, 0);
 	}
 }
 

@@ -137,6 +137,10 @@ int wmain(int argc, wchar_t* argv[]) {
 
             wprintf(L"\n\n%s Процесс был принудительно завершён\n", exe.c_str());
             wprintf(L"Нажмите любую клавишу, чтобы закрыть это окно...");
+
+            _getch();
+
+
         }
         else {
 

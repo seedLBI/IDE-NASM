@@ -24,7 +24,7 @@
         },
         "Цветовая тема": {
             "Themes": {
-                "indexChoosed": 1,
+                "indexChoosed": 0,
                 "themes": {
                     "sdadas": {
                         "objects": {

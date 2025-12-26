@@ -81,8 +81,10 @@ int Texture::GetTypeImageData(const int& channels) {
 		break;
 	case 0:
 		exit(100);
+		return -1;
 		break;
 	default:
+		return -1;
 		break;
 	}
 }

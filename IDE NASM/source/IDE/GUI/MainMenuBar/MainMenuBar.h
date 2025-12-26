@@ -40,6 +40,8 @@ public:
 
 	void Draw();
 	void Update();
+	
+	int GetHeightMenu();
 
 	bool IsMouseOverMenuBar();
 
@@ -55,6 +57,8 @@ private:
 	Setting* setting = nullptr;
 	BuildManager* buildManager = nullptr;
 
+
+	float heightMenu = 0.f;
 
 	void LoadIcon();
 

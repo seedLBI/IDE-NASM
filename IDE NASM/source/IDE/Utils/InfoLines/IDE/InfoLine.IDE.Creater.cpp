@@ -1,4 +1,5 @@
 #include "InfoLine.IDE.Creater.h"
+#include "Utils/Time/Utils.Time.h"
 
 InfoLineIDE InfoLineIDE_Creater::MakeInfo_BeginCompile() {
 	auto timestamp = GetCurrentTimestamp();
@@ -7,42 +8,7 @@ InfoLineIDE InfoLineIDE_Creater::MakeInfo_BeginCompile() {
 	result.message_type = TypeMessageIDE::compilation_begin;
 	result.GetType(dataTranslate);
 	result.GetDescription(dataTranslate);
-
-	time_t ts = static_cast<time_t>(timestamp);
-	struct tm dt;
-	localtime_s(&dt, &ts);
-
-	int year = dt.tm_year + 1900;
-	int month = dt.tm_mon + 1;
-	int day = dt.tm_mday;
-	int hour = dt.tm_hour;
-	int minute = dt.tm_min;
-	int second = dt.tm_sec;
-
-
-	/*
-	std::string str_day = std::to_string(day);
-	PadLeft(str_day, '0', 2);
-
-	std::string str_month = std::to_string(month);
-	PadLeft(str_month, '0', 2);
-
-	std::string str_year = std::to_string(year);
-
-	std::string date = "[" + str_day + "." + str_month + "." + str_year + "]";
-	*/
-
-
-	std::string str_hour = std::to_string(hour);
-	PadLeft(str_hour, '0', 2);
-
-	std::string str_minute = std::to_string(minute);
-	PadLeft(str_minute, '0', 2);
-
-	std::string time = "[" + str_hour + ":" + str_minute + "]";
-
-
-	result.description_additional += time;
+	result.description_additional = Get_str_CurrentTimestamp_OnlyTime();
 
 
 	CompilationTimer.start();
@@ -123,52 +89,16 @@ InfoLineIDE InfoLineIDE_Creater::MakeInfo_EndCompile_Good() {
 }
 
 InfoLineIDE InfoLineIDE_Creater::MakeInfo_BeginLink() {
-	auto timestamp = GetCurrentTimestamp();
 	InfoLineIDE result;
 
 	result.message_type = TypeMessageIDE::linking_begin;
 	result.GetType(dataTranslate);
 	result.GetDescription(dataTranslate);
+	result.description_additional = Get_str_CurrentTimestamp_OnlyTime();
 
-	time_t ts = static_cast<time_t>(timestamp);
-	struct tm dt;
-	localtime_s(&dt, &ts);
-
-	int year = dt.tm_year + 1900;
-	int month = dt.tm_mon + 1;
-	int day = dt.tm_mday;
-	int hour = dt.tm_hour;
-	int minute = dt.tm_min;
-	int second = dt.tm_sec;
-
-
-	/*
-	std::string str_day = std::to_string(day);
-	PadLeft(str_day, '0', 2);
-
-	std::string str_month = std::to_string(month);
-	PadLeft(str_month, '0', 2);
-
-	std::string str_year = std::to_string(year);
-
-	std::string date = "[" + str_day + "." + str_month + "." + str_year + "]";
-	*/
-
-
-	std::string str_hour = std::to_string(hour);
-	PadLeft(str_hour, '0', 2);
-
-	std::string str_minute = std::to_string(minute);
-	PadLeft(str_minute, '0', 2);
-
-	std::string time = "[" + str_hour + ":" + str_minute + "]";
-
-
-	result.description_additional += time;
 
 
 	LinkTimer.start();
-
 	return result;
 }
 InfoLineIDE InfoLineIDE_Creater::MakeInfo_EndLink() {
@@ -184,7 +114,7 @@ InfoLineIDE InfoLineIDE_Creater::MakeInfo_EndLink() {
 
 
 
-	auto time_temp = CompilationTimer.elapsedMilliseconds();
+	auto time_temp = LinkTimer.elapsedMilliseconds();
 
 	uint64_t timestamp = static_cast<uint64_t>(time_temp);
 
@@ -240,42 +170,7 @@ InfoLineIDE InfoLineIDE_Creater::MakeInfo_BeginRun() {
 	result.message_type = TypeMessageIDE::running_begin;
 	result.GetType(dataTranslate);
 	result.GetDescription(dataTranslate);
-
-	time_t ts = static_cast<time_t>(timestamp);
-	struct tm dt;
-	localtime_s(&dt, &ts);
-
-	int year = dt.tm_year + 1900;
-	int month = dt.tm_mon + 1;
-	int day = dt.tm_mday;
-	int hour = dt.tm_hour;
-	int minute = dt.tm_min;
-	int second = dt.tm_sec;
-
-
-	/*
-	std::string str_day = std::to_string(day);
-	PadLeft(str_day, '0', 2);
-
-	std::string str_month = std::to_string(month);
-	PadLeft(str_month, '0', 2);
-
-	std::string str_year = std::to_string(year);
-
-	std::string date = "[" + str_day + "." + str_month + "." + str_year + "]";
-	*/
-
-
-	std::string str_hour = std::to_string(hour);
-	PadLeft(str_hour, '0', 2);
-
-	std::string str_minute = std::to_string(minute);
-	PadLeft(str_minute, '0', 2);
-
-	std::string time = "[" + str_hour + ":" + str_minute + "]";
-
-
-	result.description_additional += time;
+	result.description_additional = Get_str_CurrentTimestamp_OnlyTime();
 
 
 	RunTimer.start();
@@ -283,7 +178,7 @@ InfoLineIDE InfoLineIDE_Creater::MakeInfo_BeginRun() {
 	return result;
 }
 InfoLineIDE InfoLineIDE_Creater::MakeInfo_EndRun_Good() {
-	LinkTimer.stop();
+	RunTimer.stop();
 
 
 
@@ -295,7 +190,7 @@ InfoLineIDE InfoLineIDE_Creater::MakeInfo_EndRun_Good() {
 
 
 
-	auto time_temp = CompilationTimer.elapsedMilliseconds();
+	auto time_temp = RunTimer.elapsedMilliseconds();
 
 	uint64_t timestamp = static_cast<uint64_t>(time_temp);
 
@@ -374,6 +269,7 @@ InfoLineIDE_Creater::InfoLineIDE_Creater() {
 			dataTranslate = nlohmann::json::parse(ifn);
 		}
 		catch (const nlohmann::json::parse_error& e) {
+			static_cast<void>(e);
 #ifdef _DEBUG
 			std::cout << "ERROR  OutputConsoleDrawer_NASM::OutputConsoleDrawer_NASM()\n";
 #endif // _DEBUG

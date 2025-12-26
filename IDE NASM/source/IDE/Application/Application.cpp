@@ -9,6 +9,9 @@ Application::Application() {
 	}
 
 	InitOpenglWindow();
+	Init_IconApplication();
+	Init_BorderWindow();
+	Init_ImGui();
 
 	fontManager = new FontManager;
 
@@ -80,24 +83,20 @@ void Application::InitThemeManager() {
 	themeManager->AddObject(mainMenuBar);
 	
 }
-
 void Application::InitSaveSystemManager() {
 	saveSystemManager->AddObjectPtr(setting);
 	saveSystemManager->AddObjectPtr(lastSolutionManager);
 }
-
 void Application::InitSetting() {
 	setting->AddSettingObject(lastSolutionManager);
 	setting->AddSettingObject(keyCombinationHandler);
 	setting->AddSettingObject(themeManager);
 }
-
 void Application::InitWidgetManager() {
 	widgetManager->AddWidgetPtr(widget_FilesViewer);
 	widgetManager->AddWidgetPtr(widget_OutputConsole);
 	widgetManager->AddWidgetPtr(widgetManager_TextEditor);
 }
-
 void Application::InitKeyCombinationHandler() {
 	keyCombinationHandler->AddCombination(
 		u8"Сохранить текущий активный файл", 
@@ -174,111 +173,6 @@ void Application::Update() {
 	keyCombinationHandler->Update();
 	widgetManager->Update();
 	outlineStatus->Update();
-
-	/*
-
-	GLFWwindow* win = windowManager->GetMainWindow()->GetHandle();
-	double mouseX, mouseY;
-	glfwGetCursorPos(win, &mouseX, &mouseY);
-	int winWidth, winHeight;
-	glfwGetWindowSize(win, &winWidth, &winHeight);
-
-	const int border = 5; // Ширина границы для захвата
-	bool overLeft = mouseX >= 0 && mouseX < border;
-	bool overRight = mouseX >= winWidth - border && mouseX < winWidth;
-	bool overTop = mouseY >= 0 && mouseY < border;
-	bool overBottom = mouseY >= winHeight - border && mouseY < winHeight;
-
-	// Установка курсора
-	if ((overLeft && overTop) || (overRight && overBottom)) {
-		glfwSetCursor(win, glfwCreateStandardCursor(GLFW_RESIZE_NWSE_CURSOR));
-	}
-	else if ((overLeft && overBottom) || (overRight && overTop)) {
-		glfwSetCursor(win, glfwCreateStandardCursor(GLFW_RESIZE_NESW_CURSOR));
-	}
-	else if (overLeft || overRight) {
-		glfwSetCursor(win, glfwCreateStandardCursor(GLFW_HRESIZE_CURSOR));
-	}
-	else if (overTop || overBottom) {
-		glfwSetCursor(win, glfwCreateStandardCursor(GLFW_VRESIZE_CURSOR));
-	}
-	else {
-		glfwSetCursor(win, nullptr);
-	}
-
-	static bool isResizing = false;
-	static int resizeDir = 0; // 1: left, 2: right, 3: top, 4: bottom, 5+: углы
-	if (glfwGetMouseButton(win, GLFW_MOUSE_BUTTON_LEFT) == GLFW_PRESS) {
-		if (!isResizing) {
-			if (overLeft && overTop) resizeDir = 5;
-			else if (overRight && overBottom) resizeDir = 6;
-			else if (overLeft && overBottom) resizeDir = 7;
-			else if (overRight && overTop) resizeDir = 8;
-			else if (overLeft) resizeDir = 1;
-			else if (overRight) resizeDir = 2;
-			else if (overTop) resizeDir = 3;
-			else if (overBottom) resizeDir = 4;
-			if (resizeDir > 0) isResizing = true;
-		}
-	}
-	else {
-		isResizing = false;
-		resizeDir = 0;
-	}
-
-	if (isResizing) {
-		double newMouseX, newMouseY;
-		glfwGetCursorPos(win, &newMouseX, &newMouseY);
-		int newX, newY, newWidth, newHeight;
-		glfwGetWindowPos(win, &newX, &newY);
-		glfwGetWindowSize(win, &newWidth, &newHeight);
-
-		switch (resizeDir) {
-		case 1: // Левый край
-			newWidth += static_cast<int>(mouseX - newMouseX);
-			newX += static_cast<int>(newMouseX - mouseX);
-			break;
-		case 2: // Правый край
-			newWidth += static_cast<int>(newMouseX - mouseX);
-			break;
-		case 3: // Верхний край
-			newHeight += static_cast<int>(mouseY - newMouseY);
-			newY += static_cast<int>(newMouseY - mouseY);
-			break;
-		case 4: // Нижний край
-			newHeight += static_cast<int>(newMouseY - mouseY);
-			break;
-		case 5: // Левый верхний угол
-			newWidth += static_cast<int>(mouseX - newMouseX);
-			newHeight += static_cast<int>(mouseY - newMouseY);
-			newX += static_cast<int>(newMouseX - mouseX);
-			newY += static_cast<int>(newMouseY - mouseY);
-			break;
-		case 6: // Правый нижний угол
-			newWidth += static_cast<int>(newMouseX - mouseX);
-			newHeight += static_cast<int>(newMouseY - mouseY);
-			break;
-		case 7: // Левый нижний угол
-			newWidth += static_cast<int>(mouseX - newMouseX);
-			newHeight += static_cast<int>(newMouseY - mouseY);
-			newX += static_cast<int>(newMouseX - mouseX);
-			break;
-		case 8: // Правый верхний угол
-			newWidth += static_cast<int>(newMouseX - mouseX);
-			newHeight += static_cast<int>(mouseY - newMouseY);
-			newY += static_cast<int>(newMouseY - mouseY);
-			break;
-		}
-
-		// Ограничение минимального размера окна
-		if (newWidth < 300) newWidth = 300;
-		if (newHeight < 200) newHeight = 200;
-		glfwSetWindowPos(win, newX, newY);
-		glfwSetWindowSize(win, newWidth, newHeight);
-		mouseX = newMouseX;
-		mouseY = newMouseY;
-	}
-	*/
 }
 
 
@@ -388,99 +282,100 @@ MainMenuBar* Application::GetPTR_MainMenuBar() {
 
 
 LRESULT CALLBACK custom_wndproc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-
+	auto it = g_hwnd_to_window.find(hwnd);
+	GLFWwindow* win = it->second;
+	Application* app = static_cast<Application*>(glfwGetWindowUserPointer(win));
 
 	switch (msg) {
 	case WM_NCCALCSIZE: {
-		if (wParam) {
-			auto params = reinterpret_cast<NCCALCSIZE_PARAMS*>(lParam);
-			RECT& rc = params->rgrc[0];
+		auto params = reinterpret_cast<NCCALCSIZE_PARAMS*>(lParam);
 
+		if (IsZoomed(hwnd)) {
 			HMONITOR hMon = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
 			MONITORINFO mi = { sizeof(mi) };
 			GetMonitorInfo(hMon, &mi);
-			RECT wa = mi.rcWork;
+			RECT rcWork = mi.rcWork;
 
-			int winW = rc.right - rc.left;
-			int winH = rc.bottom - rc.top;
-			int workW = wa.right - wa.left;
-			int workH = wa.bottom - wa.top;
-			const int border = 8;
+			params->rgrc[0].left = rcWork.left;
+			params->rgrc[0].top = rcWork.top;
+			params->rgrc[0].right = rcWork.right;
+			params->rgrc[0].bottom = rcWork.bottom;
 
-			bool isSnapped =
-				winH == workH &&
-				(winW * 2 == workW) &&
-				(rc.left == wa.left || rc.right == wa.right);
-
-			if (!isSnapped) {
-				rc.left += border;
-				rc.top += border;
-				rc.right -= border;
-				rc.bottom -= border;
-			}
+			return WVR_REDRAW;
+		}
+		else {
 			return 0;
 		}
 		break;
 	}
 	case WM_NCHITTEST: {
+
 		POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
 		ScreenToClient(hwnd, &pt);
 
-		RECT rc; GetClientRect(hwnd, &rc);
-		const int border = 8;
+		RECT rc;
+		GetClientRect(hwnd, &rc);
+		const int border = 4;
 
-		bool left = pt.x < border;
-		bool right = pt.x >= rc.right - border;
-		bool top = pt.y < border;
-		bool bottom = pt.y >= rc.bottom - border;
+		if (!IsZoomed(hwnd) && glfwGetWindowMonitor(win) == NULL) {
+			bool left = pt.x < border;
+			bool right = pt.x >= rc.right - border;
+			bool top = pt.y < border;
+			bool bottom = pt.y >= rc.bottom - border;
 
-		if (left && top)     return HTTOPLEFT;
-		if (right && top)    return HTTOPRIGHT;
-		if (left && bottom)  return HTBOTTOMLEFT;
-		if (right && bottom) return HTBOTTOMRIGHT;
+			if (left && top)     return HTTOPLEFT;
+			if (right && top)    return HTTOPRIGHT;
+			if (left && bottom)  return HTBOTTOMLEFT;
+			if (right && bottom) return HTBOTTOMRIGHT;
 
-		if (left)   return HTLEFT;
-		if (right)  return HTRIGHT;
-		if (top)    return HTTOP;
-		if (bottom) return HTBOTTOM;
+			if (left)   return HTLEFT;
+			if (right)  return HTRIGHT;
+			if (top)    return HTTOP;
+			if (bottom) return HTBOTTOM;
+		}
 
 
-		RECT wr;
-		GetWindowRect(hwnd, &wr);
-		int winW = wr.right - wr.left;
-		const int buttonCount = 3;
-		const int buttonWidth = 40;
-		const int totalBtnW = buttonCount * buttonWidth;
-		int btnZoneX = winW - totalBtnW;
 
-		bool ColisionWithButton = false;
 
-		auto it = g_hwnd_to_window.find(hwnd);
-		if (it != g_hwnd_to_window.end()) {
-			GLFWwindow* win = it->second;
-			// 3) а из неё достаём Application*
-			Application* app = static_cast<Application*>(glfwGetWindowUserPointer(win));
-
-			if (app && app->GetPTR_MainMenuBar()->IsPointOverTitleButton(pt)) {
-				ColisionWithButton = true;
+		float menuHeight = app->GetPTR_MainMenuBar()->GetHeightMenu();
+		if (pt.y >= 0 && pt.y < menuHeight) {
+			if (app->GetPTR_MainMenuBar()->IsPointOverTitleButton(pt)) {
+				return HTCLIENT;
 			}
+			if (glfwGetWindowMonitor(win) == NULL)
+				return HTCAPTION;
 		}
 
+		return HTCLIENT;
+	}
+	case WM_SETCURSOR: {
 
-
-		if (pt.y >= 0 && pt.y < 60 &&
-			((pt.x >= btnZoneX && pt.x < btnZoneX + totalBtnW) || (ColisionWithButton))) {
-			return HTCLIENT;
+		if (IsZoomed(hwnd) || glfwGetWindowMonitor(win)) {
+			SetCursor(LoadCursor(NULL, IDC_ARROW));
+			return TRUE;
 		}
 
-
-
-
-
-		if (pt.y >= 0 && pt.y < 36) {
-			return HTCAPTION;
+		int hitTest = LOWORD(lParam);
+		switch (hitTest) {
+		case HTLEFT:
+		case HTRIGHT:
+			SetCursor(LoadCursor(NULL, IDC_SIZEWE));
+			return TRUE;
+		case HTTOP:
+		case HTBOTTOM:
+			SetCursor(LoadCursor(NULL, IDC_SIZENS));
+			return TRUE;
+		case HTTOPLEFT:
+		case HTBOTTOMRIGHT:
+			SetCursor(LoadCursor(NULL, IDC_SIZENWSE));
+			return TRUE;
+		case HTTOPRIGHT:
+		case HTBOTTOMLEFT:
+			SetCursor(LoadCursor(NULL, IDC_SIZENESW));
+			return TRUE;
+		default:
+			break;
 		}
-
 		break;
 	}
 	case WM_GETMINMAXINFO: {
@@ -492,21 +387,30 @@ LRESULT CALLBACK custom_wndproc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPara
 
 		RECT rcWork = mi.rcWork;
 
-		DWORD style = GetWindowLong(hwnd, GWL_STYLE);
-		DWORD exStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
-		RECT  rcBorder = { 0, 0, 0, 0 };
-		AdjustWindowRectEx(&rcBorder, style, FALSE, exStyle);
+		mmi->ptMaxPosition.x = rcWork.left;
+		mmi->ptMaxPosition.y = rcWork.top;
+		mmi->ptMaxSize.x = rcWork.right - rcWork.left;
+		mmi->ptMaxSize.y = rcWork.bottom - rcWork.top;
 
-		int frameX = abs(rcBorder.left) + abs(rcBorder.right);
-		int frameY = abs(rcBorder.top) + abs(rcBorder.bottom);
-
-		mmi->ptMaxPosition.x = rcWork.left - abs(rcBorder.left);
-		mmi->ptMaxPosition.y = rcWork.top - abs(rcBorder.top);
-		mmi->ptMaxSize.x = (rcWork.right - rcWork.left) + frameX;
-		mmi->ptMaxSize.y = (rcWork.bottom - rcWork.top) + frameY;
-
-		return HTCLIENT;
+		return 0;
 	}
+	case WM_SETTINGCHANGE: {
+		if (wParam == SPI_SETWORKAREA) {
+			if (IsZoomed(hwnd)) {
+
+				HMONITOR hMon = MonitorFromWindow(hwnd, MONITOR_DEFAULTTONEAREST);
+				MONITORINFO mi = { sizeof(mi) };
+				GetMonitorInfo(hMon, &mi);
+				RECT rcWork = mi.rcWork;
+
+				SetWindowPos(hwnd, NULL, rcWork.left, rcWork.top,
+					rcWork.right - rcWork.left, rcWork.bottom - rcWork.top,
+					SWP_NOZORDER | SWP_NOACTIVATE);
+			}
+		}
+		break;
+	}
+
 	}
 
 	return CallWindowProc(orig_wndproc, hwnd, msg, wParam, lParam);
@@ -520,41 +424,13 @@ void Application::InitOpenglWindow() {
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
 	windowManager = new WindowManager("IDE NASM", 1280, 720, 100, 100);
-	GLFWwindow* win = windowManager->GetMainWindow()->GetHandle();
-	
-	HWND hwnd = glfwGetWin32Window(win);
 
-	g_hwnd_to_window[hwnd] = win;
-
-	LONG style = GetWindowLong(hwnd, GWL_STYLE);
-	style |= WS_CAPTION | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU;
-	SetWindowLong(hwnd, GWL_STYLE, style);
-
-	MARGINS m = { -1 };
-	DwmExtendFrameIntoClientArea(hwnd, &m);
-
-
-	DWM_WINDOW_CORNER_PREFERENCE pref = DWM_WINDOW_CORNER_PREFERENCE::DWMWCP_DONOTROUND;
-	DwmSetWindowAttribute(
-		hwnd,
-		DWMWA_WINDOW_CORNER_PREFERENCE,
-		&pref,
-		sizeof(pref)
-	);
-
-	orig_wndproc = (WNDPROC)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)custom_wndproc);
-
-
-
-
-
-
-	glfwSetWindowUserPointer(win, this);
-
-
+}
+void Application::Init_IconApplication() {
 	// Trying set icon window
-	if (isFileExist(L"resources\\icons\\LOGO_small.png"))	{
+	if (isFileExist(L"resources\\icons\\LOGO_small.png")) {
 		GLFWimage images[1];
 		int width = 0, height = 0;
 		images[0].pixels = stbi_load("resources\\icons\\LOGO_small.png", &images[0].width, &images[0].height, 0, 4);
@@ -571,10 +447,41 @@ void Application::InitOpenglWindow() {
 		std::cout << "NOT FIND ICON FILE!!!!\n";
 #endif // _DEBUG
 	}
+}
+void Application::Init_BorderWindow() {
+	GLFWwindow* win = windowManager->GetMainWindow()->GetHandle();
+
+	HWND hwnd = glfwGetWin32Window(win);
+	g_hwnd_to_window[hwnd] = win;
+
+	LONG style = GetWindowLong(hwnd, GWL_STYLE);
+	style |= WS_CAPTION | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU;
+	//style |= WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_SYSMENU;
 
 
+	SetWindowLong(hwnd, GWL_STYLE, style);
 
 
+	MARGINS m = { -1 };
+	DwmExtendFrameIntoClientArea(hwnd, &m);
+
+
+	DWM_WINDOW_CORNER_PREFERENCE pref = DWM_WINDOW_CORNER_PREFERENCE::DWMWCP_DONOTROUND;
+	DwmSetWindowAttribute(
+		hwnd,
+		DWMWA_WINDOW_CORNER_PREFERENCE,
+		&pref,
+		sizeof(pref)
+	);
+
+
+	orig_wndproc = (WNDPROC)SetWindowLongPtr(hwnd, GWLP_WNDPROC, (LONG_PTR)custom_wndproc);
+
+	glfwSetWindowUserPointer(win, this);
+
+
+}
+void Application::Init_ImGui() {
 	ImGui::CreateContext();
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
@@ -594,7 +501,6 @@ void Application::InitOpenglWindow() {
 	ImGui::GetIO().IniFilename = NULL;
 	ImGui::GetIO().LogFilename = NULL;
 }
-
 
 
 

@@ -69,6 +69,8 @@ std::wstring BuildManager::GetCurrentPathOutput() {
 		else if (template_Current.arg_architecture == Compiler_ARGS_ARCHITECTURE::Windows64)
 			return solution->GetInfo().GetPathAbsolute() + L"\\x64\\release\\" + preparedName;
 	}
+
+	return {};
 }
 
 
@@ -81,10 +83,12 @@ void BuildManager::ThreadLoop() {
 
 		for (size_t i = 0; i < Works.size(); i++) {
 
-			if (Works[i] == WORK_TYPE_COMPILE) {
+			if (Works[i]      == WORK_TYPE_COMPILE) {
 
 				CurrentState = BuildManager_Compiling;
 
+
+				OutputAll_Formatted.push_back("nasm.exe " + wstring_to_stringUTF8(compiler->CreateArgumentsLine()));
 				OutputAll_Formatted.push_back(IDE_InfoCreater->MakeInfo_BeginCompile());
 
 				outlineStatus->SetStatus(Type_OutlineStatus::OutlineStatus_Building);
@@ -167,6 +171,12 @@ void BuildManager::ThreadLoop() {
 				CurrentState = BuildManager_Linking;
 
 
+				
+				std::string args_gcc = wstring_to_stringUTF8(linker->MakeArgumentLine());
+				ReplaceAll(args_gcc, wstring_to_stringUTF8(solution->GetInfo().GetPathAbsolute()) + "\\", "");
+				OutputAll_Formatted.push_back("gcc.exe " + args_gcc);
+
+
 				OutputAll_Formatted.push_back(IDE_InfoCreater->MakeInfo_BeginLink());
 
 				outlineStatus->SetStatus(Type_OutlineStatus::OutlineStatus_Building);
@@ -203,6 +213,10 @@ void BuildManager::ThreadLoop() {
 			}
 			else if (Works[i] == WORK_TYPE_RUN) {
 				CurrentState = BuildManager_Running;
+
+				std::string runner_args = wstring_to_stringUTF8(GetCurrentPathOutput() + L".exe");
+				ReplaceAll(runner_args, wstring_to_stringUTF8(solution->GetInfo().GetPathAbsolute()) + "\\", "");
+				OutputAll_Formatted.push_back("runner.exe \"" + runner_args + "\"");
 
 				OutputAll_Formatted.push_back(IDE_InfoCreater->MakeInfo_BeginRun());
 

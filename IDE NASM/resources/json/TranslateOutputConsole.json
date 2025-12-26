@@ -10,135 +10,135 @@
 		"compilation_begin": {
 			"type": "info",
 			"translation":{
-				"en": "######## Compilation started in ",
-				"ru": "######## Компиляция начата в ",
-				"by": "######## Кампіляцыя пачалася ў ",
-				"fr": "######## Compilation commencée à "
+				"en": "Compilation started in ",
+				"ru": "Компиляция начата в ",
+				"by": "Кампіляцыя пачалася ў ",
+				"fr": "Compilation commencée à "
 			}
 		},
 		"compilation_end": {
 			"type": "info",
 			"translation":{
-				"en": "######## Compilation completed, time elapsed: ",
-				"ru": "######## Компиляция завершена, прошло: ",
-				"by": "######## Кампіляцыя завершана, час выканання: ",
-				"fr": "######## Compilation terminée, temps écoulé : "
+				"en": "Compilation completed, time elapsed: ",
+				"ru": "Компиляция завершена, прошло: ",
+				"by": "Кампіляцыя завершана, час выканання: ",
+				"fr": "Compilation terminée, temps écoulé : "
 			}
 		},
 		"compilation_end_good": {
 			"type": "success",
 			"translation": {
-				"en": "######## Compilation was successful!!!",
-				"ru": "######## Компиляция прошла успешно!!!",
-				"by": "######## Кампіляцыя паспяховая!!!",
-				"fr": "######## Compilation réussie !!!"
+				"en": "Compilation was successful!!!",
+				"ru": "Компиляция прошла успешно!!!",
+				"by": "Кампіляцыя паспяховая!!!",
+				"fr": "Compilation réussie !!!"
 			}
 		},
 		"compilation_end_bad_error": {
 			"type": "error",
 			"translation": {
-				"en": "######## Errors were detected during compilation: ",
-				"ru": "######## При компиляции были обнаружены ошибки: ",
-				"by": "######## Падчас кампіляцыі выяўлены памылкі: ",
-				"fr": "######## Erreurs détectées pendant la compilation : "
+				"en": "Errors were detected during compilation: ",
+				"ru": "При компиляции были обнаружены ошибки: ",
+				"by": "Падчас кампіляцыі выяўлены памылкі: ",
+				"fr": "Erreurs détectées pendant la compilation : "
 			}
 		},
 		"compilation_end_bad_data_wrong_section": {
 			"type": "warning",
 			"translation": {
-				"en": "######## Subsequent debugging is not possible because the data is not placed in the .data or .bss section",
-				"ru": "######## Последующая отладка невозможна из за размещения данных не в секции .data или .bss",
-				"by": "######## Наступная адладка немагчыма з-за размяшчэння дадзеных не ў секцыі .data ці .bss",
-				"fr": "######## Débogage ultérieur impossible car les données ne sont pas placées dans la section .data ou .bss"
+				"en": "Subsequent debugging is not possible because the data is not placed in the .data or .bss section",
+				"ru": "Последующая отладка невозможна из за размещения данных не в секции .data или .bss",
+				"by": "Наступная адладка немагчыма з-за размяшчэння дадзеных не ў секцыі .data ці .bss",
+				"fr": "Débogage ultérieur impossible car les données ne sont pas placées dans la section .data ou .bss"
 			}
 		},
 		"linking_begin":{
 			"type": "info",
 			"translation": {
-				"en": "######## Linking started in ",
-				"ru": "######## Сборка начата в ",
-				"by": "######## Зборка пачалася ў ",
-				"fr": "######## Assemblage commencé à "
+				"en": "Linking started in ",
+				"ru": "Сборка начата в ",
+				"by": "Зборка пачалася ў ",
+				"fr": "Assemblage commencé à "
 				
 			}
 		},
 		"linking_end":{
 			"type": "info",
 			"translation": {
-				"en": "######## Link completed, time elapsed: ",
-				"ru": "######## Сборка завершена, прошло: ",
-				"by": "######## Зборка завершана, час выканання: ",
-				"fr": "######## Assemblage terminé, temps écoulé : "
+				"en": "Link completed, time elapsed: ",
+				"ru": "Сборка завершена, прошло: ",
+				"by": "Зборка завершана, час выканання: ",
+				"fr": "Assemblage terminé, temps écoulé : "
 			}
 		},
 		"linking_end_good":{
 			"type": "success",
 			"translation": {
-				"en": "######## Linking was successful!!!",
-				"ru": "######## Сборка прошла, успешно!!!",
-				"by": "######## Зборка паспяховая!!!",
-				"fr": "######## Assemblage réussi !!!"
+				"en": "Linking was successful!!!",
+				"ru": "Сборка прошла, успешно!!!",
+				"by": "Зборка паспяховая!!!",
+				"fr": "Assemblage réussi !!!"
 			}
 		},
 		"linking_end_bad_error": {
 			"type": "error",
 			"translation": {
-				"en": "######## Errors were detected during linking",
-				"ru": "######## При сборке были обнаружены ошибки",
-				"by": "######## Падчас зборкі выяўлены памылкі",
-				"fr": "######## Erreurs détectées pendant l'assemblage"
+				"en": "Errors were detected during linking",
+				"ru": "При сборке были обнаружены ошибки",
+				"by": "Падчас зборкі выяўлены памылкі",
+				"fr": "Erreurs détectées pendant l'assemblage"
 			}
 		},
 		"running_begin": {
 			"type": "info",
 			"translation": {
-				"en": "######## Trying to run in ",
-				"ru": "######## Попытка запуска в ",
-				"by": "######## Спроба запуску ў ",
-				"fr": "######## Tentative de lancement à "
+				"en": "Trying to run in ",
+				"ru": "Попытка запуска в ",
+				"by": "Спроба запуску ў ",
+				"fr": "Tentative de lancement à "
 			}
 		},
 		"running_end_good": {
 			"type": "info",
 			"translation": {
-				"en": "######## The process has been working for ",
-				"ru": "######## Процесс работал на протяжении ",
-				"by": "######## Працэс працаваў на працягу ",
-				"fr": "######## Le processus a fonctionné pendant "
+				"en": "The process has been working for ",
+				"ru": "Процесс работал на протяжении ",
+				"by": "Працэс працаваў на працягу ",
+				"fr": "Le processus a fonctionné pendant "
 			}
 		},
 		"running_end_terminated": {
 			"type": "success",
 			"translation": {
-				"en": "######## The process was completed forcibly",
-				"ru": "######## Процесс был завершён принудительно",
-				"by": "######## Працэс быў завершаны прымусова",
-				"fr": "######## Le processus a été terminé de force"
+				"en": "The process was completed forcibly",
+				"ru": "Процесс был завершён принудительно",
+				"by": "Працэс быў завершаны прымусова",
+				"fr": "Le processus a été terminé de force"
 			}
 		},
 		"running_end_info": {
 			"type": "success",
 			"translation": {
-				"en": "######## The process terminated with the code ",
-				"ru": "######## Процесс завершился с кодом ",
-				"by": "######## Працэс завершыўся з кодам ",
-				"fr": "######## Le processus s'est terminé avec le code "
+				"en": "The process terminated with the code ",
+				"ru": "Процесс завершился с кодом ",
+				"by": "Працэс завершыўся з кодам ",
+				"fr": "Le processus s'est terminé avec le code "
 			}
 		},
 		"running_no_exe": {
 			"type": "warning",
 			"translation": {
-				"en": "######## There's nothing to launch, you have to assemble first...",
-				"ru": "######## Нечего запускать, нужно сначала собрать...",
-				"by": "######## Няма чаго запускаць, трэба спачатку сабраць...",
-				"fr": "######## Rien à lancer, il faut d'abord assembler..."
+				"en": "There's nothing to launch, you have to assemble first...",
+				"ru": "Нечего запускать, нужно сначала собрать...",
+				"by": "Няма чаго запускаць, трэба спачатку сабраць...",
+				"fr": "Rien à lancer, il faut d'abord assembler..."
 			}
 		},
 		"debugging_no_exe": {
 			"type": "warning",
 			"translation": {
-				"en": "######## There's nothing to debug, you have to assemble first...",
-				"ru": "######## Нечего отлаживать, нужно сначала собрать..."
+				"en": "There's nothing to debug, you have to assemble first...",
+				"ru": "Нечего отлаживать, нужно сначала собрать..."
 			}
 		}
 	}
@@ -148,7 +148,7 @@
       "en": "Netwide Assembler (NASM)[Compiler]",
       "ru": "Кроссплатформенный ассемблер (NASM)[Компилятор]",
       "by": "Кросплатформенны асамблер NASM [Кампилятар]",
-      "fr": "Assembleur Netwide (NASM) [Compilateur]"
+      "fr": "Assembleur Netwide (NASM)[Compilateur]"
     },
     "TypeWarningFlag": {
       "all": {
@@ -1286,6 +1286,12 @@
         "fr": "non défini"
       }
     ]
+  },
+  "RUN":{
+	"description": {
+      "en": "Program runner",
+      "ru": "Исполнитель компьютерных программ"
+    }
   },
   "TypeNotification": {
     "nasm": {

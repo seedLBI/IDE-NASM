@@ -38,6 +38,7 @@ public:
 	void EnableDebug();
 	void DisableDebug();
 
+	std::wstring MakeArgumentLine();
 
 private:
 	ProcessRuner* LinkerRunner_64 = nullptr;
@@ -71,7 +72,7 @@ private:
 	std::wstring Get_arg_path_to_base_folder();
 
 
-	std::wstring MakeArgumentLine();
+	
 };
 
 

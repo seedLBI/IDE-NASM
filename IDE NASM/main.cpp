@@ -1,6 +1,6 @@
-﻿//#ifndef _DEBUG
-//    #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
-//#endif
+﻿#ifndef _DEBUG
+    #pragma comment(linker, "/SUBSYSTEM:windows /ENTRY:mainCRTStartup")
+#endif
 
 
 #include <windows.h>

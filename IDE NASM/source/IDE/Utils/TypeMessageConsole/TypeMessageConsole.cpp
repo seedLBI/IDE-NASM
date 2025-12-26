@@ -25,6 +25,9 @@ TypeMessageConsole STR_to_TypeMessageConsole(const std::string& str_type) {
 
 	if (str_type == "success")
 		return MessageConsole_Success;
+
+	exit(-10010);
+	return MessageConsole_Error;
 }
 
 std::string TypeMessageConsole_to_STR(const TypeMessageConsole& type) {

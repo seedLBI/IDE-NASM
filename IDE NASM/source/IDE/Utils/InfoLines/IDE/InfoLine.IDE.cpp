@@ -18,7 +18,7 @@ std::string TypeMessageIDE_to_STR(const TypeMessageIDE& type) {
 	case TypeMessageIDE::running_end_terminated: return "running_end_terminated";
 	case TypeMessageIDE::running_no_exe: return "running_no_exe";
 	case TypeMessageIDE::debugging_no_exe: return "debugging_no_exe";
-	default: break;
+	default:return "wtf";  break;
 	}
 }
 

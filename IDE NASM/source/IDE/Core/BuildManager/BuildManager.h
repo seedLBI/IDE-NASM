@@ -91,7 +91,7 @@ public:
 	bool IsBusy();
 	
 	std::vector <std::string> GetOutputAll_Unformatted();
-	std::vector <std::any> GetOutputAll_Formatted();
+	std::vector <std::any>    GetOutputAll_Formatted();
 
 
 
