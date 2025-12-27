@@ -528,6 +528,9 @@
     <ClCompile Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\RUN\OutputConsoleDrawer.RUN.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="source\IDE\Core\LocalisationManager\LocalisationManager.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Utils\Synchronization\Event\Event.h">
@@ -797,6 +800,9 @@
     <ClInclude Include="source\IDE\GUI\Widgets\OutputConsole\OutputConsoleDrawer\RUN\OutputConsoleDrawer.RUN.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
+    <ClInclude Include="source\IDE\Core\LocalisationManager\LocalisationManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="IDE NASM.rc">
@@ -854,5 +860,6 @@
       <Filter>Исходные файлы</Filter>
     </None>
     <None Include="tools\debugger\bin\test.exe" />
+    <None Include="resources\json\Locales.json" />
   </ItemGroup>
 </Project>

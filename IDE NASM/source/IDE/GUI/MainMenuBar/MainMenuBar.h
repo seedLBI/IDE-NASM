@@ -15,6 +15,8 @@
 #include "Utils/OpenGL/Window/Manager/WindowManager.h"
 #include "Utils/OpenGL/Texture/Texture.h"
 
+
+
 #include <string>
 
 class MainMenuBar : public IThemeLoadable
@@ -75,7 +77,7 @@ private:
 
 
 
-	ImColor color_ProjectBackground{15,15,15,255};
+	ImColor color_ProjectBackground {15,15,15,255};
 	ImColor color_Logo{ 94, 157, 251, 255 };
 };
 

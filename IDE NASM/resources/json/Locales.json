@@ -1,0 +1,46 @@
+{
+	"menu.item.file":{
+		"en": "File",
+		"ru": "Файл"
+	},
+	"menu.item.file.createProject":{
+		"en": "Create project",
+		"ru": "Создать проект"
+	},
+	"menu.item.file.openProject":{
+		"en": "Open project",
+		"ru": "Октрыть проект"
+	},
+	"menu.item.file.saveProject":{
+		"en": "Save",
+		"ru": "Сохранить"
+	},
+	"menu.item.file.lastProjects":{
+		"en": "Last projects",
+		"ru": "Последние проекты"
+	},
+	"menu.item.file.exit":{
+		"en": "Exit",
+		"ru": "Выход"
+	},
+	"menu.item.view":{
+		"en": "View",
+		"ru": "Вид"
+	},
+	"menu.item.settings":{
+		"en": "Settings",
+		"ru": "Настройки"
+	},
+	"menu.item.build":{
+		"en": "Build",
+		"ru": "Сборка"
+	},
+	"menu.item.debug":{
+		"en": "Debug",
+		"ru": "Отладка"
+	},
+	"menu.item.help":{
+		"en": "Help",
+		"ru": "Помощь"
+	}
+}

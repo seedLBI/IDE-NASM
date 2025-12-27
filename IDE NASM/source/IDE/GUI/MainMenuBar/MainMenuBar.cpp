@@ -1,5 +1,7 @@
 ﻿#include "MainMenuBar.h"
 
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
+
 bool MainMenuBar::IsMouseOverMenuBar() {
 	ImVec2 mousePos = ImGui::GetMousePos();
 	return mousePos.x >= menuBarPos.x && mousePos.x <= menuBarPos.x + menuBarSize.x &&
@@ -124,13 +126,17 @@ void MainMenuBar::Draw() {
 
 	heightMenu = 0.f;
 
-	const static std::string Menu_File		= std::string(ICON_FA_FILE)			+ u8" Файл";
-	const static std::string Menu_View		= std::string(ICON_FA_MOUNTAIN_SUN)	+ u8" Вид";
-	const static std::string Menu_Setting	= std::string(ICON_FA_GEAR)			+ u8" Настройки";
-	const static std::string Menu_Assembly	= std::string(ICON_FA_HAMMER)		+ u8" Сборка";
-	const static std::string Menu_Debug		= std::string(ICON_FA_BUG)			+ u8" Отладка";
-	const static std::string Menu_Help		= std::string(ICON_FA_LIFE_RING)	+ u8" Помощь";
+	std::cout << tr("menu.item.file") << std::endl;
 
+
+	std::string MenuItem_File		= std::string(ICON_FA_FILE)				+ " " + tr("menu.item.file");
+	std::string MenuItem_View		= std::string(ICON_FA_MOUNTAIN_SUN)		+ " " + tr("menu.item.view");
+	std::string MenuItem_Setting	= std::string(ICON_FA_GEAR)				+ " " + tr("menu.item.settings");
+	std::string MenuItem_Assembly	= std::string(ICON_FA_HAMMER)			+ " " + tr("menu.item.build");
+	std::string MenuItem_Debug		= std::string(ICON_FA_BUG)				+ " " + tr("menu.item.debug");
+	std::string MenuItem_Help		= std::string(ICON_FA_LIFE_RING)		+ " " + tr("menu.item.help");
+
+	
 
 
 
@@ -155,23 +161,20 @@ void MainMenuBar::Draw() {
 		if (DrawingAllButtons)
 		{
 
-			if (ImGui::BeginMenu(Menu_File.c_str())) {
+			if (ImGui::BeginMenu(MenuItem_File.c_str())) {
 
-				if (ImGui::MenuItem(u8"Создать Проект")) {
+				if (ImGui::MenuItem(tr("menu.item.file.createProject").c_str())) {
 					solution->Create();
 				}
-				if (ImGui::MenuItem(u8"Открыть Проект")) {
+				if (ImGui::MenuItem(tr("menu.item.file.openProject").c_str())) {
 					if (solution->Open()) {
 						buildManager->ClearOutput();
 					}
 				}
-				if (ImGui::MenuItem(u8"Сохранить")) {
+				if (ImGui::MenuItem(tr("menu.item.file.saveProject").c_str())) {
 					solution->SaveCurrentSolution();
 				}
-
-
-
-				if (ImGui::BeginMenu(u8"Последние проекты")) {
+				if (ImGui::BeginMenu(tr("menu.item.file.lastProjects").c_str())) {
 
 					if (lastSolutionManager->Draw()) {
 						solution->OpenFromPath(lastSolutionManager->GetChoosedPath());
@@ -180,7 +183,7 @@ void MainMenuBar::Draw() {
 					ImGui::EndMenu();
 				}
 
-				ImGui::MenuItem(u8"Выход");
+				ImGui::MenuItem(tr("menu.item.file.exit").c_str());
 
 
 				ImGui::EndMenu();
@@ -189,7 +192,7 @@ void MainMenuBar::Draw() {
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 
-			if (ImGui::BeginMenu(Menu_View.c_str())) {
+			if (ImGui::BeginMenu(MenuItem_View.c_str())) {
 				
 				ImGui::MenuItem((std::string(ICON_FA_FOLDER_TREE) + u8" Список файлов").c_str(), "", widgetManager->GetWidgetPtrByName(u8"Список файлов")->GetPtrFlagShow());
 				ImGui::MenuItem((std::string(ICON_FA_BARS) + u8" Вывод").c_str(), "", widgetManager->GetWidgetPtrByName(u8"Вывод")->GetPtrFlagShow());
@@ -201,7 +204,7 @@ void MainMenuBar::Draw() {
 
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
-			if (ImGui::BeginMenu(Menu_Setting.c_str())) {
+			if (ImGui::BeginMenu(MenuItem_Setting.c_str())) {
 				if (ImGui::MenuItem(u8"Открыть настройки")) {
 					setting->Open();
 				}
@@ -210,7 +213,7 @@ void MainMenuBar::Draw() {
 
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
-			if (ImGui::BeginMenu(Menu_Assembly.c_str())) {
+			if (ImGui::BeginMenu(MenuItem_Assembly.c_str())) {
 				if (ImGui::MenuItem(u8"Собрать")) {
 					buildManager->CompileAndLink();
 				}
@@ -222,7 +225,7 @@ void MainMenuBar::Draw() {
 
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
-			if (ImGui::BeginMenu(Menu_Debug.c_str())) {
+			if (ImGui::BeginMenu(MenuItem_Debug.c_str())) {
 				ImGui::MenuItem(u8"Начать отладку");
 				ImGui::MenuItem(u8"Начать без отладку");
 				ImGui::MenuItem(u8"Шаг с заходом");
@@ -233,7 +236,7 @@ void MainMenuBar::Draw() {
 
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
-			if (ImGui::BeginMenu(Menu_Help.c_str())) {
+			if (ImGui::BeginMenu(MenuItem_Help.c_str())) {
 
 				ImGui::EndMenu();
 			}

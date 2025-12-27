@@ -156,6 +156,7 @@
     <ClCompile Include="source\IDE\Core\FontManager\FontManager.cpp" />
     <ClCompile Include="source\IDE\Core\KeyCombination\KeyCombinationHandler.cpp" />
     <ClCompile Include="source\IDE\Core\LastSolutionManager\LastSolutionManager.cpp" />
+    <ClCompile Include="source\IDE\Core\LocalisationManager\LocalisationManager.cpp" />
     <ClCompile Include="source\IDE\Core\PositionWidgetsManager\PositionWidgetsManager.cpp" />
     <ClCompile Include="source\IDE\Core\SaveSystem\SaveSystem.cpp" />
     <ClCompile Include="source\IDE\Core\SaveSystem\SaveSystemManager.cpp" />
@@ -242,6 +243,7 @@
     <ClInclude Include="source\IDE\Core\KeyCombination\KeyCombination.h" />
     <ClInclude Include="source\IDE\Core\KeyCombination\KeyCombinationHandler.h" />
     <ClInclude Include="source\IDE\Core\LastSolutionManager\LastSolutionManager.h" />
+    <ClInclude Include="source\IDE\Core\LocalisationManager\LocalisationManager.h" />
     <ClInclude Include="source\IDE\Core\PositionWidgetsManager\PositionWidgetsManager.h" />
     <ClInclude Include="source\IDE\Core\SaveSystem\SaveSystem.h" />
     <ClInclude Include="source\IDE\Core\SaveSystem\SaveSystemManager.h" />
@@ -378,6 +380,7 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\icons\flags\</DestinationFolders>
     </CopyFileToFolders>
+    <None Include="resources\json\Locales.json" />
     <None Include="tools\debugger\bin\gcore" />
     <None Include="tools\debugger\bin\gdb-add-index" />
     <None Include="tools\debugger\bin\gdb.exe" />
