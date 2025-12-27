@@ -341,6 +341,7 @@
     <CopyFileToFolders Include="resources\icons\flags\image.png">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\resources\icons\flags\</DestinationFolders>
     </CopyFileToFolders>
+    <Image Include="resources\icons\LOGO_transparent.png" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="resources\fonts\Font Awesome 6 Free-Solid-900.otf">

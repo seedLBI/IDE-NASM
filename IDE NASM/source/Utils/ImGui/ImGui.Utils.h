@@ -6,6 +6,8 @@
 #include "ThirdParty/IconFontCppHeaders/IconsFontAwesome6.h"
 #include <string>
 
+void TooltipTranslated(const std::string& keyName);
+
 
 void RenderTextWrapped(const char* text, bool bIndentToHere);
 

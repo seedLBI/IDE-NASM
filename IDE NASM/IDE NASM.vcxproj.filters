@@ -813,6 +813,9 @@
     <Image Include="LOGO.ico">
       <Filter>Файлы ресурсов</Filter>
     </Image>
+    <Image Include="resources\icons\LOGO_transparent.png">
+      <Filter>Файлы ресурсов</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="resources\fonts\Font Awesome 6 Free-Solid-900.otf">

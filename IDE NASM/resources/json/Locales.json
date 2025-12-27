@@ -1,46 +1,155 @@
 {
-	"menu.item.file":{
+	"menu": {
+		"en": "Menu",
+		"ru": "Меню"
+	},
+	"menu.item.file": {
 		"en": "File",
 		"ru": "Файл"
 	},
-	"menu.item.file.createProject":{
+	"menu.item.file.createProject": {
 		"en": "Create project",
 		"ru": "Создать проект"
 	},
-	"menu.item.file.openProject":{
+	"menu.item.file.openProject": {
 		"en": "Open project",
 		"ru": "Октрыть проект"
 	},
-	"menu.item.file.saveProject":{
+	"menu.item.file.saveProject": {
 		"en": "Save",
 		"ru": "Сохранить"
 	},
-	"menu.item.file.lastProjects":{
+	"menu.item.file.lastProjects": {
 		"en": "Last projects",
 		"ru": "Последние проекты"
 	},
-	"menu.item.file.exit":{
+	"menu.item.file.exit": {
 		"en": "Exit",
 		"ru": "Выход"
 	},
-	"menu.item.view":{
+	"menu.item.view": {
 		"en": "View",
 		"ru": "Вид"
 	},
-	"menu.item.settings":{
+	"menu.item.view.filesViewer": {
+		"en": "Files viewer",
+		"ru": "Список файлов"
+	},
+	"menu.item.view.output": {
+		"en": "Output",
+		"ru": "Вывод"
+	},
+	"menu.item.settings": {
 		"en": "Settings",
 		"ru": "Настройки"
 	},
-	"menu.item.build":{
+	"menu.item.build": {
 		"en": "Build",
 		"ru": "Сборка"
 	},
-	"menu.item.debug":{
+	"menu.item.build.run": {
+		"en": "Build & Run",
+		"ru": "Cобрать и запустить"
+	},
+	"menu.item.build.compileLink": {
+		"en": "Compile & Link",
+		"ru": "Скомпилировать и собрать"
+	},
+	"menu.item.build.compile": {
+		"en": "Compile",
+		"ru": "Скомпилировать"
+	},
+	"menu.item.debug": {
 		"en": "Debug",
 		"ru": "Отладка"
 	},
-	"menu.item.help":{
-		"en": "Help",
-		"ru": "Помощь"
+	"menu.item.about": {
+		"en": "About",
+		"ru": "О программе"
+	},
+	"menu.logo.tooltip": {
+		"en": "Logo IDE NASM",
+		"ru": "Логотип IDE NASM"
+	},
+	"menu.button.createProject.tooltip": {
+		"en": "Create new project",
+		"ru": "Создать новый проект"
+	},
+	"menu.button.openProject.tooltip": {
+		"en": "Open another project",
+		"ru": "Открыть другой проект"
+	},
+	"menu.button.saveProject.tooltip": {
+		"en": "Save current project",
+		"ru": "Сохранить текущий проект"
+	},
+	"menu.button.hide.tooltip": {
+		"en": "Hide",
+		"ru": "Свернуть окно"
+	},
+	"menu.button.expand.tooltip": {
+		"en": "Expand",
+		"ru": "Развернуть на весь экран"
+	},
+	"menu.button.collapse.tooltip": {
+		"en": "Collapse",
+		"ru": "Свернуть в окно"
+	},
+	"menu.button.close.tooltip": {
+		"en": "Close",
+		"ru": "Закрыть окно"
+	},
+	"menu.selectConfig.tooltip": {
+		"en": "Choose configuration",
+		"ru": "Выбери кофигурацию сборки"
+	},
+	"menu.selectArch.tooltip": {
+		"en": "Choose arch",
+		"ru": "Выбери архитектуру сборки"
+	},
+	"menu.entryPoint": {
+		"en": "Entry point",
+		"ru": "Точка входа"
+	},
+	"menu.entryPoint.tooltip": {
+		"en": "Name entry point",
+		"ru": "Название точки входа"
+	},
+	"menu.quick.terminate": {
+		"en": "Terminate",
+		"ru": "Остановить"
+	},
+	"menu.quick.run": {
+		"en": "Run",
+		"ru": "Запуск"
+	},
+	"menu.quick.debug": {
+		"en": "Debug",
+		"ru": "Отладка"
+	},
+	"menu.projectName": {
+		"en": "Name current project",
+		"ru": "Название текущего проекта"
+	},
+	"menu.statusBar.nothing": {
+		"en": "Background tasks are not running",
+		"ru": "Фоновые задачи не выполняются"
+	},
+	"error.menu.loadLogo.title": {
+		"en": "Error loading icon logo",
+		"ru": "Ошибка загрузки иконки логотипа"
+	},
+	"error.menu.loadLogo": {
+		"en": "Where icons??",
+		"ru": "А где иконки?"
+	},
+	"color.menu.logo": {
+		"en": "Logo",
+		"ru": "Логотип"
+	},
+	"color.menu.backgroundProjectName": {
+		"en": "Background project name",
+		"ru": "Фон названия проекта"
 	}
+
 }

@@ -1,19 +1,32 @@
 #ifndef IDE_MENU_BAR_H
 #define IDE_MENU_BAR_H
 
+
+#include <glad/glad.h>
+
+#define GLFW_EXPOSE_NATIVE_WIN32
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
+
+
 #include "ThirdParty/ImGui/imgui.h"
 #include "ThirdParty/ImGui/imgui_internal.h"
 #include "ThirdParty/IconFontCppHeaders/IconsFontAwesome6.h"
+
 #include "IDE/Core/LastSolutionManager/LastSolutionManager.h"
 #include "IDE/Core/Solution/Solution.h"
 #include "IDE/Core/Setting/Setting.h"
 #include "IDE/Core/BuildManager/BuildManager.h"
 #include "IDE/Core/Widget/WidgetManager.h"
-
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 #include "IDE/Core/Theme/interface/IThemeLoadable.h"
+
 
 #include "Utils/OpenGL/Window/Manager/WindowManager.h"
 #include "Utils/OpenGL/Texture/Texture.h"
+#include "Utils/ImGui/ImGui.Utils.h"
+
+
 
 
 

@@ -1,6 +1,6 @@
 ﻿#include "MainMenuBar.h"
 
-#include "IDE/Core/LocalisationManager/LocalisationManager.h"
+
 
 bool MainMenuBar::IsMouseOverMenuBar() {
 	ImVec2 mousePos = ImGui::GetMousePos();
@@ -12,6 +12,7 @@ void MainMenuBar::DrawIcon() {
 	const float frameHeight = ImGui::GetFrameHeight();
 	ImGui::SetCursorPosX(ImGui::GetStyle().ItemSpacing.x * 0.5f);
 	ImGui::Image((ImTextureID)icon_logo.GetID(), ImVec2(frameHeight, frameHeight), ImVec2(0, 1), ImVec2(1, 0), color_Logo, ImVec4(0,0,0,0));
+	TooltipTranslated("menu.logo.tooltip");
 	ImGui::SameLine(0.0f, ImGui::GetStyle().ItemSpacing.x);
 }
 
@@ -41,11 +42,9 @@ void MainMenuBar::DrawProjectName() {
 
 	ImGui::Dummy(ImVec2(totalW, newH));
 
-	if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNone)) {
-		ImGui::BeginTooltip();
-			ImGui::Text(u8"Название текущего проекта");
-		ImGui::EndTooltip();
-	}
+	TooltipTranslated("menu.projectName");
+
+
 
 	ImVec2 bb_min = ImGui::GetItemRectMin();
 	ImVec2 bb_max = ImGui::GetItemRectMax();
@@ -85,26 +84,41 @@ void MainMenuBar::DrawTitleButtons() {
 	const ImVec2 buttonSize = ImVec2(buttonWidth, ImGui::GetFrameHeight() - 1.f);
 
 
-	// кнопки
 	if (ImGui::Button(ICON_FA_MINUS, buttonSize)) {
 		glfwIconifyWindow(window);
 	}
 	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+	TooltipTranslated("menu.button.hide.tooltip");
+
+
 	ImGui::SameLine(0,0);
-	if (ImGui::Button(ICON_FA_EXPAND, buttonSize)) {
-		if (glfwGetWindowAttrib(window, GLFW_MAXIMIZED))
+
+	
+	if (glfwGetWindowAttrib(window, GLFW_MAXIMIZED)) {
+		if (ImGui::Button(ICON_FA_COMPRESS, buttonSize)) {
 			glfwRestoreWindow(window);
-		else
-			glfwMaximizeWindow(window);
+		}
+		titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+		TooltipTranslated("menu.button.collapse.tooltip");
 	}
-	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+	else {
+		if (ImGui::Button(ICON_FA_EXPAND, buttonSize)) {
+			glfwMaximizeWindow(window);
+		}
+		titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+		TooltipTranslated("menu.button.expand.tooltip");
+	}
+	
+
 	ImGui::SameLine(0,0);
+
+
 	if (ImGui::Button(ICON_FA_XMARK, buttonSize)) {
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 	}
 	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+	TooltipTranslated("menu.button.close.tooltip");
 
-	// восстанавливаем старые цвета
 	ImGui::PopStyleColor(3);
 }
 
@@ -126,20 +140,13 @@ void MainMenuBar::Draw() {
 
 	heightMenu = 0.f;
 
-	std::cout << tr("menu.item.file") << std::endl;
-
-
 	std::string MenuItem_File		= std::string(ICON_FA_FILE)				+ " " + tr("menu.item.file");
 	std::string MenuItem_View		= std::string(ICON_FA_MOUNTAIN_SUN)		+ " " + tr("menu.item.view");
 	std::string MenuItem_Setting	= std::string(ICON_FA_GEAR)				+ " " + tr("menu.item.settings");
 	std::string MenuItem_Assembly	= std::string(ICON_FA_HAMMER)			+ " " + tr("menu.item.build");
 	std::string MenuItem_Debug		= std::string(ICON_FA_BUG)				+ " " + tr("menu.item.debug");
-	std::string MenuItem_Help		= std::string(ICON_FA_LIFE_RING)		+ " " + tr("menu.item.help");
-
+	std::string MenuItem_About		= std::string(ICON_FA_LIFE_RING)		+ " " + tr("menu.item.about");
 	
-
-
-
 	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 
 	ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(4, 7));
@@ -163,18 +170,24 @@ void MainMenuBar::Draw() {
 
 			if (ImGui::BeginMenu(MenuItem_File.c_str())) {
 
-				if (ImGui::MenuItem(tr("menu.item.file.createProject").c_str())) {
+				std::string MenuItem_FileItem_CreateProject = tr("menu.item.file.createProject");
+				std::string MenuItem_FileItem_OpenProject	= tr("menu.item.file.openProject");
+				std::string MenuItem_FileItem_SaveProject	= tr("menu.item.file.saveProject");
+				std::string MenuItem_FileItem_LastProjects	= tr("menu.item.file.lastProjects");
+				std::string MenuItem_FileItem_Exit			= tr("menu.item.file.exit");
+
+				if (ImGui::MenuItem(MenuItem_FileItem_CreateProject.c_str())) {
 					solution->Create();
 				}
-				if (ImGui::MenuItem(tr("menu.item.file.openProject").c_str())) {
+				if (ImGui::MenuItem(MenuItem_FileItem_OpenProject.c_str())) {
 					if (solution->Open()) {
 						buildManager->ClearOutput();
 					}
 				}
-				if (ImGui::MenuItem(tr("menu.item.file.saveProject").c_str())) {
+				if (ImGui::MenuItem(MenuItem_FileItem_SaveProject.c_str())) {
 					solution->SaveCurrentSolution();
 				}
-				if (ImGui::BeginMenu(tr("menu.item.file.lastProjects").c_str())) {
+				if (ImGui::BeginMenu(MenuItem_FileItem_LastProjects.c_str())) {
 
 					if (lastSolutionManager->Draw()) {
 						solution->OpenFromPath(lastSolutionManager->GetChoosedPath());
@@ -183,64 +196,64 @@ void MainMenuBar::Draw() {
 					ImGui::EndMenu();
 				}
 
-				ImGui::MenuItem(tr("menu.item.file.exit").c_str());
+				ImGui::MenuItem(MenuItem_FileItem_Exit.c_str());
 
 
 				ImGui::EndMenu();
 			}
-
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
 
 
 			if (ImGui::BeginMenu(MenuItem_View.c_str())) {
 				
-				ImGui::MenuItem((std::string(ICON_FA_FOLDER_TREE) + u8" Список файлов").c_str(), "", widgetManager->GetWidgetPtrByName(u8"Список файлов")->GetPtrFlagShow());
-				ImGui::MenuItem((std::string(ICON_FA_BARS) + u8" Вывод").c_str(), "", widgetManager->GetWidgetPtrByName(u8"Вывод")->GetPtrFlagShow());
+				std::string MenuItem_ViewWidget_FilesViewer =	std::string(ICON_FA_FOLDER_TREE) + " " + tr("menu.item.view.filesViewer");
+				std::string MenuItem_ViewWidget_Output =		std::string(ICON_FA_FOLDER_TREE) + " " + tr("menu.item.view.output");
+
+
+				ImGui::MenuItem(MenuItem_ViewWidget_FilesViewer.c_str(), "", widgetManager->GetWidgetPtrByName(u8"Список файлов")->GetPtrFlagShow());
+				ImGui::MenuItem(MenuItem_ViewWidget_Output.c_str(),      "", widgetManager->GetWidgetPtrByName(u8"Вывод")->GetPtrFlagShow());
 
 
 
 				ImGui::EndMenu();
 			}
-
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
-			if (ImGui::BeginMenu(MenuItem_Setting.c_str())) {
-				if (ImGui::MenuItem(u8"Открыть настройки")) {
-					setting->Open();
-				}
-				ImGui::EndMenu();
-			}
 
-			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 			if (ImGui::BeginMenu(MenuItem_Assembly.c_str())) {
-				if (ImGui::MenuItem(u8"Собрать")) {
+
+				std::string MenuItem_BuildItem_build_And_run	= tr("menu.item.build.run");
+				std::string MenuItem_BuildItem_compile_And_link = tr("menu.item.build.compileLink");
+				std::string MenuItem_BuildItem_compile			= tr("menu.item.build.compile");
+
+				if (ImGui::MenuItem(MenuItem_BuildItem_build_And_run.c_str())) {
+					buildManager->Run();
+				}
+				if (ImGui::MenuItem(MenuItem_BuildItem_compile_And_link.c_str())) {
 					buildManager->CompileAndLink();
 				}
-				if (ImGui::MenuItem(u8"Компилировать")) {
+				if (ImGui::MenuItem(MenuItem_BuildItem_compile.c_str())) {
 					buildManager->Compile();
 				}
+
 				ImGui::EndMenu();
 			}
-
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
-			if (ImGui::BeginMenu(MenuItem_Debug.c_str())) {
-				ImGui::MenuItem(u8"Начать отладку");
-				ImGui::MenuItem(u8"Начать без отладку");
-				ImGui::MenuItem(u8"Шаг с заходом");
-				ImGui::MenuItem(u8"Шаг с обходом");
 
-				ImGui::EndMenu();
+
+			if (ImGui::MenuItem(MenuItem_Setting.c_str())) {
+				setting->Open();
 			}
-
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
-			if (ImGui::BeginMenu(MenuItem_Help.c_str())) {
 
-				ImGui::EndMenu();
+
+			if (ImGui::MenuItem(MenuItem_About.c_str())) {
+				
 			}
-
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
 
@@ -283,19 +296,32 @@ void MainMenuBar::Draw() {
 					solution->Create();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				TooltipTranslated("menu.button.createProject.tooltip");
+
+
 				ImGui::SameLine(0, 0);
+
+
 				if (ImGui::Button(ICON_FA_FOLDER_OPEN, ImVec2(55.f, 0.f))) {
 					if (solution->Open()) {
 						buildManager->ClearOutput();
 					}
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				TooltipTranslated("menu.button.openProject.tooltip");
+
 
 				ImGui::SameLine(0, 0);
+
+
 				if (ImGui::Button(ICON_FA_FLOPPY_DISK, ImVec2(55.f, 0.f))) {
 					solution->SaveCurrentSolution();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				TooltipTranslated("menu.button.saveProject.tooltip");
+
+
+
 
 				ImGui::PopStyleColor(3);
 
@@ -337,10 +363,10 @@ void MainMenuBar::Draw() {
 					ImGui::EndCombo();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				TooltipTranslated("menu.selectConfig.tooltip");
+
 
 				ImGui::EndDisabled();
-
-
 
 				const char* str_64 = "x64";
 				const char* str_32 = "x86";
@@ -374,6 +400,8 @@ void MainMenuBar::Draw() {
 					ImGui::EndCombo();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				TooltipTranslated("menu.selectArch.tooltip");
+
 
 				ImGui::EndDisabled();
 
@@ -397,9 +425,7 @@ void MainMenuBar::Draw() {
 
 				}
 
-
-
-				ImGui::Text(u8"Точка входа");
+				ImGui::Text(tr("menu.entryPoint").c_str());
 				ImGui::SetNextItemWidth(ImGui::CalcTextSize(u8"Точка входа    ").x);
 
 				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
@@ -409,6 +435,8 @@ void MainMenuBar::Draw() {
 					buildManager->SetEntryPoint(buf_entryPoint);
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				TooltipTranslated("menu.entryPoint.tooltip");
+
 
 				ImGui::EndDisabled();
 
@@ -418,8 +446,14 @@ void MainMenuBar::Draw() {
 				ImGui::PushStyleColor(ImGuiCol_ButtonActive, colBtnActive);
 
 
+
+				std::string MenuQuick_Terminate = std::string(ICON_FA_STOP) + " " + tr("menu.quick.terminate");
+				std::string MenuQuick_Run		= std::string(ICON_FA_PLAY) + " " + tr("menu.quick.run");
+				std::string MenuQuick_Debug		= std::string(ICON_FA_PLAY) + " " + tr("menu.quick.debug");
+
+
 				if (buildManager->GetState() == BuildManager_States::BuildManager_Running) {
-					if (ImGui::Button(std::string(ICON_FA_STOP + std::string(u8" Остановить")).c_str())) {
+					if (ImGui::Button(MenuQuick_Terminate.c_str())) {
 						buildManager->TerminateRun();
 					}
 					titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
@@ -427,7 +461,7 @@ void MainMenuBar::Draw() {
 				else {
 					ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
 
-					if (ImGui::Button(std::string(ICON_FA_PLAY + std::string(u8" Пуск")).c_str())) {
+					if (ImGui::Button(MenuQuick_Run.c_str())) {
 						buildManager->Run();
 					}
 					titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
@@ -436,7 +470,7 @@ void MainMenuBar::Draw() {
 				}
 
 				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
-					ImGui::Button(std::string(ICON_FA_PLAY + std::string(u8" Отладка")).c_str());
+					ImGui::Button(MenuQuick_Debug.c_str());
 					titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 				ImGui::EndDisabled();
 
@@ -463,7 +497,7 @@ void MainMenuBar::Draw() {
 			if (ImGui::BeginMenuBar()) {
 
 
-				ImGui::Text(u8"Фоновые задачи не выполняются");
+				ImGui::Text(tr("menu.statusBar.nothing").c_str());
 
 
 				ImGui::EndMenuBar();
@@ -486,24 +520,24 @@ void MainMenuBar::LoadColors() {
 
 		toSearch = object_colors.colors[i].nameColor;
 
-		if (toSearch == u8"Фон названия проекта")
+		if (toSearch == u8"color.menu.backgroundProjectName")
 			color_ProjectBackground = object_colors.colors[i].color;
-		else if (toSearch == u8"Логотип")
+		else if (toSearch == u8"color.menu.logo")
 			color_Logo = object_colors.colors[i].color;
 	}
 }
 std::vector<NamedColor> MainMenuBar::GetDefaultLightColors() {
 	std::vector<NamedColor> colors = {
-		{ u8"Фон названия проекта",	ImColor(210,186,151, 255)},
-		{ u8"Логотип",				ImColor(255 - 94,255 - 157, 255 - 251, 255) }
+		{ u8"color.menu.backgroundProjectName",	ImColor(210,186,151, 255)},
+		{ u8"color.menu.logo",					ImColor(255 - 94,255 - 157, 255 - 251, 255) }
 	};
 
 	return colors;
 }
 std::vector<NamedColor> MainMenuBar::GetDefaultDarkColors() {
 	std::vector<NamedColor> colors = {
-		{u8"Фон названия проекта",	ImColor(15,15,15,255)},
-		{u8"Логотип",				ImColor(94, 157, 251, 255)}
+		{u8"color.menu.backgroundProjectName",	ImColor(15,15,15,255)},
+		{u8"color.menu.logo",					ImColor(94, 157, 251, 255)}
 	};
 
 	return colors;
@@ -517,7 +551,7 @@ MainMenuBar::MainMenuBar(
 	LastSolutionManager* lastSolutionManager, 
 	Solution* solution, 
 	Setting* setting, 
-	BuildManager* buildManager) : IThemeLoadable(u8"Панель меню") {
+	BuildManager* buildManager) : IThemeLoadable(u8"menu") {
 
 	this->windowManager = windowManager;
 	this->widgetManager = widgetManager;
@@ -531,7 +565,10 @@ MainMenuBar::MainMenuBar(
 	LoadIcon();
 
 	IThemeLoadable::InitListWord(
-		{u8"Фон названия проекта", u8"Логотип"}
+		{
+			u8"color.menu.backgroundProjectName", 
+			u8"color.menu.logo"
+		}
 	);
 
 
@@ -549,8 +586,13 @@ void MainMenuBar::LoadIcon() {
 		icon_logo.Init();
 	}
 	else {
-		MessageBoxW(0, L"А где иконки? (resources\\icons\\LOGO_transparent.png)", L"Ошибка загрузки иконки", MB_ICONERROR | MB_OK);
-		exit(0);
+
+		std::wstring title = stringUTF8_to_wstring(tr("error.menu.loadLogo.title"));
+		std::wstring body = stringUTF8_to_wstring(tr("error.menu.loadLogo")) + L" (resources\\icons\\LOGO_transparent.png)";
+
+
+		MessageBoxW(glfwGetWin32Window(window), body.c_str(), title.c_str(), MB_ICONERROR | MB_OK);
+		std::abort();
 	}
 }
 MainMenuBar::~MainMenuBar() {

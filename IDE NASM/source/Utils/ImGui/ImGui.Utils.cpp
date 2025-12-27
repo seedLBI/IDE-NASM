@@ -1,5 +1,16 @@
 #include "ImGui.Utils.h"
 
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
+
+
+void TooltipTranslated(const std::string& keyName) {
+	if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNormal)) {
+		ImGui::BeginTooltip();
+		ImGui::Text(tr(keyName).c_str());
+		ImGui::EndTooltip();
+	}
+}
+
 
 void RenderTextWrapped(const char* text, bool bIndentToHere = false) {
 	const char* text_end = text + strlen(text);
