@@ -1,4 +1,6 @@
 #include "OutputConsoleDrawer.NASM.h"
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
+#include <robin_hood.h>
 
 OutputConsoleDrawer_NASM::OutputConsoleDrawer_NASM(Solution* solution, FontManager* fontManager, TypeMessageDraw* typeMessageDraw, nlohmann::json SyntaxData) {
 	this->solution = solution;
@@ -18,16 +20,19 @@ OutputConsoleDrawer_NASM::~OutputConsoleDrawer_NASM() {
 
 void OutputConsoleDrawer_NASM::InitColors(const std::vector<NamedColor>& colors) {
 
+
+	static robin_hood::unordered_flat_map<std::string, ImColor*> translator = {
+		{"color.outputConsole.NASM",         &color_NASM},
+		{"color.outputConsole.NASM.flag",    &color_NASM_flag},
+		{"color.outputConsole.selectedText", &color_bold_text}
+	};
+
 	for (int i = 0; i < colors.size(); i++) {
 
 		const std::string toSearch = colors[i].nameColor;
 
-		if (toSearch == u8"NASM")
-			color_NASM = colors[i].color;
-		else if (toSearch == u8"NASM флаг компиляции")
-			color_NASM_flag = colors[i].color;
-		else if (toSearch == u8"Выделенный текст")
-			color_bold_text = colors[i].color;
+		if (translator.contains(toSearch))
+			*translator[toSearch] = colors[i].color;
 
 	}
 
@@ -64,7 +69,7 @@ bool OutputConsoleDrawer_NASM::DrawLine(const int& index, NasmOutputLine& line) 
 
 	if (ImGui::IsItemHovered()) {
 		ImGui::BeginTooltip();
-		ImGui::Text(SyntaxData["NASM"]["description"][GlobalLanguage].get<std::string>().c_str());
+		ImGui::Text(SyntaxData["NASM"]["description"][gl()].get<std::string>().c_str());
 		ImGui::EndTooltip();
 	}
 
@@ -108,14 +113,14 @@ bool OutputConsoleDrawer_NASM::DrawLine(const int& index, NasmOutputLine& line) 
 
 
 			fontManager->Push_Bold();
-				ImGui::TextColored(color_bold_text, std::string(u8"Флаг компиляции - [" + sub_flag + "]").c_str());
+				ImGui::TextColored(color_bold_text, std::string(tr("outputConsoleDrawer.NASM.flag.tooltip") + " - [" + sub_flag + "]").c_str());
 			ImGui::PopFont();
 
 			ImGui::SeparatorEx(ImGuiSeparatorFlags_Horizontal, 3.f);
 
 
 
-			const std::string textDesc = SyntaxData["NASM"]["TypeWarningFlag"][sub_flag]["description"][GlobalLanguage].get<std::string>();
+			const std::string textDesc = SyntaxData["NASM"]["TypeWarningFlag"][sub_flag]["description"][gl()].get<std::string>();
 			ImGui::Text(textDesc.c_str());
 
 			ImGui::EndTooltip();

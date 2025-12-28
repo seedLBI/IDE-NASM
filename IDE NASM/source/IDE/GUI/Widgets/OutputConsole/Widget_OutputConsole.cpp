@@ -1,15 +1,25 @@
 #include "Widget_OutputConsole.h"
 
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
 Widget_OutputConsole::Widget_OutputConsole(
+	GLFWwindow* window,
 	BuildManager* buildManager,
 	Solution* solution,
 	FontManager* fontManager, 
-	WidgetManager_TextEditor* WidgetManagerTextEditor) : IWidget(u8"Вывод"), IThemeLoadable(u8"Вывод информации сборки") {
+	WidgetManager_TextEditor* WidgetManagerTextEditor) :
+		IWidget(       "widgetName.outputConsole"), 
+		IThemeLoadable ("themeItem.outputConsole")
+{
+
 	this->buildManager = buildManager;
 	this->solution = solution;
 	this->fontManager = fontManager;
 	this->WidgetManagerTextEditor = WidgetManagerTextEditor;
+	this->window = window;
+
+
+	comboLang = new ComboLanguage(window);
 
 
 	if (isFileExist(L"resources\\json\\TranslateOutputConsole.json")) {
@@ -29,8 +39,12 @@ Widget_OutputConsole::Widget_OutputConsole(
 		ifn.close();
 	}
 	else {
-		MessageBoxW(0, L"А где файл переводов? (resources\\json\\TranslateOutputConsole.json)", L"Ошибка загрузки данных", MB_ICONERROR | MB_OK);
-		exit(0);
+		MessageBoxW(
+		glfwGetWin32Window(window),
+			(stringUTF8_to_wstring(tr("error.outputConsole.loadData")) + L" (resources\\json\\TranslateOutputConsole.json)").c_str(),
+			 stringUTF8_to_wstring(tr("error.outputConsole.loadData.title")).c_str(),
+			MB_ICONERROR | MB_OK);
+		std::abort();
 	}
 
 
@@ -44,56 +58,58 @@ Widget_OutputConsole::Widget_OutputConsole(
 
 	IThemeLoadable::InitListWord(
 		{
-			u8"Выделенный текст", u8"NASM", u8"NASM флаг компиляции", u8"GCC",
-			u8"DBG", u8"IDE", u8"RUN", u8"RUN_TEXT", u8"Информация", u8"Предупреждение",
-			u8"Ошибка", u8"Парсер",u8"Аварийное завершение", u8"Критическая ошибка", 
-			u8"Компилятор", u8"Успех"
+			"color.outputConsole.selectedText", 
+			"color.outputConsole.NASM", 
+			"color.outputConsole.NASM.flag", 
+			"color.outputConsole.GCC",
+			"color.outputConsole.DBG",
+			"color.outputConsole.IDE",
+			"color.outputConsole.RUN",
+			"color.outputConsole.RUN.TEXT",
+			"color.outputConsole.info",
+			"color.outputConsole.warning",
+			"color.outputConsole.error",
+			"color.outputConsole.parser",
+			"color.outputConsole.panic",
+			"color.outputConsole.fatal",
+			"color.outputConsole.compiler",
+			"color.outputConsole.success"
 		}
 	);
 
 }
 
-
 void Widget_OutputConsole::LoadColors() {
 	std::string toSearch;
+
+	static robin_hood::unordered_flat_map<std::string, ImColor*> translator = {
+		{"color.outputConsole.NASM",         &color_NASM},
+		{"color.outputConsole.NASM.flag",    &color_NASM_flag},
+		{"color.outputConsole.selectedText", &color_bold_text},
+		{"color.outputConsole.GCC",			 &color_GCC},
+		{"color.outputConsole.DBG",			 &color_DBG},
+		{"color.outputConsole.IDE",			 &color_IDE},
+		{"color.outputConsole.RUN",			 &color_RUN},
+		{"color.outputConsole.RUN.TEXT",	 &color_RUN_TEXT},
+		{"color.outputConsole.compiler",	 &color_type_msg_compiler},
+		{"color.outputConsole.info",		 &color_type_msg_info},
+		{"color.outputConsole.warning",		 &color_type_msg_warning},
+		{"color.outputConsole.error",		 &color_type_msg_error},
+		{"color.outputConsole.panic",		 &color_type_msg_panic},
+		{"color.outputConsole.fatal",		 &color_type_msg_fatal},
+		{"color.outputConsole.parser",		 &color_type_msg_parser},
+		{"color.outputConsole.success",		 &color_type_msg_success},
+	};
+
 
 	for (int i = 0; i < object_colors.colors.size(); i++) {
 
 		toSearch = object_colors.colors[i].nameColor;
 
-		if (toSearch == u8"NASM")
-			color_NASM = object_colors.colors[i].color;
-		else if (toSearch == u8"NASM флаг компиляции")
-			color_NASM_flag = object_colors.colors[i].color;
-		else if (toSearch == u8"Выделенный текст")
-			color_bold_text = object_colors.colors[i].color;
-		else if (toSearch == u8"GCC")
-			color_GCC = object_colors.colors[i].color;
-		else if (toSearch == u8"DBG")
-			color_DBG = object_colors.colors[i].color;
-		else if (toSearch == u8"IDE")
-			color_IDE = object_colors.colors[i].color;
-		else if (toSearch == u8"RUN")
-			color_RUN = object_colors.colors[i].color;
-		else if (toSearch == u8"RUN_TEXT")
-			color_RUN = object_colors.colors[i].color;
-		else if(toSearch == u8"Компилятор")
-			color_type_msg_compiler = object_colors.colors[i].color;
-		else if (toSearch == u8"Информация")
-			color_type_msg_info = object_colors.colors[i].color;
-		else if (toSearch == u8"Предупреждение")
-			color_type_msg_warning = object_colors.colors[i].color;
-		else if (toSearch == u8"Ошибка")
-			color_type_msg_error = object_colors.colors[i].color;
-		else if (toSearch == u8"Аварийное завершение")
-			color_type_msg_panic = object_colors.colors[i].color;
-		else if (toSearch == u8"Критическая ошибка")
-			color_type_msg_fatal = object_colors.colors[i].color;
-		else if (toSearch == u8"Парсер")
-			color_type_msg_parser = object_colors.colors[i].color;
-		else if (toSearch == u8"Успех")
-			color_type_msg_parser = object_colors.colors[i].color;
+		if (!translator.contains(toSearch))
+			std::abort();
 
+		*translator[toSearch] = object_colors.colors[i].color;
 	}
 
 	typeMessageDraw->InitColors(object_colors.colors);
@@ -105,22 +121,22 @@ void Widget_OutputConsole::LoadColors() {
 std::vector<NamedColor> Widget_OutputConsole::GetDefaultLightColors() {
 
 	std::vector<NamedColor> colors = {
-		{u8"NASM",						ImColor(0,19,255, 255)},
-		{u8"NASM флаг компиляции",		ImColor(251,255,100,255)},
-		{u8"Выделенный текст",			ImColor(255,0,0,255)},
-		{u8"GCC",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"DBG",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"IDE",						ImColor(112, 37, 0, 255)},
-		{u8"RUN",						ImColor(255, 0, 58, 255)},
-		{u8"RUN_TEXT",					ImColor(11, 26, 141, 255)},
-		{u8"Информация",				ImColor(0,120,185,255)},
-		{u8"Предупреждение",			ImColor(183,106,0,255)},
-		{u8"Ошибка",					ImColor(176,0,0,255)},
-		{u8"Аварийное завершение",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"Критическая ошибка",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"Парсер",					ImColor(46,147,112,255)},
-		{u8"Успех",						ImColor(0,128,7,255)},
-		{u8"Компилятор",				ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.NASM",		ImColor(0,19,255, 255)},
+		{"color.outputConsole.NASM.flag",	ImColor(251,255,100,255)},
+		{"color.outputConsole.selectedText",ImColor(255,0,0,255)},
+		{"color.outputConsole.GCC",			ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.DBG",			ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.IDE",			ImColor(112, 37, 0, 255)},
+		{"color.outputConsole.RUN",			ImColor(255, 0, 58, 255)},
+		{"color.outputConsole.RUN.TEXT",	ImColor(11, 26, 141, 255)},
+		{"color.outputConsole.info",		ImColor(0,120,185,255)},
+		{"color.outputConsole.warning",		ImColor(183,106,0,255)},
+		{"color.outputConsole.error",		ImColor(176,0,0,255)},
+		{"color.outputConsole.panic",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.fatal",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.parser",		ImColor(46,147,112,255)},
+		{"color.outputConsole.success",		ImColor(0,128,7,255)},
+		{"color.outputConsole.compiler",	ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 	};
 
 	return colors;
@@ -129,22 +145,22 @@ std::vector<NamedColor> Widget_OutputConsole::GetDefaultLightColors() {
 std::vector<NamedColor> Widget_OutputConsole::GetDefaultDarkColors() {
 
 	std::vector<NamedColor> colors = {
-		{u8"NASM",						ImColor(0.45f, 0.45f, 1.f, 1.f)},
-		{u8"NASM флаг компиляции",		ImColor(255.f / 255.f, 194.f / 255.f, 3.f / 255.f, 1.f)},
-		{u8"Выделенный текст",			ImColor(255.f / 255.f, 194.f / 255.f, 3.f / 255.f, 1.f)},
-		{u8"GCC",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"DBG",						ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"IDE",						ImColor(241.f / 255.f, 51.f / 255.f, 255.f / 255.f, 1.f)},
-		{u8"RUN",						ImColor(255, 40, 40, 255)},
-		{u8"RUN_TEXT",					ImColor(255, 40, 40, 255)},
-		{u8"Информация",				ImColor(100.f / 255.f, 172.f / 255.f, 255.f / 255.f, 1.00f)},
-		{u8"Предупреждение",			ImColor(255.f / 255.f, 128.f / 255.f, 3.f / 255.f, 1.00f)},
-		{u8"Ошибка",					ImColor(255.f / 255.f, 31.f / 255.f, 0.f / 255.f, 1.00f)},
-		{u8"Аварийное завершение",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
-		{u8"Критическая ошибка",		ImColor(149.f / 255.f, 0.f / 255.f, 0.f / 255.f, 1.00f)  },
-		{u8"Парсер",					ImColor(0,255,161,255)},
-		{u8"Успех",						ImColor(0.20f, 1.00f, 0.20f, 1.00f)},
-		{u8"Компилятор",				ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.NASM",		ImColor(0.45f, 0.45f, 1.f, 1.f)},
+		{"color.outputConsole.NASM.flag",	ImColor(255.f / 255.f, 194.f / 255.f, 3.f / 255.f, 1.f)},
+		{"color.outputConsole.selectedText",ImColor(255.f / 255.f, 194.f / 255.f, 3.f / 255.f, 1.f)},
+		{"color.outputConsole.GCC",			ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.DBG",			ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.IDE",			ImColor(241.f / 255.f, 51.f / 255.f, 255.f / 255.f, 1.f)},
+		{"color.outputConsole.RUN",			ImColor(255, 40, 40, 255)},
+		{"color.outputConsole.RUN.TEXT",	ImColor(255, 40, 40, 255)},
+		{"color.outputConsole.info",		ImColor(100.f / 255.f, 172.f / 255.f, 255.f / 255.f, 1.00f)},
+		{"color.outputConsole.warning",		ImColor(255.f / 255.f, 128.f / 255.f, 3.f / 255.f, 1.00f)},
+		{"color.outputConsole.error",		ImColor(255.f / 255.f, 31.f / 255.f, 0.f / 255.f, 1.00f)},
+		{"color.outputConsole.panic",		ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
+		{"color.outputConsole.fatal",		ImColor(149.f / 255.f, 0.f / 255.f, 0.f / 255.f, 1.00f)  },
+		{"color.outputConsole.parser",		ImColor(0,255,161,255)},
+		{"color.outputConsole.success",		ImColor(0.20f, 1.00f, 0.20f, 1.00f)},
+		{"color.outputConsole.compiler",	ImColor(1.00f, 1.00f, 1.00f, 1.00f)},
 	};
 
 	return colors;
@@ -190,11 +206,11 @@ void Widget_OutputConsole::Draw() {
 
 		auto outputData = buildManager->GetOutputAll_Formatted();
 
-		TranslateOutput(comboLang.GetCurrentLanguage(), outputData);
+		TranslateOutput(comboLang->GetCurrentLanguage(), outputData);
 		
 		ImGui::Text(u8"");
 		ImGui::SameLine();
-		ImGui::Text(u8"Язык описания");
+		ImGui::Text(tr("outputConsole.languageDesc").c_str());
 		ImGui::SameLine();
 		ImGui::Text(u8"");
 
@@ -202,26 +218,23 @@ void Widget_OutputConsole::Draw() {
 
 
 		ImGui::SetNextItemWidth(ImGui::CalcTextSize("Английский               ").x);
-		comboLang.Draw("");
+		comboLang->Draw("");
 
 		ImGui::SameLine();
 
-
-
-
-		ImGui::Text(u8"Тип вывода");
+		ImGui::Text(tr("outputConsole.typeOutput").c_str());
 		ImGui::SameLine();
 		ImGui::SetNextItemWidth(ImGui::CalcTextSize("Форматированный               ").x);
 
 
-		if (ImGui::BeginCombo(u8"##TYPE_OUTPUT_FILES_VIEWER", CurrentTypeOutput.c_str())) {
+		if (ImGui::BeginCombo(u8"##TYPE_OUTPUT_FILES_VIEWER", tr(CurrentTypeOutput).c_str())) {
 
-			if (ImGui::Selectable(TypeOutput_Formatted.c_str()))
+			if (ImGui::Selectable(tr(TypeOutput_Formatted).c_str()))
 				CurrentTypeOutput = TypeOutput_Formatted;
 			if (CurrentTypeOutput == TypeOutput_Formatted)
 				ImGui::SetItemDefaultFocus();
 
-			if(ImGui::Selectable(TypeOutput_Original.c_str()))
+			if(ImGui::Selectable(tr(TypeOutput_Original).c_str()))
 				CurrentTypeOutput = TypeOutput_Original;
 			if (CurrentTypeOutput == TypeOutput_Original)
 				ImGui::SetItemDefaultFocus();
@@ -231,7 +244,7 @@ void Widget_OutputConsole::Draw() {
 
 		ImGui::SameLine(0.f,30.f);
 
-		if (ImGui::Button(u8"Очистить вывод")) {
+		if (ImGui::Button(tr("outputConsole.button.clearOutput").c_str())) {
 			buildManager->ClearOutput();
 		}
 
@@ -242,11 +255,11 @@ void Widget_OutputConsole::Draw() {
 		if (CurrentTypeOutput == TypeOutput_Formatted) {
 			ImGui::BeginTable(u8"Таблица вывода", 5, ImGuiTableFlags_Borders | ImGuiTableFlags_SizingStretchSame | ImGuiTableFlags_Reorderable);
 
-			ImGui::TableSetupColumn(u8"От кого", ImGuiTableColumnFlags_WidthFixed);
-			ImGui::TableSetupColumn(u8"Тип", ImGuiTableColumnFlags_WidthFixed);
-			ImGui::TableSetupColumn(u8"Описание", ImGuiTableColumnFlags_WidthStretch);
-			ImGui::TableSetupColumn(u8"Файл", ImGuiTableColumnFlags_WidthFixed);
-			ImGui::TableSetupColumn(u8"Строка", ImGuiTableColumnFlags_WidthFixed);
+			ImGui::TableSetupColumn(tr("outputConsole.table.from").c_str(),			ImGuiTableColumnFlags_WidthFixed);
+			ImGui::TableSetupColumn(tr("outputConsole.table.type").c_str(),			ImGuiTableColumnFlags_WidthFixed);
+			ImGui::TableSetupColumn(tr("outputConsole.table.description").c_str(),	ImGuiTableColumnFlags_WidthStretch);
+			ImGui::TableSetupColumn(tr("outputConsole.table.file").c_str(),			ImGuiTableColumnFlags_WidthFixed);
+			ImGui::TableSetupColumn(tr("outputConsole.table.line").c_str(),			ImGuiTableColumnFlags_WidthFixed);
 			ImGui::TableHeadersRow();
 
 			for (size_t i = 0; i < outputData.size(); i++)
@@ -332,7 +345,7 @@ nlohmann::json Widget_OutputConsole::Save() {
 
 	result["flag_Show"] = GetFlagShow();
 	result["CurrentTypeOutput"] = CurrentTypeOutput;
-	result["comboLang"] = comboLang.GetCurrentLanguage();
+	result["comboLang"] = comboLang->GetCurrentLanguage();
 	
 	return result;
 }
@@ -343,7 +356,7 @@ void Widget_OutputConsole::Load(const nlohmann::json& Data) {
 	if (Data.contains("CurrentTypeOutput"))
 		CurrentTypeOutput = Data["CurrentTypeOutput"].get<std::string>();
 	if (Data.contains("comboLang"))
-		comboLang.SetCurrentLanguage(Data["comboLang"].get<std::string>());
+		comboLang->SetCurrentLanguage(Data["comboLang"].get<std::string>());
 }
 
 

@@ -1,8 +1,4 @@
 {
-	"menu": {
-		"en": "Menu",
-		"ru": "Меню"
-	},
 	"menu.item.file": {
 		"en": "File",
 		"ru": "Файл"
@@ -139,6 +135,54 @@
 		"en": "Settings",
 		"ru": "Настройки"
 	},
+	"setting.name.Themes": {
+		"en": "Themes",
+		"ru": "Темы"
+	},
+	"setting.tabName.colorTheme": {
+		"en": "Color themes",
+		"ru": "Цветовые темы"
+	},
+	"themeManager.defaultTheme.dark": {
+		"en": "Dark",
+		"ru": "Тёмная"
+	},
+	"themeManager.defaultTheme.light": {
+		"en": "Light",
+		"ru": "Светлая"
+	},
+	"themeManager.combo.chooseTheme": {
+		"en": "Choose theme",
+		"ru": "Выбор темы"
+	},
+	"themeManager.button.createFromCurrent": {
+		"en": "Create from current colors",
+		"ru": "Создать из текущих цветов"
+	},
+	"themeManager.popupCreationTheme.title": {
+		"en": "Creating a name for a new color theme",
+		"ru": "Создание названия для новой цветовой темы"
+	},
+	"themeManager.popupCreationTheme.name": {
+		"en": "Name",
+		"ru": "Название"
+	},
+	"themeManager.popupCreationTheme.accept": {
+		"en": "Accept",
+		"ru": "Принять"
+	},
+	"themeItem.outputConsole": {
+		"en": "Output information build",
+		"ru": "Вывод информации сборки"
+	},
+	"themeItem.menu": {
+		"en": "Menu",
+		"ru": "Меню"
+	},
+	"themeItem.outlineStatus": {
+		"en": "Outline status",
+		"ru": "Оконтовка статуса"
+	},
 	"startupWindow.title": {
 		"en": "Choose project",
 		"ru": "Выбор проекта"
@@ -231,6 +275,58 @@
 		"en": "It is not necessary to fill out",
 		"ru": "Не обязательно заполнять"
 	},
+	"outputConsole.languageDesc": {
+		"en": "Lang desc",
+		"ru": "Язык описания"
+	},
+	"outputConsole.typeOutput": {
+		"en": "Type output",
+		"ru": "Тип вывода"
+	},
+	"outputConsole.typeOutput.formatted": {
+		"en": "Formatted",
+		"ru": "Форматированный"
+	},
+	"outputConsole.typeOutput.original": {
+		"en": "Original",
+		"ru": "Оригинальный"
+	},
+	"outputConsole.button.clearOutput": {
+		"en": "Clear output",
+		"ru": "Очистить вывод"
+	},
+	"outputConsole.table.from": {
+		"en": "From",
+		"ru": "От кого"
+	},
+	"outputConsole.table.type": {
+		"en": "Type",
+		"ru": "Тип"
+	},
+	"outputConsole.table.description": {
+		"en": "Description",
+		"ru": "Описание"
+	},
+	"outputConsole.table.file": {
+		"en": "File",
+		"ru": "Файл"
+	},
+	"outputConsole.table.line": {
+		"en": "Line",
+		"ru": "Строка"
+	},
+	"typeMessageDraw.type.tooltip": {
+		"en": "Type message",
+		"ru": "Тип сообщения"
+	},
+	"outputConsoleDrawer.NASM.flag.tooltip": {
+		"en": "Flag compilation",
+		"ru": "Флаг компиляции"
+	},
+	"widgetName.outputConsole": {
+		"en": "Output",
+		"ru": "Вывод"
+	},
 	"error.menu.loadLogo.title": {
 		"en": "Error loading icon logo",
 		"ru": "Ошибка загрузки иконки логотипа"
@@ -238,6 +334,30 @@
 	"error.menu.loadLogo": {
 		"en": "Where icons??",
 		"ru": "А где иконки?"
+	},
+	"error.comboLanguages.loadFlags.title": {
+		"en": "Error loading texture",
+		"ru": "Ошибка загрузки текстур"
+	},
+	"error.comboLanguages.loadFlags": {
+		"en": "Where image with flags??",
+		"ru": "А где картинка с флагами?"
+	},
+	"error.comboLanguages.loadData.title": {
+		"en": "Error loading data",
+		"ru": "Ошибка загрузки данных"
+	},
+	"error.comboLanguages.loadData": {
+		"en": "Where data languages??",
+		"ru": "А где данные о языках?"
+	},
+	"error.outputConsole.loadData.title": {
+		"en": "Error loading data",
+		"ru": "Ошибка загрузки данных"
+	},
+	"error.outputConsole.loadData": {
+		"en": "Where data translate?",
+		"ru": "А где файл переводов?"
 	},
 	"color.menu.logo": {
 		"en": "Logo",
@@ -247,6 +367,124 @@
 		"en": "Background project name",
 		"ru": "Фон названия проекта"
 	},
+	"color.outputConsole.selectedText": {
+		"en": "Selected text",
+		"ru": "Выделенный текст"
+	},
+	"color.outputConsole.NASM": {
+		"en": "NASM",
+		"ru": "NASM"
+	},
+	"color.outputConsole.NASM.flag": {
+		"en": "NASM flag compilation",
+		"ru": "NASM флаг компиляции"
+	},
+	"color.outputConsole.GCC": {
+		"en": "GCC",
+		"ru": "GCC"
+	},
+	"color.outputConsole.DBG": {
+		"en": "DBG",
+		"ru": "DBG"
+	},
+	"color.outputConsole.IDE": {
+		"en": "IDE",
+		"ru": "IDE"
+	},
+	"color.outputConsole.RUN": {
+		"en": "RUN",
+		"ru": "RUN"
+	},
+	"color.outputConsole.RUN.TEXT": {
+		"en": "RUN text",
+		"ru": "RUN текст"
+	},
+	"color.outputConsole.info": {
+		"en": "Information",
+		"ru": "Информация"
+	},
+	"color.outputConsole.warning": {
+		"en": "Warning",
+		"ru": "Предупреждение"
+	},
+	"color.outputConsole.error": {
+		"en": "Error",
+		"ru": "Ошибка"
+	},
+	"color.outputConsole.parser": {
+		"en": "Parser",
+		"ru": "Парсер"
+	},
+	"color.outputConsole.panic": {
+		"en": "Panic",
+		"ru": "Аварийное завершение"
+	},
+	"color.outputConsole.fatal": {
+		"en": "Fatal",
+		"ru": "Критическая ошибка"
+	},
+	"color.outputConsole.compiler": {
+		"en": "Compiler",
+		"ru": "Критическая ошибка"
+	},
+	"color.outputConsole.success": {
+		"en": "Success",
+		"ru": "Успех"
+	},
+	"color.base.text": {
+		"en": "Text",
+		"ru": "Текст"
+	},
+	"color.base.textLink": {
+		"en": "Text link",
+		"ru": "Текст ссылки"
+	},
+	"color.base.textDisabled": {
+		"en": "Text disabled",
+		"ru": "Текст (не активный)"
+	},
+	"color.base.textSelectedBg": {
+		"en": "Text selected",
+		"ru": "Текст (выбранный)"
+	},
+	"color.base.windowBg": {
+		"en": "Window background",
+		"ru": "Окно (фон)"
+	},
+	"color.base.childBg": {
+		"en": "Child background",
+		"ru": "Окно дочернее (фон)"
+	},
+	"color.base.popupBg": {
+		"en": "Popup background",
+		"ru": "Окно всплывающее (фон)"
+	},
+	"color.base.border": {
+		"en": "Border",
+		"ru": "Граница"
+	},
+	"color.base.borderShadow": {
+		"en": "Border shadow",
+		"ru": "Тень границы"
+	},
+	"color.base.frameBg": {
+		"en": "Frame background",
+		"ru": "Рамка (фон)"
+	},
+	"color.base.frameBgHovered": {
+		"en": "Hovered frame background",
+		"ru": "Выделенная рамка (фон)"
+	},
+	"color.base.frameBgActive": {
+		"en": "Hovered frame background",
+		"ru": "Активная рамка (фон)"
+	},
+	"color.base.titleBg": {
+		"en": "Title background",
+		"ru": "Название (фон)"
+	},
+
+
 	"color.outlineStatus.idle": {
 		"en": "Idle",
 		"ru": "Бездействие"
@@ -263,5 +501,4 @@
 		"en": "Debug",
 		"ru": "Отладка"
 	}
-
 }

@@ -26,7 +26,7 @@ void OutlineStatus::DisableMode_sinAlpha() {
 }
 
 
-OutlineStatus::OutlineStatus(FPS_Timer* fps_limiter, WindowManager* windowManager) : IThemeLoadable(u8"Outline status") {
+OutlineStatus::OutlineStatus(FPS_Timer* fps_limiter, WindowManager* windowManager) : IThemeLoadable("themeItem.outlineStatus") {
 	this->fps_limiter = fps_limiter;
 	this->windowManager = windowManager;
 

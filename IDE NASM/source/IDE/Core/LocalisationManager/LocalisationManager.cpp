@@ -13,6 +13,10 @@ void LocalisationManager::setLanguage(const std::string& language_abbriv){
 	GlobalLanguage = language_abbriv;
 }
 
+const std::string& LocalisationManager::getGlobal() {
+	return GlobalLanguage;
+}
+
 std::string LocalisationManager::translate(const std::string& keyName) {
 	return translate_data[keyName][GlobalLanguage].get<std::string>();
 }

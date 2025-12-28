@@ -1,6 +1,8 @@
 #include "ThemeManager.h"
 
-ThemeManager::ThemeManager() : ISettingObject(u8"Themes", u8"Color theme") {
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
+
+ThemeManager::ThemeManager() : ISettingObject(u8"setting.name.Themes", u8"setting.tabName.colorTheme") {
 
 }
 
@@ -125,9 +127,9 @@ void ThemeManager::LoadSetting(const nlohmann::json& SaveData) {
 
 
 std::string ThemeManager::ImColor2Hex(const ImColor& color) {
-	std::string red = Value2strHex_without0x(static_cast<uint8_t>(color.Value.x * 255.0));
+	std::string red   = Value2strHex_without0x(static_cast<uint8_t>(color.Value.x * 255.0));
 	std::string green = Value2strHex_without0x(static_cast<uint8_t>(color.Value.y * 255.0));
-	std::string blue = Value2strHex_without0x(static_cast<uint8_t>(color.Value.z * 255.0));
+	std::string blue  = Value2strHex_without0x(static_cast<uint8_t>(color.Value.z * 255.0));
 	std::string alpha = Value2strHex_without0x(static_cast<uint8_t>(color.Value.w * 255.0));
 
 	return red + green + blue + alpha;
@@ -138,14 +140,14 @@ ImColor ThemeManager::Hex2ImColor(const std::string& hex) {
 
 	std::string all = hex;
 
-	std::string red = "0x" + hex.substr(0, 2);
+	std::string red   = "0x" + hex.substr(0, 2);
 	std::string green = "0x" + hex.substr(2, 2);
-	std::string blue = "0x" + hex.substr(4, 2);
+	std::string blue  = "0x" + hex.substr(4, 2);
 	std::string alpha = "0x" + hex.substr(6, 2);
 
-	result.Value.x = (float)StrHex2int(red) / 255.f;
+	result.Value.x = (float)StrHex2int(red)   / 255.f;
 	result.Value.y = (float)StrHex2int(green) / 255.f;
-	result.Value.z = (float)StrHex2int(blue) / 255.f;
+	result.Value.z = (float)StrHex2int(blue)  / 255.f;
 	result.Value.w = (float)StrHex2int(alpha) / 255.f;
 
 	return result;
@@ -178,7 +180,7 @@ void ThemeManager::DrawPopupCreation() {
 	if (!PopupCreation_isOpen)
 		return;
 
-	ImGui::OpenPopup(u8"Создание названия для новой цветовой темы");
+	ImGui::OpenPopup("###POPUP_CREATION_NAME_FOR_NEW_THEME");
 
 	const ImGuiWindowFlags flagsWindow = ImGuiWindowFlags_NoDocking | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoScrollbar;
 	ImVec2 center = ImGui::GetMainViewport()->GetCenter();
@@ -201,7 +203,7 @@ void ThemeManager::DrawPopupCreation() {
 		}
 	}
 
-	if (ImGui::BeginPopupModal(u8"Создание названия для новой цветовой темы", &PopupCreation_isOpen, flagsWindow)) {
+	if (ImGui::BeginPopupModal( (tr("themeManager.popupCreationTheme.title") + u8" ###POPUP_CREATION_NAME_FOR_NEW_THEME").c_str(), &PopupCreation_isOpen, flagsWindow)) {
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + ImGui::GetFontSize() * 0.5f);
 		center.x -= ImGui::GetCurrentWindow()->Size.x / 2;
 		center.y -= ImGui::GetCurrentWindow()->Size.y / 2;
@@ -209,17 +211,17 @@ void ThemeManager::DrawPopupCreation() {
 
 		ImGui::Dummy(ImVec2(0.f, ImGui::GetFontSize() * 0.25f));
 
-		TextCenteredOnLine(u8"Название", 0, 0);
+		TextCenteredOnLine(tr("themeManager.popupCreationTheme.name").c_str(), 0, 0);
 
 		ImGui::Dummy(ImVec2(0.f, ImGui::GetFontSize() * 0.25f));
 
 		float input_width = ImGui::CalcItemWidth();
 		ImGui::SetCursorPosX((ImGui::GetWindowContentRegionMax().x - input_width) / 2.f);
-		ImGui::InputText("1102", buf_name, 120, ImGuiInputTextFlags_NoLabel);
+		ImGui::InputText("###INPUT_NAME_FOR_NEW_THEME", buf_name, 120, ImGuiInputTextFlags_NoLabel);
 		
 		ImGui::Dummy(ImVec2(0.f, ImGui::GetFontSize() * 0.25f));
 
-		bool pressed = ButtonCenteredOnLine(u8"Принять", 0.5f);
+		bool pressed = ButtonCenteredOnLine(tr("themeManager.popupCreationTheme.accept").c_str(), 0.5f);
 
 		if (ImGui::IsKeyPressed(ImGuiKey_Enter))
 			pressed = true;
@@ -264,20 +266,24 @@ void ThemeManager::DrawSetting() {
 
 	std::string preview_name;
 
+
+	std::string theme_dark = tr("themeManager.defaultTheme.dark");
+	std::string theme_light = tr("themeManager.defaultTheme.light");
+
 	if (indexChoosed == 0)
-		preview_name = u8"Тёмная";
+		preview_name = theme_dark;
 	else if (indexChoosed == 1)
-		preview_name = u8"Светлая";
+		preview_name = theme_light;
 	else
 		preview_name = themes[indexChoosed - 2].nameTheme;
 
 
-	if (ImGui::BeginCombo(u8"Выбор темы", preview_name.c_str(), ImGuiComboFlags_WidthFitPreview)) {
+	if (ImGui::BeginCombo(tr("themeManager.combo.chooseTheme").c_str(), preview_name.c_str(), ImGuiComboFlags_WidthFitPreview)) {
 
-		if (ImGui::Selectable(u8"Тёмная", preview_name == u8"Тёмная")) {
+		if (ImGui::Selectable(theme_dark.c_str(), preview_name == theme_dark)) {
 			SetDarkTheme();
 		}
-		if (ImGui::Selectable(u8"Светлая", preview_name == u8"Светлая")) {
+		if (ImGui::Selectable(theme_light.c_str(), preview_name == theme_light)) {
 			SetLightTheme();
 		}
 
@@ -312,7 +318,7 @@ void ThemeManager::DrawSetting() {
 
 	ImGui::SameLine();
 
-	if (ImGui::Button(u8"Создать из текущих цветов")) {
+	if (ImGui::Button(tr("themeManager.button.createFromCurrent").c_str())) {
 		PopupCreation_isOpen = true;
 	}
 	DrawPopupCreation();

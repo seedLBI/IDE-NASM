@@ -1,4 +1,6 @@
 #include "OutputConsoleDrawer.RUN.h"
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
+#include <robin_hood.h>
 
 OutputConsoleDrawer_RUN::OutputConsoleDrawer_RUN(
 	Solution* solution, 
@@ -35,7 +37,7 @@ void OutputConsoleDrawer_RUN::DrawLine(const int& index, std::string& line){
 
 	if (ImGui::IsItemHovered()) {
 		ImGui::BeginTooltip();
-		ImGui::Text(SyntaxData["RUN"]["description"][GlobalLanguage].get<std::string>().c_str());
+		ImGui::Text(SyntaxData["RUN"]["description"][gl()].get<std::string>().c_str());
 		ImGui::EndTooltip();
 	}
 
@@ -72,16 +74,20 @@ void OutputConsoleDrawer_RUN::DrawLine(const int& index, std::string& line){
 }
 
 void OutputConsoleDrawer_RUN::InitColors(const std::vector<NamedColor>& colors){
+
+
+	static robin_hood::unordered_flat_map<std::string, ImColor*> translator = {
+		{"color.outputConsole.selectedText", &color_bold_text},
+		{"color.outputConsole.RUN",			 &color_RUN},
+		{"color.outputConsole.RUN.TEXT",	 &color_RUN_TEXT},
+	};
+
 	for (int i = 0; i < colors.size(); i++) {
 
 		const std::string toSearch = colors[i].nameColor;
 
-		if (toSearch == u8"RUN")
-			color_RUN = colors[i].color;
-		else if (toSearch == u8"Выделенный текст")
-			color_bold_text = colors[i].color;
-		else if (toSearch == u8"RUN_TEXT")
-			color_RUN_TEXT = colors[i].color;
+		if (translator.contains(toSearch))
+			*translator[toSearch] = colors[i].color;
 
 	}
 }

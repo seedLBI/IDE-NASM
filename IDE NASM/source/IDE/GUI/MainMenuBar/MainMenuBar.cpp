@@ -212,7 +212,7 @@ void MainMenuBar::Draw() {
 
 
 				ImGui::MenuItem(MenuItem_ViewWidget_FilesViewer.c_str(), "", widgetManager->GetWidgetPtrByName(u8"Список файлов")->GetPtrFlagShow());
-				ImGui::MenuItem(MenuItem_ViewWidget_Output.c_str(),      "", widgetManager->GetWidgetPtrByName(u8"Вывод")->GetPtrFlagShow());
+				ImGui::MenuItem(MenuItem_ViewWidget_Output.c_str(),      "", widgetManager->GetWidgetPtrByName("widgetName.outputConsole")->GetPtrFlagShow());
 
 
 
@@ -228,15 +228,12 @@ void MainMenuBar::Draw() {
 				std::string MenuItem_BuildItem_compile_And_link = tr("menu.item.build.compileLink");
 				std::string MenuItem_BuildItem_compile			= tr("menu.item.build.compile");
 
-				if (ImGui::MenuItem(MenuItem_BuildItem_build_And_run.c_str())) {
+				if (ImGui::MenuItem(MenuItem_BuildItem_build_And_run.c_str()))
 					buildManager->Run();
-				}
-				if (ImGui::MenuItem(MenuItem_BuildItem_compile_And_link.c_str())) {
+				if (ImGui::MenuItem(MenuItem_BuildItem_compile_And_link.c_str()))
 					buildManager->CompileAndLink();
-				}
-				if (ImGui::MenuItem(MenuItem_BuildItem_compile.c_str())) {
+				if (ImGui::MenuItem(MenuItem_BuildItem_compile.c_str()))
 					buildManager->Compile();
-				}
 
 				ImGui::EndMenu();
 			}
@@ -551,7 +548,7 @@ MainMenuBar::MainMenuBar(
 	LastSolutionManager* lastSolutionManager, 
 	Solution* solution, 
 	Setting* setting, 
-	BuildManager* buildManager) : IThemeLoadable(u8"menu") {
+	BuildManager* buildManager) : IThemeLoadable(u8"themeItem.menu") {
 
 	this->windowManager = windowManager;
 	this->widgetManager = widgetManager;

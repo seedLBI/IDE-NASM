@@ -17,6 +17,8 @@ private:
 public:
 	static LocalisationManager& getInstance();
 
+
+	const std::string& getGlobal();
 	void setLanguage(const std::string& language_abbriv);
 	std::string translate(const std::string& keyName);
 
@@ -40,6 +42,8 @@ inline std::string tr(const std::string& keyName) {
 	return LocalisationManager::getInstance().translate(keyName);
 }
 
-
+inline std::string gl() {
+	return LocalisationManager::getInstance().getGlobal();
+}
 
 #endif

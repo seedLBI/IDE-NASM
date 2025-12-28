@@ -40,7 +40,7 @@ Application::Application() {
 
 	widgetManager_TextEditor = new WidgetManager_TextEditor(fps_limiter);
 	widget_FilesViewer = new Widget_FilesViewer(widgetManager_TextEditor);
-	widget_OutputConsole = new Widget_OutputConsole(buildManager,solution,fontManager, widgetManager_TextEditor);
+	widget_OutputConsole = new Widget_OutputConsole(windowManager->GetMainWindow()->GetHandle(), buildManager, solution, fontManager, widgetManager_TextEditor);
 
 	startupWindow = new StartupWindow(fontManager, solution);
 

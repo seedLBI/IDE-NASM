@@ -21,7 +21,7 @@
 
 class Widget_OutputConsole : public IWidget, public IThemeLoadable {
 public:
-	Widget_OutputConsole(BuildManager* buildManager, Solution* solution, FontManager* fontManager, WidgetManager_TextEditor* WidgetManagerTextEditor);
+	Widget_OutputConsole(GLFWwindow* window, BuildManager* buildManager, Solution* solution, FontManager* fontManager, WidgetManager_TextEditor* WidgetManagerTextEditor);
 	~Widget_OutputConsole();
 
 	void Draw() override;
@@ -36,6 +36,7 @@ public:
 
 
 private:
+	GLFWwindow* window = nullptr;
 	Solution* solution = nullptr;
 	BuildManager* buildManager = nullptr;
 	FontManager* fontManager = nullptr;
@@ -50,9 +51,9 @@ private:
 	nlohmann::json DataText;
 
 
-	ComboLanguage comboLang;
-	const std::string TypeOutput_Formatted = u8"Форматированный";
-	const std::string TypeOutput_Original = u8"Оригинальный";
+	ComboLanguage* comboLang;
+	const std::string TypeOutput_Formatted = "outputConsole.typeOutput.formatted";
+	const std::string TypeOutput_Original  = "outputConsole.typeOutput.original";
 	std::string CurrentTypeOutput = TypeOutput_Formatted;
 
 	ImColor color_NASM;
@@ -61,6 +62,7 @@ private:
 	ImColor color_DBG;
 	ImColor color_IDE;
 	ImColor color_RUN;
+	ImColor color_RUN_TEXT;
 
 	ImColor color_type_msg_compiler;
 	ImColor color_type_msg_info;

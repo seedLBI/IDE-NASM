@@ -1,7 +1,14 @@
 #ifndef COMBO_LANGUAGE_H
 #define COMBO_LANGUAGE_H
 
+
+
 #include <Windows.h>
+#include <glad/glad.h>
+#define GLFW_EXPOSE_NATIVE_WIN32
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
+
 #include <WinUser.h>
 #include <fstream>
 #include <string>
@@ -17,7 +24,7 @@
 
 class ComboLanguage {
 public:
-	ComboLanguage();
+	ComboLanguage(GLFWwindow* window);
 	~ComboLanguage();
 
 	void Draw(const std::string& label);
@@ -26,6 +33,8 @@ public:
 	void SetCurrentLanguage(const std::string& lang);
 
 private:
+	GLFWwindow* window;
+
 	Texture texture_flags;
 	nlohmann::json data_text;
 

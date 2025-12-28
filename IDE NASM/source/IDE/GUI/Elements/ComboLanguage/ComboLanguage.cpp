@@ -1,6 +1,9 @@
 #include "ComboLanguage.h"
 
-ComboLanguage::ComboLanguage() {
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
+
+ComboLanguage::ComboLanguage(GLFWwindow* window) {
+	this->window = window;
 	Init();
 
 }
@@ -51,34 +54,28 @@ bool ComboLanguage::FlagSelectableFromAtlas(const char* label, const flag_textur
 	const ImTextureID atlas_tex = texture_flags.GetID();
 	ImVec2 txt_size = ImGui::CalcTextSize(label);
 
-	// Рассчитываем размер флага
-	const float desired_height = ImGui::GetTextLineHeight() + 1.5f; // Увеличиваем базовую высоту
+	const float desired_height = ImGui::GetTextLineHeight() + 1.5f;
 	const float aspect_ratio = flag.icon_size.x / flag.icon_size.y;
 	const ImVec2 icon_size(desired_height * aspect_ratio, desired_height);
 
-	// Учитываем отступы стиля
 	const ImGuiStyle& style = ImGui::GetStyle();
 	const float pad = style.ItemInnerSpacing.x;
 	const float full_width = ImGui::GetContentRegionAvail().x;
 
-	// Фиксированная высота элемента = высота флага + вертикальные отступы
 	const float item_height = icon_size.y + style.FramePadding.y * 2.0f;
 	ImVec2 total_size(full_width, item_height);
 
 	if (out_size) *out_size = total_size;
 
 	ImGui::PushID(label);
-	// Явно указываем размер Selectable с учетом отступов
 	bool clicked = ImGui::Selectable("##flagsel", selected,
 		ImGuiSelectableFlags_SpanAllColumns | ImGuiSelectableFlags_AllowOverlap,
 		total_size);
 
-	// Получаем координаты для рендеринга
 	const ImVec2 min = ImGui::GetItemRectMin();
 	const ImVec2 max = ImGui::GetItemRectMax();
 	ImGui::PopID();
 
-	// Рендерим флаг с центрированием по вертикали
 	ImDrawList* dl = ImGui::GetWindowDrawList();
 	const float flag_y_offset = (total_size.y - icon_size.y) * 0.5f + 2.f;
 	dl->AddImage(atlas_tex,
@@ -86,7 +83,6 @@ bool ComboLanguage::FlagSelectableFromAtlas(const char* label, const flag_textur
 		ImVec2(min.x + icon_size.x + style.FramePadding.x, min.y + flag_y_offset + icon_size.y),
 		flag.uv0, flag.uv1);
 
-	// Рендерим текст с увеличенным отступом
 	const float text_x = min.x + icon_size.x + pad * 2.0f + style.FramePadding.x;
 	const float text_y_offset = (total_size.y - txt_size.y) * 0.5f;
 	dl->AddText(
@@ -104,7 +100,7 @@ std::string ComboLanguage::GetCurrentLanguage() {
 void ComboLanguage::Draw(const std::string& label) {
 	if (ImGui::BeginCombo(
 		std::string(label + "##ComboBox").c_str(), 
-		data_text[CurrentLanguage]["description"][GlobalLanguage].get<std::string>().c_str(), 
+		data_text[CurrentLanguage]["description"].get<std::string>().c_str(), 
 		ImGuiComboFlags_HeightSmall)) 
 	{
 
@@ -113,7 +109,7 @@ void ComboLanguage::Draw(const std::string& label) {
 
 
 			bool was_selected = (key == CurrentLanguage);
-			if (FlagSelectableFromAtlas(data_text[key]["description"][GlobalLanguage].get<std::string>().c_str(), GetFlagData(key), was_selected))
+			if (FlagSelectableFromAtlas(data_text[key]["description"].get<std::string>().c_str(), GetFlagData(key), was_selected))
 			{
 				CurrentLanguage = key;
 			}
@@ -145,8 +141,12 @@ void ComboLanguage::Init() {
 		texture_flags.Init();
 	}
 	else {
-		MessageBoxW(0, L"А где картинка с флагами? (resources\\icons\\flags\\image.png)", L"Ошибка загрузки текстур", MB_ICONERROR | MB_OK);
-		exit(0);
+		MessageBoxW(
+			glfwGetWin32Window(window),
+			(stringUTF8_to_wstring(tr("error.comboLanguages.loadFlags")) + L" (resources\\icons\\flags\\image.png)").c_str(),
+			 stringUTF8_to_wstring(tr("error.comboLanguages.loadFlags.title")).c_str(),
+			MB_ICONERROR | MB_OK);
+		std::abort();
 	}
 
 
@@ -157,8 +157,12 @@ void ComboLanguage::Init() {
 		ifn.close();
 	}
 	else {
-		MessageBoxW(0, L"А где данные о языках? (resources\\json\\LanguageChoose.json)", L"Ошибка загрузки данных", MB_ICONERROR | MB_OK);
-		exit(0);
+		MessageBoxW(
+			glfwGetWin32Window(window),
+			(stringUTF8_to_wstring(tr("error.comboLanguages.loadData")) + L"А где данные о языках? (resources\\json\\LanguageChoose.json)").c_str(),
+			stringUTF8_to_wstring(tr("error.comboLanguages.loadData.title")).c_str(),
+			MB_ICONERROR | MB_OK);
+		std::abort();
 	}
 
 	

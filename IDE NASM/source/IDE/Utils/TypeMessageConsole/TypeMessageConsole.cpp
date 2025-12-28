@@ -32,14 +32,14 @@ TypeMessageConsole STR_to_TypeMessageConsole(const std::string& str_type) {
 
 std::string TypeMessageConsole_to_STR(const TypeMessageConsole& type) {
 	switch (type) {
-		case MessageConsole_Compiler: return "nasm";
-		case MessageConsole_Info: return "info";
-		case MessageConsole_Warning: return "warning";
-		case MessageConsole_Error: return "error";
-		case MessageConsole_Panic: return "panic";
-		case MessageConsole_Parser: return "parser";
-		case MessageConsole_Fatal: return "fatal";
-		case MessageConsole_Success: return "success";
+		case MessageConsole_Compiler:	return "nasm";
+		case MessageConsole_Info:		return "info";
+		case MessageConsole_Warning:	return "warning";
+		case MessageConsole_Error:		return "error";
+		case MessageConsole_Panic:		return "panic";
+		case MessageConsole_Parser:		return "parser";
+		case MessageConsole_Fatal:		return "fatal";
+		case MessageConsole_Success:	return "success";
 	default: return "NOTHING";
 	}
 }

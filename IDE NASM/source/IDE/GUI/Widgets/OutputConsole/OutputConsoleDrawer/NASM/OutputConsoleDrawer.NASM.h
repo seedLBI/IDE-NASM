@@ -40,9 +40,6 @@ private:
 
 	nlohmann::json SyntaxData;
 
-	std::string GlobalLanguage = "ru";
-
-
 	ImColor color_NASM;
 	ImColor color_NASM_flag;
 	ImColor color_bold_text;

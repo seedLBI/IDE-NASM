@@ -29,9 +29,6 @@ private:
 	FontManager* fontManager = nullptr;
 	nlohmann::json Data;
 
-	std::string GlobalLanguage = "ru";
-
-
 	ImColor color_type_msg_compiler;
 	ImColor color_type_msg_info;
 	ImColor color_type_msg_warning;
@@ -42,9 +39,6 @@ private:
 	ImColor color_type_msg_success;
 
 	ImColor color_bold_text;
-
-
-
 };
 
 

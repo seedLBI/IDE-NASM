@@ -33,8 +33,6 @@ private:
 	TypeMessageDraw* typeMessageDraw = nullptr;
 	nlohmann::json SyntaxData;
 
-	std::string GlobalLanguage = "ru";
-
 	ImColor color_IDE;
 	ImColor color_bold_text;
 
