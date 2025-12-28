@@ -1,6 +1,6 @@
 #include "ThemeManager.h"
 
-ThemeManager::ThemeManager() : ISettingObject(u8"Themes", u8"Цветовая тема") {
+ThemeManager::ThemeManager() : ISettingObject(u8"Themes", u8"Color theme") {
 
 }
 

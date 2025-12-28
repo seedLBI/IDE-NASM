@@ -1,6 +1,7 @@
 ﻿#include "StartupWindow.h"
 #include "IDE/Core/Solution/Solution.h"
 
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
 StartupWindow::StartupWindow(FontManager* fontManager, Solution* solution) {
 	this->fontManager = fontManager;
@@ -316,7 +317,11 @@ void StartupWindow::Draw() {
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(6.0f, 6.0f));
 
-	if (ImGui::Begin(u8"Выбор проекта", 0, flagsWindow)) {
+
+
+
+
+	if (ImGui::Begin((tr("startupWindow.title") + u8" ###CHOOSING_PROJECT").c_str(), 0, flagsWindow)) {
 
 		center.x -= ImGui::GetCurrentWindow()->Size.x / 2;
 		center.y -= ImGui::GetCurrentWindow()->Size.y / 2;
@@ -341,11 +346,11 @@ void StartupWindow::Draw() {
 
 			ImGui::SetWindowFontScale(AddFontSize);
 
-			if (ImGui::Button(u8"Создать();", ImVec2(ImGui::GetCurrentWindow()->Size.x / 2, ImGui::GetCurrentWindow()->Size.y / 8))) {
+			if (ImGui::Button(tr("startupWindow.button.create").c_str(), ImVec2(ImGui::GetCurrentWindow()->Size.x / 2, ImGui::GetCurrentWindow()->Size.y / 8))) {
 				solution->Create();
 			}
 			ImGui::SameLine();
-			if (ImGui::Button(u8"Открыть();", ImVec2(ImGui::GetCurrentWindow()->Size.x / 2, ImGui::GetCurrentWindow()->Size.y / 8))) {
+			if (ImGui::Button(tr("startupWindow.button.open").c_str(), ImVec2(ImGui::GetCurrentWindow()->Size.x / 2, ImGui::GetCurrentWindow()->Size.y / 8))) {
 				TryingOpen();
 			}
 
@@ -383,7 +388,7 @@ void StartupWindow::Draw() {
 				ImGui::PushStyleColor(ImGuiCol_Text, Color_Favorite);
 
 
-				if (ImGui::TreeNodeEx(std::string(u8"Избранное " + std::string(ICON_FA_STAR)).c_str(),ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanFullWidth)) {
+				if (ImGui::TreeNodeEx(std::string(tr("startupWindow.list.favorite") + " " + std::string(ICON_FA_STAR)).c_str(), ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanFullWidth)) {
 					ImGui::PopStyleColor();
 
 
@@ -420,7 +425,7 @@ void StartupWindow::Draw() {
 
 
 
-			if (ImGui::TreeNodeEx(u8"Последние", ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanFullWidth)) {
+			if (ImGui::TreeNodeEx(tr("startupWindow.list.last").c_str(), ImGuiTreeNodeFlags_DefaultOpen | ImGuiTreeNodeFlags_SpanFullWidth)) {
 
 				for (int i = LastFavorite; i < last_solutions->size(); i++)
 				{
@@ -491,7 +496,10 @@ void StartupWindow::Draw() {
 		ImGui::SetWindowFontScale(AddFontSize);
 
 		fontManager->Push_Bold();
-		ImVec2 txt_size = ImGui::CalcTextSize(u8"#ИНФОРМАЦИЯ", nullptr, true);
+
+		std::string text_info = tr("startupWindow.information");
+
+		ImVec2 txt_size = ImGui::CalcTextSize(text_info.c_str(), nullptr, true);
 
 		ImGuiID id_INFORMATION_RENDER_FRAME = window->GetID("##id_INFORMATION_RENDER_FRAME");
 		ImGui::ItemSize(bb, style.FramePadding.y);
@@ -503,7 +511,7 @@ void StartupWindow::Draw() {
 		ImVec2 text_pos = ImVec2(
 			bb.Min.x + main_button_size.x / 2 - txt_size.x / 2,
 			bb.Min.y + main_button_size.y / 2 - txt_size.y / 2);
-		ImGui::RenderText(text_pos, u8"#ИНФОРМАЦИЯ");
+		ImGui::RenderText(text_pos, text_info.c_str());
 		ImGui::PopFont();
 		ImGui::SetWindowFontScale(1.f);
 
@@ -511,37 +519,66 @@ void StartupWindow::Draw() {
 
 		if (show != nullptr) {
 
+			std::string name    = tr("startupWindow.information.name");
+			std::string desc    = tr("startupWindow.information.description");
+			std::string created = tr("startupWindow.information.created");
+			std::string edited  = tr("startupWindow.information.edited");
+			std::string spented = tr("startupWindow.information.spented");
+			std::string lines   = tr("startupWindow.information.lines");
 
-			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], u8"Название  : ");
+			size_t max_length = (std::max)({
+				name.length(), desc.length(), created.length(),
+				edited.length(), spented.length(), lines.length()
+			});
+
+
+			PadRight(name,    ' ', max_length + 1);
+			PadRight(desc,    ' ', max_length + 1);
+			PadRight(created, ' ', max_length + 1);
+			PadRight(edited,  ' ', max_length + 1);
+			PadRight(spented, ' ', max_length + 1);
+			PadRight(lines,   ' ', max_length + 1);
+
+			name += ": ";
+			desc += ": ";
+			created += ": ";
+			edited += ": ";
+			spented += ": ";
+			lines += ": ";
+
+
+
+
+			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], name.c_str());
 			ImGui::SameLine(0);
 			ImGui::Text(show->name.c_str());
 			ImGui::Separator();
 
-			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], u8"Описание  : ");
+			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], desc.c_str());
 			ImGui::SameLine(0);
 			ImGui::TextWrapped(show->description.c_str());
 			ImGui::Separator();
 
-			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], u8"Создан    : ");
+			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], created.c_str());
 			ImGui::SameLine(0);
 			ImGui::Text(timestamp_to_DateAndTime_str(show->timeCreated).c_str());
 			ImGui::Separator();
 
-			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], u8"Изменён   : ");
+			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], edited.c_str());
 			ImGui::SameLine(0);
 			ImGui::Text(timestamp_to_DateAndTime_str(show->timeLastChange).c_str());
 			ImGui::Separator();
 
-			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], u8"Затрачено : ");
+			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], spented.c_str());
 			ImGui::SameLine(0);
 			ImGui::Text(timestamp_to_Time_str(show->timeSpent).c_str());
 			ImGui::Separator();
 
-			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], u8"Строк     : ");
+			ImGui::TextColored(style.Colors[ImGuiCol_TextDisabled], lines.c_str());
 			ImGui::SameLine(0);
 			ImGui::Text(std::to_string(show->countLines).c_str());
 
-			ImGui::SeparatorText(u8"Файлы");
+			ImGui::SeparatorText(tr("startupWindow.information.files").c_str());
 
 			for (int i = 0; i < show->files.size(); i++) {
 				if (show->files[i] == show->mainFile){
@@ -570,7 +607,7 @@ void StartupWindow::Draw() {
 
 		}
 		else {
-			ImGui::TextWrapped(u8"Для вывода наведись курсором на проект из списка");
+			ImGui::TextWrapped(tr("startupWindow.information.tooltip").c_str());
 		}
 
 		ImGui::EndChild();

@@ -135,6 +135,102 @@
 		"en": "Background tasks are not running",
 		"ru": "Фоновые задачи не выполняются"
 	},
+	"setting.title": {
+		"en": "Settings",
+		"ru": "Настройки"
+	},
+	"startupWindow.title": {
+		"en": "Choose project",
+		"ru": "Выбор проекта"
+	},
+	"startupWindow.button.create": {
+		"en": "Create();",
+		"ru": "Создать();"
+	},
+	"startupWindow.button.open": {
+		"en": "Open();",
+		"ru": "Открыть();"
+	},
+	"startupWindow.list.favorite": {
+		"en": "Favorite",
+		"ru": "Избранное"
+	},
+	"startupWindow.list.last": {
+		"en": "Last",
+		"ru": "Последние"
+	},
+	"startupWindow.information": {
+		"en": "#INFORMATION",
+		"ru": "#ИНФОРМАЦИЯ"
+	},
+	"startupWindow.information.name": {
+		"en": "Name",
+		"ru": "Название"
+	},
+	"startupWindow.information.description": {
+		"en": "Description",
+		"ru": "Описание"
+	},
+	"startupWindow.information.created": {
+		"en": "Created",
+		"ru": "Создан"
+	},
+	"startupWindow.information.edited": {
+		"en": "Edited",
+		"ru": "Изменён"
+	},
+	"startupWindow.information.spented": {
+		"en": "Spented",
+		"ru": "Затрачено"
+	},
+	"startupWindow.information.lines": {
+		"en": "Lines",
+		"ru": "Строк"
+	},
+	"startupWindow.information.files": {
+		"en": "Files",
+		"ru": "Файлы"
+	},
+	"startupWindow.information.tooltip": {
+		"en": "To display the output, hover over the project from the list.",
+		"ru": "Для вывода наведись курсором на проект из списка."
+	},
+	"solution.title": {
+		"en": "Creation new project",
+		"ru": "Создание нового проекта"
+	},
+	"solution.nameProject": {
+		"en": "Name project",
+		"ru": "Имя проекта"
+	},
+	"solution.pathProject": {
+		"en": "Path",
+		"ru": "Расположение"
+	},
+	"solution.dialogChoosePathFolder.title": {
+		"en": "Select the path where the project folder will be located",
+		"ru": "Выбери путь где будет находится папка с проектом"
+	},
+	"solution.dialogOpenFile.title": {
+		"en": "Select a project file",
+		"ru": "Выбери файл проекта"
+	},
+	"solution.button.create": {
+		"en": "Create",
+		"ru": "Создать"
+	},
+	"solution.button.change.tooltip": {
+		"en": "Edit",
+		"ru": "Изменить"
+	},
+	"solution.description": {
+		"en": "Description",
+		"ru": "Описание"
+	},
+	"solution.description.helpMarker": {
+		"en": "It is not necessary to fill out",
+		"ru": "Не обязательно заполнять"
+	},
 	"error.menu.loadLogo.title": {
 		"en": "Error loading icon logo",
 		"ru": "Ошибка загрузки иконки логотипа"
@@ -150,6 +246,22 @@
 	"color.menu.backgroundProjectName": {
 		"en": "Background project name",
 		"ru": "Фон названия проекта"
+	},
+	"color.outlineStatus.idle": {
+		"en": "Idle",
+		"ru": "Бездействие"
+	},
+	"color.outlineStatus.create": {
+		"en": "Create",
+		"ru": "Создание"
+	},
+	"color.outlineStatus.run": {
+		"en": "Run",
+		"ru": "Выполнение"
+	},
+	"color.outlineStatus.debug": {
+		"en": "Debug",
+		"ru": "Отладка"
 	}
 
 }

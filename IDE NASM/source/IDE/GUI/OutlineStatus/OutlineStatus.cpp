@@ -26,17 +26,17 @@ void OutlineStatus::DisableMode_sinAlpha() {
 }
 
 
-OutlineStatus::OutlineStatus(FPS_Timer* fps_limiter, WindowManager* windowManager) : IThemeLoadable(u8"Оконтовка статуса") {
+OutlineStatus::OutlineStatus(FPS_Timer* fps_limiter, WindowManager* windowManager) : IThemeLoadable(u8"Outline status") {
 	this->fps_limiter = fps_limiter;
 	this->windowManager = windowManager;
 
 	IThemeLoadable::InitListWord({
-			u8"Бездействие",
-			u8"Создание",
-			u8"Выполнение",
-			u8"Отладка",
+			u8"color.outlineStatus.idle",
+			u8"color.outlineStatus.create",
+			u8"color.outlineStatus.run",
+			u8"color.outlineStatus.debug",
 		}
-		);
+	);
 
 }
 
@@ -47,13 +47,13 @@ void OutlineStatus::LoadColors() {
 		const auto toSearch = object_colors.colors[i].nameColor;
 		const auto color = object_colors.colors[i].color;
 
-		if (toSearch == u8"Бездействие")
+		if (toSearch == u8"color.outlineStatus.idle")
 			color_Default = object_colors.colors[i].color;
-		else if (toSearch == u8"Создание")
+		else if (toSearch == u8"color.outlineStatus.create")
 			color_Building = object_colors.colors[i].color;
-		else if (toSearch == u8"Выполнение")
+		else if (toSearch == u8"color.outlineStatus.run")
 			color_Running = object_colors.colors[i].color;
-		else if (toSearch == u8"Отладка")
+		else if (toSearch == u8"color.outlineStatus.debug")
 			color_Debugging = object_colors.colors[i].color;
 	}
 
@@ -63,20 +63,20 @@ void OutlineStatus::LoadColors() {
 
 std::vector<NamedColor> OutlineStatus::GetDefaultLightColors() {
 	std::vector<NamedColor> colors = {
-		{u8"Бездействие",	ImColor(163,163,163,150)},
-		{u8"Создание",		ImColor(104, 185, 217, 255)},
-		{u8"Выполнение",	ImColor(255, 176, 0, 255)},
-		{u8"Отладка",		ImColor(0, 255, 18, 255)},
+		{u8"color.outlineStatus.idle",	ImColor(163,163,163,150)},
+		{u8"color.outlineStatus.create",ImColor(104, 185, 217, 255)},
+		{u8"color.outlineStatus.run",	ImColor(255, 176, 0, 255)},
+		{u8"color.outlineStatus.debug",	ImColor(0, 255, 18, 255)},
 	};
 	return colors;
 }
 
 std::vector<NamedColor> OutlineStatus::GetDefaultDarkColors() {
 	std::vector<NamedColor> colors = {
-		{u8"Бездействие",	ImColor(163,163,163,150)},
-		{u8"Создание",		ImColor(104, 185, 217, 255)},
-		{u8"Выполнение",	ImColor(255, 176, 0, 255)},
-		{u8"Отладка",		ImColor(0, 255, 18, 255)},
+		{u8"color.outlineStatus.idle",	ImColor(163,163,163,150)},
+		{u8"color.outlineStatus.create",ImColor(104, 185, 217, 255)},
+		{u8"color.outlineStatus.run",	ImColor(255, 176, 0, 255)},
+		{u8"color.outlineStatus.debug",	ImColor(0, 255, 18, 255)},
 	};
 	return colors;
 }

@@ -1,5 +1,6 @@
 #include "Setting.h"
 
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
 Setting::Setting() : SaveSystem("Setting") {
 #ifdef _DEBUG
@@ -39,14 +40,14 @@ void Setting::Draw() {
 		return;
 
 
-	ImGui::OpenPopup(u8"Настройки");
+	ImGui::OpenPopup(u8"###SETTINGS");
 
 	static const ImGuiWindowFlags flagsWindow = 
 		ImGuiWindowFlags_NoDocking |
 		ImGuiWindowFlags_NoMove |
 		ImGuiWindowFlags_NoResize |
 		ImGuiWindowFlags_NoCollapse |
-		ImGuiWindowFlags_NoScrollbar | 
+		ImGuiWindowFlags_NoScrollbar |
 		ImGuiWindowFlags_NoScrollWithMouse;
 
 	ImVec2 center = ImGui::GetMainViewport()->GetCenter();
@@ -56,8 +57,8 @@ void Setting::Draw() {
 
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowTitleAlign, ImVec2(0.5, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
-
-	if (ImGui::BeginPopupModal(u8"Настройки", &Popup_Open, flagsWindow)) {
+	
+	if (ImGui::BeginPopupModal((tr("setting.title") + u8" ###SETTINGS").c_str(), &Popup_Open, flagsWindow)) {
 
 
 		center.x -= ImGui::GetCurrentWindow()->Size.x / 2;
@@ -97,13 +98,6 @@ void Setting::Draw() {
 
 
 		ImGui::EndChild();
-
-
-		/*
-		string WaterMark = "seedLBI 2024";
-		ImGui::SetCursorScreenPos(ImVec2((pos.x + avail_size.x) - ImGui::CalcTextSize(WaterMark.c_str()).x - 2.f, (pos.y + avail_size.y) - ImGui::CalcTextSize(WaterMark.c_str()).y - 7.f - 2.f));
-		ImGui::TextColored(ImVec4(1, 1, 1, 0.2), WaterMark.c_str());
-		*/
 
 
 		ImGui::EndPopup();

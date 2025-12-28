@@ -1,6 +1,6 @@
 #include "Solution.h"
 #include "IDE/Core/LastSolutionManager/LastSolutionManager.h"
-
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
 Solution::Solution() {
 #ifdef _DEBUG
@@ -109,11 +109,11 @@ void Solution::DrawPopupCreation() {
 		//ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8.0f, 8.0f));
 
 
-		ImGui::OpenPopup(u8"Создание нового проекта");
+		ImGui::OpenPopup("###CREATION_NEW_PROJECT");
 
 
 
-		if (ImGui::BeginPopupModal(u8"Создание нового проекта", &flag_PopupCreation, flagsWindow)) {
+		if (ImGui::BeginPopupModal((tr("solution.title") + " ###CREATION_NEW_PROJECT").c_str(), &flag_PopupCreation, flagsWindow)) {
 
 
 			center.x -= ImGui::GetCurrentWindow()->Size.x / 2;
@@ -121,9 +121,9 @@ void Solution::DrawPopupCreation() {
 			ImGui::GetCurrentWindow()->Pos = center;
 			
 			
-			ImGui::Text(u8"Имя проекта");
+			ImGui::Text(tr("solution.nameProject").c_str());
 			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - 52.f);
-			ImGui::InputText(u8"Имя проекта##INPUT", input_Name, 1024, ImGuiInputTextFlags_NoLabel);
+			ImGui::InputText(u8"###INPUT_NAME_PROJECT", input_Name, 1024, ImGuiInputTextFlags_NoLabel);
 			
 			
 			std::string PathToProject = BasePath + "\\" + input_Name;
@@ -139,29 +139,24 @@ void Solution::DrawPopupCreation() {
 			}
 
 
-			ImGui::Text(u8"Расположение");
+			ImGui::Text(tr("solution.pathProject").c_str());
 			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - 52.f);
-			ImGui::InputText(u8"Расположение##INPUT", input_Path, 2048, ImGuiInputTextFlags_NoLabel | ImGuiInputTextFlags_ReadOnly);
+			ImGui::InputText(u8"###INPUT_PATH_NEW_PROJECT", input_Path, 2048, ImGuiInputTextFlags_NoLabel | ImGuiInputTextFlags_ReadOnly);
 			ImGui::SameLine();
 			if (ImGui::Button(u8"...##BUTTONCHANGEPATH", ImVec2(0, 0))) {
-				std::wstring NewBasePath = Open_FolderDialog(L"Выбери путь где будет находится папка с проектом", PathRepos.c_str());
+				std::wstring NewBasePath = Open_FolderDialog(stringUTF8_to_wstring(tr("solution.dialogChoosePathFolder.title")).c_str(), PathRepos.c_str());
 
 				if (NewBasePath.empty() == false) {
 					BasePath = wstring_to_stringUTF8(NewBasePath);
 				}
 
 			}
-			if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayShort)) {
-				if (ImGui::BeginTooltip()) {
-						ImGui::Text(u8"Изменить");
-					ImGui::EndTooltip();
-				}
-			}
+			TooltipTranslated("solution.button.change.tooltip");
 			
 
-			ImGui::Text(u8"Описание"); ImGui::SameLine(); HelpMarker(u8"Не обязательно заполнять");
+			ImGui::Text(tr("solution.description").c_str()); ImGui::SameLine(); HelpMarker(tr("solution.description.helpMarker").c_str());
 			ImGui::SetNextItemWidth(ImGui::GetContentRegionAvail().x - 52.f);
-			ImGui::InputTextMultiline(u8"Описание##INPUT", input_Discription, 2048,ImVec2(0,0), ImGuiInputTextFlags_NoLabel);
+			ImGui::InputTextMultiline(u8"###INPUT_DESCRIPTION_NEW_PROJECT", input_Discription, 2048,ImVec2(0,0), ImGuiInputTextFlags_NoLabel);
 
 			ImGui::Dummy(ImVec2(0,ImGui::GetTextLineHeight()*0.7f));
 
@@ -169,7 +164,7 @@ void Solution::DrawPopupCreation() {
 			bool disabled = std::string(input_Name).empty();
 
 			
-			if (ButtonCenteredOnLine(u8" Создать ", 1.0f)) {
+			if (ButtonCenteredOnLine((" " + tr("solution.button.create") + " ").c_str(), 1.0f)) {
 				if (disabled == false) {
 
 					std::string str_Name = input_Name;
@@ -292,7 +287,7 @@ bool Solution::Open() {
 
 	const std::wstring PathRepos = GetPathDirectory() + L"\\repos";
 
-	std::wstring path = Open_FileDialog(L"Выбери файл проекта", L"NASM Solution (*.nasmsln)\0*.nasmsln\0\0", PathRepos.c_str());
+	std::wstring path = Open_FileDialog(stringUTF8_to_wstring(tr("solution.dialogOpenFile.title")).c_str(), L"NASM Solution (*.nasmsln)\0*.nasmsln\0\0", PathRepos.c_str());
 
 
 	if (path.empty())
