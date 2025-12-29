@@ -615,9 +615,33 @@
     "en": "Flag compilation",
     "ru": "Флаг компиляции"
   },
+  "lastProjects.tooltip": {
+    "en": "It's empty here for now, well, you know...\nat least save or open the file, I don't know.",
+    "ru": "Пока что здесь пусто, ну ты это..\nхотя бы сохрани или открой файл я не знаю"
+  },
+  "lastProjects.setting.radio.showPathAbsolute": {
+    "en": "Show path absolute",
+    "ru": "Показывать абсолютный путь"
+  },
   "setting.name.Themes": {
     "en": "Themes",
     "ru": "Темы"
+  },
+  "setting.name.LastProjects": {
+    "en": "Last projects",
+    "ru": "Последние проекты"
+  },
+  "setting.name.KeyCombinations": {
+    "en": "Key combinations",
+    "ru": "Комбинации клавиш"
+  },
+  "setting.tabName.keyCombinations": {
+    "en": "Keys",
+    "ru": "Управление"
+  },
+  "setting.tabName.general": {
+    "en": "General",
+    "ru": "Общие"
   },
   "setting.tabName.colorTheme": {
     "en": "Color themes",
@@ -626,6 +650,38 @@
   "setting.title": {
     "en": "Settings",
     "ru": "Настройки"
+  },
+  "keyCombination.text.nameCommand": {
+    "en": "Name command",
+    "ru": "Название команды"
+  },
+  "keyCombination.text.combinationKeys": {
+    "en": "Keys combination",
+    "ru": "Комбинация клавиш"
+  },
+  "keyCombination.compile": {
+    "en": "Compile",
+    "ru": "Компилировать"
+  },
+  "keyCombination.build": {
+    "en": "Build",
+    "ru": "Собрать"
+  },
+  "keyCombination.run": {
+    "en": "Run",
+    "ru": "Запустить"
+  },
+  "keyCombination.openNewProject": {
+    "en": "Open new project",
+    "ru": "Открыть новый проект"
+  },
+  "keyCombination.saveAllFiles": {
+    "en": "Save all files",
+    "ru": "Сохранить все файлы"
+  },
+  "keyCombination.saveCurrentFocusedFile": {
+    "en": "Save focused file",
+    "ru": "Сохранить текущий активный файл"
   },
   "solution.button.change.tooltip": {
     "en": "Edit",
@@ -775,6 +831,14 @@
     "en": "Type message",
     "ru": "Тип сообщения"
   },
+  "filesViewer.entryPoint.tooltip": {
+    "en": "Compilation entry point\nTo change, right-click on the desired file.",
+    "ru": "Точка входа для компиляции\nЧтобы поменять щелкни ПКМ по нужному файлу."
+  },
+  "filesViewer.fileActive.tooltip": {
+    "en": "Highlighted because the file has keyboard focus.",
+    "ru": "Подсвечивается так как файл в фокусе клавиатуры."
+  },
   "widgetName.managerTextEditor": {
     "en": "Manager text editor",
     "ru": "Менеджер редакторов кода"
@@ -782,5 +846,9 @@
   "widgetName.outputConsole": {
     "en": "Output",
     "ru": "Вывод"
+  },
+  "widgetName.filesViewer": {
+    "en": "Files viewer",
+    "ru": "Список файлов"
   }
 }

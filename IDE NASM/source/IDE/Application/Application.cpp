@@ -99,7 +99,7 @@ void Application::InitWidgetManager() {
 }
 void Application::InitKeyCombinationHandler() {
 	keyCombinationHandler->AddCombination(
-		u8"Сохранить текущий активный файл", 
+		"keyCombination.saveCurrentFocusedFile",
 		KeyCombination({ 
 			GLFW_KEY_LEFT_CONTROL, 
 			GLFW_KEY_S }, 
@@ -107,7 +107,7 @@ void Application::InitKeyCombinationHandler() {
 	);
 
 	keyCombinationHandler->AddCombination(
-		u8"Сохранить все файлы", 
+		"keyCombination.saveAllFiles",
 		KeyCombination({ 
 			GLFW_KEY_LEFT_CONTROL, 
 			GLFW_KEY_LEFT_SHIFT,
@@ -116,7 +116,7 @@ void Application::InitKeyCombinationHandler() {
 	);
 
 	keyCombinationHandler->AddCombination(
-		u8"Открыть новый проект",
+		"keyCombination.openNewProject",
 		KeyCombination({ 
 			GLFW_KEY_LEFT_CONTROL, 
 			GLFW_KEY_O },
@@ -124,7 +124,7 @@ void Application::InitKeyCombinationHandler() {
 	);
 
 	keyCombinationHandler->AddCombination(
-		u8"Компилировать",
+		"keyCombination.compile",
 		KeyCombination({
 			GLFW_KEY_LEFT_CONTROL,
 			GLFW_KEY_F7 },
@@ -132,14 +132,14 @@ void Application::InitKeyCombinationHandler() {
 	);
 
 	keyCombinationHandler->AddCombination(
-		u8"Собрать",
+		"keyCombination.build",
 		KeyCombination({
 			GLFW_KEY_F7 },
 			std::bind(&BuildManager::CompileAndLink, buildManager))
 	);
 
 	keyCombinationHandler->AddCombination(
-		u8"Запустить без отладки",
+		"keyCombination.run",
 		KeyCombination({
 			GLFW_KEY_LEFT_CONTROL,
 			GLFW_KEY_F5 },

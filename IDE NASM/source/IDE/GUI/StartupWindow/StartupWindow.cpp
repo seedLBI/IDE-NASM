@@ -526,25 +526,33 @@ void StartupWindow::Draw() {
 			std::string spented = tr("startupWindow.information.spented");
 			std::string lines   = tr("startupWindow.information.lines");
 
+
+			UTF8_SPLITER_ERROR error;
+
+			
+
 			size_t max_length = (std::max)({
-				name.length(), desc.length(), created.length(),
-				edited.length(), spented.length(), lines.length()
+				count_symbols_utf8(name, error),
+				count_symbols_utf8(desc, error),
+				count_symbols_utf8(created, error),
+				count_symbols_utf8(edited, error),
+				count_symbols_utf8(spented, error),
+				count_symbols_utf8(lines, error)
 			});
 
+			PadRight_UTF8(name,    ' ', max_length + 1);
+			PadRight_UTF8(desc,    ' ', max_length + 1);
+			PadRight_UTF8(created, ' ', max_length + 1);
+			PadRight_UTF8(edited,  ' ', max_length + 1);
+			PadRight_UTF8(spented, ' ', max_length + 1);
+			PadRight_UTF8(lines,   ' ', max_length + 1);
 
-			PadRight(name,    ' ', max_length + 1);
-			PadRight(desc,    ' ', max_length + 1);
-			PadRight(created, ' ', max_length + 1);
-			PadRight(edited,  ' ', max_length + 1);
-			PadRight(spented, ' ', max_length + 1);
-			PadRight(lines,   ' ', max_length + 1);
-
-			name += ": ";
-			desc += ": ";
+			name	+= ": ";
+			desc	+= ": ";
 			created += ": ";
-			edited += ": ";
+			edited	+= ": ";
 			spented += ": ";
-			lines += ": ";
+			lines	+= ": ";
 
 
 

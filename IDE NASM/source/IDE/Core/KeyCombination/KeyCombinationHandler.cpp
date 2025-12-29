@@ -1,7 +1,12 @@
 #include "KeyCombinationHandler.h"
 
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
-KeyCombinationHandler::KeyCombinationHandler(NotificationManager* notificationManager, FPS_Timer* fps_limiter, Window* MainWindow) : ISettingObject(u8"KeyCombination",u8"Управление") {
+KeyCombinationHandler::KeyCombinationHandler(
+	NotificationManager* notificationManager, 
+	FPS_Timer* fps_limiter, 
+	Window* MainWindow) : 
+	ISettingObject("setting.name.KeyCombinations", "setting.tabName.keyCombinations") {
 	this->notificationManager = notificationManager;
 	this->fps_limiter = fps_limiter;
 	this->MainWindow = MainWindow;
@@ -567,8 +572,8 @@ void KeyCombinationHandler::DrawSetting() {
 
 	if (ImGui::BeginTable(u8"CombinationsTable", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_HighlightHoveredColumn | ImGuiTableFlags_ScrollY, ImVec2(ImGui::GetContentRegionAvail().x, ImGui::GetContentRegionAvail().y - 10.f) )) {
 
-		ImGui::TableSetupColumn(u8"Название команды", ImGuiTableColumnFlags_WidthStretch);
-		ImGui::TableSetupColumn(u8"Комбинация клавиш", ImGuiTableColumnFlags_WidthStretch);
+		ImGui::TableSetupColumn(tr("keyCombination.text.nameCommand").c_str(), ImGuiTableColumnFlags_WidthStretch);
+		ImGui::TableSetupColumn(tr("keyCombination.text.combinationKeys").c_str(), ImGuiTableColumnFlags_WidthStretch);
 
 
 		ImGui::TableSetupScrollFreeze(1, 1);
@@ -583,7 +588,7 @@ void KeyCombinationHandler::DrawSetting() {
 			ImGui::TableNextRow(0, 2.f * ImGui::GetTextLineHeight());
 			ImGui::TableNextColumn();
 
-			TextCenteredOnLine(combinations[i].first.c_str(), 0, i, 0.5f, true);
+			TextCenteredOnLine(tr(combinations[i].first).c_str(), 0, i, 0.5f, true);
 
 			ImGui::TableNextColumn();
 

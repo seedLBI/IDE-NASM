@@ -74,7 +74,7 @@ void Setting::Draw() {
 		static int IndexChoosedTab = 0;
 
 		for (int i = 0; i < tabs.size(); i++){
-			if (ImGui::Selectable(tabs[i].TabName.c_str(), i == IndexChoosedTab, ImGuiSelectableFlags_Centered, ImVec2(0, ImGui::GetTextLineHeight() * 2.f)))
+			if (ImGui::Selectable(tr(tabs[i].TabName).c_str(), i == IndexChoosedTab, ImGuiSelectableFlags_Centered, ImVec2(0, ImGui::GetTextLineHeight() * 2.f)))
 				IndexChoosedTab = i;
 		}
 

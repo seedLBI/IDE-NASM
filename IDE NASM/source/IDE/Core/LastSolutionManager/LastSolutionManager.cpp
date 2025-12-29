@@ -1,8 +1,11 @@
 #include "LastSolutionManager.h"
 
 #include "IDE/GUI/StartupWindow/StartupWindow.h"
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
-LastSolutionManager::LastSolutionManager(StartupWindow* startupWindow) : SaveSystem(u8"LastSolutions"), ISettingObject(u8"Последние проекты", u8"Общие") {
+LastSolutionManager::LastSolutionManager(StartupWindow* startupWindow) : 
+	SaveSystem(u8"LastSolutions"), 
+	ISettingObject("setting.name.LastProjects", "setting.tabName.general") {
 	this->startupWindow = startupWindow;
 		startupWindow->SetPTR_last_solutions(GetPaths_PTR());
 }
@@ -21,7 +24,7 @@ bool LastSolutionManager::Draw() {
 
 	if (LastSolutions.size() == 0)
 	{
-		ImGui::Text(u8"  Пока что здесь пусто, ну ты это..\nхотя бы сохрани или открой файл я не знаю");
+		ImGui::Text(tr("lastProjects.tooltip").c_str());
 	}
 	else {
 		for (int i = 0; i < LastSolutions.size(); i++){
@@ -92,7 +95,7 @@ void LastSolutionManager::AddPath(const std::wstring& path) {
 void LastSolutionManager::DrawSetting() {
 	ISettingObject::DrawBegin();
 
-	if (ImGui::RadioButton(u8"Показывать абсолютный путь", ShowAllPath))
+	if (ImGui::RadioButton(tr("lastProjects.setting.radio.showPathAbsolute").c_str(), ShowAllPath))
 		ShowAllPath = !ShowAllPath;
 
 }

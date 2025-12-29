@@ -12,7 +12,7 @@ class LocalisationManager : public ISettingObject {
 private:
 	nlohmann::json translate_data;
 
-	std::string GlobalLanguage = u8"en";
+	std::string GlobalLanguage = u8"ru";
 
 public:
 	static LocalisationManager& getInstance();

@@ -1,7 +1,8 @@
 #include "Widget_FilesViewer.h"
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
-
-Widget_FilesViewer::Widget_FilesViewer(WidgetManager_TextEditor* widgetManager_TextEditor) : IWidget(u8"Список файлов") {
+Widget_FilesViewer::Widget_FilesViewer(WidgetManager_TextEditor* widgetManager_TextEditor) : 
+    IWidget("widgetName.filesViewer") {
     this->widgetManager_TextEditor = widgetManager_TextEditor;
 }
 
@@ -162,11 +163,7 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
 
         if (IsMain) {
             ImGui::Text(ICON_FA_CIRCLE_DOT);
-            if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNone)) {
-                ImGui::BeginTooltip();
-                    ImGui::Text(u8"Точка входа для компиляции\nЧтобы поменять щелкни ПКМ по нужному файлу");
-                ImGui::EndTooltip();
-            }
+            TooltipTranslated("filesViewer.entryPoint.tooltip");
         }
         else {
             ImGui::Dummy(ImVec2(ImGui::CalcTextSize(ICON_FA_CIRCLE_DOT).x, 0));
@@ -186,12 +183,7 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
 
             widgetManager_TextEditor->SetActiveFromPath(stringUTF8_to_wstring(node["fullpath"].get<std::string>()));
         }
-
-        if (ImGui::IsItemHovered(ImGuiHoveredFlags_DelayNone) && IsActive) {
-            ImGui::BeginTooltip();
-            ImGui::Text(u8"Подсвечивается так как файл в фокусе клавиатуры");
-            ImGui::EndTooltip();
-        }
+        TooltipTranslated("filesViewer.fileActive.tooltip");
 
 
         if (!IsActive) {
@@ -208,7 +200,7 @@ void Widget_FilesViewer::Draw() {
 	if (GetFlagShow() == false)
 		return;
 
-	if (ImGui::Begin(GetName_c_str(), GetPtrFlagShow())) {
+	if (ImGui::Begin(tr(GetName_c_str()).c_str(), GetPtrFlagShow())) {
 
         render_imgui_tree(directory_info);
 

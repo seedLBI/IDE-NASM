@@ -33,4 +33,7 @@ void Lowercase_UTF8_Text(std::vector<std::string>& UTF8Text);
 void Uppercase_UTF8_Text(std::vector<std::string>& UTF8Text);
 
 
+void PadLeft_UTF8(std::string& text, const char& symbol, int NeedLength);
+void PadRight_UTF8(std::string& text, const char& symbol, int NeedLength);
+
 #endif // !UTF8_H

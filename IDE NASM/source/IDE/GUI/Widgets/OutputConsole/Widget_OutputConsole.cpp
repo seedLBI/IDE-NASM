@@ -202,7 +202,7 @@ void Widget_OutputConsole::Draw() {
 	if (GetFlagShow() == false)
 		return;
 
-	if (ImGui::Begin(GetName_c_str(), GetPtrFlagShow())) {
+	if (ImGui::Begin(tr(GetName_c_str()).c_str(), GetPtrFlagShow())) {
 
 		auto outputData = buildManager->GetOutputAll_Formatted();
 

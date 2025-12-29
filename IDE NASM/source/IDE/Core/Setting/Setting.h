@@ -1,6 +1,7 @@
 #ifndef SETTING_H
 #define SETTING_H
 
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 #include "IDE/Core/SaveSystem/SaveSystem.h"
 #include "interfaces/ISettingObject.h"
 #include "Utils/Text/Utils.Text.h"

@@ -246,3 +246,22 @@ void Uppercase_UTF8_Text(std::vector<std::string>& UTF8Text) {
     for (int i = 0; i < UTF8Text.size(); i++)
         UTF8Text[i] = Uppercase_UTF8_Symbol(UTF8Text[i]);
 }
+
+void PadLeft_UTF8(std::string& text, const char& symbol, int NeedLength) {
+    UTF8_SPLITER_ERROR error;
+    int countDelta = NeedLength - count_symbols_utf8(text,error);
+    if (countDelta < 0)
+        return;
+    for (int i = 0; i < countDelta; i++) {
+        text.insert(text.begin(), symbol);
+    }
+}
+void PadRight_UTF8(std::string& text, const char& symbol, int NeedLength) {
+    UTF8_SPLITER_ERROR error;
+    int countDelta = NeedLength - count_symbols_utf8(text, error);
+    if (countDelta < 0)
+        return;
+    for (int i = 0; i < countDelta; i++) {
+        text.push_back(symbol);
+    }
+}
