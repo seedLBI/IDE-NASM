@@ -75,8 +75,6 @@ private:
 	nlohmann::json json_instructions;
 	nlohmann::json json_syntax;
 
-	std::string current_language = "ru";
-
 	ImVec4 color_UNKNOWN;
 
 	ImVec4 color_Label;

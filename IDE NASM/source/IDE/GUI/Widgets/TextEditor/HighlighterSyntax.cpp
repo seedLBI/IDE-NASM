@@ -1,6 +1,8 @@
 #include "HighlighterSyntax.h"
+#include <robin_hood.h>
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
-HighlighterSyntax::HighlighterSyntax() : IThemeLoadable(u8"Цвета инструкций и деректив") {
+HighlighterSyntax::HighlighterSyntax() : IThemeLoadable("themeItem.highlighterSyntax") {
 	ReadJSONFromFile();
 
 #ifdef _DEBUG
@@ -22,11 +24,19 @@ HighlighterSyntax::HighlighterSyntax() : IThemeLoadable(u8"Цвета инструкций и де
 
 	IThemeLoadable::InitListWord(
 		{
-			u8"Инструкции", u8"Директивы ассемблера", u8"Секции", u8"Метки",
-			u8"Предопределённые макросы", u8"Директивы препроцессора",
-			u8"Регистры AVX", u8"Регистры MMX", u8"Регистры SSE",
-			u8"Регистры c плавающей запятой", u8"Регистры управления",
-			u8"Регистры отладки", u8"Регистры общего назначения"
+			"color.highlighterSyntax.instructions", 
+			"color.highlighterSyntax.assemblerDirectives", 
+			"color.highlighterSyntax.sections", 
+			"color.highlighterSyntax.labels",
+			"color.highlighterSyntax.predefinedMacros", 
+			"color.highlighterSyntax.preprocessorDirectives",
+			"color.highlighterSyntax.register.AVX", 
+			"color.highlighterSyntax.register.MMX", 
+			"color.highlighterSyntax.register.SSE",
+			"color.highlighterSyntax.register.floatingPoint", 
+			"color.highlighterSyntax.register.control",
+			"color.highlighterSyntax.register.debug", 
+			"color.highlighterSyntax.register.general"
 		});
 
 }
@@ -36,56 +46,51 @@ HighlighterSyntax::~HighlighterSyntax() {
 }
 
 void HighlighterSyntax::LoadColors() {
+
+
+	robin_hood::unordered_flat_map<std::string, ImVec4*> translator = {
+		{"color.highlighterSyntax.instructions",			&color_Instruction},
+		{"color.highlighterSyntax.assemblerDirectives",		&color_AssemblerDirectives},
+		{"color.highlighterSyntax.sections",				&color_Sections},
+		{"color.highlighterSyntax.labels",					&color_Label},
+		{"color.highlighterSyntax.predefinedMacros",		&color_PredefinedMacros},
+		{"color.highlighterSyntax.preprocessorDirectives",	&color_PreprocessorDirectives},
+		{"color.highlighterSyntax.register.AVX",			&color_Register_AVX},
+		{"color.highlighterSyntax.register.MMX",			&color_Register_MMX},
+		{"color.highlighterSyntax.register.SSE",			&color_Register_SSE},
+		{"color.highlighterSyntax.register.floatingPoint",	&color_Register_FloatingPoint},
+		{"color.highlighterSyntax.register.control",		&color_Register_Control},
+		{"color.highlighterSyntax.register.debug",			&color_Register_Debug},
+		{"color.highlighterSyntax.register.general",		&color_Register_General}
+	};
+
 	for (int i = 0; i < object_colors.colors.size(); i++) {
 
-		const std::string  name = object_colors.colors[i].nameColor;
-		const ImVec4      color = object_colors.colors[i].color;
+		const std::string&  name  = object_colors.colors[i].nameColor;
+		const ImVec4&		color = object_colors.colors[i].color;
 
-		if (name == u8"Метки")
-			color_Label = color;
-		else if (name == u8"Инструкции")
-			color_Instruction				= color;
-		else if (name == u8"Директивы ассемблера")
-			color_AssemblerDirectives		= color;
-		else if (name == u8"Секции")
-			color_Sections					= color;
-		else if (name == u8"Предопределённые макросы")
-			color_PredefinedMacros			= color;
-		else if (name == u8"Директивы препроцессора")
-			color_PreprocessorDirectives	= color;
-		else if (name == u8"Регистры AVX")
-			color_Register_AVX				= color;
-		else if (name == u8"Регистры MMX")
-			color_Register_MMX				= color;
-		else if (name == u8"Регистры SSE")
-			color_Register_SSE				= color;
-		else if (name == u8"Регистры c плавающей запятой")
-			color_Register_FloatingPoint	= color;
-		else if (name == u8"Регистры управления")
-			color_Register_Control			= color;
-		else if (name == u8"Регистры отладки")
-			color_Register_Debug			= color;
-		else if (name == u8"Регистры общего назначения")
-			color_Register_General			= color;
+		if (translator.contains(name))
+			*translator[name] = color;
+
 	}
 
 }
 
 std::vector<NamedColor> HighlighterSyntax::GetDefaultLightColors() {
 	const static std::vector<NamedColor> colors = {
-		{u8"Метки",						 ImColor(0,  0,  255, 255)},
-		{u8"Инструкции",                 ImColor(25, 95, 175, 255)},
-		{u8"Директивы ассемблера",       ImColor(0, 128, 128, 255)}, 
-		{u8"Секции",                     ImColor(106, 50, 159,255)},
-		{u8"Предопределённые макросы",   ImColor(184, 84, 0,  255)},
-		{u8"Директивы препроцессора",    ImColor(153, 102, 51,255)},
-		{u8"Регистры AVX",               ImColor(0, 103, 119, 255)},
-		{u8"Регистры MMX",               ImColor(34, 139, 34, 255)}, 
-		{u8"Регистры SSE",               ImColor(0, 100, 102, 255)},
-		{u8"Регистры c плавающей запятой", ImColor(0, 100, 0, 255)},
-		{u8"Регистры управления",        ImColor(128, 0, 128, 255)},
-		{u8"Регистры отладки",           ImColor(139, 0, 139, 255)},
-		{u8"Регистры общего назначения", ImColor(139, 69, 19, 255)},
+		{u8"color.highlighterSyntax.labels",				ImColor(0,  0,  255, 255)},
+		{u8"color.highlighterSyntax.instructions",			ImColor(25, 95, 175, 255)},
+		{u8"color.highlighterSyntax.assemblerDirectives",   ImColor(0, 128, 128, 255)}, 
+		{u8"color.highlighterSyntax.sections",				ImColor(106, 50, 159,255)},
+		{u8"color.highlighterSyntax.predefinedMacros",		ImColor(184, 84, 0,  255)},
+		{u8"color.highlighterSyntax.preprocessorDirectives",ImColor(153, 102, 51,255)},
+		{u8"color.highlighterSyntax.register.AVX",          ImColor(0, 103, 119, 255)},
+		{u8"color.highlighterSyntax.register.MMX",			ImColor(34, 139, 34, 255)}, 
+		{u8"color.highlighterSyntax.register.SSE",			ImColor(0, 100, 102, 255)},
+		{u8"color.highlighterSyntax.register.floatingPoint",ImColor(0, 100, 0, 255)},
+		{u8"color.highlighterSyntax.register.control",		ImColor(128, 0, 128, 255)},
+		{u8"color.highlighterSyntax.register.debug",		ImColor(139, 0, 139, 255)},
+		{u8"color.highlighterSyntax.register.general",		ImColor(139, 69, 19, 255)},
 	};
 
 
@@ -94,19 +99,19 @@ std::vector<NamedColor> HighlighterSyntax::GetDefaultLightColors() {
 
 std::vector<NamedColor> HighlighterSyntax::GetDefaultDarkColors() {
 	const static std::vector<NamedColor> colors = {
-		{u8"Метки",							ImColor(255,255, 0,255)},
-		{u8"Инструкции",					ImColor(86, 156, 214,255)},
-		{u8"Директивы ассемблера",			ImColor(78, 201, 176,255)},
-		{u8"Секции",						ImColor(177, 128, 215,255)},
-		{u8"Предопределённые макросы",		ImColor(212, 158, 108,255)},
-		{u8"Директивы препроцессора",		ImColor(220, 220, 170,255)},
-		{u8"Регистры AVX",					ImColor(86, 182, 194,255)},
-		{u8"Регистры MMX",					ImColor(165, 214, 167,255)},
-		{u8"Регистры SSE",					ImColor(78, 201, 176,255)},
-		{u8"Регистры c плавающей запятой",	ImColor(152, 195, 121,255)},
-		{u8"Регистры управления",			ImColor(198, 120, 221,255)},
-		{u8"Регистры отладки",				ImColor(197, 134, 192,255)},
-		{u8"Регистры общего назначения",	ImColor(215, 186, 125,255)},
+		{u8"color.highlighterSyntax.labels",				ImColor(255,255, 0,255)},
+		{u8"color.highlighterSyntax.instructions",			ImColor(86, 156, 214,255)},
+		{u8"color.highlighterSyntax.assemblerDirectives",	ImColor(78, 201, 176,255)},
+		{u8"color.highlighterSyntax.sections",				ImColor(177, 128, 215,255)},
+		{u8"color.highlighterSyntax.predefinedMacros",		ImColor(212, 158, 108,255)},
+		{u8"color.highlighterSyntax.preprocessorDirectives",ImColor(220, 220, 170,255)},
+		{u8"color.highlighterSyntax.register.AVX",			ImColor(86, 182, 194,255)},
+		{u8"color.highlighterSyntax.register.MMX",			ImColor(165, 214, 167,255)},
+		{u8"color.highlighterSyntax.register.SSE",			ImColor(78, 201, 176,255)},
+		{u8"color.highlighterSyntax.register.floatingPoint",ImColor(152, 195, 121,255)},
+		{u8"color.highlighterSyntax.register.control",		ImColor(198, 120, 221,255)},
+		{u8"color.highlighterSyntax.register.debug",		ImColor(197, 134, 192,255)},
+		{u8"color.highlighterSyntax.register.general",		ImColor(215, 186, 125,255)},
 	};
 
 
@@ -525,17 +530,17 @@ HighlighterSyntaxType HighlighterSyntax::GetTypeFromText(const std::string& text
 
 void HighlighterSyntax::DrawTooltipInstruction(const nlohmann::json& json_data) {
 	ImGui::BeginTooltip();
-		ImGui::Text(json_data["description"][current_language].get<std::string>().c_str());
+		ImGui::Text(json_data["description"][gl()].get<std::string>().c_str());
 	ImGui::EndTooltip();
 }
 void HighlighterSyntax::DrawTooltipSimpleInfo(const nlohmann::json& json_data) {
 	ImGui::BeginTooltip();
-		ImGui::Text(json_data["description"][current_language].get<std::string>().c_str());
+		ImGui::Text(json_data["description"][gl()].get<std::string>().c_str());
 	ImGui::EndTooltip();
 }
 void HighlighterSyntax::DrawTooltipRegister(const nlohmann::json& json_data) {
 	ImGui::BeginTooltip();
-		ImGui::Text(json_data["description"][current_language].get<std::string>().c_str());
+		ImGui::Text(json_data["description"][gl()].get<std::string>().c_str());
 	ImGui::EndTooltip();
 }
 

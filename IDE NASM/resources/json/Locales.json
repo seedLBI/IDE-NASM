@@ -1,504 +1,786 @@
 {
-	"menu.item.file": {
-		"en": "File",
-		"ru": "Файл"
-	},
-	"menu.item.file.createProject": {
-		"en": "Create project",
-		"ru": "Создать проект"
-	},
-	"menu.item.file.openProject": {
-		"en": "Open project",
-		"ru": "Октрыть проект"
-	},
-	"menu.item.file.saveProject": {
-		"en": "Save",
-		"ru": "Сохранить"
-	},
-	"menu.item.file.lastProjects": {
-		"en": "Last projects",
-		"ru": "Последние проекты"
-	},
-	"menu.item.file.exit": {
-		"en": "Exit",
-		"ru": "Выход"
-	},
-	"menu.item.view": {
-		"en": "View",
-		"ru": "Вид"
-	},
-	"menu.item.view.filesViewer": {
-		"en": "Files viewer",
-		"ru": "Список файлов"
-	},
-	"menu.item.view.output": {
-		"en": "Output",
-		"ru": "Вывод"
-	},
-	"menu.item.settings": {
-		"en": "Settings",
-		"ru": "Настройки"
-	},
-	"menu.item.build": {
-		"en": "Build",
-		"ru": "Сборка"
-	},
-	"menu.item.build.run": {
-		"en": "Build & Run",
-		"ru": "Cобрать и запустить"
-	},
-	"menu.item.build.compileLink": {
-		"en": "Compile & Link",
-		"ru": "Скомпилировать и собрать"
-	},
-	"menu.item.build.compile": {
-		"en": "Compile",
-		"ru": "Скомпилировать"
-	},
-	"menu.item.debug": {
-		"en": "Debug",
-		"ru": "Отладка"
-	},
-	"menu.item.about": {
-		"en": "About",
-		"ru": "О программе"
-	},
-	"menu.logo.tooltip": {
-		"en": "Logo IDE NASM",
-		"ru": "Логотип IDE NASM"
-	},
-	"menu.button.createProject.tooltip": {
-		"en": "Create new project",
-		"ru": "Создать новый проект"
-	},
-	"menu.button.openProject.tooltip": {
-		"en": "Open another project",
-		"ru": "Открыть другой проект"
-	},
-	"menu.button.saveProject.tooltip": {
-		"en": "Save current project",
-		"ru": "Сохранить текущий проект"
-	},
-	"menu.button.hide.tooltip": {
-		"en": "Hide",
-		"ru": "Свернуть окно"
-	},
-	"menu.button.expand.tooltip": {
-		"en": "Expand",
-		"ru": "Развернуть на весь экран"
-	},
-	"menu.button.collapse.tooltip": {
-		"en": "Collapse",
-		"ru": "Свернуть в окно"
-	},
-	"menu.button.close.tooltip": {
-		"en": "Close",
-		"ru": "Закрыть окно"
-	},
-	"menu.selectConfig.tooltip": {
-		"en": "Choose configuration",
-		"ru": "Выбери кофигурацию сборки"
-	},
-	"menu.selectArch.tooltip": {
-		"en": "Choose arch",
-		"ru": "Выбери архитектуру сборки"
-	},
-	"menu.entryPoint": {
-		"en": "Entry point",
-		"ru": "Точка входа"
-	},
-	"menu.entryPoint.tooltip": {
-		"en": "Name entry point",
-		"ru": "Название точки входа"
-	},
-	"menu.quick.terminate": {
-		"en": "Terminate",
-		"ru": "Остановить"
-	},
-	"menu.quick.run": {
-		"en": "Run",
-		"ru": "Запуск"
-	},
-	"menu.quick.debug": {
-		"en": "Debug",
-		"ru": "Отладка"
-	},
-	"menu.projectName": {
-		"en": "Name current project",
-		"ru": "Название текущего проекта"
-	},
-	"menu.statusBar.nothing": {
-		"en": "Background tasks are not running",
-		"ru": "Фоновые задачи не выполняются"
-	},
-	"setting.title": {
-		"en": "Settings",
-		"ru": "Настройки"
-	},
-	"setting.name.Themes": {
-		"en": "Themes",
-		"ru": "Темы"
-	},
-	"setting.tabName.colorTheme": {
-		"en": "Color themes",
-		"ru": "Цветовые темы"
-	},
-	"themeManager.defaultTheme.dark": {
-		"en": "Dark",
-		"ru": "Тёмная"
-	},
-	"themeManager.defaultTheme.light": {
-		"en": "Light",
-		"ru": "Светлая"
-	},
-	"themeManager.combo.chooseTheme": {
-		"en": "Choose theme",
-		"ru": "Выбор темы"
-	},
-	"themeManager.button.createFromCurrent": {
-		"en": "Create from current colors",
-		"ru": "Создать из текущих цветов"
-	},
-	"themeManager.popupCreationTheme.title": {
-		"en": "Creating a name for a new color theme",
-		"ru": "Создание названия для новой цветовой темы"
-	},
-	"themeManager.popupCreationTheme.name": {
-		"en": "Name",
-		"ru": "Название"
-	},
-	"themeManager.popupCreationTheme.accept": {
-		"en": "Accept",
-		"ru": "Принять"
-	},
-	"themeItem.outputConsole": {
-		"en": "Output information build",
-		"ru": "Вывод информации сборки"
-	},
-	"themeItem.menu": {
-		"en": "Menu",
-		"ru": "Меню"
-	},
-	"themeItem.outlineStatus": {
-		"en": "Outline status",
-		"ru": "Оконтовка статуса"
-	},
-	"startupWindow.title": {
-		"en": "Choose project",
-		"ru": "Выбор проекта"
-	},
-	"startupWindow.button.create": {
-		"en": "Create();",
-		"ru": "Создать();"
-	},
-	"startupWindow.button.open": {
-		"en": "Open();",
-		"ru": "Открыть();"
-	},
-	"startupWindow.list.favorite": {
-		"en": "Favorite",
-		"ru": "Избранное"
-	},
-	"startupWindow.list.last": {
-		"en": "Last",
-		"ru": "Последние"
-	},
-	"startupWindow.information": {
-		"en": "#INFORMATION",
-		"ru": "#ИНФОРМАЦИЯ"
-	},
-	"startupWindow.information.name": {
-		"en": "Name",
-		"ru": "Название"
-	},
-	"startupWindow.information.description": {
-		"en": "Description",
-		"ru": "Описание"
-	},
-	"startupWindow.information.created": {
-		"en": "Created",
-		"ru": "Создан"
-	},
-	"startupWindow.information.edited": {
-		"en": "Edited",
-		"ru": "Изменён"
-	},
-	"startupWindow.information.spented": {
-		"en": "Spented",
-		"ru": "Затрачено"
-	},
-	"startupWindow.information.lines": {
-		"en": "Lines",
-		"ru": "Строк"
-	},
-	"startupWindow.information.files": {
-		"en": "Files",
-		"ru": "Файлы"
-	},
-	"startupWindow.information.tooltip": {
-		"en": "To display the output, hover over the project from the list.",
-		"ru": "Для вывода наведись курсором на проект из списка."
-	},
-	"solution.title": {
-		"en": "Creation new project",
-		"ru": "Создание нового проекта"
-	},
-	"solution.nameProject": {
-		"en": "Name project",
-		"ru": "Имя проекта"
-	},
-	"solution.pathProject": {
-		"en": "Path",
-		"ru": "Расположение"
-	},
-	"solution.dialogChoosePathFolder.title": {
-		"en": "Select the path where the project folder will be located",
-		"ru": "Выбери путь где будет находится папка с проектом"
-	},
-	"solution.dialogOpenFile.title": {
-		"en": "Select a project file",
-		"ru": "Выбери файл проекта"
-	},
-	"solution.button.create": {
-		"en": "Create",
-		"ru": "Создать"
-	},
-	"solution.button.change.tooltip": {
-		"en": "Edit",
-		"ru": "Изменить"
-	},
-	"solution.description": {
-		"en": "Description",
-		"ru": "Описание"
-	},
-	"solution.description.helpMarker": {
-		"en": "It is not necessary to fill out",
-		"ru": "Не обязательно заполнять"
-	},
-	"outputConsole.languageDesc": {
-		"en": "Lang desc",
-		"ru": "Язык описания"
-	},
-	"outputConsole.typeOutput": {
-		"en": "Type output",
-		"ru": "Тип вывода"
-	},
-	"outputConsole.typeOutput.formatted": {
-		"en": "Formatted",
-		"ru": "Форматированный"
-	},
-	"outputConsole.typeOutput.original": {
-		"en": "Original",
-		"ru": "Оригинальный"
-	},
-	"outputConsole.button.clearOutput": {
-		"en": "Clear output",
-		"ru": "Очистить вывод"
-	},
-	"outputConsole.table.from": {
-		"en": "From",
-		"ru": "От кого"
-	},
-	"outputConsole.table.type": {
-		"en": "Type",
-		"ru": "Тип"
-	},
-	"outputConsole.table.description": {
-		"en": "Description",
-		"ru": "Описание"
-	},
-	"outputConsole.table.file": {
-		"en": "File",
-		"ru": "Файл"
-	},
-	"outputConsole.table.line": {
-		"en": "Line",
-		"ru": "Строка"
-	},
-	"typeMessageDraw.type.tooltip": {
-		"en": "Type message",
-		"ru": "Тип сообщения"
-	},
-	"outputConsoleDrawer.NASM.flag.tooltip": {
-		"en": "Flag compilation",
-		"ru": "Флаг компиляции"
-	},
-	"widgetName.outputConsole": {
-		"en": "Output",
-		"ru": "Вывод"
-	},
-	"error.menu.loadLogo.title": {
-		"en": "Error loading icon logo",
-		"ru": "Ошибка загрузки иконки логотипа"
-	},
-	"error.menu.loadLogo": {
-		"en": "Where icons??",
-		"ru": "А где иконки?"
-	},
-	"error.comboLanguages.loadFlags.title": {
-		"en": "Error loading texture",
-		"ru": "Ошибка загрузки текстур"
-	},
-	"error.comboLanguages.loadFlags": {
-		"en": "Where image with flags??",
-		"ru": "А где картинка с флагами?"
-	},
-	"error.comboLanguages.loadData.title": {
-		"en": "Error loading data",
-		"ru": "Ошибка загрузки данных"
-	},
-	"error.comboLanguages.loadData": {
-		"en": "Where data languages??",
-		"ru": "А где данные о языках?"
-	},
-	"error.outputConsole.loadData.title": {
-		"en": "Error loading data",
-		"ru": "Ошибка загрузки данных"
-	},
-	"error.outputConsole.loadData": {
-		"en": "Where data translate?",
-		"ru": "А где файл переводов?"
-	},
-	"color.menu.logo": {
-		"en": "Logo",
-		"ru": "Логотип"
-	},
-	"color.menu.backgroundProjectName": {
-		"en": "Background project name",
-		"ru": "Фон названия проекта"
-	},
-	"color.outputConsole.selectedText": {
-		"en": "Selected text",
-		"ru": "Выделенный текст"
-	},
-	"color.outputConsole.NASM": {
-		"en": "NASM",
-		"ru": "NASM"
-	},
-	"color.outputConsole.NASM.flag": {
-		"en": "NASM flag compilation",
-		"ru": "NASM флаг компиляции"
-	},
-	"color.outputConsole.GCC": {
-		"en": "GCC",
-		"ru": "GCC"
-	},
-	"color.outputConsole.DBG": {
-		"en": "DBG",
-		"ru": "DBG"
-	},
-	"color.outputConsole.IDE": {
-		"en": "IDE",
-		"ru": "IDE"
-	},
-	"color.outputConsole.RUN": {
-		"en": "RUN",
-		"ru": "RUN"
-	},
-	"color.outputConsole.RUN.TEXT": {
-		"en": "RUN text",
-		"ru": "RUN текст"
-	},
-	"color.outputConsole.info": {
-		"en": "Information",
-		"ru": "Информация"
-	},
-	"color.outputConsole.warning": {
-		"en": "Warning",
-		"ru": "Предупреждение"
-	},
-	"color.outputConsole.error": {
-		"en": "Error",
-		"ru": "Ошибка"
-	},
-	"color.outputConsole.parser": {
-		"en": "Parser",
-		"ru": "Парсер"
-	},
-	"color.outputConsole.panic": {
-		"en": "Panic",
-		"ru": "Аварийное завершение"
-	},
-	"color.outputConsole.fatal": {
-		"en": "Fatal",
-		"ru": "Критическая ошибка"
-	},
-	"color.outputConsole.compiler": {
-		"en": "Compiler",
-		"ru": "Критическая ошибка"
-	},
-	"color.outputConsole.success": {
-		"en": "Success",
-		"ru": "Успех"
-	},
-	"color.base.text": {
-		"en": "Text",
-		"ru": "Текст"
-	},
-	"color.base.textLink": {
-		"en": "Text link",
-		"ru": "Текст ссылки"
-	},
-	"color.base.textDisabled": {
-		"en": "Text disabled",
-		"ru": "Текст (не активный)"
-	},
-	"color.base.textSelectedBg": {
-		"en": "Text selected",
-		"ru": "Текст (выбранный)"
-	},
-	"color.base.windowBg": {
-		"en": "Window background",
-		"ru": "Окно (фон)"
-	},
-	"color.base.childBg": {
-		"en": "Child background",
-		"ru": "Окно дочернее (фон)"
-	},
-	"color.base.popupBg": {
-		"en": "Popup background",
-		"ru": "Окно всплывающее (фон)"
-	},
-	"color.base.border": {
-		"en": "Border",
-		"ru": "Граница"
-	},
-	"color.base.borderShadow": {
-		"en": "Border shadow",
-		"ru": "Тень границы"
-	},
-	"color.base.frameBg": {
-		"en": "Frame background",
-		"ru": "Рамка (фон)"
-	},
-	"color.base.frameBgHovered": {
-		"en": "Hovered frame background",
-		"ru": "Выделенная рамка (фон)"
-	},
-	"color.base.frameBgActive": {
-		"en": "Hovered frame background",
-		"ru": "Активная рамка (фон)"
-	},
-	"color.base.titleBg": {
-		"en": "Title background",
-		"ru": "Название (фон)"
-	},
-
-
-	"color.outlineStatus.idle": {
-		"en": "Idle",
-		"ru": "Бездействие"
-	},
-	"color.outlineStatus.create": {
-		"en": "Create",
-		"ru": "Создание"
-	},
-	"color.outlineStatus.run": {
-		"en": "Run",
-		"ru": "Выполнение"
-	},
-	"color.outlineStatus.debug": {
-		"en": "Debug",
-		"ru": "Отладка"
-	}
+  "color.base.border": {
+    "en": "Border",
+    "ru": "Граница"
+  },
+  "color.base.borderShadow": {
+    "en": "Border shadow",
+    "ru": "Тень границы"
+  },
+  "color.base.button": {
+    "en": "Button",
+    "ru": "Кнопка"
+  },
+  "color.base.buttonActive": {
+    "en": "Button active",
+    "ru": "Кнопка (активная)"
+  },
+  "color.base.buttonHovered": {
+    "en": "Button hovered",
+    "ru": "Кнопка (выделенная)"
+  },
+  "color.base.checkMark": {
+    "en": "Check mark",
+    "ru": "Галочка (checkbox)"
+  },
+  "color.base.childBg": {
+    "en": "Child background",
+    "ru": "Окно дочернее (фон)"
+  },
+  "color.base.dockingEmptyBg": {
+    "en": "Docking empty background",
+    "ru": "Пространство"
+  },
+  "color.base.frameBg": {
+    "en": "Frame background",
+    "ru": "Рамка (фон)"
+  },
+  "color.base.frameBgActive": {
+    "en": "Hovered frame background",
+    "ru": "Активная рамка (фон)"
+  },
+  "color.base.frameBgHovered": {
+    "en": "Hovered frame background",
+    "ru": "Выделенная рамка (фон)"
+  },
+  "color.base.header": {
+    "en": "Header",
+    "ru": "Заголовок"
+  },
+  "color.base.headerActive": {
+    "en": "Header active",
+    "ru": "Заголовок (активный)"
+  },
+  "color.base.headerHovered": {
+    "en": "Header hovered",
+    "ru": "Заголовок (выделенный)"
+  },
+  "color.base.menuBarBg": {
+    "en": "Menu bar background",
+    "ru": "Строка меню (фон)"
+  },
+  "color.base.popupBg": {
+    "en": "Popup background",
+    "ru": "Окно всплывающее (фон)"
+  },
+  "color.base.resizeGrip": {
+    "en": "Resize grip",
+    "ru": "Изменение размеров"
+  },
+  "color.base.resizeGripActive": {
+    "en": "Resize grip active",
+    "ru": "Изменение размеров (активное)"
+  },
+  "color.base.resizeGripHovered": {
+    "en": "Resize grip hovered",
+    "ru": "Изменение размеров (выделенное)"
+  },
+  "color.base.scrollbarBg": {
+    "en": "Scrollbar background",
+    "ru": "Прокрутка (фон)"
+  },
+  "color.base.scrollbarGrab": {
+    "en": "Scrollbar grab",
+    "ru": "Прокрутка (схваченная)"
+  },
+  "color.base.scrollbarGrabActive": {
+    "en": "Scrollbar grab + active",
+    "ru": "Прокрутка (схваченная + активная)"
+  },
+  "color.base.scrollbarGrabHovered": {
+    "en": "Scrollbar grab + hovered",
+    "ru": "Прокрутка (схваченная + выделенная)"
+  },
+  "color.base.separator": {
+    "en": "Separator",
+    "ru": "Раздилитель"
+  },
+  "color.base.separatorActive": {
+    "en": "Separator active",
+    "ru": "Раздилитель (активный)"
+  },
+  "color.base.separatorHovered": {
+    "en": "Separator hovered",
+    "ru": "Раздилитель (выделенный)"
+  },
+  "color.base.sliderGrab": {
+    "en": "Slider grab",
+    "ru": "Ползунок (схваченный)"
+  },
+  "color.base.sliderGrabActive": {
+    "en": "Slider grab + active",
+    "ru": "Ползунок (схваченный + активный)"
+  },
+  "color.base.tab": {
+    "en": "Tab",
+    "ru": "Вкладка"
+  },
+  "color.base.tabDimmed": {
+    "en": "Tab dimmed",
+    "ru": "Затемнённая вкладка"
+  },
+  "color.base.tabDimmedSelected": {
+    "en": "Tab dimmed selected",
+    "ru": "Затемнённая вкладка (выбранная)"
+  },
+  "color.base.tabDimmedSelectedOverline": {
+    "en": "Tab dimmed selected",
+    "ru": "Полоска над затемнённой вкладкой (выбранной)"
+  },
+  "color.base.tabHovered": {
+    "en": "Tab hovered",
+    "ru": "Вкладка (выделенная)"
+  },
+  "color.base.tableBorderLight": {
+    "en": "Table border light",
+    "ru": "Тонкие границы таблицы"
+  },
+  "color.base.tableBorderStrong": {
+    "en": "Table border strong",
+    "ru": "Толстые границы таблицы"
+  },
+  "color.base.tableHeaderBg": {
+    "en": "Table header background",
+    "ru": "Заголовок таблицы (фон)"
+  },
+  "color.base.tableRowBg": {
+    "en": "Table row background",
+    "ru": "Фон нечётных строк таблицы"
+  },
+  "color.base.tableRowBgAlt": {
+    "en": "Table row background alt",
+    "ru": "Фон чётных строк таблицы"
+  },
+  "color.base.tabSelected": {
+    "en": "Tab selected",
+    "ru": "Вкладка (выбранная)"
+  },
+  "color.base.tabSelectedOverline": {
+    "en": "Tab selected overline",
+    "ru": "Полоска над выбранной вкладкой"
+  },
+  "color.base.text": {
+    "en": "Text",
+    "ru": "Текст"
+  },
+  "color.base.textDisabled": {
+    "en": "Text disabled",
+    "ru": "Текст (не активный)"
+  },
+  "color.base.textLink": {
+    "en": "Text link",
+    "ru": "Текст ссылки"
+  },
+  "color.base.textSelectedBg": {
+    "en": "Text selected",
+    "ru": "Текст (выбранный)"
+  },
+  "color.base.titleBg": {
+    "en": "Title background",
+    "ru": "Название (фон)"
+  },
+  "color.base.titleBgActive": {
+    "en": "Title background active",
+    "ru": "Название активное (фон)"
+  },
+  "color.base.titleBgCollapsed": {
+    "en": "Title background collapsed",
+    "ru": "Название свёрнутое (фон)"
+  },
+  "color.base.windowBg": {
+    "en": "Window background",
+    "ru": "Окно (фон)"
+  },
+  "color.highlighterSyntax.assemblerDirectives": {
+    "en": "Assembler directives",
+    "ru": "Директивы ассемблера"
+  },
+  "color.highlighterSyntax.instructions": {
+    "en": "Instructions",
+    "ru": "Инструкции"
+  },
+  "color.highlighterSyntax.labels": {
+    "en": "Labels",
+    "ru": "Метки"
+  },
+  "color.highlighterSyntax.predefinedMacros": {
+    "en": "Predefined macros",
+    "ru": "Предопределённые макросы"
+  },
+  "color.highlighterSyntax.preprocessorDirectives": {
+    "en": "Preprocessor directives",
+    "ru": "Директивы препроцессора"
+  },
+  "color.highlighterSyntax.register.AVX": {
+    "en": "Register AVX",
+    "ru": "Регистры AVX"
+  },
+  "color.highlighterSyntax.register.control": {
+    "en": "Register control",
+    "ru": "Регистры управления"
+  },
+  "color.highlighterSyntax.register.debug": {
+    "en": "Register debug",
+    "ru": "Регистры отладки"
+  },
+  "color.highlighterSyntax.register.floatingPoint": {
+    "en": "Register floating point",
+    "ru": "Регистры c плавающей запятой"
+  },
+  "color.highlighterSyntax.register.general": {
+    "en": "Register general",
+    "ru": "Регистры общего назначения"
+  },
+  "color.highlighterSyntax.register.MMX": {
+    "en": "Register MMX",
+    "ru": "Регистры MMX"
+  },
+  "color.highlighterSyntax.register.SSE": {
+    "en": "Register SSE",
+    "ru": "Регистры SSE"
+  },
+  "color.highlighterSyntax.sections": {
+    "en": "Sections",
+    "ru": "Секции"
+  },
+  "color.menu.backgroundProjectName": {
+    "en": "Background project name",
+    "ru": "Фон названия проекта"
+  },
+  "color.menu.logo": {
+    "en": "Logo",
+    "ru": "Логотип"
+  },
+  "color.outlineStatus.create": {
+    "en": "Create",
+    "ru": "Создание"
+  },
+  "color.outlineStatus.debug": {
+    "en": "Debug",
+    "ru": "Отладка"
+  },
+  "color.outlineStatus.idle": {
+    "en": "Idle",
+    "ru": "Бездействие"
+  },
+  "color.outlineStatus.run": {
+    "en": "Run",
+    "ru": "Выполнение"
+  },
+  "color.outputConsole.compiler": {
+    "en": "Compiler",
+    "ru": "Критическая ошибка"
+  },
+  "color.outputConsole.DBG": {
+    "en": "DBG",
+    "ru": "DBG"
+  },
+  "color.outputConsole.error": {
+    "en": "Error",
+    "ru": "Ошибка"
+  },
+  "color.outputConsole.fatal": {
+    "en": "Fatal",
+    "ru": "Критическая ошибка"
+  },
+  "color.outputConsole.GCC": {
+    "en": "GCC",
+    "ru": "GCC"
+  },
+  "color.outputConsole.IDE": {
+    "en": "IDE",
+    "ru": "IDE"
+  },
+  "color.outputConsole.info": {
+    "en": "Information",
+    "ru": "Информация"
+  },
+  "color.outputConsole.NASM": {
+    "en": "NASM",
+    "ru": "NASM"
+  },
+  "color.outputConsole.NASM.flag": {
+    "en": "NASM flag compilation",
+    "ru": "NASM флаг компиляции"
+  },
+  "color.outputConsole.panic": {
+    "en": "Panic",
+    "ru": "Аварийное завершение"
+  },
+  "color.outputConsole.parser": {
+    "en": "Parser",
+    "ru": "Парсер"
+  },
+  "color.outputConsole.RUN": {
+    "en": "RUN",
+    "ru": "RUN"
+  },
+  "color.outputConsole.RUN.TEXT": {
+    "en": "RUN text",
+    "ru": "RUN текст"
+  },
+  "color.outputConsole.selectedText": {
+    "en": "Selected text",
+    "ru": "Выделенный текст"
+  },
+  "color.outputConsole.success": {
+    "en": "Success",
+    "ru": "Успех"
+  },
+  "color.outputConsole.warning": {
+    "en": "Warning",
+    "ru": "Предупреждение"
+  },
+  "color.textEditor.default": {
+    "en": "Default",
+    "ru": "По умолчанию"
+  },
+  "color.textEditor.keyword": {
+    "en": "Keyword",
+    "ru": "Ключевые"
+  },
+  "color.textEditor.number": {
+    "en": "Number",
+    "ru": "Числа"
+  },
+  "color.textEditor.string": {
+    "en": "String (\"\")",
+    "ru": "Строки (\"\")"
+  },
+  "color.textEditor.charLiteral": {
+    "en": "Char literal (\\'\\')",
+    "ru": "Символы (\\'\\')"
+  },
+  "color.textEditor.punctuation": {
+    "en": "Punctuation",
+    "ru": "Пунктуация"
+  },
+  "color.textEditor.identifier": {
+    "en": "Identifier",
+    "ru": "Индификаторы"
+  },
+  "color.textEditor.comment": {
+    "en": "Comment",
+    "ru": "Комментарии (однострочные)"
+  },
+  "color.textEditor.multiLineComment": {
+    "en": "Multiline comment",
+    "ru": "Комментарии (многострочные)"
+  },
+  "color.textEditor.background": {
+    "en": "Background",
+    "ru": "Фон"
+  },
+  "color.textEditor.cursor": {
+    "en": "Cursor",
+    "ru": "Курсор"
+  },
+  "color.textEditor.selection": {
+    "en": "Selection",
+    "ru": "Выделение"
+  },
+  "color.textEditor.errorMarker": {
+    "en": "Error marker",
+    "ru": "Строка с ошибкой"
+  },
+  "color.textEditor.breakpoint": {
+    "en": "Breakpoint",
+    "ru": "Точка останова"
+  },
+  "color.textEditor.lineNumber": {
+    "en": "Line number",
+    "ru": "Номер строки"
+  },
+  "color.textEditor.currentLineFill": {
+    "en": "Current line fill",
+    "ru": "Строка (активная)"
+  },
+  "color.textEditor.currentLineFillInactive": {
+    "en": "Current line fill inactive",
+    "ru": "Строка (не активная)"
+  },
+  "color.textEditor.currentLineEdge": {
+    "en": "Current line edge",
+    "ru": "Строка (границы)"
+  },
+  "color.textEditor.finderNotFind": {
+    "en": "Button find inactive",
+    "ru": "Кнопка (не активна)"
+  },
+  "error.comboLanguages.loadData": {
+    "en": "Where data languages??",
+    "ru": "А где данные о языках?"
+  },
+  "error.comboLanguages.loadData.title": {
+    "en": "Error loading data",
+    "ru": "Ошибка загрузки данных"
+  },
+  "error.comboLanguages.loadFlags": {
+    "en": "Where image with flags??",
+    "ru": "А где картинка с флагами?"
+  },
+  "error.comboLanguages.loadFlags.title": {
+    "en": "Error loading texture",
+    "ru": "Ошибка загрузки текстур"
+  },
+  "error.menu.loadLogo": {
+    "en": "Where icons??",
+    "ru": "А где иконки?"
+  },
+  "error.menu.loadLogo.title": {
+    "en": "Error loading icon logo",
+    "ru": "Ошибка загрузки иконки логотипа"
+  },
+  "error.outputConsole.loadData": {
+    "en": "Where data translate?",
+    "ru": "А где файл переводов?"
+  },
+  "error.outputConsole.loadData.title": {
+    "en": "Error loading data",
+    "ru": "Ошибка загрузки данных"
+  },
+  "menu.button.close.tooltip": {
+    "en": "Close",
+    "ru": "Закрыть окно"
+  },
+  "menu.button.collapse.tooltip": {
+    "en": "Collapse",
+    "ru": "Свернуть в окно"
+  },
+  "menu.button.createProject.tooltip": {
+    "en": "Create new project",
+    "ru": "Создать новый проект"
+  },
+  "menu.button.expand.tooltip": {
+    "en": "Expand",
+    "ru": "Развернуть на весь экран"
+  },
+  "menu.button.hide.tooltip": {
+    "en": "Hide",
+    "ru": "Свернуть окно"
+  },
+  "menu.button.openProject.tooltip": {
+    "en": "Open another project",
+    "ru": "Открыть другой проект"
+  },
+  "menu.button.saveProject.tooltip": {
+    "en": "Save current project",
+    "ru": "Сохранить текущий проект"
+  },
+  "menu.entryPoint": {
+    "en": "Entry point",
+    "ru": "Точка входа"
+  },
+  "menu.entryPoint.tooltip": {
+    "en": "Name entry point",
+    "ru": "Название точки входа"
+  },
+  "menu.item.about": {
+    "en": "About",
+    "ru": "О программе"
+  },
+  "menu.item.build": {
+    "en": "Build",
+    "ru": "Сборка"
+  },
+  "menu.item.build.compile": {
+    "en": "Compile",
+    "ru": "Скомпилировать"
+  },
+  "menu.item.build.compileLink": {
+    "en": "Compile & Link",
+    "ru": "Скомпилировать и собрать"
+  },
+  "menu.item.build.run": {
+    "en": "Build & Run",
+    "ru": "Cобрать и запустить"
+  },
+  "menu.item.debug": {
+    "en": "Debug",
+    "ru": "Отладка"
+  },
+  "menu.item.file": {
+    "en": "File",
+    "ru": "Файл"
+  },
+  "menu.item.file.createProject": {
+    "en": "Create project",
+    "ru": "Создать проект"
+  },
+  "menu.item.file.exit": {
+    "en": "Exit",
+    "ru": "Выход"
+  },
+  "menu.item.file.lastProjects": {
+    "en": "Last projects",
+    "ru": "Последние проекты"
+  },
+  "menu.item.file.openProject": {
+    "en": "Open project",
+    "ru": "Октрыть проект"
+  },
+  "menu.item.file.saveProject": {
+    "en": "Save",
+    "ru": "Сохранить"
+  },
+  "menu.item.settings": {
+    "en": "Settings",
+    "ru": "Настройки"
+  },
+  "menu.item.view": {
+    "en": "View",
+    "ru": "Вид"
+  },
+  "menu.item.view.filesViewer": {
+    "en": "Files viewer",
+    "ru": "Список файлов"
+  },
+  "menu.item.view.output": {
+    "en": "Output",
+    "ru": "Вывод"
+  },
+  "menu.logo.tooltip": {
+    "en": "Logo IDE NASM",
+    "ru": "Логотип IDE NASM"
+  },
+  "menu.projectName": {
+    "en": "Name current project",
+    "ru": "Название текущего проекта"
+  },
+  "menu.quick.debug": {
+    "en": "Debug",
+    "ru": "Отладка"
+  },
+  "menu.quick.run": {
+    "en": "Run",
+    "ru": "Запуск"
+  },
+  "menu.quick.terminate": {
+    "en": "Terminate",
+    "ru": "Остановить"
+  },
+  "menu.selectArch.tooltip": {
+    "en": "Choose arch",
+    "ru": "Выбери архитектуру сборки"
+  },
+  "menu.selectConfig.tooltip": {
+    "en": "Choose configuration",
+    "ru": "Выбери кофигурацию сборки"
+  },
+  "menu.statusBar.nothing": {
+    "en": "Background tasks are not running",
+    "ru": "Фоновые задачи не выполняются"
+  },
+  "outputConsole.button.clearOutput": {
+    "en": "Clear output",
+    "ru": "Очистить вывод"
+  },
+  "outputConsole.languageDesc": {
+    "en": "Lang desc",
+    "ru": "Язык описания"
+  },
+  "outputConsole.table.description": {
+    "en": "Description",
+    "ru": "Описание"
+  },
+  "outputConsole.table.file": {
+    "en": "File",
+    "ru": "Файл"
+  },
+  "outputConsole.table.from": {
+    "en": "From",
+    "ru": "От кого"
+  },
+  "outputConsole.table.line": {
+    "en": "Line",
+    "ru": "Строка"
+  },
+  "outputConsole.table.type": {
+    "en": "Type",
+    "ru": "Тип"
+  },
+  "outputConsole.typeOutput": {
+    "en": "Type output",
+    "ru": "Тип вывода"
+  },
+  "outputConsole.typeOutput.formatted": {
+    "en": "Formatted",
+    "ru": "Форматированный"
+  },
+  "outputConsole.typeOutput.original": {
+    "en": "Original",
+    "ru": "Оригинальный"
+  },
+  "outputConsoleDrawer.NASM.flag.tooltip": {
+    "en": "Flag compilation",
+    "ru": "Флаг компиляции"
+  },
+  "setting.name.Themes": {
+    "en": "Themes",
+    "ru": "Темы"
+  },
+  "setting.tabName.colorTheme": {
+    "en": "Color themes",
+    "ru": "Цветовые темы"
+  },
+  "setting.title": {
+    "en": "Settings",
+    "ru": "Настройки"
+  },
+  "solution.button.change.tooltip": {
+    "en": "Edit",
+    "ru": "Изменить"
+  },
+  "solution.button.create": {
+    "en": "Create",
+    "ru": "Создать"
+  },
+  "solution.description": {
+    "en": "Description",
+    "ru": "Описание"
+  },
+  "solution.description.helpMarker": {
+    "en": "It is not necessary to fill out",
+    "ru": "Не обязательно заполнять"
+  },
+  "solution.dialogChoosePathFolder.title": {
+    "en": "Select the path where the project folder will be located",
+    "ru": "Выбери путь где будет находится папка с проектом"
+  },
+  "solution.dialogOpenFile.title": {
+    "en": "Select a project file",
+    "ru": "Выбери файл проекта"
+  },
+  "solution.nameProject": {
+    "en": "Name project",
+    "ru": "Имя проекта"
+  },
+  "solution.pathProject": {
+    "en": "Path",
+    "ru": "Расположение"
+  },
+  "solution.title": {
+    "en": "Creation new project",
+    "ru": "Создание нового проекта"
+  },
+  "startupWindow.button.create": {
+    "en": "Create();",
+    "ru": "Создать();"
+  },
+  "startupWindow.button.open": {
+    "en": "Open();",
+    "ru": "Открыть();"
+  },
+  "startupWindow.information": {
+    "en": "#INFORMATION",
+    "ru": "#ИНФОРМАЦИЯ"
+  },
+  "startupWindow.information.created": {
+    "en": "Created",
+    "ru": "Создан"
+  },
+  "startupWindow.information.description": {
+    "en": "Description",
+    "ru": "Описание"
+  },
+  "startupWindow.information.edited": {
+    "en": "Edited",
+    "ru": "Изменён"
+  },
+  "startupWindow.information.files": {
+    "en": "Files",
+    "ru": "Файлы"
+  },
+  "startupWindow.information.lines": {
+    "en": "Lines",
+    "ru": "Строк"
+  },
+  "startupWindow.information.name": {
+    "en": "Name",
+    "ru": "Название"
+  },
+  "startupWindow.information.spented": {
+    "en": "Spented",
+    "ru": "Затрачено"
+  },
+  "startupWindow.information.tooltip": {
+    "en": "To display the output, hover over the project from the list.",
+    "ru": "Для вывода наведись курсором на проект из списка."
+  },
+  "startupWindow.list.favorite": {
+    "en": "Favorite",
+    "ru": "Избранное"
+  },
+  "startupWindow.list.last": {
+    "en": "Last",
+    "ru": "Последние"
+  },
+  "startupWindow.title": {
+    "en": "Choose project",
+    "ru": "Выбор проекта"
+  },
+  "themeItem.baseColor": {
+    "en": "Outline status",
+    "ru": "Оконтовка статуса"
+  },
+  "themeItem.editorCode": {
+    "en": "Editor code",
+    "ru": "Редактор кода"
+  },
+  "themeItem.highlighterSyntax": {
+    "en": "Colors instructions",
+    "ru": "Цвета инструкций и деректив"
+  },
+  "themeItem.menu": {
+    "en": "Menu",
+    "ru": "Меню"
+  },
+  "themeItem.outlineStatus": {
+    "en": "Outline status",
+    "ru": "Оконтовка статуса"
+  },
+  "themeItem.outputConsole": {
+    "en": "Output information build",
+    "ru": "Вывод информации сборки"
+  },
+  "themeManager.button.createFromCurrent": {
+    "en": "Create from current colors",
+    "ru": "Создать из текущих цветов"
+  },
+  "themeManager.combo.chooseTheme": {
+    "en": "Choose theme",
+    "ru": "Выбор темы"
+  },
+  "themeManager.defaultTheme.dark": {
+    "en": "Dark",
+    "ru": "Тёмная"
+  },
+  "themeManager.defaultTheme.light": {
+    "en": "Light",
+    "ru": "Светлая"
+  },
+  "themeManager.popupCreationTheme.accept": {
+    "en": "Accept",
+    "ru": "Принять"
+  },
+  "themeManager.popupCreationTheme.name": {
+    "en": "Name",
+    "ru": "Название"
+  },
+  "themeManager.popupCreationTheme.title": {
+    "en": "Creating a name for a new color theme",
+    "ru": "Создание названия для новой цветовой темы"
+  },
+  "typeMessageDraw.type.tooltip": {
+    "en": "Type message",
+    "ru": "Тип сообщения"
+  },
+  "widgetName.managerTextEditor": {
+    "en": "Manager text editor",
+    "ru": "Менеджер редакторов кода"
+  },
+  "widgetName.outputConsole": {
+    "en": "Output",
+    "ru": "Вывод"
+  }
 }

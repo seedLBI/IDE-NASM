@@ -180,25 +180,25 @@ void TextEditor::SetPalette(const Palette& aValue)
 }
 void TextEditor::LoadColors(const ObjectColors& object_colors) {
 	static const robin_hood::unordered_flat_map<std::string, PaletteIndex> MapNameAndIndex = {
-		{u8"Ничего",						PaletteIndex::Default},
-		{u8"Ключевые",						PaletteIndex::Keyword},
-		{u8"Числа",							PaletteIndex::Number},
-		{u8"Строки (\"\")",					PaletteIndex::String},
-		{u8"Символы (\'\')",				PaletteIndex::CharLiteral},
-		{u8"Пунктуация",					PaletteIndex::Punctuation},
-		{u8"Индификаторы",					PaletteIndex::Identifier},
-		{u8"Комментарии (однострочные)",	PaletteIndex::Comment},
-		{u8"Комментарии (многострочные)",	PaletteIndex::MultiLineComment},
-		{u8"Фон",							PaletteIndex::Background},
-		{u8"Курсор",						PaletteIndex::Cursor},
-		{u8"Выделение",						PaletteIndex::Selection},
-		{u8"Ошибка",						PaletteIndex::ErrorMarker},
-		{u8"Точка останова",				PaletteIndex::Breakpoint},
-		{u8"Номер строки",					PaletteIndex::LineNumber},
-		{u8"Строка (активная)",				PaletteIndex::CurrentLineFill},
-		{u8"Строка (не активная)",			PaletteIndex::CurrentLineFillInactive},
-		{u8"Строка (границы)",				PaletteIndex::CurrentLineEdge},
-		{u8"Поиск кнопки (слово не нашёл)", PaletteIndex::Finder_NotFind }
+		{"color.textEditor.default",				PaletteIndex::Default},
+		{"color.textEditor.keyword",				PaletteIndex::Keyword},
+		{"color.textEditor.number",					PaletteIndex::Number},
+		{"color.textEditor.string",					PaletteIndex::String},
+		{"color.textEditor.charLiteral",			PaletteIndex::CharLiteral},
+		{"color.textEditor.punctuation",			PaletteIndex::Punctuation},
+		{"color.textEditor.identifier",				PaletteIndex::Identifier},
+		{"color.textEditor.comment",				PaletteIndex::Comment},
+		{"color.textEditor.multiLineComment",		PaletteIndex::MultiLineComment},
+		{"color.textEditor.background",				PaletteIndex::Background},
+		{"color.textEditor.cursor",					PaletteIndex::Cursor},
+		{"color.textEditor.selection",				PaletteIndex::Selection},
+		{"color.textEditor.errorMarker",			PaletteIndex::ErrorMarker},
+		{"color.textEditor.breakpoint",				PaletteIndex::Breakpoint},
+		{"color.textEditor.lineNumber",				PaletteIndex::LineNumber},
+		{"color.textEditor.currentLineFill",		PaletteIndex::CurrentLineFill},
+		{"color.textEditor.currentLineFillInactive",PaletteIndex::CurrentLineFillInactive},
+		{"color.textEditor.currentLineEdge",		PaletteIndex::CurrentLineEdge},
+		{"color.textEditor.finderNotFind",			PaletteIndex::Finder_NotFind }
 	};
 
 	for (int i = 0; i < object_colors.colors.size(); i++) {

@@ -18,7 +18,11 @@ const std::string& LocalisationManager::getGlobal() {
 }
 
 std::string LocalisationManager::translate(const std::string& keyName) {
-	return translate_data[keyName][GlobalLanguage].get<std::string>();
+
+	if (translate_data.contains(keyName))
+		return translate_data[keyName][GlobalLanguage].get<std::string>();
+	else
+		return keyName;
 }
 
 void LocalisationManager::loadFromFile(const std::string& path) {

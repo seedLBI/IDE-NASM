@@ -1,16 +1,33 @@
 #include "WidgetManager_TextEditior.h"
 
 
-WidgetManager_TextEditor::WidgetManager_TextEditor(FPS_Timer* fps_limiter): IWidget(u8"Менеджер редакторов кода"), IThemeLoadable(u8"Редактор кода") {
+WidgetManager_TextEditor::WidgetManager_TextEditor(FPS_Timer* fps_limiter): 
+	IWidget("widgetName.managerTextEditor"),
+	IThemeLoadable("themeItem.editorCode")
+{
 	this->fps_limiter = fps_limiter;
 
 	IThemeLoadable::InitListWord(
 		{
-			u8"Ничего",u8"Ключевые",u8"Числа",u8"Строки (\"\")",u8"Символы (\'\')",
-			u8"Пунктуация",u8"Индификаторы",u8"Комментарии (однострочные)",
-			u8"Комментарии (многострочные)",u8"Фон",u8"Курсор",u8"Выделение",
-			u8"Ошибка",u8"Точка останова",u8"Номер строки",u8"Строка (активная)",
-			u8"Строка (не активная)",u8"Строка (границы)",u8"Поиск кнопки (слово не нашёл)"
+			"color.textEditor.default",
+			"color.textEditor.keyword",
+			"color.textEditor.number",
+			"color.textEditor.string",
+			"color.textEditor.charLiteral",
+			"color.textEditor.punctuation",
+			"color.textEditor.identifier",
+			"color.textEditor.comment",
+			"color.textEditor.multiLineComment",
+			"color.textEditor.background",
+			"color.textEditor.cursor",
+			"color.textEditor.selection",
+			"color.textEditor.errorMarker",
+			"color.textEditor.breakpoint",
+			"color.textEditor.lineNumber",
+			"color.textEditor.currentLineFill",
+			"color.textEditor.currentLineFillInactive",
+			"color.textEditor.currentLineEdge",
+			"color.textEditor.finderNotFind"
 		});
 }
 
@@ -25,25 +42,25 @@ void WidgetManager_TextEditor::LoadColors() {
 }
 std::vector<NamedColor> WidgetManager_TextEditor::GetDefaultLightColors() {
 	std::vector<NamedColor> colors = {
-		{u8"Ничего",						ImColor(125,115,104,255)},
-		{u8"Ключевые",						ImColor(6,12,255,255)},
-		{u8"Числа",							ImColor(80,109,1,255)},
-		{u8"Строки (\"\")",					ImColor(160,32,32,255)},
-		{u8"Символы (\'\')",				ImColor(112,64,48,255)},
-		{u8"Пунктуация",					ImColor(71,41,0,255)},
-		{u8"Индификаторы",					ImColor(71,41,0,255)},
-		{u8"Комментарии (однострочные)",	ImColor(8,84,8,255)},
-		{u8"Комментарии (многострочные)",	ImColor(11,84,60,255)},
-		{u8"Фон",							ImColor(232,222,203,255)},
-		{u8"Курсор",						ImColor(0,0,0,255)},
-		{u8"Выделение",						ImColor(242,158,0,79)},
-		{u8"Ошибка",						ImColor(255,16,0,160)},
-		{u8"Точка останова",				ImColor(240,163,0,128)},
-		{u8"Номер строки",					ImColor(112,0,0,255)},
-		{u8"Строка (активная)",				ImColor(37,19,0,64)},
-		{u8"Строка (не активная)",			ImColor(128,117,97,64)},
-		{u8"Строка (границы)",				ImColor(64,38,0,64)},
-		{u8"Поиск кнопки (слово не нашёл)",	ImColor(201,178,133,255) }
+		{"color.textEditor.default",				ImColor(125,115,104,255)},
+		{"color.textEditor.keyword",				ImColor(6,12,255,255)},
+		{"color.textEditor.number",					ImColor(80,109,1,255)},
+		{"color.textEditor.string",					ImColor(160,32,32,255)},
+		{"color.textEditor.charLiteral",			ImColor(112,64,48,255)},
+		{"color.textEditor.punctuation",			ImColor(71,41,0,255)},
+		{"color.textEditor.identifier",				ImColor(71,41,0,255)},
+		{"color.textEditor.comment",				ImColor(8,84,8,255)},
+		{"color.textEditor.multiLineComment",		ImColor(11,84,60,255)},
+		{"color.textEditor.background",				ImColor(232,222,203,255)},
+		{"color.textEditor.cursor",					ImColor(0,0,0,255)},
+		{"color.textEditor.selection",				ImColor(242,158,0,79)},
+		{"color.textEditor.errorMarker",			ImColor(255,16,0,160)},
+		{"color.textEditor.breakpoint",				ImColor(240,163,0,128)},
+		{"color.textEditor.lineNumber",				ImColor(112,0,0,255)},
+		{"color.textEditor.currentLineFill",		ImColor(37,19,0,64)},
+		{"color.textEditor.currentLineFillInactive",ImColor(128,117,97,64)},
+		{"color.textEditor.currentLineEdge",		ImColor(64,38,0,64)},
+		{"color.textEditor.finderNotFind",			ImColor(201,178,133,255) }
 	};
 
 
@@ -51,25 +68,25 @@ std::vector<NamedColor> WidgetManager_TextEditor::GetDefaultLightColors() {
 }
 std::vector<NamedColor> WidgetManager_TextEditor::GetDefaultDarkColors() {
 	std::vector<NamedColor> colors = {
-		{u8"Ничего",							ImColor(0xff7f7f7f)},
-		{u8"Ключевые",							ImColor(0xffff0c06)},
-		{u8"Числа",								ImVec4(0.2f,1.0f,0.2f,1.0f)},
-		{u8"Строки (\"\")",						ImColor(0xff7070e0)},
-		{u8"Символы (\'\')",					ImColor(0xff70a0e0)},
-		{u8"Пунктуация",						ImColor(0xffffffff)},
-		{u8"Индификаторы",						ImColor(0xffaaaaaa)},
-		{u8"Комментарии (однострочные)",		ImColor(0xff206020)},
-		{u8"Комментарии (многострочные)",		ImColor(0xff406020)},
-		{u8"Фон",								ImVec4(0.15f, 0.15f, 0.15f,1.0f)},
-		{u8"Курсор",							ImColor(0xffe0e0e0)},
-		{u8"Выделение",							ImColor(0x80a06020)},
-		{u8"Ошибка",							ImColor(0x800020ff)},
-		{u8"Точка останова",					ImVec4(0.8f, 0.6f, 0.2f,1.0f)},
-		{u8"Номер строки",						ImColor(0xff707000)},
-		{u8"Строка (активная)",					ImColor(0x40000000)},
-		{u8"Строка (не активная)",				ImColor(0x40808080)},
-		{u8"Строка (границы)",					ImColor(0x40a0a0a0)},
-		{u8"Поиск кнопки (слово не нашёл)",		ImColor(0.2f, 0.2f, 0.2f)}
+		{"color.textEditor.default",				ImColor(0xff7f7f7f)},
+		{"color.textEditor.keyword",				ImColor(0xffff0c06)},
+		{"color.textEditor.number",					ImVec4(0.2f,1.0f,0.2f,1.0f)},
+		{"color.textEditor.string",					ImColor(0xff7070e0)},
+		{"color.textEditor.charLiteral",			ImColor(0xff70a0e0)},
+		{"color.textEditor.punctuation",			ImColor(0xffffffff)},
+		{"color.textEditor.identifier",				ImColor(0xffaaaaaa)},
+		{"color.textEditor.comment",				ImColor(0xff206020)},
+		{"color.textEditor.multiLineComment",		ImColor(0xff406020)},
+		{"color.textEditor.background",				ImVec4(0.15f, 0.15f, 0.15f,1.0f)},
+		{"color.textEditor.cursor",					ImColor(0xffe0e0e0)},
+		{"color.textEditor.selection",				ImColor(0x80a06020)},
+		{"color.textEditor.errorMarker",			ImColor(0x800020ff)},
+		{"color.textEditor.breakpoint",				ImVec4(0.8f, 0.6f, 0.2f,1.0f)},
+		{"color.textEditor.lineNumber",				ImColor(0xff707000)},
+		{"color.textEditor.currentLineFill",		ImColor(0x40000000)},
+		{"color.textEditor.currentLineFillInactive",ImColor(0x40808080)},
+		{"color.textEditor.currentLineEdge",		ImColor(0x40a0a0a0)},
+		{"color.textEditor.finderNotFind",			ImColor(0.2f, 0.2f, 0.2f)}
 	};
 
 

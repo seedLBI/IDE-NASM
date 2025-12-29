@@ -357,13 +357,13 @@ void ThemeManager::DrawSetting() {
 			}
 
 			if (i == 0) {
-				ImGui::SeparatorText(objects[row]->GetName().c_str());
+				ImGui::SeparatorText(tr(objects[row]->GetName()).c_str());
 			}
 			else
-				ImGui::SeparatorText(objects[i]->GetName().c_str());
+				ImGui::SeparatorText(tr(objects[i]->GetName()).c_str());
 
 			auto colors_data = objects[i]->GetColorsPTR();
-			std::string NameObject = "##color" + objects[i]->GetName();
+			std::string NameObject = "###" + tr(objects[i]->GetName()) + "_color_" + std::to_string(i);
 
 			for (int j = 0; j < colors_data->size(); j++) {
 
@@ -374,7 +374,7 @@ void ThemeManager::DrawSetting() {
 					LoadForced();
 				}
 				ImGui::SameLine();
-				ImGui::Text(colors_data->at(j).nameColor.c_str());
+				ImGui::Text(tr(colors_data->at(j).nameColor).c_str());
 
 			}
 
