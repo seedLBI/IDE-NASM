@@ -194,7 +194,128 @@ bool StartupWindow::DrawListObject(SolutionInfo& info, const int& index, bool& b
 	return false;
 }
 
+void DrawBackgroundPattern() {
+	ImDrawList* draw_list = ImGui::GetBackgroundDrawList();
+	if (!draw_list) return;
 
+	ImVec2 screen_min = ImVec2(0, 0);
+	ImVec2 screen_size = ImGui::GetIO().DisplaySize;
+	ImVec2 screen_max = screen_size;
+
+	float angle_deg = 45.0f;
+	float angle_rad = angle_deg * IM_PI / 180.0f;
+	ImVec2 dir(cosf(angle_rad), sinf(angle_rad));
+	float dir_len = sqrtf(dir.x * dir.x + dir.y * dir.y);
+	dir.x /= dir_len;
+	dir.y /= dir_len;
+
+	ImVec2 perp(-dir.y, dir.x);
+
+	float line_spacing = 120.0f;
+	float speed = 50.0f;
+	float time = ImGui::GetTime();
+	ImU32 color = IM_COL32(128, 128, 128, 128);
+	float text_size = 160.0f;
+
+	ImFont* font = ImGui::GetFont();
+	const char* text1 = "IDE ";
+	const char* text2 = "NASM ";
+	ImVec2 size1 = font->CalcTextSizeA(text_size, FLT_MAX, 0.0f, text1);
+	ImVec2 size2 = font->CalcTextSizeA(text_size, FLT_MAX, 0.0f, text2);
+	float repeat_dist1 = size1.x;
+	float repeat_dist2 = size2.x;
+
+	float diag = sqrtf(screen_size.x * screen_size.x + screen_size.y * screen_size.y);
+
+	ImVec2 corners[4] = { screen_min, ImVec2(screen_max.x, screen_min.y), screen_max, ImVec2(screen_min.x, screen_max.y) };
+	float min_t = FLT_MAX;
+	float max_t = -FLT_MAX;
+	for (int c = 0; c < 4; ++c) {
+		float t = corners[c].x * perp.x + corners[c].y * perp.y;
+		min_t = ImMin(min_t, t);
+		max_t = ImMax(max_t, t);
+	}
+
+	int num_lines = static_cast<int>((max_t - min_t) / line_spacing) + 4;
+	for (int i = 0; i < num_lines; ++i) {
+		float t = min_t + (i - 2) * line_spacing;
+		ImVec2 base = ImVec2(perp.x * t, perp.y * t);
+
+		bool is_even = (i % 2 == 0);
+		const char* text = is_even ? text1 : text2;
+		float repeat_dist = is_even ? repeat_dist1 : repeat_dist2;
+		float dir_sign = is_even ? 1.0f : -1.0f;
+		float offset = fmodf(time * speed * dir_sign, repeat_dist);
+		if (offset < 0.0f) offset += repeat_dist;
+
+		float text_angle = angle_rad;
+
+		float sin_a = sinf(text_angle);
+		float cos_a = cosf(text_angle);
+
+		float min_s = FLT_MAX;
+		float max_s = -FLT_MAX;
+		for (int c = 0; c < 4; ++c) {
+			ImVec2 diff = ImVec2(corners[c].x - base.x, corners[c].y - base.y);
+			float s = diff.x * dir.x + diff.y * dir.y;
+			min_s = ImMin(min_s, s);
+			max_s = ImMax(max_s, s);
+		}
+		min_s -= diag;
+		max_s += diag;
+
+		int min_k = static_cast<int>(floorf(min_s / repeat_dist));
+		int max_k = static_cast<int>(ceilf(max_s / repeat_dist));
+
+		for (int k = min_k - 1; k <= max_k + 1; ++k) {
+			float s = k * repeat_dist + offset;
+			ImVec2 start_pos =  ImVec2(base.x + s * dir.x, base.y + s * dir.y);
+
+			ImVec2 curr_pos = start_pos;
+			for (const char* p = text; *p; ++p) {
+				const ImFontGlyph* glyph = font->FindGlyph((ImWchar)*p);
+				if (!glyph) continue;
+
+				float scale = text_size / font->FontSize;
+				float w = (glyph->X1 - glyph->X0) * scale;
+				float h = (glyph->Y1 - glyph->Y0) * scale;
+
+				if (w <= 0.0f || h <= 0.0f) {
+					curr_pos.x += (glyph->AdvanceX * scale) * dir.x;
+					curr_pos.y += (glyph->AdvanceX * scale) * dir.y;
+					continue;
+				}
+
+				ImVec2 center =  ImVec2(curr_pos.x + w * 0.5f, curr_pos.y + h * 0.5f);
+
+				ImVec2 rel[4] = {
+					ImVec2(-w * 0.5f, -h * 0.5f),
+					ImVec2(w * 0.5f, -h * 0.5f),
+					ImVec2(w * 0.5f,  h * 0.5f),
+					ImVec2(-w * 0.5f,  h * 0.5f)
+				};
+
+				ImVec2 verts[4];
+				for (int v = 0; v < 4; ++v) {
+					float rx = rel[v].x * cos_a - rel[v].y * sin_a;
+					float ry = rel[v].x * sin_a + rel[v].y * cos_a;
+					verts[v] = ImVec2(center.x + rx, center.y + ry);
+				}
+
+				ImVec2 uv0(glyph->U0, glyph->V0);
+				ImVec2 uv1(glyph->U1, glyph->V0);
+				ImVec2 uv2(glyph->U1, glyph->V1);
+				ImVec2 uv3(glyph->U0, glyph->V1);
+
+				draw_list->PrimReserve(6, 4);
+				draw_list->PrimQuadUV(verts[0], verts[1], verts[2], verts[3], uv0, uv1, uv2, uv3, color);
+
+				curr_pos.x += (glyph->AdvanceX * scale) * dir.x;
+				curr_pos.y += (glyph->AdvanceX * scale) * dir.y;
+			}
+		}
+	}
+}
 
 
 std::string StartupWindow::timestamp_to_DateAndTime_str(const uint64_t& timestamp) {
@@ -319,7 +440,7 @@ void StartupWindow::Draw() {
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(6.0f, 6.0f));
 
 
-
+	DrawBackgroundPattern();
 
 
 	if (ImGui::Begin((tr("startupWindow.title") + u8" ###CHOOSING_PROJECT").c_str(), 0, flagsWindow)) {
