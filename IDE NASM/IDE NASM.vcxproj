@@ -171,6 +171,7 @@
     <ClCompile Include="source\IDE\Core\Theme\ThemeManager\ThemeManager.cpp" />
     <ClCompile Include="source\IDE\Core\Widget\IWidget.cpp" />
     <ClCompile Include="source\IDE\Core\Widget\WidgetManager.cpp" />
+    <ClCompile Include="source\IDE\GUI\AuthorPopup\AuthorPopup.cpp" />
     <ClCompile Include="source\IDE\GUI\Elements\ComboLanguage\ComboLanguage.cpp" />
     <ClCompile Include="source\IDE\GUI\Elements\Notification\interface\Notification.Element.cpp" />
     <ClCompile Include="source\IDE\GUI\Elements\Notification\Notification.cpp" />
@@ -205,6 +206,12 @@
     <ClCompile Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.cpp" />
     <ClCompile Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.Creater.cpp" />
     <ClCompile Include="source\IDE\Utils\TypeMessageConsole\TypeMessageConsole.cpp" />
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.Backend.cpp" />
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.Close.cpp" />
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.EyeTransparent.cpp" />
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.Front.cpp" />
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.LeftEye.cpp" />
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.RightEye.cpp" />
     <ClCompile Include="source\Test\TestFunction.cpp" />
     <ClCompile Include="source\ThirdParty\ImGui\imgui.cpp" />
     <ClCompile Include="source\ThirdParty\ImGui\imgui_demo.cpp" />
@@ -259,6 +266,7 @@
     <ClInclude Include="source\IDE\Core\Theme\ThemeManager\ThemeManager.h" />
     <ClInclude Include="source\IDE\Core\Widget\IWidget.h" />
     <ClInclude Include="source\IDE\Core\Widget\WidgetManager.h" />
+    <ClInclude Include="source\IDE\GUI\AuthorPopup\AuthorPopup.h" />
     <ClInclude Include="source\IDE\GUI\Elements\ComboLanguage\ComboLanguage.h" />
     <ClInclude Include="source\IDE\GUI\Elements\Notification\interface\Notification.Element.h" />
     <ClInclude Include="source\IDE\GUI\Elements\Notification\Notification.h" />
@@ -293,6 +301,12 @@
     <ClInclude Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.Creater.h" />
     <ClInclude Include="source\IDE\Utils\InfoLines\IDE\InfoLine.IDE.h" />
     <ClInclude Include="source\IDE\Utils\TypeMessageConsole\TypeMessageConsole.h" />
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.Backend.h" />
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.Close.h" />
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.EyeTransparent.h" />
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.Front.h" />
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.LeftEye.h" />
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.RightEye.h" />
     <ClInclude Include="source\Test\TestFunction.h" />
     <ClInclude Include="source\ThirdParty\ImGui\imconfig.h" />
     <ClInclude Include="source\ThirdParty\ImGui\imgui.h" />

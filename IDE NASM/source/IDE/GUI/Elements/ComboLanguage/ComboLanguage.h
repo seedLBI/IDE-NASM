@@ -38,8 +38,8 @@ private:
 	Texture texture_flags;
 	nlohmann::json data_text;
 
-	std::string CurrentLanguage = "ru";
-	std::string GlobalLanguage = "ru";
+	std::string CurrentLanguage = "en";
+	std::string GlobalLanguage = "en";
 
 	void Init();
 

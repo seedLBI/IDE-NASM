@@ -253,3 +253,20 @@ bool ButtonDelete(ImGuiWindow* imgui_window, ImDrawList* draw_list, const char* 
 
 	return pressed_Delete;
 }
+
+void MyImageRounded(ImTextureID user_texture_id, const ImVec2& size, const ImVec2& uv0, const ImVec2& uv1, float rounding, ImU32 col) {
+	ImGuiWindow* window = ImGui::GetCurrentWindow();
+	if (window->SkipItems)
+		return;
+
+	const ImVec2 padding(0, 0);
+	const ImRect bb(window->DC.CursorPos, { window->DC.CursorPos.x + size.x + padding.x * 2.0f, window->DC.CursorPos.y + size.y + padding.y * 2.0f });
+	ImGui::ItemSize(bb);
+	if (!ImGui::ItemAdd(bb, 0))
+		return;
+
+	ImVec2 p_min = { bb.Min.x + padding.x , bb.Min.y + padding.y };
+	ImVec2 p_max = { bb.Max.x - padding.x , bb.Max.y - padding.y };
+
+	window->DrawList->AddImageRounded(user_texture_id, p_min, p_max, uv0, uv1, ImGui::GetColorU32(IM_COL32_WHITE), 6.f);
+}

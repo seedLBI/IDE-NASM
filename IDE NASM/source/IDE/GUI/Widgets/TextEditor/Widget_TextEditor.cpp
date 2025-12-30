@@ -33,7 +33,7 @@ void Widget_TextEditor::Update() {
 }
 
 void Widget_TextEditor::MakeActiveCurrentWidget() {
-	ImGui::SetWindowFocus(GetName_c_str());
+	ImGui::SetWindowFocus(GetName().c_str());
 	ImGui::SetWindowFocus(GetPtrTextEditor()->GetNameChild().c_str());
 }
 

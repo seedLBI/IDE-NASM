@@ -19,7 +19,7 @@ void MainMenuBar::DrawIcon() {
 
 
 int MainMenuBar::GetHeightMenu() {
-	return heightMenu;
+	return (int)heightMenu;
 }
 
 void MainMenuBar::DrawProjectName() {
@@ -54,7 +54,12 @@ void MainMenuBar::DrawProjectName() {
 	ImDrawList* draw = ImGui::GetWindowDrawList();
 	ImU32 col_text = ImGui::GetColorU32(ImGuiCol_Text);
 
-	draw->AddRectFilled(ImVec2(bb_min.x, bb_min.y + 3.f) , bb_max, color_ProjectBackground, 0.0f);
+	float rounding = (*ImGui::GetCurrentContext()).Style.FrameRounding;
+
+
+	draw->AddRectFilled(ImVec2(bb_min.x, bb_min.y + 3.f) , bb_max, color_ProjectBackground, rounding);
+	draw->AddRect(ImVec2(bb_min.x, bb_min.y + 3.f), bb_max, ImGui::GetColorU32(ImGuiCol_Border), rounding);
+
 	draw->AddText(
 		ImVec2(bb_min.x + padding.x,
 			bb_min.y + textOffsetY),
@@ -77,9 +82,14 @@ void MainMenuBar::DrawTitleButtons() {
 	ImVec4 colBtnHover = style.Colors[ImGuiCol_ButtonHovered];
 	ImVec4 colBtnActive = style.Colors[ImGuiCol_ButtonActive];
 
+
+	ImGui::PopStyleColor();
+
 	ImGui::PushStyleColor(ImGuiCol_Button, style.Colors[ImGuiCol_MenuBarBg]);
 	ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colBtnHover);
 	ImGui::PushStyleColor(ImGuiCol_ButtonActive, colBtnActive);
+
+	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 
 	const ImVec2 buttonSize = ImVec2(buttonWidth, ImGui::GetFrameHeight() - 1.f);
 
@@ -88,27 +98,35 @@ void MainMenuBar::DrawTitleButtons() {
 		glfwIconifyWindow(window);
 	}
 	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
-	TooltipTranslated("menu.button.hide.tooltip");
 
+	ImGui::PopStyleColor();
+	TooltipTranslated("menu.button.hide.tooltip");
+	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 
 	ImGui::SameLine(0,0);
 
+	
 	
 	if (glfwGetWindowAttrib(window, GLFW_MAXIMIZED)) {
 		if (ImGui::Button(ICON_FA_COMPRESS, buttonSize)) {
 			glfwRestoreWindow(window);
 		}
 		titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+		ImGui::PopStyleColor();
 		TooltipTranslated("menu.button.collapse.tooltip");
+		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 	}
 	else {
 		if (ImGui::Button(ICON_FA_EXPAND, buttonSize)) {
 			glfwMaximizeWindow(window);
 		}
 		titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+		ImGui::PopStyleColor();
 		TooltipTranslated("menu.button.expand.tooltip");
+		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 	}
 	
+
 
 	ImGui::SameLine(0,0);
 
@@ -117,9 +135,13 @@ void MainMenuBar::DrawTitleButtons() {
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
 	}
 	titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+	ImGui::PopStyleColor();
 	TooltipTranslated("menu.button.close.tooltip");
 
+
 	ImGui::PopStyleColor(3);
+
+	ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 }
 
 void MainMenuBar::SetFlag_DrawAll() {
@@ -137,7 +159,7 @@ bool MainMenuBar::IsPointOverTitleButton(const POINT& pt) const {
 }
 
 void MainMenuBar::Draw() {
-
+	authorPopup->Draw();
 	heightMenu = 0.f;
 
 	std::string MenuItem_File		= std::string(ICON_FA_FILE)				+ " " + tr("menu.item.file");
@@ -164,6 +186,7 @@ void MainMenuBar::Draw() {
 
 		DrawIcon();
 
+		ImGui::PopStyleColor();
 
 		if (DrawingAllButtons)
 		{
@@ -211,7 +234,7 @@ void MainMenuBar::Draw() {
 				std::string MenuItem_ViewWidget_Output =		std::string(ICON_FA_FOLDER_TREE) + " " + tr("menu.item.view.output");
 
 
-				ImGui::MenuItem(MenuItem_ViewWidget_FilesViewer.c_str(), "", widgetManager->GetWidgetPtrByName(u8"Список файлов")->GetPtrFlagShow());
+				ImGui::MenuItem(MenuItem_ViewWidget_FilesViewer.c_str(), "", widgetManager->GetWidgetPtrByName("widgetName.filesViewer")->GetPtrFlagShow());
 				ImGui::MenuItem(MenuItem_ViewWidget_Output.c_str(),      "", widgetManager->GetWidgetPtrByName("widgetName.outputConsole")->GetPtrFlagShow());
 
 
@@ -249,7 +272,7 @@ void MainMenuBar::Draw() {
 
 
 			if (ImGui::MenuItem(MenuItem_About.c_str())) {
-				
+				authorPopup->Open();
 			}
 			titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 
@@ -259,16 +282,19 @@ void MainMenuBar::Draw() {
 
 		}
 
+
+		ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
+
 		DrawTitleButtons();
 
 		ImGui::EndMainMenuBar();
 	}
 
 	ImGui::PopStyleVar();
-
+	
 
 	ImGuiWindowFlags window_flags = ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoSavedSettings | ImGuiWindowFlags_MenuBar;
-	float height = ImGui::GetFrameHeight();
+	float height = ImGui::GetFrameHeight()*1.2f;
 
 	if (DrawingAllButtons)
 	{
@@ -285,15 +311,23 @@ void MainMenuBar::Draw() {
 				ImVec4 colBtnHover = style.Colors[ImGuiCol_ButtonHovered];
 				ImVec4 colBtnActive = style.Colors[ImGuiCol_ButtonActive];
 
+				ImGui::PopStyleColor();
+
 				ImGui::PushStyleColor(ImGuiCol_Button, style.Colors[ImGuiCol_MenuBarBg]);
 				ImGui::PushStyleColor(ImGuiCol_ButtonHovered, colBtnHover);
 				ImGui::PushStyleColor(ImGuiCol_ButtonActive, colBtnActive);
+
+				ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 
 				if (ImGui::Button(ICON_FA_FILE_CIRCLE_PLUS, ImVec2(55.f, 0.f))) {
 					solution->Create();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				ImGui::PopStyleColor();
 				TooltipTranslated("menu.button.createProject.tooltip");
+				ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
+
+				
 
 
 				ImGui::SameLine(0, 0);
@@ -305,7 +339,10 @@ void MainMenuBar::Draw() {
 					}
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				ImGui::PopStyleColor();
 				TooltipTranslated("menu.button.openProject.tooltip");
+				ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
+
 
 
 				ImGui::SameLine(0, 0);
@@ -315,12 +352,16 @@ void MainMenuBar::Draw() {
 					solution->SaveCurrentSolution();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+
+				ImGui::PopStyleColor();
 				TooltipTranslated("menu.button.saveProject.tooltip");
-
-
+				
 
 
 				ImGui::PopStyleColor(3);
+
+				ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
+
 
 				auto& settings = buildManager->GetCurrentSettings();
 
@@ -360,10 +401,16 @@ void MainMenuBar::Draw() {
 					ImGui::EndCombo();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
-				TooltipTranslated("menu.selectConfig.tooltip");
-
-
 				ImGui::EndDisabled();
+
+				ImGui::PopStyleColor();
+				TooltipTranslated("menu.selectConfig.tooltip");
+				ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
+
+
+
+
+				
 
 				const char* str_64 = "x64";
 				const char* str_32 = "x86";
@@ -397,8 +444,9 @@ void MainMenuBar::Draw() {
 					ImGui::EndCombo();
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				ImGui::PopStyleColor();
 				TooltipTranslated("menu.selectArch.tooltip");
-
+				ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 
 				ImGui::EndDisabled();
 
@@ -432,8 +480,10 @@ void MainMenuBar::Draw() {
 					buildManager->SetEntryPoint(buf_entryPoint);
 				}
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
+				
+				ImGui::PopStyleColor();
 				TooltipTranslated("menu.entryPoint.tooltip");
-
+				ImGui::PushStyleColor(ImGuiCol_Border, ImVec4(0.f, 0.f, 0.f, 0.f));
 
 				ImGui::EndDisabled();
 
@@ -466,10 +516,12 @@ void MainMenuBar::Draw() {
 					ImGui::EndDisabled();
 				}
 
+				/*
 				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
 					ImGui::Button(MenuQuick_Debug.c_str());
 					titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 				ImGui::EndDisabled();
+				*/
 
 				ImGui::PopStyleColor(3);
 
@@ -503,6 +555,8 @@ void MainMenuBar::Draw() {
 		ImGui::End();
 	}
 
+
+	
 }
 
 void MainMenuBar::Update() {
@@ -558,6 +612,9 @@ MainMenuBar::MainMenuBar(
 	this->buildManager = buildManager;
 
 	window = windowManager->GetMainWindow()->GetHandle();
+	
+	authorPopup = new AuthorPopup(window);
+
 
 	LoadIcon();
 

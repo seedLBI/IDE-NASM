@@ -1,12 +1,11 @@
 #include "IWidget.h"
-
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
 IWidget::IWidget(const std::string& Name, const bool& flag) : SaveSystem(Name){
 #ifdef _DEBUG
 	std::cout << "IWidget::IWidget(const std::string& Name, const bool& flag) : SaveSystem(Name)\n";
 #endif
 	this->Name = Name;
-	Name_c_str = this->Name.c_str();
 	Show = new bool;
 	*Show = flag;
 }
@@ -42,7 +41,7 @@ void IWidget::SetActive() {
 }
 
 void IWidget::MakeActiveCurrentWidget() {
-	ImGui::SetWindowFocus(Name_c_str);
+	ImGui::SetWindowFocus(Name.c_str());
 }
 
 bool IWidget::WindowIsVisiable() {
@@ -89,17 +88,17 @@ void IWidget::SetFlagShow(const bool& value) {
 	*Show = value;
 }
 
+
 std::string IWidget::GetName() {
 	return Name;
 }
 
-const char* IWidget::GetName_c_str() {
-	return Name_c_str;
+std::string IWidget::GetNameTranslated() {
+	return tr(Name) + "###" + Name;
 }
 
 void IWidget::SetName(const std::string& newName) {
 	Name = newName;
-	Name_c_str = Name.c_str();
 }
 
 

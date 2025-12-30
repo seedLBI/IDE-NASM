@@ -54,6 +54,8 @@ BaseColors::BaseColors() : IThemeLoadable("themeItem.baseColor") {
 		u8"color.base.tableRowBg",
 		u8"color.base.tableRowBgAlt",
 		u8"color.base.dockingEmptyBg",
+		u8"color.base.cursorText"
+
 		});
 
 	MapNameAndIndex = {
@@ -105,6 +107,7 @@ BaseColors::BaseColors() : IThemeLoadable("themeItem.baseColor") {
 		{u8"color.base.tableRowBg",					ImGuiCol_TableRowBg},
 		{u8"color.base.tableRowBgAlt",				ImGuiCol_TableRowBgAlt},
 		{u8"color.base.dockingEmptyBg",				ImGuiCol_DockingEmptyBg},
+		{u8"color.base.cursorText",					ImGuiCol_InputTextCursor},
 	};
 
 }
@@ -163,7 +166,8 @@ std::vector<NamedColor> BaseColors::GetDefaultLightColors() {
 		NamedColor{u8"color.base.tableBorderLight",				ImColor(189,184,173,255)},
 		NamedColor{u8"color.base.tableRowBg",					ImColor(0,0,0,0)},
 		NamedColor{u8"color.base.tableRowBgAlt",				ImColor(97,54,0,23)},
-		NamedColor{u8"color.base.dockingEmptyBg",				ImColor(49,31,8,255)}
+		NamedColor{u8"color.base.dockingEmptyBg",				ImColor(49,31,8,255)},
+		NamedColor{u8"color.base.cursorText",					ImColor(0.f,   0.f,   0.f,   1.f)}
 	};
 	return colors;
 
@@ -219,6 +223,7 @@ std::vector<NamedColor> BaseColors::GetDefaultDarkColors() {
 		NamedColor{u8"color.base.tableRowBg",					ImColor(0.00f, 0.00f, 0.00f, 0.00f)},
 		NamedColor{u8"color.base.tableRowBgAlt",				ImColor(1.00f, 1.00f, 1.00f, 0.06f)},
 		NamedColor{u8"color.base.dockingEmptyBg",				ImColor(0.20f, 0.20f, 0.20f, 1.00f)},
+		NamedColor{u8"color.base.cursorText",					ImColor(1.f,   1.f,   1.f,   1.f  )}
 	};
 
 	return colors;

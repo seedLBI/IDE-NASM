@@ -25,7 +25,7 @@ void WidgetManager::Draw() {
 		float TimerFocus = ptr_widgets[i]->GetTimerFocus()* ptr_widgets[i]->GetTimerFocus();
 		if (TimerFocus > 0.f) {
 
-			ImGuiWindow* window = ImGui::FindWindowByName(ptr_widgets[i]->GetName_c_str());
+			ImGuiWindow* window = ImGui::FindWindowByName(ptr_widgets[i]->GetName().c_str());
 
 			auto drawlist = window->DrawList;
 

@@ -35,8 +35,8 @@ public:
 
 	float GetTimerFocus();
 
+	std::string GetNameTranslated();
 	std::string GetName();
-	const char* GetName_c_str();
 
 	void SetName(const std::string& newName);
 
@@ -51,7 +51,6 @@ protected:
 
 private:
 	std::string Name;
-	const char* Name_c_str;
 	bool* Show;
 	int countSet = 0;
 	bool IsSettedActive;

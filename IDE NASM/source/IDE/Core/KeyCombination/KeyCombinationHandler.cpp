@@ -215,7 +215,7 @@ void KeyCombinationHandler::DrawPopupSetKey() {
 
 
 	if (PopupSetKeyIsOpen){
-		ImGui::OpenPopup(u8"Установка новой комбинации");
+		ImGui::OpenPopup(u8"###POPUP_NEW_COMBINATION_INSTALL");
 
 
 		ImVec2 center = ImGui::GetMainViewport()->GetCenter();
@@ -228,12 +228,16 @@ void KeyCombinationHandler::DrawPopupSetKey() {
 		ImGui::SetNextWindowSize(ImVec2(ImGui::CalcTextSize(u8"        Удерживай нужную комбинацию клавиш        ").x, HeightWindow));
 
 
-		if (ImGui::BeginPopupModal(u8"Установка новой комбинации", &PopupSetKeyIsOpen, flagsWindow)) {
+		if (ImGui::BeginPopupModal(
+			(tr("keyCombination.popup.title") + "###POPUP_NEW_COMBINATION_INSTALL").c_str(), 
+			&PopupSetKeyIsOpen, 
+			flagsWindow)) 
+		{
 
 
 			if (combinations[SelectedCombination_For_setting].second.keys.empty() == false){
 				ImGui::Dummy(ImVec2(0, 10));
-				if (ButtonCenteredOnLine(u8"Стереть текущую комбинацию", 0.5f)) {
+				if (ButtonCenteredOnLine(tr("keyCombination.popup.button.clear").c_str(), 0.5f)) {
 					PopupSetKeyIsOpen = false;
 					TimePressed = 0.f;
 					LastPressedKeys.clear();
@@ -254,10 +258,12 @@ void KeyCombinationHandler::DrawPopupSetKey() {
 
 			ImGui::Dummy(ImVec2(0, 10));
 
-			TextCenteredOnLine(u8"Удерживай нужную комбинацию клавиш", 0, 0);
-			TextCenteredOnLine(u8"в течение одной секунды.", 0, 0);
 
+			std::string help_info = tr("keyCombination.popup.text.help");
 
+			for (const auto& line : Split(help_info, "\n")) {
+				TextCenteredOnLine(line.c_str(), 0, 0);
+			}
 
 
 
@@ -339,9 +345,9 @@ void KeyCombinationHandler::DrawPopupSetKey() {
 					static const ImVec4 color_Orange{ 0.45f,0.35f,0.1f,1.0f };
 					static const ImVec4 color_WHITE{ 1.f,1.f,1.f,1.f };
 
-					std::string Text = u8"Возникло совпадение комбинаций.\nДля разрешения проблемы у следующей команды\nкомбинация будет стёрта:";
+					std::string Text = tr("keyCombination.popup.error.collision");
 
-					std::string Text2 = "[" + combinations[index].first + "]";
+					std::string Text2 = "[" + tr(combinations[index].first) + "]";
 
 					notificationManager->AddNottification(Notification(color_Orange, 8.f, std::vector<N_Element*>{
 						new N_Message(color_WHITE, Text),
@@ -359,23 +365,20 @@ void KeyCombinationHandler::DrawPopupSetKey() {
 
 					static uint8_t type_message = 0;
 
-					const static std::vector<std::string> variants{
-	 u8"Ну и ладно....",
-	 u8"Ок...",
-	 u8"Странно...",
-	 u8"А зачем?",
-	 u8"Для чего ты это делаешь?",
-	 u8"может ХВАТИТ?!!?!?!?!",
-	 u8"ты хочешь проверить все фразы?",
-	 u8"упорный",
-	 u8"ну давай давай.",
-	 u8"что не кончаются?",
-	 u8"но ты близок",
-	 u8"вот вот",
-	 u8"скоро",
-	 u8"я устал их делать...",
-	 u8"...",u8"......",u8".........",u8"..................",
-	 u8"ты чемпион."
+					std::vector<std::string> variants{
+						tr("keyCombination.popup.error.indentical.1"),
+						tr("keyCombination.popup.error.indentical.2"),
+						tr("keyCombination.popup.error.indentical.3"),
+						tr("keyCombination.popup.error.indentical.4"),
+						tr("keyCombination.popup.error.indentical.5"),
+						tr("keyCombination.popup.error.indentical.6"),
+						tr("keyCombination.popup.error.indentical.7"),
+						tr("keyCombination.popup.error.indentical.8"),
+						tr("keyCombination.popup.error.indentical.9"),
+						tr("keyCombination.popup.error.indentical.10"),
+						tr("keyCombination.popup.error.indentical.11"),
+						tr("keyCombination.popup.error.indentical.12"),
+						tr("keyCombination.popup.error.indentical.13")
 					};
 					
 					std::string Text = variants[type_message];
@@ -390,7 +393,7 @@ void KeyCombinationHandler::DrawPopupSetKey() {
 						nullptr));
 
 					type_message++;
-					if (type_message >= 19)
+					if (type_message >= variants.size() - 1)
 						type_message = 0;
 
 				}
@@ -550,19 +553,19 @@ std::string KeyCombinationHandler::ErrorCombination_To_string(const ErrorCombina
 		return "";
 		break;
 	case ErrorCombination::ERROR_COLLISION:
-		return u8"Такая комбинация существует.";
+		return tr("keyCombination.popup.info.error.collision");
 		break;
 	case ErrorCombination::ERROR_ONLY_SYMBOLS_AND_NUMBERS:
-		return u8"Нельзя использовать только символы.";
+		return tr("keyCombination.popup.info.error.onlySymbolsAndNumbers");
 		break;
 	case ErrorCombination::ERROR_TOO_MUCH_COUNT:
-		return u8"Клавиш слишком много.";
+		return tr("keyCombination.popup.info.error.tooMuchCount");
 		break;
 	case ErrorCombination::ERROR_IDENTICAL:
-		return u8"Зачем устанавливать ту же самую комбинацию?";
+		return tr("keyCombination.popup.info.error.identical");
 		break;
 	default:
-		return u8"Не известная проблемa...";
+		return tr("keyCombination.popup.info.error.unknown");
 		break;
 	}
 }

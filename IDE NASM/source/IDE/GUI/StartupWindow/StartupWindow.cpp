@@ -47,7 +47,7 @@ bool StartupWindow::DrawListObject(SolutionInfo& info, const int& index, bool& b
 	ImVec2 label_size = ImGui::CalcTextSize(label, nullptr, true);
 	ImVec2 padding = style.FramePadding;
 	float btn_min_height = label_size.y + padding.y * 2;
-	float available_width = ImGui::GetContentRegionAvail().x;
+	float available_width = ImGui::GetContentRegionAvail().x - 4.f;
 
 	ImVec2 main_button_size = ImVec2(available_width, btn_min_height);
 
@@ -99,7 +99,8 @@ bool StartupWindow::DrawListObject(SolutionInfo& info, const int& index, bool& b
 		ElementChoosed = true;
 
 	if (ElementChoosed) {
-		window->DrawList->AddRect(bb.Min, bb.Max, ImGui::GetColorU32(ImGuiCol_TextDisabled), 0.f, 0, 3.f);
+		
+		window->DrawList->AddRect(bb.Min, bb.Max, ImGui::GetColorU32(ImGuiCol_TextDisabled), style.FrameRounding, 0, 3.f);
 	}
 	
 
@@ -350,7 +351,7 @@ void StartupWindow::Draw() {
 				solution->Create();
 			}
 			ImGui::SameLine();
-			if (ImGui::Button(tr("startupWindow.button.open").c_str(), ImVec2(ImGui::GetCurrentWindow()->Size.x / 2, ImGui::GetCurrentWindow()->Size.y / 8))) {
+			if (ImGui::Button(tr("startupWindow.button.open").c_str(), ImVec2(ImGui::GetCurrentWindow()->Size.x / 2 - 10.f, ImGui::GetCurrentWindow()->Size.y / 8))) {
 				TryingOpen();
 			}
 
@@ -531,7 +532,7 @@ void StartupWindow::Draw() {
 
 			
 
-			size_t max_length = (std::max)({
+			int max_length = (std::max)({
 				count_symbols_utf8(name, error),
 				count_symbols_utf8(desc, error),
 				count_symbols_utf8(created, error),

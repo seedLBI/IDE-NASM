@@ -2,6 +2,11 @@
 #define FONT_MANAGER_H
 
 
+#include <glad/glad.h>
+#define GLFW_EXPOSE_NATIVE_WIN32
+#include <GLFW/glfw3.h>
+#include <GLFW/glfw3native.h>
+
 #include "ThirdParty/ImGui/imgui.h"
 #include "ThirdParty/ImGui/imgui_internal.h"
 #include "ThirdParty/ImGui/imgui_impl_glfw.h"
@@ -19,6 +24,8 @@
 #include <iostream>
 
 
+
+
 struct FontInfo {
 	std::string Name;
 	std::string Path;
@@ -28,7 +35,7 @@ struct FontInfo {
 class FontManager {
 
 public:
-	FontManager();
+	FontManager(GLFWwindow* window);
 	~FontManager();
 
 	void SetFont(const std::string& NameFont);
@@ -59,6 +66,8 @@ public:
 
 
 private:
+	GLFWwindow* window;
+
 	int Current_Scale = 21;
 	static const int Min_Scale = 12;
 	static const int Max_Scale = 34;

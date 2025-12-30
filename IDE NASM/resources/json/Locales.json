@@ -163,6 +163,10 @@
     "en": "Text",
     "ru": "Текст"
   },
+  "color.base.cursorText": {
+    "en": "Cursor text",
+    "ru": "Курсор текста"
+  },
   "color.base.textDisabled": {
     "en": "Text disabled",
     "ru": "Текст (не активный)"
@@ -439,6 +443,14 @@
     "en": "Error loading data",
     "ru": "Ошибка загрузки данных"
   },
+  "error.fontManager.loadFont": {
+    "en": "Where font?",
+    "ru": "А где шрифт?"
+  },
+  "error.fontManager.loadFont.title": {
+    "en": "Error loading font",
+    "ru": "Ошибка загрузки шрифтов"
+  },
   "menu.button.close.tooltip": {
     "en": "Close",
     "ru": "Закрыть окно"
@@ -635,6 +647,10 @@
     "en": "Key combinations",
     "ru": "Комбинации клавиш"
   },
+  "setting.name.Language": {
+    "en": "Language",
+    "ru": "Язык"
+  },
   "setting.tabName.keyCombinations": {
     "en": "Keys",
     "ru": "Управление"
@@ -683,6 +699,94 @@
     "en": "Save focused file",
     "ru": "Сохранить текущий активный файл"
   },
+  "keyCombination.popup.title": {
+    "en": "Install new combination",
+    "ru": "Установка новой комбинации"
+  },
+  "keyCombination.popup.button.clear": {
+    "en": "Clear current combination",
+    "ru": "Стереть текущую комбинацию"
+  },
+  "keyCombination.popup.text.help": {
+    "en": "Hold combination keys\nfor 1 second",
+    "ru": "Удерживай нужную комбинацию клавиш\nв течение одной секунды."
+  },
+  "keyCombination.popup.error.collision": {
+    "en": "A combination match occurred.\nTo resolve the issue, the following command's\ncombination will be cleared:",
+    "ru": "Возникло совпадение комбинаций.\nДля разрешения проблемы у следующей команды\nкомбинация будет стёрта:"
+  },
+  "keyCombination.popup.info.error.collision": {
+    "en": "This combination already exists.",
+    "ru": "Такая комбинация существует."
+  },
+  "keyCombination.popup.info.error.onlySymbolsAndNumbers": {
+    "en": "Cannot use only symbols and numbers.",
+    "ru": "Нельзя использовать только символы."
+  },
+  "keyCombination.popup.info.error.tooMuchCount": {
+    "en": "Too many keys.",
+    "ru": "Клавиш слишком много."
+  },
+  "keyCombination.popup.info.error.identical": {
+    "en": "Why set the exact same combination?",
+    "ru": "Зачем устанавливать ту же самую комбинацию?"
+  },
+  "keyCombination.popup.info.error.unknown": {
+    "en": "Unknown error...",
+    "ru": "Не известная проблемa..."
+  },
+  "keyCombination.popup.error.indentical.1": {
+    "en": "Well, whatever...",
+    "ru": "Ну и ладно..."
+  },
+  "keyCombination.popup.error.indentical.2": {
+    "en": "Ok...",
+    "ru": "Ок..."
+  },
+  "keyCombination.popup.error.indentical.3": {
+    "en": "That's weird...",
+    "ru": "Странно..."
+  },
+  "keyCombination.popup.error.indentical.4": {
+    "en": "Why?",
+    "ru": "А зачем?"
+  },
+  "keyCombination.popup.error.indentical.5": {
+    "en": "Why are you doing this?",
+    "ru": "Для чего ты это делаешь?"
+  },
+  "keyCombination.popup.error.indentical.6": {
+    "en": "maybe ENOUGH?!!?!?!?!",
+    "ru": "может ХВАТИТ?!!?!?!?!"
+  },
+  "keyCombination.popup.error.indentical.7": {
+    "en": "Do you want to check all the phrases?",
+    "ru": "ты хочешь проверить все фразы?"
+  },
+  "keyCombination.popup.error.indentical.8": {
+    "en": "stubborn",
+    "ru": "упорный"
+  },
+  "keyCombination.popup.error.indentical.9": {
+    "en": "...",
+    "ru": "..."
+  },
+  "keyCombination.popup.error.indentical.10": {
+    "en": "......",
+    "ru": "......"
+  },
+  "keyCombination.popup.error.indentical.11": {
+    "en": ".........",
+    "ru": "........."
+  },
+  "keyCombination.popup.error.indentical.12": {
+    "en": "............................",
+    "ru": "............................"
+  },
+  "keyCombination.popup.error.indentical.13": {
+    "en": "You're a champion.",
+    "ru": "Ты чемпион."
+  },
   "solution.button.change.tooltip": {
     "en": "Edit",
     "ru": "Изменить"
@@ -719,6 +823,36 @@
     "en": "Creation new project",
     "ru": "Создание нового проекта"
   },
+  "authorPopup.title": {
+    "en": "About IDE NASM",
+    "ru": "О программе"
+  },
+  "authorPopup.desc": {
+    "en": "The program was created as part of a diploma project during my undergraduate studies. I myself don't know a thing about assembly language or IDE development, so any shortcomings are to be expected!",
+    "ru": "Программа была создана как часть диплома во время обучения в бакалавриате. Сам я ничего не смыслю в ассемблере и IDE строении, поэтому любые недочёты имеют место быть!"
+  },
+  "authorPopup.workers": {
+    "en": "The program was developed by:",
+    "ru": "В разработке участвовали:"
+  },
+  "authorPopup.progger": {
+    "en": "Developer :  Korzhunov A.S.",
+    "ru": "Разработчик:  Коржунов А.С."
+  },
+  "authorPopup.scietificSupervisor": {
+    "en": "Sci. sup. :  Cherednichenko O.M.",
+    "ru": "Науч. рук. :  Чередниченко О.М."
+  },
+  "authorPopup.myContacts": {
+    "en": "My contacts:",
+    "ru": "Мои контакты:"
+  },
+  "authorPopup.VK": {
+    "en": "VK",
+    "ru": "ВК"
+  },
+
+
   "startupWindow.button.create": {
     "en": "Create();",
     "ru": "Создать();"

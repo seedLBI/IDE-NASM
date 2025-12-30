@@ -12,7 +12,17 @@ class LocalisationManager : public ISettingObject {
 private:
 	nlohmann::json translate_data;
 
-	std::string GlobalLanguage = u8"ru";
+	nlohmann::json translator_abriv;
+
+	std::string GlobalLanguage = u8"en";
+
+	struct LanguageInfo {
+		std::string abriv;
+		float percent_translated_interface = 0.f;
+	};
+	std::vector<LanguageInfo> langs_info;
+	int countWords = 0;
+	void UpdateSetLanguages();
 
 public:
 	static LocalisationManager& getInstance();
@@ -32,7 +42,7 @@ public:
 
 
 private:
-	LocalisationManager(const std::string& path = "resources\\json\\Locales.json");
+	LocalisationManager();
 	LocalisationManager(const LocalisationManager&) = delete;
 	LocalisationManager& operator=(const LocalisationManager&) = delete;
 };

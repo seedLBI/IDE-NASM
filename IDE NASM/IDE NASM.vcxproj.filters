@@ -531,6 +531,27 @@
     <ClCompile Include="source\IDE\Core\LocalisationManager\LocalisationManager.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.Backend.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.Close.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.EyeTransparent.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.Front.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.LeftEye.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Images\AuthorPicture\Image.Author.RightEye.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IDE\GUI\AuthorPopup\AuthorPopup.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="source\Utils\Synchronization\Event\Event.h">
@@ -801,6 +822,27 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
     <ClInclude Include="source\IDE\Core\LocalisationManager\LocalisationManager.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.Backend.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.Close.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.EyeTransparent.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.Front.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.LeftEye.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Images\AuthorPicture\Image.Author.RightEye.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="source\IDE\GUI\AuthorPopup\AuthorPopup.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,7 +13,7 @@ Application::Application() {
 	Init_BorderWindow();
 	Init_ImGui();
 
-	fontManager = new FontManager;
+	fontManager = new FontManager(windowManager->GetMainWindow()->GetHandle());
 
 	fontManager->ReloadFont();
 
@@ -89,6 +89,7 @@ void Application::InitSaveSystemManager() {
 }
 void Application::InitSetting() {
 	setting->AddSettingObject(lastSolutionManager);
+	setting->AddSettingObject(&LocalisationManager::getInstance());
 	setting->AddSettingObject(keyCombinationHandler);
 	setting->AddSettingObject(themeManager);
 }
@@ -337,7 +338,7 @@ LRESULT CALLBACK custom_wndproc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lPara
 
 
 
-		float menuHeight = app->GetPTR_MainMenuBar()->GetHeightMenu();
+		float menuHeight = (float)app->GetPTR_MainMenuBar()->GetHeightMenu();
 		if (pt.y >= 0 && pt.y < menuHeight) {
 			if (app->GetPTR_MainMenuBar()->IsPointOverTitleButton(pt)) {
 				return HTCLIENT;
@@ -496,7 +497,19 @@ void Application::Init_ImGui() {
 
 
 	auto& s = ImGui::GetStyle();
-	s.ImageBorderSize = 1.f;
+	//s.ImageBorderSize = 1.f;
+	s.SeparatorTextAlign.x = 0.5f;
+	s.SeparatorTextAlign.y = 0.5f;
+	s.SeparatorTextBorderSize = 9;
+
+	s.FrameRounding = 6.f;
+
+	s.WindowBorderSize = 1.f;
+	s.FrameBorderSize = 1.f;
+	s.PopupBorderSize = 1.f;
+
+	s.WindowRounding = 12.f;
+	s.ChildRounding = 12.f;
 
 	ImGui::GetIO().IniFilename = NULL;
 	ImGui::GetIO().LogFilename = NULL;

@@ -123,6 +123,7 @@ public:
 
 	void SetSetting(const TextureSetting& setting);
 	void LoadTexture(const std::string& Path2Image,const int& desiredCount_channels = 0);
+	void LoadTexture(const uint8_t* data, const int& len);
 
 	void Init();
 

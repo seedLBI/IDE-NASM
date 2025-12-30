@@ -1,8 +1,9 @@
 #include "FontManager.h"
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
 
-
-FontManager::FontManager() {
+FontManager::FontManager(GLFWwindow* window) {
+	this->window = window;
 	LoadIconsFont_fromFile();
 	LoadDefaultMainFont_fromFile();
 
@@ -135,7 +136,6 @@ void FontManager::ReloadFont() {
 			MainFont->ClearOutputData();
 		}
 
-
 		static const ImWchar ranges[] =
 		{
 			0x0020, 0x00FF, // Basic Latin + Latin Supplement
@@ -147,7 +147,6 @@ void FontManager::ReloadFont() {
 			0xA640, 0xA69F, // Cyrillic Extended-B
 			0,
 		};
-
 
 
 
@@ -324,12 +323,20 @@ void FontManager::LoadDefaultMainFont_fromFile() {
 
 	if (isFileExist(L"resources/fonts/JetBrainsMonoNL-Regular.ttf") == false)
 	{
-		MessageBoxW(0, L"А где шрифты? (JetBrainsMonoNL-Regular.ttf)", L"Ошибка загрузки шрифтов", MB_ICONERROR | MB_OK);
+		MessageBoxW(
+			glfwGetWin32Window(window),
+			(stringUTF8_to_wstring(tr("error.fontManager.loadFont")) + L" resources/fonts/JetBrainsMonoNL-Regular.ttf").c_str(),
+			stringUTF8_to_wstring(tr("error.fontManager.loadFont.title")).c_str(),
+			MB_ICONERROR | MB_OK);
 		exit(0);
 	}
 	if (isFileExist(L"resources/fonts/JetBrainsMonoNL-ExtraBold.ttf") == false)
 	{
-		MessageBoxW(0, L"А где шрифты? (JetBrainsMonoNL-ExtraBold.ttf)", L"Ошибка загрузки шрифтов", MB_ICONERROR | MB_OK);
+		MessageBoxW(
+			glfwGetWin32Window(window),
+			(stringUTF8_to_wstring(tr("error.fontManager.loadFont")) + L" resources/fonts/JetBrainsMonoNL-ExtraBold.ttf").c_str(),
+			stringUTF8_to_wstring(tr("error.fontManager.loadFont.title")).c_str(),
+			MB_ICONERROR | MB_OK);
 		exit(0);
 	}
 
@@ -357,7 +364,11 @@ void FontManager::LoadDefaultMainFont_fromFile() {
 void FontManager::LoadIconsFont_fromFile() {
 	if (isFileExist(L"resources/fonts/Font Awesome 6 Free-Solid-900.otf") == false)
 	{
-		MessageBoxW(0, L"А где шрифты? (Font Awesome 6 Free-Solid-900.otf)", L"Ошибка загрузки шрифтов", MB_ICONERROR | MB_OK);
+		MessageBoxW(
+			glfwGetWin32Window(window),
+			(stringUTF8_to_wstring(tr("error.fontManager.loadFont")) + L" resources/fonts/Font Awesome 6 Free-Solid-900.otf").c_str(),
+			stringUTF8_to_wstring(tr("error.fontManager.loadFont.title")).c_str(),
+			MB_ICONERROR | MB_OK);
 		exit(0);
 	}
 	IconsFontData = ReadFileToByteArray("resources/fonts/Font Awesome 6 Free-Solid-900.otf");

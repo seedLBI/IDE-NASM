@@ -1,5 +1,5 @@
 #include "PositionWidgetsManager.h"
-
+#include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
 PositionWidgetsManager::PositionWidgetsManager(WidgetManager* widgetManager) {
 	this->widgetManager = widgetManager;
@@ -54,9 +54,8 @@ void PositionWidgetsManager::SetupDefaultLayout() {
 		nullptr,
 		&dock_main_id);
 
-	ImGui::DockBuilderDockWindow(u8"Список файлов", dock_id_left);
-	ImGui::DockBuilderDockWindow(u8"Вывод", dock_id_down);
-	ImGui::DockBuilderDockWindow(u8"Регистры", dock_id_right);
+	ImGui::DockBuilderDockWindow("###widgetName.filesViewer", dock_id_left);
+	ImGui::DockBuilderDockWindow("###widgetName.outputConsole", dock_id_down);
 
 	ImGui::DockBuilderFinish(dockspace_id);
 }

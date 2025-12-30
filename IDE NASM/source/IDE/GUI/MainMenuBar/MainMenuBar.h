@@ -21,6 +21,8 @@
 #include "IDE/Core/LocalisationManager/LocalisationManager.h"
 #include "IDE/Core/Theme/interface/IThemeLoadable.h"
 
+#include "IDE/GUI/AuthorPopup/AuthorPopup.h"
+
 
 #include "Utils/OpenGL/Window/Manager/WindowManager.h"
 #include "Utils/OpenGL/Texture/Texture.h"
@@ -72,6 +74,7 @@ private:
 	Setting* setting = nullptr;
 	BuildManager* buildManager = nullptr;
 
+	AuthorPopup* authorPopup;
 
 	float heightMenu = 0.f;
 
