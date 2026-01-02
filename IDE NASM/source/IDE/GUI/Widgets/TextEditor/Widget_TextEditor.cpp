@@ -20,6 +20,11 @@ void Widget_TextEditor::Draw() {
 	ImGui::SetNextWindowSize(ImVec2(200, 200), ImGuiCond_FirstUseEver);
 	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0, 0));
 
+	if (targetDockId != 0) {
+		ImGui::SetNextWindowDockID(targetDockId);
+		targetDockId = 0;
+	}
+
 	if (ImGui::Begin(NameWidget_cstr, GetPtrFlagShow(), flags_CodeEditor)) {
 		textEditor->Render(NameTextEditor_cstr);
 	}
@@ -52,6 +57,11 @@ void Widget_TextEditor::Load(const nlohmann::json& SaveData) {
 
 }
 
+std::string Widget_TextEditor::GetNameWidget()
+{
+	return NameWidget;
+}
+
 std::wstring Widget_TextEditor::GetFilePath() {
 	return File_Path;
 }
@@ -59,6 +69,10 @@ std::wstring Widget_TextEditor::GetFilePath() {
 void Widget_TextEditor::SaveFile() {
 	flags_CodeEditor = 0;
 	textEditor->SaveFile();
+}
+
+void Widget_TextEditor::SetTargetDockID(const ImGuiID& id){
+	this->targetDockId = id;
 }
 
 

@@ -31,6 +31,9 @@ public:
 
 	void SaveFile();
 
+	void SetTargetDockID(const ImGuiID& id);
+
+	std::string GetNameWidget();
 
 	std::wstring GetFilePath();
 
@@ -39,6 +42,8 @@ public:
 private:
 	FPS_Timer* fps_limiter = nullptr;
 	int index = 0;
+
+	ImGuiID targetDockId = 0;
 
 	ImGuiWindowFlags flags_CodeEditor = 0;
 

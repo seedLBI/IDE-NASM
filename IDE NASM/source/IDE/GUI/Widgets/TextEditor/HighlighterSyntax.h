@@ -98,7 +98,7 @@ private:
 	void ReadJSONFromFile();
 
 
-	void DrawTooltipInstruction(const nlohmann::json& json_data);
+	void DrawTooltipInstruction(const std::string& name, const nlohmann::json& json_data);
 	void DrawTooltipSimpleInfo(const nlohmann::json& json_data);
 	void DrawTooltipRegister(const nlohmann::json& json_data);
 

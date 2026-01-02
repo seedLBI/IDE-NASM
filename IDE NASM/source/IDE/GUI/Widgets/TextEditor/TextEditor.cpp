@@ -1706,7 +1706,7 @@ void TextEditor::Render()
 			}
 
 
-
+			/*
 			if (mBreakpoints.count(lineNo + 1) != 0) {
 				drawList->AddCircleFilled({ posBreak_x,posBreak_y }, radiusBreakpoints, mPalette[(int)PaletteIndex::Breakpoint]);
 				drawList->AddCircle({ posBreak_x,posBreak_y }, radiusBreakpoints, mPalette[(int)PaletteIndex::ErrorMarker], 0, 4.f);
@@ -1717,7 +1717,7 @@ void TextEditor::Render()
 					drawList->AddCircle({ posBreak_x,posBreak_y }, radiusBreakpoints, mPalette[(int)PaletteIndex::Breakpoint], 0, 4.f);
 				}
 			}
-
+			*/
 
 
 

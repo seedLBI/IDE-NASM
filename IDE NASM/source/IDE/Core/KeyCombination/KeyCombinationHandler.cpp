@@ -69,8 +69,9 @@ bool KeyCombinationHandler::AddCombination(const std::string& Name, const KeyCom
 	}
 #endif
 
-	return true;
+	default_settings = SaveSetting();
 
+	return true;
 }
 
 void KeyCombinationHandler::Update() {
@@ -572,6 +573,9 @@ std::string KeyCombinationHandler::ErrorCombination_To_string(const ErrorCombina
 
 void KeyCombinationHandler::DrawSetting() {
 
+	if (ButtonCenteredOnLine(tr("keyCombination.button.default").c_str(), 0.5f)) {
+		LoadSetting(default_settings);
+	}
 
 	if (ImGui::BeginTable(u8"CombinationsTable", 2, ImGuiTableFlags_Borders | ImGuiTableFlags_HighlightHoveredColumn | ImGuiTableFlags_ScrollY, ImVec2(ImGui::GetContentRegionAvail().x, ImGui::GetContentRegionAvail().y - 10.f) )) {
 
@@ -604,6 +608,8 @@ void KeyCombinationHandler::DrawSetting() {
 				for (int j = 0; j < i; j++)
 					key_name += " ";
 			}
+
+			key_name += "###" + std::to_string(i);
 
 			if (ImGui::Selectable(key_name.c_str(), &s, ImGuiSelectableFlags_Centered, ImVec2(0, 2.f * ImGui::GetTextLineHeight()))) {
 				selected = i;

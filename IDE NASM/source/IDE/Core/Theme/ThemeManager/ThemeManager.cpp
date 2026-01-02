@@ -167,6 +167,16 @@ void ThemeManager::SetLightTheme() {
 	}
 }
 
+void ThemeManager::SetNextTheme() {
+	indexChoosed = (indexChoosed + 1) % (2 + themes.size());
+	LoadChoosedTheme();
+}
+void ThemeManager::SetPrevTheme() {
+	indexChoosed = indexChoosed == 0 ? 2 + themes.size() - 1 : (indexChoosed - 1);
+	LoadChoosedTheme();
+}
+
+
 void ThemeManager::CreateThemeFromCurrentColors(const std::string& name) {
 	Theme theme;
 	theme.nameTheme = name;

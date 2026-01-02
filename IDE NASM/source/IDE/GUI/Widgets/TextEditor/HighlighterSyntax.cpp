@@ -2,6 +2,9 @@
 #include <robin_hood.h>
 #include "IDE/Core/LocalisationManager/LocalisationManager.h"
 
+#include "Utils/ImGui/ImGui.Utils.h"
+
+
 HighlighterSyntax::HighlighterSyntax() : IThemeLoadable("themeItem.highlighterSyntax") {
 	ReadJSONFromFile();
 
@@ -528,11 +531,84 @@ HighlighterSyntaxType HighlighterSyntax::GetTypeFromText(const std::string& text
 }
 
 
-void HighlighterSyntax::DrawTooltipInstruction(const nlohmann::json& json_data) {
-	ImGui::BeginTooltip();
-		ImGui::Text(json_data["description"][gl()].get<std::string>().c_str());
-	ImGui::EndTooltip();
+void HighlighterSyntax::DrawTooltipInstruction(const std::string& name, const nlohmann::json& json_data) {
+	std::string LowerCase = name;
+	ToLowerAll(LowerCase);
+
+	ImGui::PushStyleVar(ImGuiStyleVar_PopupBorderSize, 3.f);
+	ImGui::PushStyleVar(ImGuiStyleVar_SeparatorTextBorderSize, 4.f);
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8, 5));
+	ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(5, 5));
+	ImGui::PushStyleVar(ImGuiStyleVar_CellPadding, ImVec2(8.0f, 4.0f));
+
+	ImGui::SetNextWindowSizeConstraints(
+		ImVec2(350.f, 0.f),
+		ImVec2(FLT_MAX, FLT_MAX)
+	);
+		ImGui::BeginTooltip();
+			ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]); // bold
+			TextCenteredOnLine(name.c_str(),0,0);
+			ImGui::PopFont();
+
+			if (json_data.contains("description")){
+
+				ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]); // bold
+					ImGui::SeparatorText(tr("highlighterSyntax.tooltip.desc").c_str());
+				ImGui::PopFont();
+				
+
+				if (json_data["description"].contains(gl()))
+					ImGui::TextWrapped(json_data["description"][gl()].get<std::string>().c_str());
+				else if(json_data["description"].contains("en"))
+					ImGui::TextWrapped(json_data["description"]["en"].get<std::string>().c_str());
+				else
+					ImGui::TextWrapped("ERROR NOT_HAVE_DESCRIPTION");
+
+			}
+			if (json_data.contains("operands_variants")) {
+
+				ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]); // bold
+				ImGui::SeparatorText(tr("highlighterSyntax.tooltip.variants").c_str());
+				ImGui::PopFont();
+
+				std::vector<std::string> variant_strings;
+				for (const auto& [index, variant] : json_data["operands_variants"].items()) {
+					std::string operands = "";
+					if (variant.contains("operands")) {
+						for (const auto& ops : variant["operands"]) {
+							if (operands.empty())
+								operands += ops.get<std::string>();
+							else
+								operands += ", " + ops.get<std::string>();
+						}
+					}
+					variant_strings.push_back(LowerCase + " " + operands);
+				}
+				size_t num_variants = variant_strings.size();
+				if (num_variants > 0) {
+					const size_t max_rows = 10;  // Maximum rows per column
+					size_t num_columns = (num_variants + max_rows - 1) / max_rows;  // Ceil division
+					if (num_columns < 1) num_columns = 1;
+					if (ImGui::BeginTable("variants_table", static_cast<int>(num_columns), ImGuiTableFlags_NoSavedSettings | ImGuiTableFlags_BordersInnerV)) {
+						for (size_t row = 0; row < max_rows; ++row) {
+							ImGui::TableNextRow();
+							for (size_t col = 0; col < num_columns; ++col) {
+								ImGui::TableNextColumn();
+								size_t idx = col * max_rows + row;
+								if (idx < num_variants) {
+									ImGui::Text("%s", variant_strings[idx].c_str());
+								}
+							}
+						}
+						ImGui::EndTable();
+					}
+				}
+			}
+
+		ImGui::EndTooltip();
+	ImGui::PopStyleVar(5);
 }
+
 void HighlighterSyntax::DrawTooltipSimpleInfo(const nlohmann::json& json_data) {
 	ImGui::BeginTooltip();
 		ImGui::Text(json_data["description"][gl()].get<std::string>().c_str());
@@ -552,7 +628,7 @@ void HighlighterSyntax::DrawTooltip(const std::string& text) {
 
 	if (type == HighlighterSyntaxType::Highlighter_Instruction) {
 		if (json_instructions.contains(UPPERCASED_text))
-			DrawTooltipInstruction(json_instructions[UPPERCASED_text]);
+			DrawTooltipInstruction(UPPERCASED_text,json_instructions[UPPERCASED_text]);
 	}
 	else if (type == HighlighterSyntaxType::Highlighter_AssemblerDirective) {
 		if (json_syntax["Assembler Directives"].contains(UPPERCASED_text))

@@ -667,6 +667,22 @@
     "en": "Settings",
     "ru": "Настройки"
   },
+  "localisationManager.setting.tooltip.code": {
+    "en": "Code country",
+    "ru": "Код страны"
+  },
+  "localisationManager.setting.tooltip.translateInterface": {
+    "en": "Translated interface",
+    "ru": "Переведено интерфейса"
+  },
+  "localisationManager.setting.tooltip.translate.success": {
+    "en": "Full translated",
+    "ru": "Полностью переведено"
+  },
+  "localisationManager.setting.tooltip.translate.fail": {
+    "en": "Translate not finished",
+    "ru": "Перевод не завершён"
+  },
   "keyCombination.text.nameCommand": {
     "en": "Name command",
     "ru": "Название команды"
@@ -687,6 +703,22 @@
     "en": "Run",
     "ru": "Запустить"
   },
+  "keyCombination.nextLanguage": {
+    "en": "Next language",
+    "ru": "Следующий язык"
+  },
+  "keyCombination.prevLanguage": {
+    "en": "Previous language",
+    "ru": "Предыдущий язык"
+  },
+  "keyCombination.nextTheme": {
+    "en": "Next theme",
+    "ru": "Следующая тема"
+  },
+  "keyCombination.prevTheme": {
+    "en": "Previous theme",
+    "ru": "Предыдущая тема"
+  },
   "keyCombination.openNewProject": {
     "en": "Open new project",
     "ru": "Открыть новый проект"
@@ -698,6 +730,10 @@
   "keyCombination.saveCurrentFocusedFile": {
     "en": "Save focused file",
     "ru": "Сохранить текущий активный файл"
+  },
+  "keyCombination.button.default": {
+    "en": "Return default settings",
+    "ru": "Установить по умолчанию"
   },
   "keyCombination.popup.title": {
     "en": "Install new combination",
@@ -787,6 +823,14 @@
     "en": "You're a champion.",
     "ru": "Ты чемпион."
   },
+  "highlighterSyntax.tooltip.desc": {
+    "en": "Description",
+    "ru": "Описание"
+  },
+  "highlighterSyntax.tooltip.variants": {
+    "en": "Variants",
+    "ru": "Варианты аргументов"
+  },
   "solution.button.change.tooltip": {
     "en": "Edit",
     "ru": "Изменить"
@@ -851,8 +895,18 @@
     "en": "VK",
     "ru": "ВК"
   },
-
-
+  "time.seconds": {
+    "en": "sec.",
+    "ru": "сек."
+  },
+  "time.min": {
+    "en": "min.",
+    "ru": "мин."
+  },
+  "time.hours": {
+    "en": "h.",
+    "ru": "час."
+  },
   "startupWindow.button.create": {
     "en": "Create();",
     "ru": "Создать();"
@@ -910,8 +964,8 @@
     "ru": "Выбор проекта"
   },
   "themeItem.baseColor": {
-    "en": "Outline status",
-    "ru": "Оконтовка статуса"
+    "en": "Base colors",
+    "ru": "Цвета интерфейса"
   },
   "themeItem.editorCode": {
     "en": "Editor code",
@@ -972,6 +1026,14 @@
   "filesViewer.fileActive.tooltip": {
     "en": "Highlighted because the file has keyboard focus.",
     "ru": "Подсвечивается так как файл в фокусе клавиатуры."
+  },
+  "filesViewer.fileNotActive.tooltip": {
+    "en": "Click to make the window focused.",
+    "ru": "Нажми чтобы сделать окно в фокусе."
+  },
+  "filesViewer.fileNotOpen.tooltip": {
+    "en": "Click to open the file.",
+    "ru": "Нажми чтобы открыть файл."
   },
   "widgetName.managerTextEditor": {
     "en": "Manager text editor",

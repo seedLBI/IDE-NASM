@@ -26,7 +26,8 @@ public:
 
 	void DrawSetting() override;
 
-
+	void SetNextTheme();
+	void SetPrevTheme();
 
 private:
 	std::vector<IThemeLoadable*> objects;

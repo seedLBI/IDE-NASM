@@ -21,6 +21,9 @@ public:
 	std::vector<std::string> GetNamesTextEditorChild();
 
 	Widget_TextEditor* GetFocusedTextEditor();
+	Widget_TextEditor* GetLastFocusedTextEditor();
+
+
 	std::vector<Widget_TextEditor*> GetWidgets();
 
 
@@ -40,6 +43,7 @@ public:
 	void SaveCurrentActiveFile();
 	void SaveAllFile();
 
+	Widget_TextEditor* GetWidgetFromPath(const std::wstring& Path);
 
 private:
 	FPS_Timer* fps_limiter = nullptr;
@@ -48,7 +52,8 @@ private:
 
 	std::vector<Widget_TextEditor*> widgets;
 
-	Widget_TextEditor* GetWidgetFromPath(const std::wstring& Path);
+
+
 
 
 };

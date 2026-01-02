@@ -24,6 +24,10 @@ private:
 	int countWords = 0;
 	void UpdateSetLanguages();
 
+	int index_current_language = -1;
+	void UpdateIndexCurrentLanguage();
+
+
 public:
 	static LocalisationManager& getInstance();
 
@@ -38,6 +42,9 @@ public:
 	nlohmann::json SaveSetting() override;
 	void LoadSetting(const nlohmann::json& Data) override;
 	void DrawSetting() override;
+
+	void SetNextLanguage();
+	void SetPrevLanguage();
 
 
 

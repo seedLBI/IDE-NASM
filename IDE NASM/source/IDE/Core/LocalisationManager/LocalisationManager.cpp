@@ -1,4 +1,4 @@
-#include "LocalisationManager.h"
+﻿#include "LocalisationManager.h"
 
 
 #include <fstream>
@@ -34,6 +34,13 @@ void LocalisationManager::loadFromFile(const std::string& path) {
 	ifn.close();
 	UpdateSetLanguages();
 
+	ifn.open("resources\\json\\LanguageChoose.json");
+	translator_abriv = nlohmann::json::parse(ifn);
+	ifn.close();
+
+	
+
+	
 #ifdef _DEBUG
 	for (const auto& [keyName, keyTranslations]: translate_data.items())
 	{
@@ -93,17 +100,104 @@ nlohmann::json LocalisationManager::SaveSetting() {
 void LocalisationManager::LoadSetting(const nlohmann::json& Data) {
 	if (Data.contains("language"))
 		GlobalLanguage = Data["language"].get<std::string>();
+
+	UpdateIndexCurrentLanguage();
+}
+
+void LocalisationManager::UpdateIndexCurrentLanguage() {
+	index_current_language = 0;
+	for (size_t i = 0; i < langs_info.size(); i++)
+	{
+		if (GlobalLanguage == langs_info[i].abriv)
+		{
+			index_current_language = i;
+			break;
+		}
+	}
+}
+
+void LocalisationManager::SetNextLanguage() {
+	
+	int index = (index_current_language + 1) % langs_info.size();
+
+
+	GlobalLanguage = langs_info[index].abriv;
+	index_current_language = index;
+	
+}
+void LocalisationManager::SetPrevLanguage() {
+	int index = index_current_language == 0? langs_info.size() - 1 : (index_current_language - 1);
+
+	GlobalLanguage = langs_info[index].abriv;
+	index_current_language = index;
 }
 
 void LocalisationManager::DrawSetting() {
 	ISettingObject::DrawBegin();
 
-	for (size_t i = 0; i < langs_info.size(); i++)
-	{
-		ImGui::Text("%3.1f%%", langs_info[i].percent_translated_interface * 100.f);
-		ImGui::SameLine();
-		if (ImGui::Selectable(langs_info[i].abriv.c_str(), langs_info[i].abriv == GlobalLanguage)) {
+
+
+	auto GetTranslationColor = [](float percent) -> ImVec4
+		{
+			percent = ImClamp(percent, 0.0f, 100.0f);
+			float t = percent / 100.0f;
+
+			return ImLerp(ImVec4(0.5f, 0.1f, 0.1f, 1.0f),
+						  ImVec4(0.1f, 0.5f, 0.1f, 1.0f),   // ярко-зелёный при 100%
+				t);
+		};
+
+
+	for (size_t i = 0; i < langs_info.size(); i++){
+
+	
+		std::string language_name = langs_info[i].abriv;
+
+		if (translator_abriv.contains(langs_info[i].abriv)) {
+			language_name = translator_abriv[langs_info[i].abriv]["description"].get<std::string>();
+		}
+		
+
+
+		bool is_selected = (langs_info[i].abriv == GlobalLanguage);
+		if (ImGui::RadioButton(language_name.c_str(), is_selected)){
 			GlobalLanguage = langs_info[i].abriv;
+		}
+
+		float percent = langs_info[i].percent_translated_interface * 100.0f;
+		ImVec4 color = GetTranslationColor(percent);
+
+
+		ImGui::SameLine();
+
+		if (percent >= 99.0f) {
+			ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+				ImGui::TextColored(color, "%.0f%%", percent);
+			ImGui::PopFont();
+		}
+		else {
+			ImGui::TextColored(color, "%.0f%%", percent);
+		}
+
+		if (ImGui::IsItemHovered())
+		{
+			ImGui::PushStyleVar(ImGuiStyleVar_SeparatorTextBorderSize, 4.f);
+			ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(8, 5));
+			ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, ImVec2(5, 5));
+
+				ImGui::BeginTooltip();
+				ImGui::Text(u8"%s: %s", tr("localisationManager.setting.tooltip.code").c_str(), langs_info[i].abriv.c_str());
+				ImGui::Text(u8"%s: %.1f%%", tr("localisationManager.setting.tooltip.translateInterface").c_str(), percent);
+				if (percent < 100.0f)
+					ImGui::TextColored(ImVec4(0.5f, 0.1f, 0.1f, 1.0f), tr("localisationManager.setting.tooltip.translate.fail").c_str());
+				else {
+					ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+					ImGui::TextColored(ImVec4(0.1f, 0.5f, 0.1f, 1.0f), tr("localisationManager.setting.tooltip.translate.success").c_str());
+					ImGui::PopFont();
+				}
+				ImGui::EndTooltip();
+
+			ImGui::PopStyleVar(3);
 		}
 		
 		

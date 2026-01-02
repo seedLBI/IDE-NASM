@@ -8907,10 +8907,2795 @@
             }
         ]
     },
-    "Jcc": {
+    
+    "JO": {
         "description": {
-            "en": "Jump if Condition Is Met",
-            "ru": "Переход, если условие выполнено"
+            "en": "Jump if overflow (OF = 1). Used after arithmetic operations to check for signed overflow.",
+            "ru": "Переход, если переполнение (OF = 1). Используется после арифметических операций для проверки переполнения со знаком."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNO": {
+        "description": {
+            "en": "Jump if no overflow (OF = 0). The opposite of JO.",
+            "ru": "Переход, если нет переполнения (OF = 0). Противоположность JO."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JB": {
+        "description": {
+            "en": "Jump if below (CF = 1). For unsigned comparisons, equivalent to JC and JNAE.",
+            "ru": "Переход, если ниже (CF = 1). Для беззнаковых сравнений, эквивалентно JC и JNAE."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JC": {
+        "description": {
+            "en": "Jump if carry (CF = 1). Indicates borrow in subtraction or carry in addition for unsigned numbers.",
+            "ru": "Переход, если перенос (CF = 1). Указывает на заем в вычитании или перенос в сложении для беззнаковых чисел."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNAE": {
+        "description": {
+            "en": "Jump if not above or equal (CF = 1). Synonym for JB/JC in unsigned comparisons.",
+            "ru": "Переход, если не выше или равно (CF = 1). Синоним JB/JC в беззнаковых сравнениях."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNB": {
+        "description": {
+            "en": "Jump if not below (CF = 0). For unsigned comparisons, equivalent to JNC and JAE.",
+            "ru": "Переход, если не ниже (CF = 0). Для беззнаковых сравнений, эквивалентно JNC и JAE."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNC": {
+        "description": {
+            "en": "Jump if no carry (CF = 0). The opposite of JC.",
+            "ru": "Переход, если нет переноса (CF = 0). Противоположность JC."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JAE": {
+        "description": {
+            "en": "Jump if above or equal (CF = 0). Synonym for JNB/JNC in unsigned comparisons.",
+            "ru": "Переход, если выше или равно (CF = 0). Синоним JNB/JNC в беззнаковых сравнениях."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JZ": {
+        "description": {
+            "en": "Jump if zero (ZF = 1). Used after comparisons or arithmetic to check if result is zero.",
+            "ru": "Переход, если ноль (ZF = 1). Используется после сравнений или арифметики для проверки нулевого результата."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JE": {
+        "description": {
+            "en": "Jump if equal (ZF = 1). Synonym for JZ, typically used after CMP.",
+            "ru": "Переход, если равно (ZF = 1). Синоним JZ, обычно используется после CMP."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNZ": {
+        "description": {
+            "en": "Jump if not zero (ZF = 0). The opposite of JZ.",
+            "ru": "Переход, если не ноль (ZF = 0). Противоположность JZ."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNE": {
+        "description": {
+            "en": "Jump if not equal (ZF = 0). Synonym for JNZ.",
+            "ru": "Переход, если не равно (ZF = 0). Синоним JNZ."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JBE": {
+        "description": {
+            "en": "Jump if below or equal (CF = 1 or ZF = 1). For unsigned comparisons.",
+            "ru": "Переход, если ниже или равно (CF = 1 или ZF = 1). Для беззнаковых сравнений."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNA": {
+        "description": {
+            "en": "Jump if not above (CF = 1 or ZF = 1). Synonym for JBE.",
+            "ru": "Переход, если не выше (CF = 1 или ZF = 1). Синоним JBE."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JA": {
+        "description": {
+            "en": "Jump if above (CF = 0 and ZF = 0). For unsigned comparisons.",
+            "ru": "Переход, если выше (CF = 0 и ZF = 0). Для беззнаковых сравнений."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNBE": {
+        "description": {
+            "en": "Jump if not below or equal (CF = 0 and ZF = 0). Synonym for JA.",
+            "ru": "Переход, если не ниже или равно (CF = 0 и ZF = 0). Синоним JA."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JS": {
+        "description": {
+            "en": "Jump if sign (SF = 1). Checks if the result is negative.",
+            "ru": "Переход, если знак (SF = 1). Проверяет, отрицателен ли результат."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNS": {
+        "description": {
+            "en": "Jump if no sign (SF = 0). Checks if the result is non-negative.",
+            "ru": "Переход, если нет знака (SF = 0). Проверяет, неотрицателен ли результат."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JP": {
+        "description": {
+            "en": "Jump if parity (PF = 1). Even number of 1 bits in the low byte.",
+            "ru": "Переход, если четность (PF = 1). Четное количество единиц в младшем байте."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JPE": {
+        "description": {
+            "en": "Jump if parity even (PF = 1). Synonym for JP.",
+            "ru": "Переход, если четная четность (PF = 1). Синоним JP."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNP": {
+        "description": {
+            "en": "Jump if no parity (PF = 0). Odd number of 1 bits.",
+            "ru": "Переход, если нет четности (PF = 0). Нечетное количество единиц."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JPO": {
+        "description": {
+            "en": "Jump if parity odd (PF = 0). Synonym for JNP.",
+            "ru": "Переход, если нечетная четность (PF = 0). Синоним JNP."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JL": {
+        "description": {
+            "en": "Jump if less (SF ≠ OF). For signed comparisons.",
+            "ru": "Переход, если меньше (SF ≠ OF). Для знаковых сравнений."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNGE": {
+        "description": {
+            "en": "Jump if not greater or equal (SF ≠ OF). Synonym for JL.",
+            "ru": "Переход, если не больше или равно (SF ≠ OF). Синоним JL."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNL": {
+        "description": {
+            "en": "Jump if not less (SF = OF). For signed comparisons.",
+            "ru": "Переход, если не меньше (SF = OF). Для знаковых сравнений."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JGE": {
+        "description": {
+            "en": "Jump if greater or equal (SF = OF). Synonym for JNL.",
+            "ru": "Переход, если больше или равно (SF = OF). Синоним JNL."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JLE": {
+        "description": {
+            "en": "Jump if less or equal (ZF = 1 or SF ≠ OF). For signed comparisons.",
+            "ru": "Переход, если меньше или равно (ZF = 1 или SF ≠ OF). Для знаковых сравнений."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNG": {
+        "description": {
+            "en": "Jump if not greater (ZF = 1 or SF ≠ OF). Synonym for JLE.",
+            "ru": "Переход, если не больше (ZF = 1 или SF ≠ OF). Синоним JLE."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JNLE": {
+        "description": {
+            "en": "Jump if not less or equal (ZF = 0 and SF = OF). For signed comparisons.",
+            "ru": "Переход, если не меньше или равно (ZF = 0 и SF = OF). Для знаковых сравнений."
+        },
+        "operands_variants": [
+            {
+                "flags": [
+                    "386",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm16|near"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "NOLONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm32|near"
+                ]
+            },
+            {
+                "flags": [
+                    "X86_64",
+                    "LONG",
+                    "BND"
+                ],
+                "operands": [
+                    "imm64|near"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm|short"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "386",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "ND",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            },
+            {
+                "flags": [
+                    "8086",
+                    "BND"
+                ],
+                "operands": [
+                    "imm"
+                ]
+            }
+        ]
+    },
+    "JG": {
+        "description": {
+            "en": "Jump if greater (ZF = 0 and SF = OF). Synonym for JNLE.",
+            "ru": "Переход, если больше (ZF = 0 и SF = OF). Синоним JNLE."
         },
         "operands_variants": [
             {

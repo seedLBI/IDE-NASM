@@ -54,6 +54,9 @@ private:
 	FPS_Timer* fps_limiter = nullptr;
 	Window* MainWindow = nullptr;
 
+	nlohmann::json default_settings;
+
+
 	std::vector<std::pair<std::string, KeyCombination>> combinations;
 	int GetIndexCombinationByName(const std::string& name);
 	int GetIndexCollision(const KeyCombination& comb);

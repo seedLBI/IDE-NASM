@@ -370,20 +370,20 @@ std::string StartupWindow::timestamp_to_Time_str(const uint64_t& timestamp) {
 	std::string result;
 
 	if (hour > 0) {
-		result += str_hour + u8" час. ";
+		result += str_hour + " " + tr("time.hours") + " ";
 	}
 	if (minute > 0)
 	{
-		result += str_minute + u8" мин. ";
+		result += str_minute + " " + tr("time.min") + " ";
 	}
 
 	if (second != 0)
 	{
-		result += str_second + u8" сек. ";
+		result += str_second + " " + tr("time.seconds") + " ";
 	}
 	else {
 		if (minute == 0 && hour == 0)
-			result += str_second + u8" сек. ";
+			result += str_second + " " + tr("time.seconds") + " ";
 	}
 
 

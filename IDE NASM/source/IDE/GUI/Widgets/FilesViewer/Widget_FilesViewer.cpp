@@ -153,13 +153,28 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
     }
     else if (node["type"] == "file") {
 
-        bool IsMain = node["fullpath"].get<std::string>() == wstring_to_stringUTF8(currentSolution->GetPathAbsolute() + L"\\") + currentSolution->mainFile;
+        std::string full_path = node["fullpath"].get<std::string>();
+        std::string main_path = wstring_to_stringUTF8(currentSolution->GetPathAbsolute() + L"\\") + currentSolution->mainFile;
+
+        bool IsMain = full_path == main_path;
         bool IsActive = false;
+        bool IsOpen = false;
+
+
+        Widget_TextEditor* current_widget = widgetManager_TextEditor->GetWidgetFromPath(
+            stringUTF8_to_wstring(full_path)
+        );
+        if (current_widget != nullptr) {
+            IsOpen = current_widget->GetFlagShow();
+        }
 
         Widget_TextEditor* ptr_widget = widgetManager_TextEditor->GetFocusedTextEditor();
         if (ptr_widget != nullptr)
             IsActive = node["fullpath"].get<std::string>() == wstring_to_stringUTF8(ptr_widget->GetFilePath());
 
+
+
+        
 
         if (IsMain) {
             ImGui::Text(ICON_FA_CIRCLE_DOT);
@@ -172,9 +187,6 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
 
 
 
-        //std::cout << widgetManager_TextEditor->GetFocusedTextEditor() << std::endl;
-
-
         if (!IsActive) {
             ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyle().Colors[ImGuiCol_TextDisabled]);
         }
@@ -183,12 +195,17 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
 
             widgetManager_TextEditor->SetActiveFromPath(stringUTF8_to_wstring(node["fullpath"].get<std::string>()));
         }
-        TooltipTranslated("filesViewer.fileActive.tooltip");
-
-
         if (!IsActive) {
             ImGui::PopStyleColor();
         }
+
+        if(IsActive)
+            TooltipTranslated("filesViewer.fileActive.tooltip");
+        else if (!IsActive && IsOpen)
+            TooltipTranslated("filesViewer.fileNotActive.tooltip");
+        else if (!IsOpen)
+            TooltipTranslated("filesViewer.fileNotOpen.tooltip");
+        
 
         //ImGui::Text("%s", node["name"].get<std::string>().c_str());
     }

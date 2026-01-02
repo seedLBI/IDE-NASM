@@ -147,6 +147,36 @@ void Application::InitKeyCombinationHandler() {
 			std::bind(&BuildManager::Run, buildManager))
 	);
 
+
+
+	keyCombinationHandler->AddCombination(
+		"keyCombination.nextLanguage",
+		KeyCombination(
+			{},
+			std::bind(&LocalisationManager::SetNextLanguage, &LocalisationManager::getInstance()))
+	);
+
+	keyCombinationHandler->AddCombination(
+		"keyCombination.prevLanguage",
+		KeyCombination(
+			{},
+			std::bind(&LocalisationManager::SetPrevLanguage, &LocalisationManager::getInstance()))
+	);
+
+	keyCombinationHandler->AddCombination(
+		"keyCombination.prevTheme",
+		KeyCombination(
+			{},
+			std::bind(&ThemeManager::SetPrevTheme, themeManager))
+	);
+
+	keyCombinationHandler->AddCombination(
+		"keyCombination.nextTheme",
+		KeyCombination(
+			{},
+			std::bind(&ThemeManager::SetNextTheme, themeManager))
+	);
+
 }
 
 

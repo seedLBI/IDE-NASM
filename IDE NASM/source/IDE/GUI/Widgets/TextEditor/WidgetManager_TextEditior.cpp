@@ -104,6 +104,19 @@ Widget_TextEditor* WidgetManager_TextEditor::GetFocusedTextEditor() {
 	return nullptr;
 }
 
+Widget_TextEditor* WidgetManager_TextEditor::GetLastFocusedTextEditor(){
+
+	for (int i = 0; i < widgets.size(); i++) {
+
+		if (widgets[i]->GetName() == LastActiveWidget)
+			return widgets[i];
+
+	}
+
+
+	return nullptr;
+}
+
 
 std::vector<std::string> WidgetManager_TextEditor::GetNamesTextEditorChild() {
 	std::vector<std::string> result;
@@ -156,7 +169,33 @@ void WidgetManager_TextEditor::SetActiveFromPath(const std::wstring& Path) {
 
 	for (int i = 0; i < widgets.size(); i++) {
 		if (widgets[i]->GetFilePath() == Path) {
-			widgets[i]->SetFlagShow(true);
+
+			if (widgets[i]->GetFlagShow() == false) {
+
+				auto last_focused_text_editor = GetLastFocusedTextEditor();
+
+				widgets[i]->SetFlagShow(true);
+
+				if (last_focused_text_editor != nullptr)
+				{
+					
+
+					ImGuiWindow* existingEditor = ImGui::FindWindowByName(last_focused_text_editor->GetNameWidget().c_str());  // «амените на им€ одного из ваших редакторов
+					ImGuiID targetDockId = 0;
+					if (existingEditor != nullptr) {
+						targetDockId = existingEditor->DockId;
+					}
+
+
+					widgets[i]->SetTargetDockID(targetDockId);
+
+
+				}
+
+
+			}
+
+			
 			widgets[i]->MakeActiveCurrentWidget();
 			break;
 		}
