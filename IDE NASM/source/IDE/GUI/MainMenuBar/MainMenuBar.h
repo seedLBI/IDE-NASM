@@ -17,6 +17,7 @@
 #include "IDE/Core/Solution/Solution.h"
 #include "IDE/Core/Setting/Setting.h"
 #include "IDE/Core/BuildManager/BuildManager.h"
+#include "IDE/Core/KeyCombination/KeyCombinationHandler.h"
 #include "IDE/Core/Widget/WidgetManager.h"
 #include "IDE/Core/LocalisationManager/LocalisationManager.h"
 #include "IDE/Core/Theme/interface/IThemeLoadable.h"
@@ -47,7 +48,7 @@ public:
 	ImVector<ImRect> titleButtonRects;
 
 public:
-	MainMenuBar(WindowManager* windowManager, WidgetManager* widgetManager, LastSolutionManager* lastSolutionManager, Solution* solution, Setting* setting, BuildManager* buildManager);
+	MainMenuBar(WindowManager* windowManager, WidgetManager* widgetManager, LastSolutionManager* lastSolutionManager, Solution* solution, Setting* setting, BuildManager* buildManager, KeyCombinationHandler* keyCombinationHandler);
 	~MainMenuBar();
 
 	void LoadColors() override;
@@ -73,6 +74,7 @@ private:
 	Solution* solution = nullptr;
 	Setting* setting = nullptr;
 	BuildManager* buildManager = nullptr;
+	KeyCombinationHandler* keyCombinationHandler = nullptr;
 
 	AuthorPopup* authorPopup;
 

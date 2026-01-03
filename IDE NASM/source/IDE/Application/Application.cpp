@@ -45,12 +45,15 @@ Application::Application() {
 	startupWindow = new StartupWindow(fontManager, solution);
 
 	positionWidgetsManager = new PositionWidgetsManager(widgetManager);
-
 	lastSolutionManager = new LastSolutionManager(startupWindow);
-	mainMenuBar = new MainMenuBar(windowManager, widgetManager,lastSolutionManager,solution,setting, buildManager);
-
 	notificationManager = new NotificationManager(windowManager->GetMainWindow(), fps_limiter);
-	keyCombinationHandler = new KeyCombinationHandler(notificationManager,fps_limiter, windowManager->GetMainWindow());
+	keyCombinationHandler = new KeyCombinationHandler(notificationManager, fps_limiter, windowManager->GetMainWindow());
+
+
+
+	mainMenuBar = new MainMenuBar(windowManager, widgetManager,lastSolutionManager,solution,setting, buildManager, keyCombinationHandler);
+
+
 
 
 	solution->Init(widgetManager_TextEditor, lastSolutionManager, widget_FilesViewer, positionWidgetsManager, widgetManager);
@@ -99,6 +102,15 @@ void Application::InitWidgetManager() {
 	widgetManager->AddWidgetPtr(widgetManager_TextEditor);
 }
 void Application::InitKeyCombinationHandler() {
+
+	keyCombinationHandler->AddCombination(
+		"keyCombination.createNewProject",
+		KeyCombination(
+			{},
+			std::bind(&Solution::Create, solution))
+		);
+
+
 	keyCombinationHandler->AddCombination(
 		"keyCombination.saveCurrentFocusedFile",
 		KeyCombination({ 
@@ -109,11 +121,19 @@ void Application::InitKeyCombinationHandler() {
 
 	keyCombinationHandler->AddCombination(
 		"keyCombination.saveAllFiles",
+		KeyCombination(
+			{},
+			std::bind(&Solution::SaveAllFiles, solution))
+			);
+
+
+	keyCombinationHandler->AddCombination(
+		"keyCombination.saveProject",
 		KeyCombination({ 
 			GLFW_KEY_LEFT_CONTROL, 
 			GLFW_KEY_LEFT_SHIFT,
 			GLFW_KEY_S },
-		std::bind(&Solution::SaveAllFiles, solution))
+		std::bind(&Solution::SaveCurrentSolution, solution))
 	);
 
 	keyCombinationHandler->AddCombination(
@@ -147,6 +167,12 @@ void Application::InitKeyCombinationHandler() {
 			std::bind(&BuildManager::Run, buildManager))
 	);
 
+	keyCombinationHandler->AddCombination(
+		"keyCombination.closeAllTextEditors",
+		KeyCombination(
+			{},
+			std::bind(&WidgetManager_TextEditor::CloseAll, widgetManager_TextEditor))
+	);
 
 
 	keyCombinationHandler->AddCombination(

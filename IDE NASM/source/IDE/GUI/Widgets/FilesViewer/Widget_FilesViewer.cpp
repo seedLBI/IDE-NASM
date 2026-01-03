@@ -186,16 +186,30 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
         ImGui::SameLine();
 
 
+        /*	
+            ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+		    ImGui::SeparatorText(tr(GetSaveObjectName()).c_str());
+	        ImGui::PopFont();
+        */
 
-        if (!IsActive) {
+
+        if (!IsOpen) {
             ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyle().Colors[ImGuiCol_TextDisabled]);
         }
+
+        if (IsActive)
+            ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
+
 
         if (ImGui::Selectable(std::string( node["name"].get<std::string>()).c_str())) {
 
             widgetManager_TextEditor->SetActiveFromPath(stringUTF8_to_wstring(node["fullpath"].get<std::string>()));
         }
-        if (!IsActive) {
+
+        if (IsActive)
+            ImGui::PopFont();
+
+        if (!IsOpen) {
             ImGui::PopStyleColor();
         }
 

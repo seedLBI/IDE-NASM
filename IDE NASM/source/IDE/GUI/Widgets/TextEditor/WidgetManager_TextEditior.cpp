@@ -164,6 +164,13 @@ void WidgetManager_TextEditor::ClearAll() {
 }
 
 
+void WidgetManager_TextEditor::CloseAll() {
+	for (int i = 0; i < widgets.size(); i++) {
+		widgets[i]->SetFlagShow(false);
+	}
+}
+
+
 void WidgetManager_TextEditor::SetActiveFromPath(const std::wstring& Path) {
 
 

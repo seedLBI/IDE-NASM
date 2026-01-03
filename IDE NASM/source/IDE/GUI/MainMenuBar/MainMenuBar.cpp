@@ -193,21 +193,28 @@ void MainMenuBar::Draw() {
 
 			if (ImGui::BeginMenu(MenuItem_File.c_str())) {
 
-				std::string MenuItem_FileItem_CreateProject = tr("menu.item.file.createProject");
-				std::string MenuItem_FileItem_OpenProject	= tr("menu.item.file.openProject");
-				std::string MenuItem_FileItem_SaveProject	= tr("menu.item.file.saveProject");
-				std::string MenuItem_FileItem_LastProjects	= tr("menu.item.file.lastProjects");
-				std::string MenuItem_FileItem_Exit			= tr("menu.item.file.exit");
+				std::string MenuItem_FileItem_CreateProject = std::string(ICON_FA_FOLDER_PLUS)			+ " " + tr("menu.item.file.createProject");
+				std::string MenuItem_FileItem_OpenProject	= std::string(ICON_FA_FOLDER_OPEN)			+ " " + tr("menu.item.file.openProject");
+				std::string MenuItem_FileItem_SaveProject	= std::string(ICON_FA_FLOPPY_DISK)			+ " " + tr("menu.item.file.saveProject");
+				std::string MenuItem_FileItem_LastProjects	= std::string(ICON_FA_ARROWS_ROTATE)		+ " " + tr("menu.item.file.lastProjects");
+				std::string MenuItem_FileItem_Exit			= std::string(ICON_FA_RIGHT_FROM_BRACKET)	+ " " + tr("menu.item.file.exit");
 
-				if (ImGui::MenuItem(MenuItem_FileItem_CreateProject.c_str())) {
+
+				std::string CreateProject_shortcut	= keyCombinationHandler->GetStrCombinationByName("keyCombination.createNewProject");
+				std::string OpenProject_shortcut	= keyCombinationHandler->GetStrCombinationByName("keyCombination.openNewProject");
+				std::string SaveProject_shortcut	= keyCombinationHandler->GetStrCombinationByName("keyCombination.saveProject");
+
+
+
+				if (ImGui::MenuItem(MenuItem_FileItem_CreateProject.c_str(), CreateProject_shortcut.c_str())) {
 					solution->Create();
 				}
-				if (ImGui::MenuItem(MenuItem_FileItem_OpenProject.c_str())) {
+				if (ImGui::MenuItem(MenuItem_FileItem_OpenProject.c_str(), OpenProject_shortcut.c_str())) {
 					if (solution->Open()) {
 						buildManager->ClearOutput();
 					}
 				}
-				if (ImGui::MenuItem(MenuItem_FileItem_SaveProject.c_str())) {
+				if (ImGui::MenuItem(MenuItem_FileItem_SaveProject.c_str(), SaveProject_shortcut.c_str())) {
 					solution->SaveCurrentSolution();
 				}
 				if (ImGui::BeginMenu(MenuItem_FileItem_LastProjects.c_str())) {
@@ -230,9 +237,19 @@ void MainMenuBar::Draw() {
 
 			if (ImGui::BeginMenu(MenuItem_View.c_str())) {
 				
+				std::string MenuItem_View_CloseAllTextEditors = std::string(ICON_FA_XMARK)		 + " " + tr("menu.item.view.closeAllTextEditors");
 				std::string MenuItem_ViewWidget_FilesViewer =	std::string(ICON_FA_FOLDER_TREE) + " " + tr("menu.item.view.filesViewer");
-				std::string MenuItem_ViewWidget_Output =		std::string(ICON_FA_FOLDER_TREE) + " " + tr("menu.item.view.output");
+				std::string MenuItem_ViewWidget_Output =		std::string(ICON_FA_TERMINAL)	 + " " + tr("menu.item.view.output");
 
+
+				std::string CloseAllTextEditors_shortcut = keyCombinationHandler->GetStrCombinationByName("keyCombination.closeAllTextEditors");
+
+
+				if(ImGui::MenuItem(MenuItem_View_CloseAllTextEditors.c_str(), CloseAllTextEditors_shortcut.c_str())) {
+					static_cast<WidgetManager_TextEditor*>( widgetManager->GetWidgetPtrByName("widgetName.managerTextEditor"))->CloseAll();
+				}
+
+				ImGui::SeparatorText(tr("menu.item.view.separator.widgets").c_str());
 
 				ImGui::MenuItem(MenuItem_ViewWidget_FilesViewer.c_str(), "", widgetManager->GetWidgetPtrByName("widgetName.filesViewer")->GetPtrFlagShow());
 				ImGui::MenuItem(MenuItem_ViewWidget_Output.c_str(),      "", widgetManager->GetWidgetPtrByName("widgetName.outputConsole")->GetPtrFlagShow());
@@ -247,15 +264,21 @@ void MainMenuBar::Draw() {
 
 			if (ImGui::BeginMenu(MenuItem_Assembly.c_str())) {
 
-				std::string MenuItem_BuildItem_build_And_run	= tr("menu.item.build.run");
-				std::string MenuItem_BuildItem_compile_And_link = tr("menu.item.build.compileLink");
-				std::string MenuItem_BuildItem_compile			= tr("menu.item.build.compile");
+				std::string MenuItem_BuildItem_build_And_run	= std::string(ICON_FA_PLAY) + " " + tr("menu.item.build.run");
+				std::string MenuItem_BuildItem_compile_And_link = std::string(ICON_FA_GEARS) + " " + tr("menu.item.build.compileLink");
+				std::string MenuItem_BuildItem_compile			= std::string(ICON_FA_CODE) + " " + tr("menu.item.build.compile");
 
-				if (ImGui::MenuItem(MenuItem_BuildItem_build_And_run.c_str()))
+
+				std::string build_And_run_shortcut	  = keyCombinationHandler->GetStrCombinationByName("keyCombination.run");
+				std::string compile_And_link_shortcut = keyCombinationHandler->GetStrCombinationByName("keyCombination.build");
+				std::string compile_shortcut		  = keyCombinationHandler->GetStrCombinationByName("keyCombination.compile");
+
+
+				if (ImGui::MenuItem(MenuItem_BuildItem_build_And_run.c_str(), build_And_run_shortcut.c_str()))
 					buildManager->Run();
-				if (ImGui::MenuItem(MenuItem_BuildItem_compile_And_link.c_str()))
+				if (ImGui::MenuItem(MenuItem_BuildItem_compile_And_link.c_str(), compile_And_link_shortcut.c_str()))
 					buildManager->CompileAndLink();
-				if (ImGui::MenuItem(MenuItem_BuildItem_compile.c_str()))
+				if (ImGui::MenuItem(MenuItem_BuildItem_compile.c_str(), compile_shortcut.c_str()))
 					buildManager->Compile();
 
 				ImGui::EndMenu();
@@ -475,10 +498,10 @@ void MainMenuBar::Draw() {
 
 				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);
 
-				if (ImGui::InputText(u8"##ENTRYPOINTINPUT", buf_entryPoint, 256, ImGuiInputTextFlags_EnterReturnsTrue)) {
-					firstTime = true;
-					buildManager->SetEntryPoint(buf_entryPoint);
-				}
+				ImGui::InputText(u8"##ENTRYPOINTINPUT", buf_entryPoint, 256);
+				buildManager->SetEntryPoint(buf_entryPoint);
+
+
 				titleButtonRects.push_back(ImRect(ImGui::GetItemRectMin(), ImGui::GetItemRectMax()));
 				
 				ImGui::PopStyleColor();
@@ -602,7 +625,8 @@ MainMenuBar::MainMenuBar(
 	LastSolutionManager* lastSolutionManager, 
 	Solution* solution, 
 	Setting* setting, 
-	BuildManager* buildManager) : IThemeLoadable(u8"themeItem.menu") {
+	BuildManager* buildManager,
+	KeyCombinationHandler* keyCombinationHandler) : IThemeLoadable(u8"themeItem.menu") {
 
 	this->windowManager = windowManager;
 	this->widgetManager = widgetManager;
@@ -610,6 +634,7 @@ MainMenuBar::MainMenuBar(
 	this->solution = solution;
 	this->setting = setting;
 	this->buildManager = buildManager;
+	this->keyCombinationHandler = keyCombinationHandler;
 
 	window = windowManager->GetMainWindow()->GetHandle();
 	

@@ -36,6 +36,9 @@ public:
 	void Load(const nlohmann::json& Data) override;
 
 	void Add(const std::wstring& Path);
+
+
+	void CloseAll();
 	
 	void ClearAll();
 	void SetActiveFromPath(const std::wstring& Path);

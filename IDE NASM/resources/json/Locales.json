@@ -543,6 +543,14 @@
     "en": "View",
     "ru": "Вид"
   },
+  "menu.item.view.separator.widgets": {
+    "en": "Widgets",
+    "ru": "Виджеты"
+  },
+  "menu.item.view.closeAllTextEditors": {
+    "en": "Close all tabs",
+    "ru": "Закрыть все вкладки"
+  },
   "menu.item.view.filesViewer": {
     "en": "Files viewer",
     "ru": "Список файлов"
@@ -703,6 +711,10 @@
     "en": "Run",
     "ru": "Запустить"
   },
+  "keyCombination.closeAllTextEditors": {
+    "en": "Close all text editors",
+    "ru": "Закрыть все редакторы кода"
+  },
   "keyCombination.nextLanguage": {
     "en": "Next language",
     "ru": "Следующий язык"
@@ -719,9 +731,17 @@
     "en": "Previous theme",
     "ru": "Предыдущая тема"
   },
+  "keyCombination.createNewProject": {
+    "en": "Create new project",
+    "ru": "Создать новый проект"
+  },
   "keyCombination.openNewProject": {
     "en": "Open new project",
     "ru": "Открыть новый проект"
+  },
+  "keyCombination.saveProject": {
+    "en": "Save project",
+    "ru": "Сохранить проект"
   },
   "keyCombination.saveAllFiles": {
     "en": "Save all files",
