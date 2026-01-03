@@ -5,7 +5,11 @@
 #include "Widget_TextEditor.h"
 
 #include "Utils/File/Utils.File.h"
+#include "Utils/Text/Utils.Text.h"
+
 #include "IDE/Core/Theme/interface/IThemeLoadable.h"
+
+#include "IDE/Core/Solution/SolutionInfo.h"
 
 #include <vector>
 #include <nlohmann/json.hpp>
@@ -22,6 +26,8 @@ public:
 
 	Widget_TextEditor* GetFocusedTextEditor();
 	Widget_TextEditor* GetLastFocusedTextEditor();
+
+	void LoadSolutionInfo(SolutionInfo* solutionData_ptr);
 
 
 	std::vector<Widget_TextEditor*> GetWidgets();
@@ -49,6 +55,7 @@ public:
 	Widget_TextEditor* GetWidgetFromPath(const std::wstring& Path);
 
 private:
+	SolutionInfo* currentSolution = nullptr;
 	FPS_Timer* fps_limiter = nullptr;
 
 	std::string LastActiveWidget;

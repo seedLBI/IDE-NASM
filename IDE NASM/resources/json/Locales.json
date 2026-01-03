@@ -1045,7 +1045,7 @@
   },
   "filesViewer.fileActive.tooltip": {
     "en": "Highlighted because the file has keyboard focus.",
-    "ru": "Подсвечивается так как файл в фокусе клавиатуры."
+    "ru": "Выделяется так как файл в фокусе клавиатуры."
   },
   "filesViewer.fileNotActive.tooltip": {
     "en": "Click to make the window focused.",
@@ -1054,6 +1054,50 @@
   "filesViewer.fileNotOpen.tooltip": {
     "en": "Click to open the file.",
     "ru": "Нажми чтобы открыть файл."
+  },
+  "filesViewer.contextMenu.Open": {
+    "en": "Open",
+    "ru": "Открыть"
+  },
+  "filesViewer.contextMenu.Cut": {
+    "en": "Cut",
+    "ru": "Вырезать"
+  },
+  "filesViewer.contextMenu.Copy": {
+    "en": "Copy",
+    "ru": "Копировать"
+  },
+  "filesViewer.contextMenu.Paste": {
+    "en": "Paste",
+    "ru": "Вставить"
+  },
+  "filesViewer.contextMenu.Rename": {
+    "en": "Rename",
+    "ru": "Переименовать"
+  },
+  "filesViewer.contextMenu.Delete": {
+    "en": "Delete",
+    "ru": "Удалить"
+  },
+  "filesViewer.contextMenu.CreateFile": {
+    "en": "Create file",
+    "ru": "Создать файл"
+  },
+  "filesViewer.contextMenu.CreateFolder": {
+    "en": "Create folder",
+    "ru": "Создать папку"
+  },
+  "filesViewer.contextMenu.Add": {
+    "en": "Add",
+    "ru": "Добавить"
+  },
+  "filesViewer.contextMenu.OpenInExplorer": {
+    "en": "Open in explorer",
+    "ru": "Открыть в проводнике"
+  },
+  "filesViewer.contextMenu.SetEntryPoint": {
+    "en": "Set as entry point",
+    "ru": "Установить как точка входа"
   },
   "widgetName.managerTextEditor": {
     "en": "Manager text editor",

@@ -36,6 +36,8 @@ private:
 	ImColor color_folder;
 	
 
+	void OpenInExplorer(const std::string& path);
+
 
 	void UpdateDirectory();
 

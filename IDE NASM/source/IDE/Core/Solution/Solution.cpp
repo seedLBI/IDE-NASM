@@ -262,7 +262,10 @@ void Solution::DrawPopupCreation() {
 }
 
 void Solution::Create() {
-	flag_PopupCreation = true;
+
+	if (!ImGui::IsPopupOpen(nullptr, ImGuiPopupFlags_AnyPopupId | ImGuiPopupFlags_AnyPopupLevel)) {
+		flag_PopupCreation = true;
+	}
 
 }
 bool Solution::isCreated() {
@@ -312,6 +315,8 @@ bool Solution::OpenFromPath(const std::wstring& CompletePath) {
 		CurrentSolution = tempSolution;
 
 		widget_FilesViewer->LoadSolutionInfo(&CurrentSolution);
+		widgetManager_TextEditor->LoadSolutionInfo(&CurrentSolution);
+
 
 		isOpened = true;
 

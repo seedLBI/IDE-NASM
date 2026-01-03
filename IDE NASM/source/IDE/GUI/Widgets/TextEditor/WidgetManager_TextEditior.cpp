@@ -231,6 +231,10 @@ void WidgetManager_TextEditor::Draw() {
 
 }
 
+void WidgetManager_TextEditor::LoadSolutionInfo(SolutionInfo* solutionData_ptr) {
+	this->currentSolution = solutionData_ptr;
+}
+
 void WidgetManager_TextEditor::Add(const std::wstring& Path) {
 
 	widgets.push_back(new Widget_TextEditor(fps_limiter, Path, static_cast<int>(widgets.size())));
@@ -251,17 +255,32 @@ nlohmann::json WidgetManager_TextEditor::Save() {
 
 	nlohmann::json result;
 
+	std::string path_solution = wstring_to_stringUTF8(currentSolution->GetPathAbsolute() + L"\\" + currentSolution->GetPathSource() + L"\\");
+
+
 	for (size_t i = 0; i < widgets.size(); i++) {
-		result["TextEditors"][wstring_to_stringUTF8(widgets[i]->GetFilePath())] = widgets[i]->Save();
+
+		std::string path_absolute = wstring_to_stringUTF8(widgets[i]->GetFilePath());
+
+		std::string path_relative = path_absolute;
+
+
+		RemoveSubstringFromStart(path_relative, path_solution);
+
+
+		result["TextEditors"][path_relative] = widgets[i]->Save();
 	}
 
 	return result;
 }
 void WidgetManager_TextEditor::Load(const nlohmann::json& Data) {
 
+	std::string path_solution = wstring_to_stringUTF8(currentSolution->GetPathAbsolute() + L"\\" + currentSolution->GetPathSource() + L"\\");
+
+
 	if (Data.contains("TextEditors")) {
 		for (auto& [key, value] : Data["TextEditors"].items()) {
-			GetWidgetFromPath(stringUTF8_to_wstring(key))->Load(value);
+			GetWidgetFromPath(stringUTF8_to_wstring(path_solution + key))->Load(value);
 		}
 
 	}

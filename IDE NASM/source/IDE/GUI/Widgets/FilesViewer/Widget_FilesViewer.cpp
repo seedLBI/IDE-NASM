@@ -37,6 +37,7 @@ nlohmann::json Widget_FilesViewer::build_directory_json(const std::wstring& path
     nlohmann::json root = {
         {"name", currentSolution->name},
         {"type", "directory"},
+        {"fullpath", dir_path.u8string()},
         {"children", nlohmann::json::array()}
     };
 
@@ -57,20 +58,47 @@ nlohmann::json Widget_FilesViewer::build_directory_json(const std::wstring& path
 
             current_node["children"].push_back(new_node);
         }
+
+        auto comparator = [](const nlohmann::json& a, const nlohmann::json& b) {
+            std::string type_a = a["type"];
+            std::string type_b = b["type"];
+            bool a_dir = (type_a == "directory");
+            bool b_dir = (type_b == "directory");
+            if (a_dir != b_dir) {
+                return a_dir;
+            }
+            else {
+                std::string name_a = a["name"];
+                std::string name_b = b["name"];
+                return name_a < name_b;
+            }
+            };
+        std::sort(current_node["children"].begin(), current_node["children"].end(), comparator);
     };
 
     build_json(dir_path, root);
     return root;
 }
+
+
+
 void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
+
+    static std::string selected_item_context_menu = "";
+
+    std::string s_open            = (ICON_FA_FOLDER_OPEN + std::string(" ") + tr("filesViewer.contextMenu.Open"));
+    std::string s_cut             = (ICON_FA_SCISSORS + std::string(" ") + tr("filesViewer.contextMenu.Cut"));
+    std::string s_copy            = (ICON_FA_COPY + std::string(" ") + tr("filesViewer.contextMenu.Copy"));
+    std::string s_paste           = (ICON_FA_PASTE + std::string(" ") + tr("filesViewer.contextMenu.Paste"));
+    std::string s_rename          = (ICON_FA_PENCIL + std::string(" ") + tr("filesViewer.contextMenu.Rename"));
+    std::string s_delete          = (ICON_FA_TRASH + std::string(" ") + tr("filesViewer.contextMenu.Delete"));
+    std::string s_createFile      = (ICON_FA_FILE_CIRCLE_PLUS + std::string(" ") + tr("filesViewer.contextMenu.CreateFile"));
+    std::string s_createFolder    = (ICON_FA_FOLDER_PLUS + std::string(" ") + tr("filesViewer.contextMenu.CreateFolder"));
+    std::string s_add             = (ICON_FA_CIRCLE_PLUS + std::string(" ") + tr("filesViewer.contextMenu.Add"));
+    std::string s_openInExplorer  = (ICON_FA_FOLDER + std::string(" ") + tr("filesViewer.contextMenu.OpenInExplorer"));
+    std::string s_setAsEntryPoint = (ICON_FA_CIRCLE_DOT + std::string(" ") + tr("filesViewer.contextMenu.SetEntryPoint"));
+
     if (node["type"] == "directory") {
-
-        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.5f, 0.1f , 0.5f, 1.f));
-
-
-        const std::string STR_BUTTON_CREATE_FILE = ICON_FA_FILE_CIRCLE_PLUS;
-        const std::string STR_BUTTON_CREATE_FOLDER = ICON_FA_FOLDER_PLUS;
-        const std::string STR_BUTTON_DELETE_FOLDER = ICON_FA_FOLDER_MINUS;
 
         const std::string nameFolder = node["name"].get<std::string>();
 
@@ -87,50 +115,55 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
             ImGuiTreeNodeFlags_SpanFullWidth | 
             ImGuiTreeNodeFlags_AllowItemOverlap;
 
-
-        bool is_open = ImGui::TreeNodeBehavior(ID_Tree, flags, label.c_str());
-        ImGui::SetItemAllowOverlap();
-
-
-
-        // After drawing TreeNode, get its full rect
-        ImGuiWindow* window = ImGui::GetCurrentWindow();
-        ImGuiContext& g = *GImGui;
-        float lineHeight = ImGui::GetFrameHeight();
-        float btnWidth = lineHeight;
-        //float spacing = g.Style.ItemInnerSpacing.x;
-        float spacing = 0.f;
-        ImVec2 itemMin = ImGui::GetItemRectMin();
-        ImVec2 itemMax = ImGui::GetItemRectMax() ;
-        ImRect btnRgn(itemMax.x - btnWidth * 2 - spacing, itemMin.y, itemMax.x, itemMin.y + btnWidth);
-
-        // Handle button input and consume click to prevent TreeNode toggle
-        ImGuiIO& io = ImGui::GetIO();
-        // Create Folder button
-        ImGuiID btnId1 = ImGui::GetID((nameFolder + "_btn_folder").c_str());
-        bool hovered1, held1;
-
         
 
-        if (ImGui::ButtonBehavior(ImRect(btnRgn.Min, ImVec2(btnRgn.Min.x + btnWidth, btnRgn.Max.y - 2.f)), btnId1, &hovered1, &held1, 0)) {
-            ImGui::OpenPopup("create_folder_popup");
-        }
-        // Create File button
-        ImGuiID btnId2 = ImGui::GetID((nameFolder + "_btn_file").c_str());
-        bool hovered2, held2;
-        if (ImGui::ButtonBehavior(ImRect(ImVec2(btnRgn.Min.x + btnWidth + spacing, btnRgn.Min.y - 2.f), btnRgn.Max), btnId2, &hovered2, &held2, 0)) {
-            ImGui::OpenPopup("create_file_popup");
-        }
-        // Consume mouse click if on any button
-        if ((hovered1 || hovered2) && io.MouseClicked[0])
-            io.MouseClicked[0] = false;
+        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.5f, 0.1f, 0.5f, 1.f));
+        bool is_open = ImGui::TreeNodeBehavior(ID_Tree, flags, label.c_str());
+        ImGui::PopStyleColor();
 
-        // Draw "+" texts for buttons
-        ImU32 textColor1 = hovered1 ? ImGui::GetColorU32(ImGuiCol_Text) : ImGui::GetColorU32(ImGuiCol_TextDisabled);
-        window->DrawList->AddText(ImVec2(btnRgn.Min.x + btnWidth * 0.25f, btnRgn.Min.y), textColor1, STR_BUTTON_CREATE_FILE.c_str());
-        ImU32 textColor2 = hovered2 ? ImGui::GetColorU32(ImGuiCol_Text) : ImGui::GetColorU32(ImGuiCol_TextDisabled);
-        window->DrawList->AddText(ImVec2(btnRgn.Min.x + btnWidth + spacing + btnWidth * 0.25f, btnRgn.Min.y), textColor2, STR_BUTTON_CREATE_FOLDER.c_str());
+        if (ImGui::BeginPopupContextItem())
+        {
 
+
+
+            if (ImGui::BeginMenu(s_add.c_str()))
+            {
+                if (ImGui::MenuItem(s_createFile.c_str())) {
+                    
+                }
+                if (ImGui::MenuItem(s_createFolder.c_str())) {
+
+                }
+                ImGui::EndMenu();
+            }
+
+            ImGui::Separator();
+
+            ImGui::Selectable(s_cut.c_str());
+            ImGui::Selectable(s_copy.c_str());
+
+            ImGui::BeginDisabled();
+                ImGui::Selectable(s_paste.c_str());
+            ImGui::EndDisabled();
+
+            ImGui::Selectable(s_rename.c_str());
+            ImGui::Selectable(s_delete.c_str());
+
+            ImGui::Separator();
+
+            if (ImGui::Selectable(s_openInExplorer.c_str())) {
+                OpenInExplorer(node["fullpath"].get<std::string>());
+            }
+
+
+            ImGui::EndPopup();
+        }
+
+
+        ImGui::PushStyleColor(ImGuiCol_Text, ImVec4(0.5f, 0.1f, 0.5f, 1.f));
+
+
+        ImGui::SetItemAllowOverlap();
 
         if (is_open) {
             if (!isOpen) {
@@ -153,8 +186,13 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
     }
     else if (node["type"] == "file") {
 
+        std::string name = node["name"].get<std::string>();
         std::string full_path = node["fullpath"].get<std::string>();
         std::string main_path = wstring_to_stringUTF8(currentSolution->GetPathAbsolute() + L"\\") + currentSolution->mainFile;
+
+
+
+        //std::string ralative_path = wstring_to_stringUTF8(currentSolution->GetPathAbsolute() + L"\\") + currentSolution->mainFile;
 
         bool IsMain = full_path == main_path;
         bool IsActive = false;
@@ -170,7 +208,7 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
 
         Widget_TextEditor* ptr_widget = widgetManager_TextEditor->GetFocusedTextEditor();
         if (ptr_widget != nullptr)
-            IsActive = node["fullpath"].get<std::string>() == wstring_to_stringUTF8(ptr_widget->GetFilePath());
+            IsActive = full_path == wstring_to_stringUTF8(ptr_widget->GetFilePath());
 
 
 
@@ -186,12 +224,6 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
         ImGui::SameLine();
 
 
-        /*	
-            ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
-		    ImGui::SeparatorText(tr(GetSaveObjectName()).c_str());
-	        ImGui::PopFont();
-        */
-
 
         if (!IsOpen) {
             ImGui::PushStyleColor(ImGuiCol_Text, ImGui::GetStyle().Colors[ImGuiCol_TextDisabled]);
@@ -201,10 +233,12 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
             ImGui::PushFont(ImGui::GetIO().Fonts->Fonts[1]);
 
 
-        if (ImGui::Selectable(std::string( node["name"].get<std::string>()).c_str())) {
+        if (ImGui::Selectable(name.c_str(), selected_item_context_menu == full_path)) {
 
-            widgetManager_TextEditor->SetActiveFromPath(stringUTF8_to_wstring(node["fullpath"].get<std::string>()));
+            widgetManager_TextEditor->SetActiveFromPath(stringUTF8_to_wstring(full_path));
         }
+
+
 
         if (IsActive)
             ImGui::PopFont();
@@ -213,15 +247,45 @@ void Widget_FilesViewer::render_imgui_tree(const nlohmann::json& node) {
             ImGui::PopStyleColor();
         }
 
+        selected_item_context_menu = "";
+        if (ImGui::BeginPopupContextItem())
+        {
+
+            std::cout << "main: " << currentSolution->mainFile << std::endl;
+            std::cout << "name: " << name << std::endl;
+            std::cout << "full: " << full_path << std::endl;
+
+
+            selected_item_context_menu = full_path;
+
+            if (ImGui::Selectable(s_open.c_str())) {
+                widgetManager_TextEditor->SetActiveFromPath(stringUTF8_to_wstring(full_path));
+            }
+            ImGui::Separator();
+
+            if (ImGui::Selectable(s_setAsEntryPoint.c_str())) {
+                //currentSolution->entryPoint = 
+            }
+
+            ImGui::Separator();
+            ImGui::Selectable(s_cut.c_str());
+            ImGui::Selectable(s_copy.c_str());
+            ImGui::Selectable(s_rename.c_str());
+            ImGui::Selectable(s_delete.c_str());
+            ImGui::EndPopup();
+        }
+
+
+
+
+
         if(IsActive)
             TooltipTranslated("filesViewer.fileActive.tooltip");
         else if (!IsActive && IsOpen)
             TooltipTranslated("filesViewer.fileNotActive.tooltip");
         else if (!IsOpen)
             TooltipTranslated("filesViewer.fileNotOpen.tooltip");
-        
 
-        //ImGui::Text("%s", node["name"].get<std::string>().c_str());
     }
 }
 
@@ -241,6 +305,11 @@ void Widget_FilesViewer::Draw() {
         ImGui::End();
     }
 
+}
+
+void Widget_FilesViewer::OpenInExplorer(const std::string& path) {
+    std::string command = "explorer /select,\"" + path + "\"";
+    system(command.c_str());
 }
 
 void Widget_FilesViewer::Update() {
