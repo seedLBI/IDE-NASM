@@ -13,22 +13,23 @@
 
 
 int main() {
+    
     Application IDE;
     IDE.Run();
     return 0;
-
+    
 
     std::setlocale(LC_ALL, "russian");
 
     Compiler_Nasm compiler(L"tools\\nasm\\nasm.exe");
     //compiler.DisableTranslate();
     compiler.EnableTranslate();
-    compiler.EnableOutputFile();
+    compiler.DisableOutputFile();
     compiler.EnableDebug();
     compiler.Set_Arg_Architecture(Compiler_ARGS_ARCHITECTURE::Windows64);
     compiler.Set_Arg_Optimization(Compiler_ARGS_OPTIMIZATION::NoOptimization);
 
-
+    /*
     Linker_GCC linker(L"tools\\linker\\MinGW\\bin\\gcc.exe", L"tools\\linker\\MinGW64\\bin\\gcc.exe");
     linker.SetEntryPoint(L"start");
     linker.EnableDebug();
@@ -42,25 +43,42 @@ int main() {
     std::cout << "[" << debugger.GetVersion() << "]" << std::endl;
     
 
-    std::wstring NameFile = L"test";
-
+    
+    */
     
     
     
-    //std::cout << "Compile" << std::endl;
+
+    for (const auto& entry : std::filesystem::directory_iterator("WarningsErrorsTest")) {
+
+        //std::cout << "Compile" << std::endl;
+
+        compiler.SetIncludePath(L"WarningsErrorsTest");
+        //std::cout << entry.path() << std::endl;
+        std::wstring NameFile = entry.path();
+        compiler.Compile(NameFile);
 
 
-    //compiler.Compile(NameFile);
+        while (compiler.IsRunning()) {
 
-    //while (compiler.IsRunning()) {
-    //
-    //}
+        }
 
-    //auto data_output = compiler.GetOutput();
+        auto data_output = compiler.GetOutput();
 
-    //for (int i = 0; i < data_output.size(); i++) {
-    //    std::cout << convertText_utf8_toCP1251(data_output[i]) << "\n";
-    //}
+        for (int i = 0; i < data_output.size(); i++) {
+            std::cout << convertText_utf8_toCP1251(data_output[i]) << "\n";
+        }
+
+
+
+
+    }
+
+
+    
+    
+
+
 
     //std::cout << "Linking" << std::endl;
     //linker.Link(L"test.o", L"test.exe");
@@ -75,7 +93,7 @@ int main() {
     //}
 
 
-
+    /*
     
     ParserListingFile parser_listingfile;
     parser_listingfile.Parse(L"WarningsErrorsTest\\Test\\test.lst",L"test");
@@ -140,6 +158,6 @@ int main() {
 
 
     return 0;
-    
+    */
 
 }

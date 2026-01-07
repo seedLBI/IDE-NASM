@@ -1,11 +1,12 @@
 #include "WidgetManager_TextEditior.h"
 
 
-WidgetManager_TextEditor::WidgetManager_TextEditor(FPS_Timer* fps_limiter): 
+WidgetManager_TextEditor::WidgetManager_TextEditor(FPS_Timer* fps_limiter, PositionWidgetsManager* positionsWidgetsManager):
 	IWidget("widgetName.managerTextEditor"),
 	IThemeLoadable("themeItem.editorCode")
 {
 	this->fps_limiter = fps_limiter;
+	this->positionsWidgetsManager = positionsWidgetsManager;
 
 	IThemeLoadable::InitListWord(
 		{
@@ -113,6 +114,8 @@ Widget_TextEditor* WidgetManager_TextEditor::GetLastFocusedTextEditor(){
 
 	}
 
+	if (widgets.empty() == false)
+		return widgets.front();
 
 	return nullptr;
 }
@@ -183,11 +186,8 @@ void WidgetManager_TextEditor::SetActiveFromPath(const std::wstring& Path) {
 
 				widgets[i]->SetFlagShow(true);
 
-				if (last_focused_text_editor != nullptr)
-				{
-					
-
-					ImGuiWindow* existingEditor = ImGui::FindWindowByName(last_focused_text_editor->GetNameWidget().c_str());  // «амените на им€ одного из ваших редакторов
+				if (last_focused_text_editor != nullptr && last_focused_text_editor != widgets[i]){
+					ImGuiWindow* existingEditor = ImGui::FindWindowByName(last_focused_text_editor->GetNameWidget().c_str());
 					ImGuiID targetDockId = 0;
 					if (existingEditor != nullptr) {
 						targetDockId = existingEditor->DockId;
@@ -195,10 +195,10 @@ void WidgetManager_TextEditor::SetActiveFromPath(const std::wstring& Path) {
 
 
 					widgets[i]->SetTargetDockID(targetDockId);
-
-
 				}
-
+				else {
+					widgets[i]->SetTargetDockID(positionsWidgetsManager->GetMainDockID());
+				}
 
 			}
 
@@ -241,6 +241,17 @@ void WidgetManager_TextEditor::Add(const std::wstring& Path) {
 	LoadColors();
 }
 
+void WidgetManager_TextEditor::Remove(const std::wstring& Path) {
+	for (size_t i = 0; i < widgets.size(); i++) {
+		if (widgets[i]->GetFilePath() == Path) {
+			widgets.erase(widgets.begin() + i);
+			break;
+		}
+	}
+}
+
+
+
 
 Widget_TextEditor* WidgetManager_TextEditor::GetWidgetFromPath(const std::wstring& Path) {
 	for (int i = 0; i < widgets.size(); i++) {
@@ -280,7 +291,9 @@ void WidgetManager_TextEditor::Load(const nlohmann::json& Data) {
 
 	if (Data.contains("TextEditors")) {
 		for (auto& [key, value] : Data["TextEditors"].items()) {
-			GetWidgetFromPath(stringUTF8_to_wstring(path_solution + key))->Load(value);
+			auto widget = GetWidgetFromPath(stringUTF8_to_wstring(path_solution + key));
+			if(widget)
+				widget->Load(value);
 		}
 
 	}

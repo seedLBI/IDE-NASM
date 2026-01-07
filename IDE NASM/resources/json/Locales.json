@@ -1,4 +1,32 @@
 {
+  "authorPopup.desc": {
+    "en": "The program was created as part of a diploma project during my undergraduate studies. I myself don't know a thing about assembly language or IDE development, so any shortcomings are to be expected!",
+    "ru": "Программа была создана как часть диплома во время обучения в бакалавриате. Сам я ничего не смыслю в ассемблере и IDE строении, поэтому любые недочёты имеют место быть!"
+  },
+  "authorPopup.myContacts": {
+    "en": "My contacts:",
+    "ru": "Мои контакты:"
+  },
+  "authorPopup.progger": {
+    "en": "Developer :  Korzhunov A.S.",
+    "ru": "Разработчик:  Коржунов А.С."
+  },
+  "authorPopup.scietificSupervisor": {
+    "en": "Sci. sup. :  Cherednichenko O.M.",
+    "ru": "Науч. рук. :  Чередниченко О.М."
+  },
+  "authorPopup.title": {
+    "en": "About IDE NASM",
+    "ru": "О программе"
+  },
+  "authorPopup.VK": {
+    "en": "VK",
+    "ru": "ВК"
+  },
+  "authorPopup.workers": {
+    "en": "The program was developed by:",
+    "ru": "В разработке участвовали:"
+  },
   "color.base.border": {
     "en": "Border",
     "ru": "Граница"
@@ -26,6 +54,10 @@
   "color.base.childBg": {
     "en": "Child background",
     "ru": "Окно дочернее (фон)"
+  },
+  "color.base.cursorText": {
+    "en": "Cursor text",
+    "ru": "Курсор текста"
   },
   "color.base.dockingEmptyBg": {
     "en": "Docking empty background",
@@ -163,10 +195,6 @@
     "en": "Text",
     "ru": "Текст"
   },
-  "color.base.cursorText": {
-    "en": "Cursor text",
-    "ru": "Курсор текста"
-  },
   "color.base.textDisabled": {
     "en": "Text disabled",
     "ru": "Текст (не активный)"
@@ -194,6 +222,22 @@
   "color.base.windowBg": {
     "en": "Window background",
     "ru": "Окно (фон)"
+  },
+  "color.filesViewer.background.project": {
+    "en": "Background text project",
+    "ru": "Фон текста проект"
+  },
+  "color.filesViewer.folder.close": {
+    "en": "Closed folder",
+    "ru": "Закрытая папка"
+  },
+  "color.filesViewer.folder.open": {
+    "en": "Opened folder",
+    "ru": "Открытая папка"
+  },
+  "color.filesViewer.text.project": {
+    "en": "Text project",
+    "ru": "Текст проекта"
   },
   "color.highlighterSyntax.assemblerDirectives": {
     "en": "Assembler directives",
@@ -335,65 +379,25 @@
     "en": "Warning",
     "ru": "Предупреждение"
   },
-  "color.textEditor.default": {
-    "en": "Default",
-    "ru": "По умолчанию"
-  },
-  "color.textEditor.keyword": {
-    "en": "Keyword",
-    "ru": "Ключевые"
-  },
-  "color.textEditor.number": {
-    "en": "Number",
-    "ru": "Числа"
-  },
-  "color.textEditor.string": {
-    "en": "String (\"\")",
-    "ru": "Строки (\"\")"
-  },
-  "color.textEditor.charLiteral": {
-    "en": "Char literal (\\'\\')",
-    "ru": "Символы (\\'\\')"
-  },
-  "color.textEditor.punctuation": {
-    "en": "Punctuation",
-    "ru": "Пунктуация"
-  },
-  "color.textEditor.identifier": {
-    "en": "Identifier",
-    "ru": "Индификаторы"
-  },
-  "color.textEditor.comment": {
-    "en": "Comment",
-    "ru": "Комментарии (однострочные)"
-  },
-  "color.textEditor.multiLineComment": {
-    "en": "Multiline comment",
-    "ru": "Комментарии (многострочные)"
-  },
   "color.textEditor.background": {
     "en": "Background",
     "ru": "Фон"
-  },
-  "color.textEditor.cursor": {
-    "en": "Cursor",
-    "ru": "Курсор"
-  },
-  "color.textEditor.selection": {
-    "en": "Selection",
-    "ru": "Выделение"
-  },
-  "color.textEditor.errorMarker": {
-    "en": "Error marker",
-    "ru": "Строка с ошибкой"
   },
   "color.textEditor.breakpoint": {
     "en": "Breakpoint",
     "ru": "Точка останова"
   },
-  "color.textEditor.lineNumber": {
-    "en": "Line number",
-    "ru": "Номер строки"
+  "color.textEditor.charLiteral": {
+    "en": "Char literal (\\'\\')",
+    "ru": "Символы (\\'\\')"
+  },
+  "color.textEditor.comment": {
+    "en": "Comment",
+    "ru": "Комментарии (однострочные)"
+  },
+  "color.textEditor.currentLineEdge": {
+    "en": "Current line edge",
+    "ru": "Строка (границы)"
   },
   "color.textEditor.currentLineFill": {
     "en": "Current line fill",
@@ -403,13 +407,53 @@
     "en": "Current line fill inactive",
     "ru": "Строка (не активная)"
   },
-  "color.textEditor.currentLineEdge": {
-    "en": "Current line edge",
-    "ru": "Строка (границы)"
+  "color.textEditor.cursor": {
+    "en": "Cursor",
+    "ru": "Курсор"
+  },
+  "color.textEditor.default": {
+    "en": "Default",
+    "ru": "По умолчанию"
+  },
+  "color.textEditor.errorMarker": {
+    "en": "Error marker",
+    "ru": "Строка с ошибкой"
   },
   "color.textEditor.finderNotFind": {
     "en": "Button find inactive",
     "ru": "Кнопка (не активна)"
+  },
+  "color.textEditor.identifier": {
+    "en": "Identifier",
+    "ru": "Индификаторы"
+  },
+  "color.textEditor.keyword": {
+    "en": "Keyword",
+    "ru": "Ключевые"
+  },
+  "color.textEditor.lineNumber": {
+    "en": "Line number",
+    "ru": "Номер строки"
+  },
+  "color.textEditor.multiLineComment": {
+    "en": "Multiline comment",
+    "ru": "Комментарии (многострочные)"
+  },
+  "color.textEditor.number": {
+    "en": "Number",
+    "ru": "Числа"
+  },
+  "color.textEditor.punctuation": {
+    "en": "Punctuation",
+    "ru": "Пунктуация"
+  },
+  "color.textEditor.selection": {
+    "en": "Selection",
+    "ru": "Выделение"
+  },
+  "color.textEditor.string": {
+    "en": "String (\"\")",
+    "ru": "Строки (\"\")"
   },
   "error.comboLanguages.loadData": {
     "en": "Where data languages??",
@@ -427,6 +471,14 @@
     "en": "Error loading texture",
     "ru": "Ошибка загрузки текстур"
   },
+  "error.fontManager.loadFont": {
+    "en": "Where font?",
+    "ru": "А где шрифт?"
+  },
+  "error.fontManager.loadFont.title": {
+    "en": "Error loading font",
+    "ru": "Ошибка загрузки шрифтов"
+  },
   "error.menu.loadLogo": {
     "en": "Where icons??",
     "ru": "А где иконки?"
@@ -443,13 +495,285 @@
     "en": "Error loading data",
     "ru": "Ошибка загрузки данных"
   },
-  "error.fontManager.loadFont": {
-    "en": "Where font?",
-    "ru": "А где шрифт?"
+  "filesViewer.contextMenu.Add": {
+    "en": "Add",
+    "ru": "Добавить"
   },
-  "error.fontManager.loadFont.title": {
-    "en": "Error loading font",
-    "ru": "Ошибка загрузки шрифтов"
+  "filesViewer.contextMenu.Copy": {
+    "en": "Copy",
+    "ru": "Копировать"
+  },
+  "filesViewer.contextMenu.CreateFile": {
+    "en": "Create file",
+    "ru": "Создать файл"
+  },
+  "filesViewer.contextMenu.CreateFolder": {
+    "en": "Create folder",
+    "ru": "Создать папку"
+  },
+  "filesViewer.contextMenu.Cut": {
+    "en": "Cut",
+    "ru": "Вырезать"
+  },
+  "filesViewer.contextMenu.Delete": {
+    "en": "Delete",
+    "ru": "Удалить"
+  },
+  "filesViewer.contextMenu.Open": {
+    "en": "Open",
+    "ru": "Открыть"
+  },
+  "filesViewer.contextMenu.OpenInExplorer": {
+    "en": "Open in explorer",
+    "ru": "Открыть в проводнике"
+  },
+  "filesViewer.contextMenu.Paste": {
+    "en": "Paste",
+    "ru": "Вставить"
+  },
+  "filesViewer.contextMenu.Rename": {
+    "en": "Rename",
+    "ru": "Переименовать"
+  },
+  "filesViewer.contextMenu.SetEntryPoint": {
+    "en": "Set as entry point",
+    "ru": "Установить как точка входа"
+  },
+  "filesViewer.entryPoint.tooltip": {
+    "en": "Compilation entry point\nTo change, right-click on the desired file.",
+    "ru": "Точка входа для компиляции\nЧтобы поменять щелкни ПКМ по нужному файлу."
+  },
+  "filesViewer.fileActive.tooltip": {
+    "en": "Highlighted because the file has keyboard focus.",
+    "ru": "Выделяется так как файл в фокусе клавиатуры."
+  },
+  "filesViewer.fileNotActive.tooltip": {
+    "en": "Click to make the window focused.",
+    "ru": "Нажми чтобы сделать окно в фокусе."
+  },
+  "filesViewer.fileNotOpen.tooltip": {
+    "en": "Click to open the file.",
+    "ru": "Нажми чтобы открыть файл."
+  },
+  "filesViewer.popup.file.cancel": {
+    "en": "Cancel",
+    "ru": "Отменить"
+  },
+  "filesViewer.popup.file.ok": {
+    "en": "Apply",
+    "ru": "Принять"
+  },
+  "filesViewer.popup.file.text": {
+    "en": "Enter file name:",
+    "ru": "Напиши название файла:"
+  },
+  "filesViewer.popup.file.title": {
+    "en": "Creation file",
+    "ru": "Создание файла"
+  },
+  "filesViewer.popup.folder.cancel": {
+    "en": "Cancel",
+    "ru": "Отменить"
+  },
+  "filesViewer.popup.folder.ok": {
+    "en": "Apply",
+    "ru": "Принять"
+  },
+  "filesViewer.popup.folder.text": {
+    "en": "Enter folder name:",
+    "ru": "Напиши название папки:"
+  },
+  "filesViewer.popup.folder.title": {
+    "en": "Creation folder",
+    "ru": "Создание файла"
+  },
+  "filesViewer.project": {
+    "en": "Project",
+    "ru": "Проект"
+  },
+  "highlighterSyntax.tooltip.desc": {
+    "en": "Description",
+    "ru": "Описание"
+  },
+  "highlighterSyntax.tooltip.variants": {
+    "en": "Variants",
+    "ru": "Варианты аргументов"
+  },
+  "keyCombination.build": {
+    "en": "Build",
+    "ru": "Собрать"
+  },
+  "keyCombination.button.default": {
+    "en": "Return default settings",
+    "ru": "Установить по умолчанию"
+  },
+  "keyCombination.closeAllTextEditors": {
+    "en": "Close all text editors",
+    "ru": "Закрыть все редакторы кода"
+  },
+  "keyCombination.compile": {
+    "en": "Compile",
+    "ru": "Компилировать"
+  },
+  "keyCombination.createNewProject": {
+    "en": "Create new project",
+    "ru": "Создать новый проект"
+  },
+  "keyCombination.nextLanguage": {
+    "en": "Next language",
+    "ru": "Следующий язык"
+  },
+  "keyCombination.nextTheme": {
+    "en": "Next theme",
+    "ru": "Следующая тема"
+  },
+  "keyCombination.openNewProject": {
+    "en": "Open new project",
+    "ru": "Открыть новый проект"
+  },
+  "keyCombination.popup.button.clear": {
+    "en": "Clear current combination",
+    "ru": "Стереть текущую комбинацию"
+  },
+  "keyCombination.popup.error.collision": {
+    "en": "A combination match occurred.\nTo resolve the issue, the following command's\ncombination will be cleared:",
+    "ru": "Возникло совпадение комбинаций.\nДля разрешения проблемы у следующей команды\nкомбинация будет стёрта:"
+  },
+  "keyCombination.popup.error.indentical.1": {
+    "en": "Well, whatever...",
+    "ru": "Ну и ладно..."
+  },
+  "keyCombination.popup.error.indentical.10": {
+    "en": "......",
+    "ru": "......"
+  },
+  "keyCombination.popup.error.indentical.11": {
+    "en": ".........",
+    "ru": "........."
+  },
+  "keyCombination.popup.error.indentical.12": {
+    "en": "............................",
+    "ru": "............................"
+  },
+  "keyCombination.popup.error.indentical.13": {
+    "en": "You're a champion.",
+    "ru": "Ты чемпион."
+  },
+  "keyCombination.popup.error.indentical.2": {
+    "en": "Ok...",
+    "ru": "Ок..."
+  },
+  "keyCombination.popup.error.indentical.3": {
+    "en": "That's weird...",
+    "ru": "Странно..."
+  },
+  "keyCombination.popup.error.indentical.4": {
+    "en": "Why?",
+    "ru": "А зачем?"
+  },
+  "keyCombination.popup.error.indentical.5": {
+    "en": "Why are you doing this?",
+    "ru": "Для чего ты это делаешь?"
+  },
+  "keyCombination.popup.error.indentical.6": {
+    "en": "maybe ENOUGH?!!?!?!?!",
+    "ru": "может ХВАТИТ?!!?!?!?!"
+  },
+  "keyCombination.popup.error.indentical.7": {
+    "en": "Do you want to check all the phrases?",
+    "ru": "ты хочешь проверить все фразы?"
+  },
+  "keyCombination.popup.error.indentical.8": {
+    "en": "stubborn",
+    "ru": "упорный"
+  },
+  "keyCombination.popup.error.indentical.9": {
+    "en": "...",
+    "ru": "..."
+  },
+  "keyCombination.popup.info.error.collision": {
+    "en": "This combination already exists.",
+    "ru": "Такая комбинация существует."
+  },
+  "keyCombination.popup.info.error.identical": {
+    "en": "Why set the exact same combination?",
+    "ru": "Зачем устанавливать ту же самую комбинацию?"
+  },
+  "keyCombination.popup.info.error.onlySymbolsAndNumbers": {
+    "en": "Cannot use only symbols and numbers.",
+    "ru": "Нельзя использовать только символы."
+  },
+  "keyCombination.popup.info.error.tooMuchCount": {
+    "en": "Too many keys.",
+    "ru": "Клавиш слишком много."
+  },
+  "keyCombination.popup.info.error.unknown": {
+    "en": "Unknown error...",
+    "ru": "Не известная проблемa..."
+  },
+  "keyCombination.popup.text.help": {
+    "en": "Hold combination keys\nfor 1 second",
+    "ru": "Удерживай нужную комбинацию клавиш\nв течение одной секунды."
+  },
+  "keyCombination.popup.title": {
+    "en": "Install new combination",
+    "ru": "Установка новой комбинации"
+  },
+  "keyCombination.prevLanguage": {
+    "en": "Previous language",
+    "ru": "Предыдущий язык"
+  },
+  "keyCombination.prevTheme": {
+    "en": "Previous theme",
+    "ru": "Предыдущая тема"
+  },
+  "keyCombination.run": {
+    "en": "Run",
+    "ru": "Запустить"
+  },
+  "keyCombination.saveAllFiles": {
+    "en": "Save all files",
+    "ru": "Сохранить все файлы"
+  },
+  "keyCombination.saveCurrentFocusedFile": {
+    "en": "Save focused file",
+    "ru": "Сохранить текущий активный файл"
+  },
+  "keyCombination.saveProject": {
+    "en": "Save project",
+    "ru": "Сохранить проект"
+  },
+  "keyCombination.text.combinationKeys": {
+    "en": "Keys combination",
+    "ru": "Комбинация клавиш"
+  },
+  "keyCombination.text.nameCommand": {
+    "en": "Name command",
+    "ru": "Название команды"
+  },
+  "lastProjects.setting.radio.showPathAbsolute": {
+    "en": "Show path absolute",
+    "ru": "Показывать абсолютный путь"
+  },
+  "lastProjects.tooltip": {
+    "en": "It's empty here for now, well, you know...\nat least save or open the file, I don't know.",
+    "ru": "Пока что здесь пусто, ну ты это..\nхотя бы сохрани или открой файл я не знаю"
+  },
+  "localisationManager.setting.tooltip.code": {
+    "en": "Code country",
+    "ru": "Код страны"
+  },
+  "localisationManager.setting.tooltip.translate.fail": {
+    "en": "Translate not finished",
+    "ru": "Перевод не завершён"
+  },
+  "localisationManager.setting.tooltip.translate.success": {
+    "en": "Full translated",
+    "ru": "Полностью переведено"
+  },
+  "localisationManager.setting.tooltip.translateInterface": {
+    "en": "Translated interface",
+    "ru": "Переведено интерфейса"
   },
   "menu.button.close.tooltip": {
     "en": "Close",
@@ -543,10 +867,6 @@
     "en": "View",
     "ru": "Вид"
   },
-  "menu.item.view.separator.widgets": {
-    "en": "Widgets",
-    "ru": "Виджеты"
-  },
   "menu.item.view.closeAllTextEditors": {
     "en": "Close all tabs",
     "ru": "Закрыть все вкладки"
@@ -558,6 +878,10 @@
   "menu.item.view.output": {
     "en": "Output",
     "ru": "Вывод"
+  },
+  "menu.item.view.separator.widgets": {
+    "en": "Widgets",
+    "ru": "Виджеты"
   },
   "menu.logo.tooltip": {
     "en": "Logo IDE NASM",
@@ -635,22 +959,6 @@
     "en": "Flag compilation",
     "ru": "Флаг компиляции"
   },
-  "lastProjects.tooltip": {
-    "en": "It's empty here for now, well, you know...\nat least save or open the file, I don't know.",
-    "ru": "Пока что здесь пусто, ну ты это..\nхотя бы сохрани или открой файл я не знаю"
-  },
-  "lastProjects.setting.radio.showPathAbsolute": {
-    "en": "Show path absolute",
-    "ru": "Показывать абсолютный путь"
-  },
-  "setting.name.Themes": {
-    "en": "Themes",
-    "ru": "Темы"
-  },
-  "setting.name.LastProjects": {
-    "en": "Last projects",
-    "ru": "Последние проекты"
-  },
   "setting.name.KeyCombinations": {
     "en": "Key combinations",
     "ru": "Комбинации клавиш"
@@ -659,197 +967,29 @@
     "en": "Language",
     "ru": "Язык"
   },
-  "setting.tabName.keyCombinations": {
-    "en": "Keys",
-    "ru": "Управление"
+  "setting.name.LastProjects": {
+    "en": "Last projects",
+    "ru": "Последние проекты"
   },
-  "setting.tabName.general": {
-    "en": "General",
-    "ru": "Общие"
+  "setting.name.Themes": {
+    "en": "Themes",
+    "ru": "Темы"
   },
   "setting.tabName.colorTheme": {
     "en": "Color themes",
     "ru": "Цветовые темы"
   },
+  "setting.tabName.general": {
+    "en": "General",
+    "ru": "Общие"
+  },
+  "setting.tabName.keyCombinations": {
+    "en": "Keys",
+    "ru": "Управление"
+  },
   "setting.title": {
     "en": "Settings",
     "ru": "Настройки"
-  },
-  "localisationManager.setting.tooltip.code": {
-    "en": "Code country",
-    "ru": "Код страны"
-  },
-  "localisationManager.setting.tooltip.translateInterface": {
-    "en": "Translated interface",
-    "ru": "Переведено интерфейса"
-  },
-  "localisationManager.setting.tooltip.translate.success": {
-    "en": "Full translated",
-    "ru": "Полностью переведено"
-  },
-  "localisationManager.setting.tooltip.translate.fail": {
-    "en": "Translate not finished",
-    "ru": "Перевод не завершён"
-  },
-  "keyCombination.text.nameCommand": {
-    "en": "Name command",
-    "ru": "Название команды"
-  },
-  "keyCombination.text.combinationKeys": {
-    "en": "Keys combination",
-    "ru": "Комбинация клавиш"
-  },
-  "keyCombination.compile": {
-    "en": "Compile",
-    "ru": "Компилировать"
-  },
-  "keyCombination.build": {
-    "en": "Build",
-    "ru": "Собрать"
-  },
-  "keyCombination.run": {
-    "en": "Run",
-    "ru": "Запустить"
-  },
-  "keyCombination.closeAllTextEditors": {
-    "en": "Close all text editors",
-    "ru": "Закрыть все редакторы кода"
-  },
-  "keyCombination.nextLanguage": {
-    "en": "Next language",
-    "ru": "Следующий язык"
-  },
-  "keyCombination.prevLanguage": {
-    "en": "Previous language",
-    "ru": "Предыдущий язык"
-  },
-  "keyCombination.nextTheme": {
-    "en": "Next theme",
-    "ru": "Следующая тема"
-  },
-  "keyCombination.prevTheme": {
-    "en": "Previous theme",
-    "ru": "Предыдущая тема"
-  },
-  "keyCombination.createNewProject": {
-    "en": "Create new project",
-    "ru": "Создать новый проект"
-  },
-  "keyCombination.openNewProject": {
-    "en": "Open new project",
-    "ru": "Открыть новый проект"
-  },
-  "keyCombination.saveProject": {
-    "en": "Save project",
-    "ru": "Сохранить проект"
-  },
-  "keyCombination.saveAllFiles": {
-    "en": "Save all files",
-    "ru": "Сохранить все файлы"
-  },
-  "keyCombination.saveCurrentFocusedFile": {
-    "en": "Save focused file",
-    "ru": "Сохранить текущий активный файл"
-  },
-  "keyCombination.button.default": {
-    "en": "Return default settings",
-    "ru": "Установить по умолчанию"
-  },
-  "keyCombination.popup.title": {
-    "en": "Install new combination",
-    "ru": "Установка новой комбинации"
-  },
-  "keyCombination.popup.button.clear": {
-    "en": "Clear current combination",
-    "ru": "Стереть текущую комбинацию"
-  },
-  "keyCombination.popup.text.help": {
-    "en": "Hold combination keys\nfor 1 second",
-    "ru": "Удерживай нужную комбинацию клавиш\nв течение одной секунды."
-  },
-  "keyCombination.popup.error.collision": {
-    "en": "A combination match occurred.\nTo resolve the issue, the following command's\ncombination will be cleared:",
-    "ru": "Возникло совпадение комбинаций.\nДля разрешения проблемы у следующей команды\nкомбинация будет стёрта:"
-  },
-  "keyCombination.popup.info.error.collision": {
-    "en": "This combination already exists.",
-    "ru": "Такая комбинация существует."
-  },
-  "keyCombination.popup.info.error.onlySymbolsAndNumbers": {
-    "en": "Cannot use only symbols and numbers.",
-    "ru": "Нельзя использовать только символы."
-  },
-  "keyCombination.popup.info.error.tooMuchCount": {
-    "en": "Too many keys.",
-    "ru": "Клавиш слишком много."
-  },
-  "keyCombination.popup.info.error.identical": {
-    "en": "Why set the exact same combination?",
-    "ru": "Зачем устанавливать ту же самую комбинацию?"
-  },
-  "keyCombination.popup.info.error.unknown": {
-    "en": "Unknown error...",
-    "ru": "Не известная проблемa..."
-  },
-  "keyCombination.popup.error.indentical.1": {
-    "en": "Well, whatever...",
-    "ru": "Ну и ладно..."
-  },
-  "keyCombination.popup.error.indentical.2": {
-    "en": "Ok...",
-    "ru": "Ок..."
-  },
-  "keyCombination.popup.error.indentical.3": {
-    "en": "That's weird...",
-    "ru": "Странно..."
-  },
-  "keyCombination.popup.error.indentical.4": {
-    "en": "Why?",
-    "ru": "А зачем?"
-  },
-  "keyCombination.popup.error.indentical.5": {
-    "en": "Why are you doing this?",
-    "ru": "Для чего ты это делаешь?"
-  },
-  "keyCombination.popup.error.indentical.6": {
-    "en": "maybe ENOUGH?!!?!?!?!",
-    "ru": "может ХВАТИТ?!!?!?!?!"
-  },
-  "keyCombination.popup.error.indentical.7": {
-    "en": "Do you want to check all the phrases?",
-    "ru": "ты хочешь проверить все фразы?"
-  },
-  "keyCombination.popup.error.indentical.8": {
-    "en": "stubborn",
-    "ru": "упорный"
-  },
-  "keyCombination.popup.error.indentical.9": {
-    "en": "...",
-    "ru": "..."
-  },
-  "keyCombination.popup.error.indentical.10": {
-    "en": "......",
-    "ru": "......"
-  },
-  "keyCombination.popup.error.indentical.11": {
-    "en": ".........",
-    "ru": "........."
-  },
-  "keyCombination.popup.error.indentical.12": {
-    "en": "............................",
-    "ru": "............................"
-  },
-  "keyCombination.popup.error.indentical.13": {
-    "en": "You're a champion.",
-    "ru": "Ты чемпион."
-  },
-  "highlighterSyntax.tooltip.desc": {
-    "en": "Description",
-    "ru": "Описание"
-  },
-  "highlighterSyntax.tooltip.variants": {
-    "en": "Variants",
-    "ru": "Варианты аргументов"
   },
   "solution.button.change.tooltip": {
     "en": "Edit",
@@ -886,46 +1026,6 @@
   "solution.title": {
     "en": "Creation new project",
     "ru": "Создание нового проекта"
-  },
-  "authorPopup.title": {
-    "en": "About IDE NASM",
-    "ru": "О программе"
-  },
-  "authorPopup.desc": {
-    "en": "The program was created as part of a diploma project during my undergraduate studies. I myself don't know a thing about assembly language or IDE development, so any shortcomings are to be expected!",
-    "ru": "Программа была создана как часть диплома во время обучения в бакалавриате. Сам я ничего не смыслю в ассемблере и IDE строении, поэтому любые недочёты имеют место быть!"
-  },
-  "authorPopup.workers": {
-    "en": "The program was developed by:",
-    "ru": "В разработке участвовали:"
-  },
-  "authorPopup.progger": {
-    "en": "Developer :  Korzhunov A.S.",
-    "ru": "Разработчик:  Коржунов А.С."
-  },
-  "authorPopup.scietificSupervisor": {
-    "en": "Sci. sup. :  Cherednichenko O.M.",
-    "ru": "Науч. рук. :  Чередниченко О.М."
-  },
-  "authorPopup.myContacts": {
-    "en": "My contacts:",
-    "ru": "Мои контакты:"
-  },
-  "authorPopup.VK": {
-    "en": "VK",
-    "ru": "ВК"
-  },
-  "time.seconds": {
-    "en": "sec.",
-    "ru": "сек."
-  },
-  "time.min": {
-    "en": "min.",
-    "ru": "мин."
-  },
-  "time.hours": {
-    "en": "h.",
-    "ru": "час."
   },
   "startupWindow.button.create": {
     "en": "Create();",
@@ -991,6 +1091,10 @@
     "en": "Editor code",
     "ru": "Редактор кода"
   },
+  "themeItem.filesViewer": {
+    "en": "Files viewer",
+    "ru": "Список файлов"
+  },
   "themeItem.highlighterSyntax": {
     "en": "Colors instructions",
     "ru": "Цвета инструкций и деректив"
@@ -1035,69 +1139,25 @@
     "en": "Creating a name for a new color theme",
     "ru": "Создание названия для новой цветовой темы"
   },
+  "time.hours": {
+    "en": "h.",
+    "ru": "час."
+  },
+  "time.min": {
+    "en": "min.",
+    "ru": "мин."
+  },
+  "time.seconds": {
+    "en": "sec.",
+    "ru": "сек."
+  },
   "typeMessageDraw.type.tooltip": {
     "en": "Type message",
     "ru": "Тип сообщения"
   },
-  "filesViewer.entryPoint.tooltip": {
-    "en": "Compilation entry point\nTo change, right-click on the desired file.",
-    "ru": "Точка входа для компиляции\nЧтобы поменять щелкни ПКМ по нужному файлу."
-  },
-  "filesViewer.fileActive.tooltip": {
-    "en": "Highlighted because the file has keyboard focus.",
-    "ru": "Выделяется так как файл в фокусе клавиатуры."
-  },
-  "filesViewer.fileNotActive.tooltip": {
-    "en": "Click to make the window focused.",
-    "ru": "Нажми чтобы сделать окно в фокусе."
-  },
-  "filesViewer.fileNotOpen.tooltip": {
-    "en": "Click to open the file.",
-    "ru": "Нажми чтобы открыть файл."
-  },
-  "filesViewer.contextMenu.Open": {
-    "en": "Open",
-    "ru": "Открыть"
-  },
-  "filesViewer.contextMenu.Cut": {
-    "en": "Cut",
-    "ru": "Вырезать"
-  },
-  "filesViewer.contextMenu.Copy": {
-    "en": "Copy",
-    "ru": "Копировать"
-  },
-  "filesViewer.contextMenu.Paste": {
-    "en": "Paste",
-    "ru": "Вставить"
-  },
-  "filesViewer.contextMenu.Rename": {
-    "en": "Rename",
-    "ru": "Переименовать"
-  },
-  "filesViewer.contextMenu.Delete": {
-    "en": "Delete",
-    "ru": "Удалить"
-  },
-  "filesViewer.contextMenu.CreateFile": {
-    "en": "Create file",
-    "ru": "Создать файл"
-  },
-  "filesViewer.contextMenu.CreateFolder": {
-    "en": "Create folder",
-    "ru": "Создать папку"
-  },
-  "filesViewer.contextMenu.Add": {
-    "en": "Add",
-    "ru": "Добавить"
-  },
-  "filesViewer.contextMenu.OpenInExplorer": {
-    "en": "Open in explorer",
-    "ru": "Открыть в проводнике"
-  },
-  "filesViewer.contextMenu.SetEntryPoint": {
-    "en": "Set as entry point",
-    "ru": "Установить как точка входа"
+  "widgetName.filesViewer": {
+    "en": "Files viewer",
+    "ru": "Список файлов"
   },
   "widgetName.managerTextEditor": {
     "en": "Manager text editor",
@@ -1106,9 +1166,5 @@
   "widgetName.outputConsole": {
     "en": "Output",
     "ru": "Вывод"
-  },
-  "widgetName.filesViewer": {
-    "en": "Files viewer",
-    "ru": "Список файлов"
   }
 }

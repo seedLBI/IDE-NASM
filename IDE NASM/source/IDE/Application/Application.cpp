@@ -37,14 +37,16 @@ Application::Application() {
 	buildManager = new BuildManager(solution, outlineStatus);
 	themeManager = new ThemeManager;
 	baseColors = new BaseColors;
+	positionWidgetsManager = new PositionWidgetsManager(widgetManager);
 
-	widgetManager_TextEditor = new WidgetManager_TextEditor(fps_limiter);
+
+	widgetManager_TextEditor = new WidgetManager_TextEditor(fps_limiter, positionWidgetsManager);
 	widget_FilesViewer = new Widget_FilesViewer(widgetManager_TextEditor);
 	widget_OutputConsole = new Widget_OutputConsole(windowManager->GetMainWindow()->GetHandle(), buildManager, solution, fontManager, widgetManager_TextEditor);
 
 	startupWindow = new StartupWindow(fontManager, solution);
 
-	positionWidgetsManager = new PositionWidgetsManager(widgetManager);
+
 	lastSolutionManager = new LastSolutionManager(startupWindow);
 	notificationManager = new NotificationManager(windowManager->GetMainWindow(), fps_limiter);
 	keyCombinationHandler = new KeyCombinationHandler(notificationManager, fps_limiter, windowManager->GetMainWindow());
@@ -82,6 +84,7 @@ void Application::InitThemeManager() {
 	themeManager->AddObject(widgetManager_TextEditor);
 	themeManager->AddObject(&HighlighterSyntax::Instance());
 	themeManager->AddObject(widget_OutputConsole);
+	themeManager->AddObject(widget_FilesViewer);
 	themeManager->AddObject(outlineStatus);
 	themeManager->AddObject(mainMenuBar);
 	

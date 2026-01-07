@@ -17,6 +17,7 @@ public:
 
 	void DockTextEditorToLastActive(const std::string& name);
 
+	ImGuiID GetMainDockID();
 	void SetDockspaceID(const ImGuiID& id);
 
 	std::string MakeSaveData();

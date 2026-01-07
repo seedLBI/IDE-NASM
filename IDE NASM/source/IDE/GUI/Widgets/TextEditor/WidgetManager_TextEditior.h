@@ -11,12 +11,14 @@
 
 #include "IDE/Core/Solution/SolutionInfo.h"
 
+#include "IDE/Core/PositionWidgetsManager/PositionWidgetsManager.h"
+
 #include <vector>
 #include <nlohmann/json.hpp>
 
 class WidgetManager_TextEditor : public IWidget, public IThemeLoadable {
 public:
-	WidgetManager_TextEditor(FPS_Timer* fps_limiter);
+	WidgetManager_TextEditor(FPS_Timer* fps_limiter, PositionWidgetsManager* positionsWidgetsManager);
 	~WidgetManager_TextEditor();
 
 	void Draw() override;
@@ -43,6 +45,8 @@ public:
 
 	void Add(const std::wstring& Path);
 
+	void Remove(const std::wstring& Path);
+
 
 	void CloseAll();
 	
@@ -57,6 +61,7 @@ public:
 private:
 	SolutionInfo* currentSolution = nullptr;
 	FPS_Timer* fps_limiter = nullptr;
+	PositionWidgetsManager* positionsWidgetsManager = nullptr;
 
 	std::string LastActiveWidget;
 
