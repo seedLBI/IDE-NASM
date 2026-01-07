@@ -493,7 +493,12 @@ void MainMenuBar::Draw() {
 
 				}
 
-				ImGui::Text(tr("menu.entryPoint").c_str());
+				ImGui::Text( tr("menu.entryPoint").c_str() );
+
+
+
+
+
 				ImGui::SetNextItemWidth(ImGui::CalcTextSize(u8"Точка входа    ").x);
 
 				ImGui::BeginDisabled(buildManager->GetState() != BuildManager_Free);

@@ -569,6 +569,7 @@ void Application::Init_ImGui() {
 
 	s.WindowRounding = 12.f;
 	s.ChildRounding = 12.f;
+	s.PopupRounding = 12.f;
 
 	ImGui::GetIO().IniFilename = NULL;
 	ImGui::GetIO().LogFilename = NULL;

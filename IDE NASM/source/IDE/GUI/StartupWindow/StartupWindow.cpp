@@ -369,18 +369,12 @@ std::string StartupWindow::timestamp_to_Time_str(const uint64_t& timestamp) {
 
 	std::string result;
 
-	if (hour > 0) {
+	if (hour > 0)
 		result += str_hour + " " + tr("time.hours") + " ";
-	}
 	if (minute > 0)
-	{
 		result += str_minute + " " + tr("time.min") + " ";
-	}
-
 	if (second != 0)
-	{
 		result += str_second + " " + tr("time.seconds") + " ";
-	}
 	else {
 		if (minute == 0 && hour == 0)
 			result += str_second + " " + tr("time.seconds") + " ";

@@ -4,33 +4,16 @@
 #include "IDE/Core/Setting/interfaces/ISettingObject.h"
 
 #include <nlohmann/json.hpp>
-
 #include <string>
 
 class LocalisationManager : public ISettingObject { 
 
 private:
 	nlohmann::json translate_data;
-
-	nlohmann::json translator_abriv;
-
 	std::string GlobalLanguage = u8"en";
-
-	struct LanguageInfo {
-		std::string abriv;
-		float percent_translated_interface = 0.f;
-	};
-	std::vector<LanguageInfo> langs_info;
-	int countWords = 0;
-	void UpdateSetLanguages();
-
-	int index_current_language = -1;
-	void UpdateIndexCurrentLanguage();
-
 
 public:
 	static LocalisationManager& getInstance();
-
 
 	const std::string& getGlobal();
 	void setLanguage(const std::string& language_abbriv);
@@ -52,6 +35,19 @@ private:
 	LocalisationManager();
 	LocalisationManager(const LocalisationManager&) = delete;
 	LocalisationManager& operator=(const LocalisationManager&) = delete;
+
+	nlohmann::json translator_abriv;
+
+	struct LanguageInfo {
+		std::string abriv;
+		float percent_translated_interface = 0.f;
+	};
+	std::vector<LanguageInfo> langs_info;
+	int countWords = 0;
+	void UpdateSetLanguages();
+
+	int index_current_language = -1;
+	void UpdateIndexCurrentLanguage();
 };
 
 
