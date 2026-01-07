@@ -19,11 +19,11 @@ void PositionWidgetsManager::SetFirstTextEditor(const std::string& name) {
 
 ImGuiID PositionWidgetsManager::GetMainDockID() {
     ImGuiDockNode* root = ImGui::DockBuilderGetNode(dockspace_id);
-    ImGuiDockNode* central = root->CentralNode;
-    return central->ID;
+    return root->ID;
 }
 
 std::string PositionWidgetsManager::MakeSaveData() {
+
 	std::string ini = ImGui::SaveIniSettingsToMemory();
 	return ini;
 }

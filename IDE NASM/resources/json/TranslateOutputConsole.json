@@ -678,13 +678,17 @@
       }
     },
     "TranslationOutput": [
+	  {
+        "en": "segment base generated, but will be ignored in 64-bit mode",
+        "ru": "базовый сегмент сгенерирован, но будет проигнорирован в 64-битном режиме."
+      },
       {
         "en": "invalid register set size",
         "ru": "Недопустимый размер набора регистров"
       },
 	  {
-		  "en": "instruction not supported in 64-bit mode",
-		  "ru": "инструкция не поддерживается в 64-битном режиме"
+		"en": "instruction not supported in 64-bit mode",
+		"ru": "инструкция не поддерживается в 64-битном режиме"
 	  },
       {
         "en": "invalid operand type",

@@ -53,6 +53,8 @@ TextEditor::TextEditor(FPS_Timer* fps_limiter, const std::wstring& Path):
 	, mIgnoreImGuiChild(false)
 	, mShowWhitespaces(true)
 	, mStartTime(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count())
+	, mScrollToLine(-1)           
+	, mScrollToLineCenter(false)  
 {
 
 	this->fps_limiter = fps_limiter;
@@ -1504,6 +1506,30 @@ void TextEditor::LoadSetting(const std::string& Data) {
 */
 
 
+void TextEditor::HighlightLine(int lineNumber, const ImVec4& color, float duration) {
+	int lineIndex = lineNumber - 1;
+
+	if (lineIndex < 0 || lineIndex >= (int)mLines.size())
+		return;
+
+	ImU32 colorU32 = ImGui::ColorConvertFloat4ToU32(color);
+
+	for (auto& highlight : mLineHighlights) {
+		if (highlight.lineNumber == lineIndex) {
+			highlight.color = colorU32;
+			highlight.remainingTime = duration;
+			return;
+		}
+	}
+	ScrollToLineCenter(lineNumber);
+	mLineHighlights.emplace_back(lineIndex, colorU32, duration);
+}
+
+void TextEditor::ScrollToLineCenter(int lineIndex) {
+	mScrollToLine = lineIndex;
+	mScrollToLineCenter = true;
+}
+
 void TextEditor::Render()
 {
 	/* Compute mCharAdvance regarding to scaled font size (Ctrl + mouse wheel)*/
@@ -1516,6 +1542,22 @@ void TextEditor::Render()
 		auto color = ImGui::ColorConvertU32ToFloat4(mPaletteBase[i]);
 		color.w *= ImGui::GetStyle().Alpha;
 		mPalette[i] = ImGui::ColorConvertFloat4ToU32(color);
+	}
+
+	if (mScrollToLineCenter && mScrollToLine >= 0) {
+		float windowHeight = ImGui::GetWindowHeight();
+		float lineY = mScrollToLine * mCharAdvance.y;
+		float scrollY = lineY - (windowHeight / 2.0f) + (mCharAdvance.y / 2.0f);
+		scrollY = (std::max)(0.0f, scrollY);
+
+		float contentHeight = mLines.size() * mCharAdvance.y;
+		float maxScrollY = (std::max)(0.0f, contentHeight - windowHeight);
+		scrollY = (std::min)(scrollY, maxScrollY);
+
+		ImGui::SetScrollY(scrollY);
+
+		mScrollToLineCenter = false;
+		mScrollToLine = -1;
 	}
 
 	assert(mLineBuffer.empty());
@@ -1705,6 +1747,25 @@ void TextEditor::Render()
 				}
 			}
 
+			for (auto& highlight : mLineHighlights) {
+				if (highlight.lineNumber == lineNo && highlight.remainingTime > 0.0f) {
+					ImVec2 start = ImVec2(lineStartScreenPos.x + scrollX, lineStartScreenPos.y);
+					ImVec2 end = ImVec2(start.x + contentSize.x + scrollX, start.y + mCharAdvance.y);
+
+					// Вычисляем альфа-канал на основе оставшегося времени для плавного затухания
+					ImU32 fadeColor = highlight.color;
+					float alpha = highlight.remainingTime; // Плавное затухание
+					if (alpha > 1.0f) alpha = 1.0f;
+
+					// Модифицируем альфа-канал цвета
+					ImVec4 colorVec = ImGui::ColorConvertU32ToFloat4(fadeColor);
+					colorVec.w *= alpha;
+					fadeColor = ImGui::ColorConvertFloat4ToU32(colorVec);
+
+					drawList->AddRectFilled(start, end, fadeColor);
+				}
+			}
+
 
 			/*
 			if (mBreakpoints.count(lineNo + 1) != 0) {
@@ -1854,6 +1915,18 @@ void TextEditor::Render()
 		ImGui::SetWindowFocus();
 		mScrollToCursor = false;
 	}
+
+
+	float deltaTime = ImGui::GetIO().DeltaTime;
+	for (auto it = mLineHighlights.begin(); it != mLineHighlights.end();) {
+		it->remainingTime -= deltaTime;
+		if (it->remainingTime <= 0.0f) {
+			it = mLineHighlights.erase(it);
+		}
+		else {
+			++it;
+		}
+	}
 }
 
 void TextEditor::Render(const char* aTitle, const ImVec2& aSize, bool aBorder)
@@ -1886,6 +1959,28 @@ void TextEditor::Render(const char* aTitle, const ImVec2& aSize, bool aBorder)
 		HandleMouseInputs_Step2Again();
 	}
 
+
+
+	if (mScrollToLineCenter)
+	{
+		ImGuiWindow* window = ImGui::GetCurrentWindow();
+		float PrevScale = window->FontWindowScale;
+
+		ImGui::SetWindowFontScale(mVirtualFontSize);
+
+		const float fontSize = ImGui::GetFont()->CalcTextSizeA(ImGui::GetFontSize() * mVirtualFontSize, FLT_MAX, -1.0f, "#", nullptr, nullptr).x;
+		ImVec2 mCharAdvance = ImVec2(fontSize, ImGui::GetTextLineHeightWithSpacing() * mLineSpacing);
+
+		float lineee = static_cast<float>(mScrollToLine - CountLines_In_Window / 2);
+
+		if (lineee < 0)
+			lineee = 0;
+
+		ImGui::SetScrollY(mCharAdvance.y * lineee);
+
+		ImGui::SetWindowFontScale(PrevScale);
+
+	}
 
 	if (mReadOnly){
 
@@ -1928,6 +2023,29 @@ void TextEditor::Render(const char* aTitle, const ImVec2& aSize, bool aBorder)
 
 	if (mHandleKeyboardInputs)
 		ImGui::PopAllowKeyboardFocus();
+
+
+	if (mScrollToLineCenter)
+	{
+		mScrollToLineCenter = false;
+		ImGuiWindow* window = ImGui::GetCurrentWindow();
+		float PrevScale = window->FontWindowScale;
+
+		ImGui::SetWindowFontScale(mVirtualFontSize);
+
+		const float fontSize = ImGui::GetFont()->CalcTextSizeA(ImGui::GetFontSize() * mVirtualFontSize, FLT_MAX, -1.0f, "#", nullptr, nullptr).x;
+		ImVec2 mCharAdvance = ImVec2(fontSize, ImGui::GetTextLineHeightWithSpacing() * mLineSpacing);
+
+		float lineee = static_cast<float>(mScrollToLine - CountLines_In_Window / 2);
+
+		if (lineee < 0)
+			lineee = 0;
+
+		ImGui::SetScrollY(mCharAdvance.y * lineee);
+
+		ImGui::SetWindowFontScale(PrevScale);
+
+	}
 
 	if (!mIgnoreImGuiChild)
 		ImGui::EndChild();

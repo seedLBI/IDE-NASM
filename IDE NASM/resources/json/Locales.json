@@ -455,6 +455,18 @@
     "en": "String (\"\")",
     "ru": "Строки (\"\")"
   },
+  "color.textEditor.highlight.error": {
+    "en": "Highlight error line",
+    "ru": "Подсветка ошибочных строк"
+  },
+  "color.textEditor.highlight.warning": {
+    "en": "Highlight warning line",
+    "ru": "Подсветка предупреждающих строк"
+  },
+  "color.textEditor.highlight.info": {
+    "en": "Highlight info line",
+    "ru": "Подсветка информационых строк"
+  },
   "error.comboLanguages.loadData": {
     "en": "Where data languages??",
     "ru": "А где данные о языках?"
@@ -922,6 +934,10 @@
   "outputConsole.languageDesc": {
     "en": "Lang desc",
     "ru": "Язык описания"
+  },
+  "outputConsole.originalOutput.tooltip": {
+    "en": "Click to copy the entire output to the clipboard.",
+    "ru": "Нажми чтобы скопировать всё содиржимое вывода в буфер обмена."
   },
   "outputConsole.table.description": {
     "en": "Description",

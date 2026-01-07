@@ -28,7 +28,10 @@ WidgetManager_TextEditor::WidgetManager_TextEditor(FPS_Timer* fps_limiter, Posit
 			"color.textEditor.currentLineFill",
 			"color.textEditor.currentLineFillInactive",
 			"color.textEditor.currentLineEdge",
-			"color.textEditor.finderNotFind"
+			"color.textEditor.finderNotFind",
+			"color.textEditor.highlight.error",
+			"color.textEditor.highlight.warning",
+			"color.textEditor.highlight.info"
 		});
 }
 
@@ -40,7 +43,28 @@ void WidgetManager_TextEditor::LoadColors() {
 	for (int i = 0; i < widgets.size(); i++) {
 		widgets[i]->GetPtrTextEditor()->LoadColors(object_colors);
 	}
+
+
+	std::string toSearch;
+
+	static robin_hood::unordered_flat_map<std::string, ImColor*> translator = {
+		{ "color.textEditor.highlight.error",	&color_highlight_error },
+		{ "color.textEditor.highlight.warning",	&color_highlight_warning },
+		{ "color.textEditor.highlight.info",	&color_highlight_info }
+	};
+
+
+	for (int i = 0; i < object_colors.colors.size(); i++) {
+
+		toSearch = object_colors.colors[i].nameColor;
+
+		if (translator.contains(toSearch))
+			*translator[toSearch] = object_colors.colors[i].color;
+
+		
+	}
 }
+
 std::vector<NamedColor> WidgetManager_TextEditor::GetDefaultLightColors() {
 	std::vector<NamedColor> colors = {
 		{"color.textEditor.default",				ImColor(125,115,104,255)},
@@ -61,9 +85,11 @@ std::vector<NamedColor> WidgetManager_TextEditor::GetDefaultLightColors() {
 		{"color.textEditor.currentLineFill",		ImColor(37,19,0,64)},
 		{"color.textEditor.currentLineFillInactive",ImColor(128,117,97,64)},
 		{"color.textEditor.currentLineEdge",		ImColor(64,38,0,64)},
-		{"color.textEditor.finderNotFind",			ImColor(201,178,133,255) }
+		{"color.textEditor.finderNotFind",			ImColor(201,178,133,255) },
+		{ "color.textEditor.highlight.error",			ImColor(255,83,83,188) },
+		{ "color.textEditor.highlight.warning",			ImColor(244,175,0,201) },
+		{ "color.textEditor.highlight.info",			ImColor(78,91,255,189) }
 	};
-
 
 	return colors;
 }
@@ -87,11 +113,39 @@ std::vector<NamedColor> WidgetManager_TextEditor::GetDefaultDarkColors() {
 		{"color.textEditor.currentLineFill",		ImColor(0x40000000)},
 		{"color.textEditor.currentLineFillInactive",ImColor(0x40808080)},
 		{"color.textEditor.currentLineEdge",		ImColor(0x40a0a0a0)},
-		{"color.textEditor.finderNotFind",			ImColor(0.2f, 0.2f, 0.2f)}
+		{"color.textEditor.finderNotFind",			ImColor(0.2f, 0.2f, 0.2f)},
+		{ "color.textEditor.highlight.error",			ImColor(255,0,0,110) },
+		{ "color.textEditor.highlight.warning",			ImColor(255,169,0,110) },
+		{ "color.textEditor.highlight.info",			ImColor(0,24,255,110) }
 	};
 
-
 	return colors;
+}
+
+void WidgetManager_TextEditor::Highlight_error(const std::wstring& Path, int line) {
+	SetActiveFromPath(Path);
+	auto widget = GetWidgetFromPath(Path);
+
+	if (widget){
+		widget->GetPtrTextEditor()->HighlightLine(line, color_highlight_error, 1.f);
+	}
+
+}
+void WidgetManager_TextEditor::Highlight_warning(const std::wstring& Path, int line) {
+	SetActiveFromPath(Path);
+	auto widget = GetWidgetFromPath(Path);
+
+	if (widget) {
+		widget->GetPtrTextEditor()->HighlightLine(line, color_highlight_warning, 1.f);
+	}
+}
+void WidgetManager_TextEditor::Highlight_info(const std::wstring& Path, int line) {
+	SetActiveFromPath(Path);
+	auto widget = GetWidgetFromPath(Path);
+
+	if (widget) {
+		widget->GetPtrTextEditor()->HighlightLine(line, color_highlight_info, 1.f);
+	}
 }
 
 

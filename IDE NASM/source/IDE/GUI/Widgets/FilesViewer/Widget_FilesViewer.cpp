@@ -38,10 +38,8 @@ void Widget_FilesViewer::LoadColors() {
 
         toSearch = object_colors.colors[i].nameColor;
 
-        if (!translator.contains(toSearch))
-            std::abort();
-
-        *translator[toSearch] = object_colors.colors[i].color;
+        if (translator.contains(toSearch))
+            *translator[toSearch] = object_colors.colors[i].color;
     }
 }
 std::vector<NamedColor> Widget_FilesViewer::GetDefaultLightColors() {
@@ -513,10 +511,12 @@ bool Widget_FilesViewer::_RenamePath(const std::string& old_full_path, const std
 }
 void Widget_FilesViewer::_OpenPopupCreationFile(const std::string& full_path) {
     show_create_file_popup = true;
+    need_focus_popup = true;
     selected_context_full_path = full_path;
 }
 void Widget_FilesViewer::_OpenPopupCreationFolder(const std::string& full_path) {
     show_create_folder_popup = true;
+    need_focus_popup = true;
     selected_context_full_path = full_path;
 }
 void Widget_FilesViewer::_SetRenameMode(const std::string& full_path) {
@@ -621,13 +621,11 @@ bool Widget_FilesViewer::_SetAsEntryPoint(const std::string& full_path) {
 void Widget_FilesViewer::SetState_CreationFile(const std::string& directory, const std::string& nameFile) {
     forstate_name = nameFile;
     forstate_directory = directory;
-    need_focus_popup = true;
     current_state = StateOperation::CreationFile;
 }
 void Widget_FilesViewer::SetState_CreationFolder(const std::string& directory, const std::string& nameFolder) {
     forstate_name = nameFolder;
     forstate_directory = directory;
-    need_focus_popup = true;
     current_state = StateOperation::CreationFolder;
 }
 void Widget_FilesViewer::SetState_DeletePath(const std::string& full_path) {
@@ -738,10 +736,12 @@ void Widget_FilesViewer::DrawPopup_CreationFolder() {
         TextCenteredOnLine(tr("filesViewer.popup.folder.text").c_str(), 0, 0);
         
 
-        if (need_focus_popup)
-        {
+
+
+        if (need_focus_popup) {
             ImGui::SetKeyboardFocusHere();
             need_focus_popup = false;
+            
         }
 
         if (ImGui::InputText(

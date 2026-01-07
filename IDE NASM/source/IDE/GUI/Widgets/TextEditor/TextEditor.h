@@ -72,6 +72,8 @@ public:
 		{}
 	};
 
+
+
 	// Represents a character coordinate from the user's point of view,
 	// i. e. consider an uniform grid (assuming fixed-width font) on the
 	// screen as it is rendered, and each cell has its own coordinate, starting from 0.
@@ -311,11 +313,31 @@ public:
 	bool Flag_EnableAutoTab = true;
 	bool Flag_AnalyzeLineForInstruction = true;
 
+
+
+	void HighlightLine(int lineNumber, const ImVec4& color, float duration = 1.0f);
+
+
 private:
 	FPS_Timer* fps_limiter;
 	std::wstring PathFile;
 	std::string ChildName;
 	bool IsFocused = false;
+
+	struct LineHighlight {
+		int lineNumber;
+		ImU32 color;
+		float remainingTime;
+
+		LineHighlight(int line, ImU32 col, float time)
+			: lineNumber(line), color(col), remainingTime(time) {
+		}
+	};
+
+	std::vector<LineHighlight> mLineHighlights;
+	void ScrollToLineCenter(int lineIndex);
+	int mScrollToLine;
+	bool mScrollToLineCenter;
 
 	typedef std::vector<std::pair<std::regex, PaletteIndex>> RegexList;
 

@@ -53,6 +53,11 @@ public:
 	void ClearAll();
 	void SetActiveFromPath(const std::wstring& Path);
 
+	void Highlight_error(const std::wstring& Path, int line);
+	void Highlight_warning(const std::wstring& Path, int line);
+	void Highlight_info(const std::wstring& Path, int line);
+
+
 	void SaveCurrentActiveFile();
 	void SaveAllFile();
 
@@ -67,7 +72,9 @@ private:
 
 	std::vector<Widget_TextEditor*> widgets;
 
-
+	ImColor color_highlight_error = ImColor(1.f,0.f,0.f,1.f);
+	ImColor color_highlight_warning = ImColor(1.f, 1.f, 0.f, 1.f);
+	ImColor color_highlight_info = ImColor(0.f, 0.f, 1.f, 1.f);
 
 
 

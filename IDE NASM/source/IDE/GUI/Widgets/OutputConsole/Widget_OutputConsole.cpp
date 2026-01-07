@@ -194,6 +194,7 @@ void Widget_OutputConsole::TranslateOutput(const std::string& Language, std::vec
 
 			info->Translate(Language, *nasmSyntaxHighlighter->GetSyntaxData());
 		}
+
 	}
 }
 
@@ -272,7 +273,18 @@ void Widget_OutputConsole::Draw() {
 				else if (outputData[i].type() == typeid(NasmOutputLine)) {
 					NasmOutputLine* info = std::any_cast<NasmOutputLine>(&outputData[i]);
 					if (nasmSyntaxHighlighter->DrawLine((int)i, *info)) {
-						WidgetManagerTextEditor->SetActiveFromPath( solution->GetInfo().GetPathAbsolute() + L"\\" + stringUTF8_to_wstring(info->FileName));
+						std::wstring path = solution->GetInfo().GetPathAbsolute() + L"\\" + stringUTF8_to_wstring(info->FileName);
+
+
+						if(info->HaveError)
+							WidgetManagerTextEditor->Highlight_error(path, info->PosLineCode);
+						else if (info->HaveWarning)
+							WidgetManagerTextEditor->Highlight_warning(path, info->PosLineCode);
+						else
+							WidgetManagerTextEditor->Highlight_info(path, info->PosLineCode);
+
+
+						WidgetManagerTextEditor->SetActiveFromPath(path);
 					}
 				}
 				else if (outputData[i].type() == typeid(std::string)) {
@@ -313,6 +325,12 @@ void Widget_OutputConsole::Draw() {
 
 			ImGui::Text(str_TextMultiline.c_str());
 
+			TooltipTranslated("outputConsole.originalOutput.tooltip");
+
+			if (ImGui::IsItemClicked(ImGuiMouseButton_Left))
+			{
+				ImGui::SetClipboardText(str_TextMultiline.c_str());
+			}
 
 
 

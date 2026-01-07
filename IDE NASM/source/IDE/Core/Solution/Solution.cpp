@@ -320,11 +320,13 @@ bool Solution::OpenFromPath(const std::wstring& CompletePath) {
 
 		isOpened = true;
 
-		if (tempSolution.AdditionalSaveData.contains("Positions"))
-			positionWidgetsManager->LoadSaveData(tempSolution.AdditionalSaveData["Positions"].get<std::string>());
 
 		if (tempSolution.AdditionalSaveData.contains("Widgets"))
 			widgetManager->Load(tempSolution.AdditionalSaveData["Widgets"]);
+
+
+		if (tempSolution.AdditionalSaveData.contains("Positions"))
+			positionWidgetsManager->LoadSaveData(tempSolution.AdditionalSaveData["Positions"].get<std::string>());
 
 		Timer_spent.start();
 
